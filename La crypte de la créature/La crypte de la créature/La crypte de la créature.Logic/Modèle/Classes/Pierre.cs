@@ -23,7 +23,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         #endregion
 
         /// <summary>
-        /// Constructeur de pierre
+        /// Constructeur de la classe pierre
         /// </summary>
         /// <param name="posXY">position de la pierre</param>
         /// <param name="enJeu">Vrai si la pierre est en jeu sinon faux </param>
@@ -31,5 +31,11 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         {
             EstSurPlateau=enJeu;
         }
+
+        /// <summary>
+        /// Retourne le type
+        /// </summary>
+        /// <returns>Retourne la string "Pierre"</returns>
+        public override string Get_Type() { return "Pierre"; }
     }
 }

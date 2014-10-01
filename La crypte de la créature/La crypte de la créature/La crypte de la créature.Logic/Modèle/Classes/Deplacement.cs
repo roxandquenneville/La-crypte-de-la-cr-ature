@@ -14,7 +14,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         #endregion
 
         /// <summary>
-        /// Constructeur de deplacement
+        /// Constructeur de la classe deplacement
         /// Instancier deux positions et la passer dans le constructeur
         /// </summary>
         /// <param name="posDepart">Position de départ</param>

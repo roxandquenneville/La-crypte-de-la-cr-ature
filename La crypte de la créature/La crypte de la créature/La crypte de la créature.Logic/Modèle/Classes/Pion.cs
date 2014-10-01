@@ -12,16 +12,24 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         public bool EstVivant;
         public bool EstSortie;
         private int valeurDeplacement;
+        private const int MAXDEPLACEMENT = 7;
 
         public int ValeurDeplacement
         {
             get { return valeurDeplacement; }
-            set { valeurDeplacement = value; }
+            set
+            {
+                if (value != 0)
+                {
+
+                    valeurDeplacement = value;
+                }
+            }
         }
         #endregion
 
         /// <summary>
-        /// Constructeur de Pion
+        /// Constructeur de la classe Pion
         /// </summary>
         /// <param name="posXY">Position du pion</param>
         /// <param name="deplacement">valeur de la première face</param>
@@ -36,6 +44,15 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         /// <summary>
         /// Change la valeurDeplacement
         /// </summary>
-        void CalculerFace() { }
+        void CalculerFace() 
+        {
+            ValeurDeplacement = MAXDEPLACEMENT - ValeurDeplacement;
+        }
+
+        /// <summary>
+        /// Retourne le type
+        /// </summary>
+        /// <returns>Retourne la string "Pion"</returns>
+        public override string Get_Type() { return "Pion"; }
     }
 }

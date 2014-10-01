@@ -11,3 +11,16 @@ D:\La crypte de la créature\La crypte de la créature\obj\Debug\La_crypte_de_la
 D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.UI.csproj.GenerateResource.Cache
 D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.exe
 D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\bin\Debug\La crypte de la créature.exe.config
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.exe
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\bin\Debug\La crypte de la créature.exe
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\bin\Debug\La crypte de la créature.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.UI.csprojResolveAssemblyReference.cache
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\MainWindow.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\MainWindow.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\App.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature_MarkupCompile.cache
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.g.resources
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\La_crypte_de_la_créature.Properties.Resources.resources
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.UI.csproj.GenerateResource.Cache

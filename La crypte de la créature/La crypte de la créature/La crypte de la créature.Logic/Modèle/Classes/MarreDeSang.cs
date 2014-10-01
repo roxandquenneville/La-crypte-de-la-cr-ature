@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
-    class MarreDeSang : CaseDeSang
+   /* class MarreDeSang : CaseDeSang
     {
         private bool forme;
 
@@ -15,5 +15,5 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
             
         }
 
-    }
+    }*/
 }
