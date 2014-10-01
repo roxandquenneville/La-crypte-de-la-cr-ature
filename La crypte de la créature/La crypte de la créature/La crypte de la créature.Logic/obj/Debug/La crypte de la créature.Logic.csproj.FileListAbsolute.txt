@@ -2,3 +2,4 @@ C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La c
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la créature.Logic\bin\Debug\La crypte de la créature.Logic.pdb
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la créature.Logic\obj\Debug\La crypte de la créature.Logic.dll
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la créature.Logic\obj\Debug\La crypte de la créature.Logic.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la créature.Logic\obj\Debug\La crypte de la créature.Logic.csprojResolveAssemblyReference.cache

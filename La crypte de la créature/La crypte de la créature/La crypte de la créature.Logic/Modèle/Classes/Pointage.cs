@@ -8,8 +8,10 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class Pointage
     {
+        #region attribut
         public int[] Tabpoint;
         private int taille;
+        #endregion
 
         /// <summary>
         /// Constructeur de la classe pointage
@@ -20,9 +22,9 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         {
             taille=nbrJoueur-1;
 
-            Tabpoint = new int[nbrJoueur-1];
+            Tabpoint = new int[taille];
 
-            for (int i = 0; i < nbrJoueur-1; i++)
+            for (int i = 0; i < taille; i++)
             {
                 Tabpoint[i] = 0;
             }
@@ -30,9 +32,31 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         }
 
         /// <summary>
+        /// Lorsqu'on charge une partie déjà commencer
+        /// </summary>
+        /// <param name="nbrJoueur">Nombre de joueur</param>
+        /// <param name="TabScore"> Tableau des scores</param>
+        public Pointage(int nbrJoueur, int[] TabScore)
+        {
+            taille=(TabScore.Length)-1;
+
+            Tabpoint = new int[taille];
+
+            for (int i = 0; i < taille; i++)
+            {
+                Tabpoint[i] = TabScore[i];
+
+            }
+
+        }
+
+        /// <summary>
         /// Permet de calculer le pointage modifie le tableau de point
         /// </summary>
-        void CalculerPointage();
+       public void CalculerPointage()
+       {
+       
+       }
 
 
         /// <summary>
@@ -40,7 +64,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         /// </summary>
         /// <param name="id">Numéro du joueur (1,2,3,4)</param>
         /// <returns>Si le nombre retourner est -1 le id n'existe pas</returns>
-        int Get_Point(int id)
+        public int Get_Point(int id)
         {
             if(id-1<=taille && id>1)
             {

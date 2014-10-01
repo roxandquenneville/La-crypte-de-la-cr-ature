@@ -25,7 +25,22 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         }
         #endregion
 
+        /// <summary>
+        /// Constructeur de la classe joueur
+        /// </summary>
+        /// <param name="nom">Nom d'usager</param>
+        /// <param name="code">Mot de passe</param>
+        public Joueur(string nom,string code)
+        {
+            NomUsager = nom;
+            MotDePasse = code;
+        }
 
+
+        /// <summary>
+        /// Vérifie si la connexion est valide
+        /// </summary>
+        /// <returns>Retourne vrai si sa fonction sinon retourne faux</returns>
         public bool Connexion()
         {
             bool Valide=true;

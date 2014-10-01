@@ -42,6 +42,7 @@
     <Compile Include="Modèle\Classes\Case.cs" />
     <Compile Include="Modèle\Classes\CaseDeSang.cs" />
     <Compile Include="Modèle\Classes\Deplacement.cs" />
+    <Compile Include="Modèle\Classes\Historique.cs" />
     <Compile Include="Modèle\Classes\Joueur.cs" />
     <Compile Include="Modèle\Classes\MarreDeSang.cs" />
     <Compile Include="Modèle\Classes\Monstre.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Modèle\Classes\Piece.cs" />
     <Compile Include="Modèle\Classes\Pierre.cs" />
     <Compile Include="Modèle\Classes\Pion.cs" />
+    <Compile Include="Modèle\Classes\Plateau.cs" />
     <Compile Include="Modèle\Classes\Pointage.cs" />
     <Compile Include="Modèle\Classes\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
