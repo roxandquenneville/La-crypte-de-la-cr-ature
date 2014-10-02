@@ -11,7 +11,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         #region attribut
         private bool estSurPlateau;
 
-        public bool EstSurPlateau
+        public virtual bool EstSurPlateau
         {
             get {return estSurPlateau;}
             set {

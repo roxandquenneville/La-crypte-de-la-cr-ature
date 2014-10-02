@@ -8,10 +8,46 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class Partie
     {
-        public Joueur[] TabJoueur;
-        public Historique HistoriquePartie;
-        public Plateau PlateauPartie;
-        public Pointage PointagePatie;
+        #region attribut
+        private Joueur[] tabJoueur;
+        private Historique historiquePartie;
+        private Plateau plateauPartie;
+        private Pointage pointagePatie;
+
+        public virtual Joueur[] TabJoueur
+        {
+            get { return tabJoueur;}
+            set 
+            {   
+                tabJoueur=value;
+            }
+        }
+
+        public virtual Historique HistoriquePartie
+        {
+            get { return historiquePartie; }
+            set
+            {
+                historiquePartie = value;
+            }
+        }
+        public virtual Plateau PlateauPartie
+        {
+            get { return plateauPartie; }
+            set
+            {
+                plateauPartie = value;
+            }
+        }
+        public virtual Pointage PointagePatie
+        {
+            get { return pointagePatie; }
+            set
+            {
+                pointagePatie = value;
+            }
+        }
+        #endregion
 
         /// <summary>
         /// Constructeur de la classe Partie

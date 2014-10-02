@@ -9,18 +9,20 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
     class Case
     {
         #region attribut
-        public Position Coordonnee { get;set;}
+        private Position coordonnee;
         private bool interne;
         private string url;
 
-        public string Url
-        {
-            get { return url;}
+        public virtual int? idCase { get; set; }
+        public virtual int? idPlateau { get; set; }
+
+        public virtual Position Coordonnee 
+        { 
+            get{return coordonnee;}
             set
             {
-                url=value;
+                coordonnee=value;
             }
-
         }
         #endregion
 

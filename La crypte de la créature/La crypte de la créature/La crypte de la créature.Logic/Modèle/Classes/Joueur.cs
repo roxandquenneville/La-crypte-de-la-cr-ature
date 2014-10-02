@@ -12,13 +12,13 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         private string nomUsager;
         private string motDePasse;
 
-        public string NomUsager
+        public virtual string NomUsager
         {
             get { return nomUsager; }
             set { nomUsager = value; }
         }
 
-        public string MotDePasse
+        public virtual string MotDePasse
         {
             get { return motDePasse; }
             set { motDePasse = value; }

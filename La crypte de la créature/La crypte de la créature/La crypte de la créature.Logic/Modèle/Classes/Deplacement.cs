@@ -11,6 +11,18 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         #region attribut
         private Position depart;
         private Position fin;
+
+        public virtual Position Depart
+        {
+            get {return depart;}
+            set {depart=value;}
+        }
+
+        public virtual Position Fin
+        {
+            get { return fin; }
+            set { fin = value; }
+        }
         #endregion
 
         /// <summary>
@@ -21,8 +33,8 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         /// <param name="posFin">Position de Fin</param>
         public Deplacement(Position posDepart,Position posFin)
         {
-            depart=posDepart;
-            fin=posFin;
+            Depart=posDepart;
+            Fin=posFin;
         }
 
         /// <summary>

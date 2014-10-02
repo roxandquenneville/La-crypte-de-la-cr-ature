@@ -8,7 +8,19 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class Historique
     {
-        public List<Deplacement> listeDeplacement;
+        #region attribut
+        private List<Deplacement> listeDeplacement;
+
+        public virtual List<Deplacement> ListeDeplacement
+        {
+            get { return listeDeplacement;}
+            set
+            {
+                listeDeplacement = value;
+            }
+
+        }
+        #endregion
 
         /// <summary>
         /// Constructeur de la classe Historique
@@ -18,7 +30,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
             listeDeplacement = new List<Deplacement>();
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Lorsqu'on prend les informations de la bd.
         /// Ce constructeur est seulement utile lorsque 
         /// la partie est déjà commencer lorsqu'on la charge en mémoire.
@@ -30,7 +42,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
             {
                 listeDeplacement = new List<Deplacement>(BdDeplacement);
             }
-        }
+        }*/
 
     }
 }

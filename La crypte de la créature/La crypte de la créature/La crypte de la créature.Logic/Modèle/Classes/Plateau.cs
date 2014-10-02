@@ -8,12 +8,23 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class Plateau
     {
-        public Case[][] TabCase;
+        private List<Case> listeCase;
 
+        public List<Case> ListeCase
+        {
+            get {return listeCase;}
 
+            set 
+            { 
+               listeCase = value;
+            }
+        }
+
+        /// <summary>
+        /// Constructeur de la classe plateau
+        /// </summary>
         public Plateau()
         {
-
+          
         }
-    }
 }

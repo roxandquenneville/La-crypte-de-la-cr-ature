@@ -12,7 +12,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         private int x;
         private int y;
 
-        public int X
+        public virtual int X
         {
             get { return x; }
             set 
@@ -25,7 +25,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 
         }
 
-        public int Y
+        public virtual int Y
         {
             get { return y; }
             set

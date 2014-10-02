@@ -9,8 +9,20 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
     class Pointage
     {
         #region attribut
-        public int[] Tabpoint;
+        private int[] tabPoint;
         private int taille;
+
+
+        public virtual int[] TabPoint
+        {
+            get { return tabPoint;}
+            set 
+            { 
+                 tabPoint=value;
+            }
+
+        }
+       
         #endregion
 
         /// <summary>
@@ -22,16 +34,16 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         {
             taille=nbrJoueur-1;
 
-            Tabpoint = new int[taille];
+            TabPoint = new int[taille];
 
             for (int i = 0; i < taille; i++)
             {
-                Tabpoint[i] = 0;
+                TabPoint[i] = 0;
             }
 
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Lorsqu'on charge une partie déjà commencer
         /// </summary>
         /// <param name="nbrJoueur">Nombre de joueur</param>
@@ -40,15 +52,15 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         {
             taille=(TabScore.Length)-1;
 
-            Tabpoint = new int[taille];
+            TabPoint = new int[taille];
 
             for (int i = 0; i < taille; i++)
             {
-                Tabpoint[i] = TabScore[i];
+                TabPoint[i] = TabScore[i];
 
             }
 
-        }
+        }*/
 
         /// <summary>
         /// Permet de calculer le pointage modifie le tableau de point
@@ -68,7 +80,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         {
             if(id-1<=taille && id>1)
             {
-                return Tabpoint[id-1];
+                return TabPoint[id-1];
             }
             else
             {

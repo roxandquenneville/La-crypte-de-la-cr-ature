@@ -9,12 +9,31 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
     class Pion : Piece
     {
         #region attribut
-        public bool EstVivant;
-        public bool EstSortie;
+        private bool estVivant;
+        private bool estSortie;
         private int valeurDeplacement;
         private const int MAXDEPLACEMENT = 7;
 
-        public int ValeurDeplacement
+        public virtual bool EstVivant
+        {
+            get { return estVivant; }
+            set
+            {
+                    estVivant = value;
+            }
+
+        }
+        public virtual bool EstSortie
+        {
+            get { return estSortie; }
+            set
+            {
+                estSortie = value;
+            }
+
+        }
+
+        public virtual int ValeurDeplacement
         {
             get { return valeurDeplacement; }
             set
