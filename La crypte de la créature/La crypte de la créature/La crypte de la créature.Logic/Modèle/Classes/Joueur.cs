@@ -8,6 +8,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class Joueur
     {
+        #region attribut
         private List<Pion> listePion;
 
         public virtual int? idJoueur { get; set; }
@@ -24,8 +25,12 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
             }
 
         }
+        #endregion
          
-        public Joueur
+        public Joueur()
+        {
+            
+        }
 
     }
 }

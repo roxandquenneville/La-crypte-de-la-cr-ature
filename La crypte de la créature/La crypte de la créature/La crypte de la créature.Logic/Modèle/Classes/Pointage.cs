@@ -12,6 +12,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         private int[] tabPoint;
         private int taille;
 
+        public virtual int? idPointage { get; set; }
 
         public virtual int[] TabPoint
         {

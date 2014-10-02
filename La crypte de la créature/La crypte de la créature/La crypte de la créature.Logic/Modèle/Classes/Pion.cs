@@ -14,12 +14,14 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         private int valeurDeplacement;
         private const int MAXDEPLACEMENT = 7;
 
+        public virtual int? idPion { get; set; }
+
         public virtual bool EstVivant
         {
             get { return estVivant; }
             set
             {
-                    estVivant = value;
+                estVivant = value;
             }
 
         }

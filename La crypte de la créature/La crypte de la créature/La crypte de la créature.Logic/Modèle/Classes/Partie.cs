@@ -14,6 +14,10 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         private Plateau plateauPartie;
         private Pointage pointagePatie;
 
+        public virtual int? idPlateau { get; set; }
+        public virtual int? idHistorique { get; set; }
+        public virtual int? idPointage { get; set; }
+
         public virtual Joueur[] TabJoueur
         {
             get { return tabJoueur;}
