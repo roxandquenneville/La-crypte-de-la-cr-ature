@@ -23,6 +23,7 @@ namespace La_crypte_de_la_créature
         public MainWindow()
         {
             InitializeComponent();
+            this.Content = new Vue.UCMainWindow();
         }
     }
 }

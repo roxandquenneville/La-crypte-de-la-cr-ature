@@ -53,6 +53,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Vue\UCChoixPartie.xaml.cs">
+      <DependentUpon>UCChoixPartie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\UCCreationCompte.xaml.cs">
+      <DependentUpon>UCCreationCompte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\UCInvitationJoueur.xaml.cs">
+      <DependentUpon>UCInvitationJoueur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\UCMainWindow.xaml.cs">
+      <DependentUpon>UCMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\UCPlateau.xaml.cs">
+      <DependentUpon>UCPlateau.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,6 +80,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Vue\UCChoixPartie.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vue\UCCreationCompte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vue\UCInvitationJoueur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vue\UCMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vue\UCPlateau.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -95,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="VueModèle\" />
-    <Folder Include="Vue\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
