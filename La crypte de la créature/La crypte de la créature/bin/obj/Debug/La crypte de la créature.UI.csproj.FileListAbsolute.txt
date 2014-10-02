@@ -1,0 +1,13 @@
+D:\La crypte de la créature\La crypte de la créature\bin\Debug\La crypte de la créature.exe.config
+D:\La crypte de la créature\La crypte de la créature\bin\Debug\La crypte de la créature.exe
+D:\La crypte de la créature\La crypte de la créature\bin\Debug\La crypte de la créature.pdb
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.UI.csprojResolveAssemblyReference.cache
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\MainWindow.baml
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\MainWindow.g.cs
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\App.g.cs
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature_MarkupCompile.cache
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.g.resources
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\La_crypte_de_la_créature.Properties.Resources.resources
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.UI.csproj.GenerateResource.Cache
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.exe
+D:\La crypte de la créature\La crypte de la créature\obj\Debug\La crypte de la créature.pdb
