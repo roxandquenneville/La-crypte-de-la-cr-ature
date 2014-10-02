@@ -8,46 +8,24 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class Joueur
     {
-        #region attribut
-        private string nomUsager;
-        private string motDePasse;
+        private List<Pion> listePion;
 
-        public virtual string NomUsager
+        public virtual int? idJoueur { get; set; }
+        public virtual int? idPion { get; set; }
+        public virtual int? idPartie { get; set; }
+        public virtual int? idCompte { get; set; }
+
+        public virtual List<Pion> ListePion
         {
-            get { return nomUsager; }
-            set { nomUsager = value; }
-        }
-
-        public virtual string MotDePasse
-        {
-            get { return motDePasse; }
-            set { motDePasse = value; }
-        }
-        #endregion
-
-        /// <summary>
-        /// Constructeur de la classe joueur
-        /// </summary>
-        /// <param name="nom">Nom d'usager</param>
-        /// <param name="code">Mot de passe</param>
-        public Joueur(string nom,string code)
-        {
-            NomUsager = nom;
-            MotDePasse = code;
-        }
-
-
-        /// <summary>
-        /// Vérifie si la connexion est valide
-        /// </summary>
-        /// <returns>Retourne vrai si sa fonction sinon retourne faux</returns>
-        public bool Connexion()
-        {
-            bool Valide=true;
-
-
-            return Valide;
+            get {return listePion;}
+            set 
+            {
+                listePion = value;
+            }
 
         }
+         
+        public Joueur
+
     }
 }

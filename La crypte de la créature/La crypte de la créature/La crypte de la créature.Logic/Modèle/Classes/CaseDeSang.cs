@@ -8,6 +8,8 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class CaseDeSang : Piece
     {
+        public virtual int? idCaseDeSang { get; set; }
+
         /// <summary>
         /// Constructeur de la classe CaseDeSang
         /// </summary>

@@ -8,7 +8,11 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
 {
     class Plateau
     {
+        #region attribut
         private List<Case> listeCase;
+
+        public virtual int? idPlateau { get; set; }
+        public virtual int? idTypeDePlateau { get; set; }
 
         public List<Case> ListeCase
         {
@@ -19,6 +23,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
                listeCase = value;
             }
         }
+        #endregion
 
         /// <summary>
         /// Constructeur de la classe plateau
@@ -26,5 +31,7 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         public Plateau()
         {
           
-        }
+       }
+
+    }
 }

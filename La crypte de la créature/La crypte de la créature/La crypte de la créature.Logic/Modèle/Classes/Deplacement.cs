@@ -12,6 +12,11 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         private Position depart;
         private Position fin;
 
+        public virtual int? idDeplacement { get; set; }
+        public virtual int? idPartie { get; set; }
+        public virtual int? idPiece { get; set; }
+        public virtual int? idHistorique { get; set; }
+
         public virtual Position Depart
         {
             get {return depart;}

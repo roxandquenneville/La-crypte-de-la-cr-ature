@@ -11,6 +11,8 @@ namespace La_crypte_de_la_créature.Logic.Modèle.Classes
         #region attribut
         private List<Deplacement> listeDeplacement;
 
+        public virtual int? idHistorique { get; set; }
+
         public virtual List<Deplacement> ListeDeplacement
         {
             get { return listeDeplacement;}
