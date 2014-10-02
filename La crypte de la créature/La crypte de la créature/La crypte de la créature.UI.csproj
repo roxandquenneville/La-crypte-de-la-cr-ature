@@ -7,7 +7,7 @@
     <ProjectGuid>{3BF828CA-7BC7-4A4D-91C1-FA9092B21B1A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>La_crypte_de_la_créature</RootNamespace>
+    <RootNamespace>La_crypte_de_la_creature</RootNamespace>
     <AssemblyName>La crypte de la créature</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -130,6 +130,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="VueModèle\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Alain1.png" />
+    <Resource Include="Images\Alain2.png" />
+    <Resource Include="Images\Alain3.png" />
+    <Resource Include="Images\Alain4.png" />
+    <Resource Include="Images\BackGround.jpg" />
+    <Resource Include="Images\CartesMonstre10.png" />
+    <Resource Include="Images\CartesMonstre5.png" />
+    <Resource Include="Images\CartesMonstre7.png" />
+    <Resource Include="Images\CartesMonstre8.png" />
+    <Resource Include="Images\CaseEntree.png" />
+    <Resource Include="Images\CaseGazon.png" />
+    <Resource Include="Images\CaseMareDeSang.png" />
+    <Resource Include="Images\CaseNormale.png" />
+    <Resource Include="Images\CasePillier.png" />
+    <Resource Include="Images\CaseSang.png" />
+    <Resource Include="Images\CaseSortie.png" />
+    <Resource Include="Images\Robert1.png" />
+    <Resource Include="Images\Robert2.png" />
+    <Resource Include="Images\Robert3.png" />
+    <Resource Include="Images\Robert4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

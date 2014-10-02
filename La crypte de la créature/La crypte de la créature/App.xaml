@@ -1,4 +1,4 @@
-﻿<Application x:Class="La_crypte_de_la_créature.App"
+﻿<Application x:Class="La_crypte_de_la_creature.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">

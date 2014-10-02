@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "La crypte de la créature.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cstj.MvvmToolkit", "Cstj.MvvmToolkit\Cstj.MvvmToolkit.csproj", "{B0B71FF7-B28F-4412-AB1F-972C094C800E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "La crypte de la créature.Logic", "La crypte de la créature.Logic\La crypte de la créature.Logic.csproj", "{43B97AB8-BD3B-487A-9464-B3782BC3BAD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "La crypte de la creature.Logic", "La crypte de la créature.Logic\La crypte de la creature.Logic.csproj", "{43B97AB8-BD3B-487A-9464-B3782BC3BAD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

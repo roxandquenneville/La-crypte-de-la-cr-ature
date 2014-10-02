@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace La_crypte_de_la_créature.Vue
+namespace La_crypte_de_la_creature.Vue
 {
 
     /// <summary>

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace La_crypte_de_la_créature
+namespace La_crypte_de_la_creature
 {
     /// <summary>
     /// Logique d'interaction pour App.xaml

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace La_crypte_de_la_créature
+namespace La_crypte_de_la_creature
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
