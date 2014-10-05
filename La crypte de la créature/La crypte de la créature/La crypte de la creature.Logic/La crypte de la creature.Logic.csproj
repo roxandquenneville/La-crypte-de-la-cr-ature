@@ -63,6 +63,7 @@
     <Compile Include="Modèle\Classes\Plateau.cs" />
     <Compile Include="Modèle\Classes\Pointage.cs" />
     <Compile Include="Modèle\Classes\Position.cs" />
+    <Compile Include="Modèle\Classes\TypeDePlateau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />
   </ItemGroup>
@@ -72,28 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\Alain1.png" />
-    <Content Include="Images\Alain2.png" />
-    <Content Include="Images\Alain3.png" />
-    <Content Include="Images\Alain4.png" />
-    <Content Include="Images\BackGround.jpg" />
-    <Content Include="Images\CartesMonstre10.png" />
-    <Content Include="Images\CartesMonstre5.png" />
-    <Content Include="Images\CartesMonstre7.png" />
-    <Content Include="Images\CartesMonstre8.png" />
-    <Content Include="Images\CaseEntree.png" />
-    <Content Include="Images\CaseGazon.png" />
-    <Content Include="Images\CaseMareDeSang.png" />
-    <Content Include="Images\CaseNormale.png" />
-    <Content Include="Images\CasePillier.png" />
-    <Content Include="Images\CaseSang.png" />
-    <Content Include="Images\CaseSortie.png" />
-    <Content Include="Images\Robert1.png" />
-    <Content Include="Images\Robert2.png" />
-    <Content Include="Images\Robert3.png" />
-    <Content Include="Images\Robert4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

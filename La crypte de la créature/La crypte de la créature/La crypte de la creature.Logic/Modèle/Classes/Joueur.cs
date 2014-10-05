@@ -27,10 +27,13 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         }
         #endregion
          
+        /// <summary>
+        /// constructeur de la classe Joueur
+        /// </summary>
         public Joueur()
         {
-            
-        }
+            ListePion = new List<Pion>();
 
+        }
     }
 }

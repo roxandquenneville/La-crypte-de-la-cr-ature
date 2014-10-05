@@ -9,17 +9,17 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
     class Pointage
     {
         #region attribut
-        private int[] tabPoint;
-        private int taille;
+        private List<int> listeDePoint;
 
         public virtual int? idPointage { get; set; }
+        public virtual int? idTypeDePlateau { get; set; }
 
-        public virtual int[] TabPoint
+        public virtual List<int> ListeDePoint
         {
-            get { return tabPoint;}
+            get { return listeDePoint;}
             set 
-            { 
-                 tabPoint=value;
+            {
+                listeDePoint = value;
             }
 
         }
@@ -30,38 +30,11 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         /// Constructeur de la classe pointage
         /// Créer un tableau de la bonne taille et met toutes les cases a 0
         /// </summary>
-        /// <param name="nbrJoueur">Le nombre de joueur de la partie</param>
-        public Pointage(int nbrJoueur)
+        public Pointage()
         {
-            taille=nbrJoueur-1;
-
-            TabPoint = new int[taille];
-
-            for (int i = 0; i < taille; i++)
-            {
-                TabPoint[i] = 0;
-            }
-
+            ListeDePoint = new List<int>();
         }
 
-        /*/// <summary>
-        /// Lorsqu'on charge une partie déjà commencer
-        /// </summary>
-        /// <param name="nbrJoueur">Nombre de joueur</param>
-        /// <param name="TabScore"> Tableau des scores</param>
-        public Pointage(int nbrJoueur, int[] TabScore)
-        {
-            taille=(TabScore.Length)-1;
-
-            TabPoint = new int[taille];
-
-            for (int i = 0; i < taille; i++)
-            {
-                TabPoint[i] = TabScore[i];
-
-            }
-
-        }*/
 
         /// <summary>
         /// Permet de calculer le pointage modifie le tableau de point
@@ -79,9 +52,11 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         /// <returns>Si le nombre retourner est -1 le id n'existe pas</returns>
         public int Get_Point(int id)
         {
-            if(id-1<=taille && id>1)
+            int longueur= (ListeDePoint.Count);
+
+            if(id-1<=longueur && id>1)
             {
-                return TabPoint[id-1];
+                return ListeDePoint[id-1];
             }
             else
             {

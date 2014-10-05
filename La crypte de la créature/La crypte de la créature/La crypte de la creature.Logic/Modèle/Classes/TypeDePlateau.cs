@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace La_crypte_de_la_creature.Logic.Modèle.Classes
+{
+    class TypeDePlateau
+    {
+        private string nomDePlateau;
+
+        public virtual int? idTypeDePlateau { get; set; }
+
+        public virtual string NomDePlateau
+        {
+            get { return nomDePlateau; }
+            set
+            {
+                nomDePlateau = value;
+            }
+        }
+
+        /// <summary>
+        /// Constructeur de la classe Type de plateau
+        /// </summary>
+        /// <param name="plateau"></param>
+        public TypeDePlateau(string plateau)
+        {
+            NomDePlateau = plateau;
+        }
+
+    }
+}

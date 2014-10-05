@@ -9,9 +9,10 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
     class CaseDeSang : Piece
     {
         public virtual int? idCaseDeSang { get; set; }
+        public virtual int? idMarreDeSang { get; set; }
 
         /// <summary>
-        /// Constructeur de la classe CaseDeSang
+        /// Constructeur de la classe Case De Sang
         /// </summary>
         /// <param name="posXY">Position de la case de sang</param>
         public CaseDeSang(Position posXY):base(posXY){ }

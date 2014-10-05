@@ -30,8 +30,8 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         /// </summary>
         public Plateau()
         {
-          
-       }
+          ListeCase = new List<Case>();
+        }
 
     }
 }

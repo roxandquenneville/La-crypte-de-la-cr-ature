@@ -9,7 +9,7 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
     class Partie
     {
         #region attribut
-        private Joueur[] tabJoueur;
+        private List<Joueur> listeDeJoueur;
         private Historique historiquePartie;
         private Plateau plateauPartie;
         private Pointage pointagePatie;
@@ -18,12 +18,12 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         public virtual int? idHistorique { get; set; }
         public virtual int? idPointage { get; set; }
 
-        public virtual Joueur[] TabJoueur
+        public virtual List<Joueur> ListeDeJoueur
         {
-            get { return tabJoueur;}
+            get { return listeDeJoueur;}
             set 
             {   
-                tabJoueur=value;
+                listeDeJoueur=value;
             }
         }
 
@@ -56,10 +56,16 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         /// <summary>
         /// Constructeur de la classe Partie
         /// </summary>
-        /// <param name="nbrJoueur">Nombre de joueur dans la partie</param>
-        public Partie(int nbrJoueur)
+        /// <param name="historique">objet historique</param>
+        /// <param name="plateau">objet plateau</param>
+        /// <param name="pointage">objet plateau</param>
+        public Partie(Historique historique,Plateau plateau,Pointage pointage)
         {
-            TabJoueur = new Joueur[nbrJoueur];
+            ListeDeJoueur = new List<Joueur>();
+            HistoriquePartie = historique;
+            PlateauPartie = plateau;
+            PointagePatie = pointage;
+            
         }
 
         /// <summary>

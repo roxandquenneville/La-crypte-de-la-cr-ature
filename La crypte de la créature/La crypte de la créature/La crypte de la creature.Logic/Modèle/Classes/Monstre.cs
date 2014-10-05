@@ -34,7 +34,7 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         /// <param name="Sens">LE sens du monstre 0 = gauche 1 = haut 2 = droite 3 = bas</param>
         public Monstre(Position posXY, int Sens): base(posXY)
         {
-            orientation = Sens;
+            Orientation = Sens;
         }
 
         /// <summary>
