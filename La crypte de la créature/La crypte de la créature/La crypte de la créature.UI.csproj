@@ -53,6 +53,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VueModèle\creationCompte.cs" />
+    <Compile Include="VueModèle\session.cs" />
     <Compile Include="Vue\UCChoixPartie.xaml.cs">
       <DependentUpon>UCChoixPartie.xaml</DependentUpon>
     </Compile>
@@ -128,9 +130,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="VueModèle\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Alain1.png" />
     <Resource Include="Images\Alain2.png" />
