@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
-    class CaseDeSang : Piece
+    public  class CaseDeSang : Piece
     {
         public virtual int? idCaseDeSang { get; set; }
         public virtual int? idMarreDeSang { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
-    class Joueur
+    public class Joueur
     {
         #region attribut
         private List<Pion> listePion;

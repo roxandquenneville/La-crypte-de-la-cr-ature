@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VueModele\MainViewModel.cs" />
     <Compile Include="Vue\UCChoixPartie.xaml.cs">
       <DependentUpon>UCChoixPartie.xaml</DependentUpon>
     </Compile>
@@ -129,7 +130,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="VueModèle\" />
+    <ProjectReference Include="Cstj.MvvmToolkit\Cstj.MvvmToolkit.csproj">
+      <Project>{b0b71ff7-b28f-4412-ab1f-972c094c800e}</Project>
+      <Name>Cstj.MvvmToolkit</Name>
+    </ProjectReference>
+    <ProjectReference Include="La crypte de la creature.Logic\La crypte de la creature.Logic.csproj">
+      <Project>{43b97ab8-bd3b-487a-9464-b3782bc3bad1}</Project>
+      <Name>La crypte de la creature.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Alain1.png" />

@@ -9,3 +9,16 @@ C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La c
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la creature.Logic.csprojResolveAssemblyReference.cache
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la créature.Logic.dll
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la créature.Logic.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\La crypte de la créature.Logic.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\La crypte de la créature.Logic.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\FluentNHibernate.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\Iesi.Collections.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\NHibernate.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\FluentNHibernate.xml
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\Iesi.Collections.xml
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\NHibernate.xml
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la créature.Logic.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la créature.Logic.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\Cstj.MvvmToolkit.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\Cstj.MvvmToolkit.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la creature.Logic.csprojResolveAssemblyReference.cache

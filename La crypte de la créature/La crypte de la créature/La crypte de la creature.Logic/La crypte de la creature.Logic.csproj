@@ -90,6 +90,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cstj.MvvmToolkit\Cstj.MvvmToolkit.csproj">
+      <Project>{b0b71ff7-b28f-4412-ab1f-972c094c800e}</Project>
+      <Name>Cstj.MvvmToolkit</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

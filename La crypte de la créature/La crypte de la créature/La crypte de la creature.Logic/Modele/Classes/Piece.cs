@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
-    abstract class Piece : Case
+    public abstract class Piece : Case
     {
         /// <summary>
         /// Constructeur de la classe piece

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using NHibernate.Linq;
 using System.Threading.Tasks;
+using Immobilus.Logic.Services.Helpers;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
@@ -27,7 +28,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         public Compte Retrieve(RetrieveCompteArgs args)
         {
             var result = from c in session.Query<Compte>()
-                         where c.idCompte == args.IdClient
+                         where c.idCompte == args.idCompte
                          select c;
 
             return result.FirstOrDefault();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
-    class Historique
+    public class Historique
     {
         #region attribut
         private List<Deplacement> listeDeplacement;

@@ -3,11 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "La crypte de la créature.UI", "La crypte de la créature.UI.csproj", "{3BF828CA-7BC7-4A4D-91C1-FA9092B21B1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "La crypte de la creature.UI", "La crypte de la creature.UI.csproj", "{3BF828CA-7BC7-4A4D-91C1-FA9092B21B1A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43B97AB8-BD3B-487A-9464-B3782BC3BAD1} = {43B97AB8-BD3B-487A-9464-B3782BC3BAD1}
+		{B0B71FF7-B28F-4412-AB1F-972C094C800E} = {B0B71FF7-B28F-4412-AB1F-972C094C800E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cstj.MvvmToolkit", "Cstj.MvvmToolkit\Cstj.MvvmToolkit.csproj", "{B0B71FF7-B28F-4412-AB1F-972C094C800E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "La crypte de la creature.Logic", "La crypte de la creature.Logic\La crypte de la creature.Logic.csproj", "{43B97AB8-BD3B-487A-9464-B3782BC3BAD1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B0B71FF7-B28F-4412-AB1F-972C094C800E} = {B0B71FF7-B28F-4412-AB1F-972C094C800E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
