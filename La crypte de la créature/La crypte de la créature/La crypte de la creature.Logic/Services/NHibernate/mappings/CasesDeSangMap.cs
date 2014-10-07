@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Model.Entities;
+using La_crypte_de_la_creature.Logic.Modèle.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,20 +14,14 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
         {
               Table("casesdesang");
               LazyLoad();
-              Id(x => x.idSang)
+              Id(x => x.idCaseDeSang)
                 .Column("idSang")
                 .CustomType("Int32")
                 .Access.Property()
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               References(x => x.idPiece)
-                .Class<Piece>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idPiece");
-				References(x => x.idMarre)
+				References(x => x.idMarreDeSang)
                 .Class<MarreDeSang>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)

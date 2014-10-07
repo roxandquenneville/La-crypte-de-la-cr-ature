@@ -17,6 +17,7 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
         public virtual int? idPlateau { get; set; }
         public virtual int? idHistorique { get; set; }
         public virtual int? idPointage { get; set; }
+        public virtual int? idPartie { get; set; }
 
         public virtual List<Joueur> ListeDeJoueur
         {
@@ -43,6 +44,8 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
                 plateauPartie = value;
             }
         }
+
+
         public virtual Pointage PointagePatie
         {
             get { return pointagePatie; }

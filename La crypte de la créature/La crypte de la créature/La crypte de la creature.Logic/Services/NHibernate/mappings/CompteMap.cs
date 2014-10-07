@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Model.Entities;
+using La_crypte_de_la_creature.Logic.Modèle.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +21,13 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               Map(x => x.nomUsager)
+               Map(x => x.NomUsager)
                 .Column("nom")
                 .CustomType<string>()
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
-				Map(x => x.motDePasse)
+				Map(x => x.MotDePasse)
                 .Column("motDePasse")
                 .CustomType<string>()
                 .Access.Property()
