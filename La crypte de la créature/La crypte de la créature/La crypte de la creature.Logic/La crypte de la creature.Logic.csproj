@@ -57,7 +57,6 @@
     <Compile Include="Modèle\Classes\MarreDeSang.cs" />
     <Compile Include="Modèle\Classes\Monstre.cs" />
     <Compile Include="Modèle\Classes\Partie.cs" />
-    <Compile Include="Modèle\Classes\Piece.cs" />
     <Compile Include="Modèle\Classes\Pierre.cs" />
     <Compile Include="Modèle\Classes\Pion.cs" />
     <Compile Include="Modèle\Classes\Plateau.cs" />
@@ -75,7 +74,6 @@
     <Compile Include="Services\NHibernate\mappings\MarreDeSangMap.cs" />
     <Compile Include="Services\NHibernate\mappings\MonstreMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PartieMap.cs" />
-    <Compile Include="Services\NHibernate\mappings\PieceMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PierreMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PionMAp.cs" />
     <Compile Include="Services\NHibernate\mappings\PlateauMap.cs" />
