@@ -16,7 +16,10 @@ namespace La_crypte_de_la_creature.UI.VueModele
 
         }
 
+        #region Private
         private UserControl _currentView;
+        #endregion
+
 
         public UserControl CurrentView
         {

@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VueModele\CompteViewModel.cs" />
     <Compile Include="VueModele\MainViewModel.cs" />
     <Compile Include="Vue\UCChoixPartie.xaml.cs">
       <DependentUpon>UCChoixPartie.xaml</DependentUpon>
