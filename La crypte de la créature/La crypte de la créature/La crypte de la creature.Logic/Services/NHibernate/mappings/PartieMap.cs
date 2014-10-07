@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Model.Entities;
+using La_crypte_de_la_creature.Logic.Modèle.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPointage");
-			HasMany<Joueur>(x => x.joueur)
+			HasMany<Joueur>(x => x.idPartie)
                 .Not.LazyLoad()
                 .Access.Property()
                 .Cascade.All()

@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Model.Entities;
+using La_crypte_de_la_creature.Logic.Modèle.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
 {
-    public class TypePlateauMap : ClassMap<typePlateau>
+    public class TypePlateauMap : ClassMap<TypeDePlateau>
     {
         public TypePlateauMap()
         {
               Table("typesplateau");
               LazyLoad();
-              Id(x => x.idTypePlateau)
+              Id(x => x.idTypeDePlateau)
                 .Column("idTypePlateau")
                 .CustomType("Int32")
                 .Access.Property()
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               Map(x => x.nomDePlateau)
+               Map(x => x.NomDePlateau)
                 .Column("nom")
                 .CustomType<string>()
                 .Access.Property()

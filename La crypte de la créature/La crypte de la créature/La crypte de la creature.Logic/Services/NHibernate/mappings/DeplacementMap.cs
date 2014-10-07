@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Model.Entities;
+using La_crypte_de_la_creature.Logic.Modèle.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +33,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPiece");
-				Map(x => x.DepartX)
+				/*Map(x => x.DepartX)
                 .Column("DepartX")
                 .CustomType<int>()
                 .Access.Property()
@@ -56,7 +56,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomType<int>()
                 .Access.Property()
 				.Generated.Never()
-                .CustomSqlType("INTEGER");
+                .CustomSqlType("INTEGER");*/
         }
     }
 

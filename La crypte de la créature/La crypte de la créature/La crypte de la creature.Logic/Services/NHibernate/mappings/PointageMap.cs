@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Model.Entities;
+using La_crypte_de_la_creature.Logic.Modèle.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
 {
-    public class PointageMap : ClassMap<pointage>
+    public class PointageMap : ClassMap<Pointage>
     {
         public PointageMap()
         {
@@ -21,7 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               Map(x => x.iPoint)
+               Map(x => x.ListeDePoint)
                 .Column("ipoint")
                 .CustomType<int>()
                 .Access.Property()

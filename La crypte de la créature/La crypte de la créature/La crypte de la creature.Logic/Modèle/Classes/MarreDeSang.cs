@@ -12,13 +12,23 @@ namespace La_crypte_de_la_creature.Logic.Modèle.Classes
        private bool forme;
 
        public virtual int? idCaseDeSang { get; set; }
+       public virtual int? idMarreDeSang { get; set; }
 
-       public List<CaseDeSang> ListeDeCaseDeSang
+       public virtual List<CaseDeSang> ListeDeCaseDeSang
        {
            get { return listeDeCaseDeSang; }
            set
            {
                listeDeCaseDeSang = value;
+           }
+       }
+
+       public virtual bool Forme
+       {
+           get { return forme; }
+           set
+           {
+               forme = value;
            }
        }
 
