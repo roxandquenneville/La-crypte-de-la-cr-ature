@@ -1,6 +1,6 @@
-using La_crypte_de_la_creature.Logic.Modèle.Args;
-using La_crypte_de_la_creature.Logic.Modèle.Classes;
-using La_crypte_de_la_creature.Logic.Services.Helpers;
+using La_crypte_de_la_creature.Logic.Modele.Args;
+using La_crypte_de_la_creature.Logic.Modele.Classes;
+using La_crypte_de_la_creature.Logic.Services.NHibernate;
 using La_crypte_de_la_creature.Services.Definitions;
 using NHibernate;
 using System;
@@ -24,10 +24,10 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
             return session.Query<Compte>().ToList();
         }
 
-        public Compte Retrieve(RetrieveClientArgs args)
+        public Compte Retrieve(RetrieveCompteArgs args)
         {
             var result = from c in session.Query<Compte>()
-                         where c.IdClient == args.IdClient
+                         where c.idCompte == args.IdClient
                          select c;
 
             return result.FirstOrDefault();

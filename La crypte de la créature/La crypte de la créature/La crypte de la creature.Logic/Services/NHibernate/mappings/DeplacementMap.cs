@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Modèle.Classes;
+using La_crypte_de_la_creature.Logic.Modele.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

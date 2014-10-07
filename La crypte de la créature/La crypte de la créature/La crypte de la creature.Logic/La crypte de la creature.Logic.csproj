@@ -48,23 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modèle\Classes\Case.cs" />
-    <Compile Include="Modèle\Classes\CaseDeSang.cs" />
-    <Compile Include="Modèle\Classes\Deplacement.cs" />
-    <Compile Include="Modèle\Classes\Historique.cs" />
-    <Compile Include="Modèle\Classes\Compte.cs" />
-    <Compile Include="Modèle\Classes\Joueur.cs" />
-    <Compile Include="Modèle\Classes\MarreDeSang.cs" />
-    <Compile Include="Modèle\Classes\Monstre.cs" />
-    <Compile Include="Modèle\Classes\Partie.cs" />
-    <Compile Include="Modèle\Classes\Pierre.cs" />
-    <Compile Include="Modèle\Classes\Pion.cs" />
-    <Compile Include="Modèle\Classes\Plateau.cs" />
-    <Compile Include="Modèle\Classes\Pointage.cs" />
-    <Compile Include="Modèle\Classes\Position.cs" />
-    <Compile Include="Modèle\Classes\TypeDePlateau.cs" />
+    <Compile Include="Modele\Args\RetrieveCompteArgs.cs" />
+    <Compile Include="Modele\Classes\Case.cs" />
+    <Compile Include="Modele\Classes\CaseDeSang.cs" />
+    <Compile Include="Modele\Classes\Compte.cs" />
+    <Compile Include="Modele\Classes\Deplacement.cs" />
+    <Compile Include="Modele\Classes\Historique.cs" />
+    <Compile Include="Modele\Classes\Joueur.cs" />
+    <Compile Include="Modele\Classes\MarreDeSang.cs" />
+    <Compile Include="Modele\Classes\Monstre.cs" />
+    <Compile Include="Modele\Classes\Partie.cs" />
+    <Compile Include="Modele\Classes\Piece.cs" />
+    <Compile Include="Modele\Classes\Pierre.cs" />
+    <Compile Include="Modele\Classes\Pion.cs" />
+    <Compile Include="Modele\Classes\Plateau.cs" />
+    <Compile Include="Modele\Classes\Pointage.cs" />
+    <Compile Include="Modele\Classes\Position.cs" />
+    <Compile Include="Modele\Classes\TypeDePlateau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />
+    <Compile Include="Services\Interfaces\ICompteService.cs" />
     <Compile Include="Services\NHibernate\mappings\CaseMap.cs" />
     <Compile Include="Services\NHibernate\mappings\CasesDeSangMap.cs" />
     <Compile Include="Services\NHibernate\mappings\CompteMap.cs" />
@@ -82,8 +85,7 @@
     <Compile Include="Services\NHibernate\NHibernateCompteService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modèle\Args\" />
-    <Folder Include="Services\Interfaces\" />
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
