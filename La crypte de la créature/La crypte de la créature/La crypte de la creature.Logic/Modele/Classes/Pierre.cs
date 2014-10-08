@@ -11,6 +11,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #region attribut
         private bool estSurPlateau;
 
+        public virtual int? idPiece { get; set; }
         public virtual int? idPierre { get; set; }
 
         public virtual bool EstSurPlateau

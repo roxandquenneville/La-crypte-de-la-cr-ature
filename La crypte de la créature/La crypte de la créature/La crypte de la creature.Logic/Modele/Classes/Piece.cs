@@ -6,13 +6,30 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
-    public abstract class Piece : Case
+    public abstract class Piece
     {
+        private Position emplacement;
+
+        public virtual int? idPiece { get; set; }
+        public virtual int? idPosition { get; set; }
+
+        public virtual Position Emplacement
+        {
+            get { return emplacement; }
+            set
+            {
+                emplacement = value;
+            }
+        }
+
         /// <summary>
         /// Constructeur de la classe piece
         /// </summary>
         /// <param name="posXY">position de la piece</param>
-        protected  Piece(Position posXY) : base(posXY,true) { }
+        protected  Piece(Position posXY)
+        {
+            Emplacement = posXY;
+        }
 
         /// <summary>
         /// Fonction de déplacement

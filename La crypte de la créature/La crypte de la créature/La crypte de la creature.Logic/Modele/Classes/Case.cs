@@ -15,6 +15,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual int? idCase { get; set; }
         public virtual int? idPlateau { get; set; }
+        public virtual int? idPosition { get; set; }
 
         public virtual Position Coordonnee 
         { 

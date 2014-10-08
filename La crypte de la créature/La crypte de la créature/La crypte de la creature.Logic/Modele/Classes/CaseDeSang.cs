@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
-    public  class CaseDeSang : Piece
+    public class CaseDeSang : Piece
     {
+        public virtual int? idPiece { get; set; }
         public virtual int? idCaseDeSang { get; set; }
         public virtual int? idMarreDeSang { get; set; }
+
 
         /// <summary>
         /// Constructeur de la classe Case De Sang
