@@ -27,8 +27,8 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPartie");
-               Map(x => x.ListeDePoint)
-                .Column("ipoint")
+               Map(x => x.Point)
+                .Column("point")
                 .CustomType<int>()
                 .Access.Property()
 				.Generated.Never()

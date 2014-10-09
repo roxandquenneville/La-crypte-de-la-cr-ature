@@ -41,6 +41,14 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .KeyColumns.Add("idPartie", map => map.Name("idPartie")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
+            HasMany<Pointage>(x => x.idPointage)
+                .Not.LazyLoad()
+                .Access.Property()
+                .Cascade.All()
+                .Inverse()
+                .KeyColumns.Add("idPointage", map => map.Name("idPointage")
+                                                    .SqlType("INTEGER")
+                                                    .Nullable());
         }
     }
 
