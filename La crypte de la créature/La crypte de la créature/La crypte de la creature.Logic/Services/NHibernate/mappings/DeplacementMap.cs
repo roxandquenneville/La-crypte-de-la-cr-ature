@@ -33,30 +33,15 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPiece");
-				/*Map(x => x.DepartX)
-                .Column("DepartX")
-                .CustomType<int>()
-                .Access.Property()
-				.Generated.Never()
-                .CustomSqlType("INTEGER");
-				Map(x => x.DepartY)
-                .Column("DepartY")
-                .CustomType<int>()
-                .Access.Property()
-				.Generated.Never()
-                .CustomSqlType("INTEGER");
-				Map(x => x.FinX)
-                .Column("FinX")
-                .CustomType<int>()
-                .Access.Property()
-				.Generated.Never()
-                .CustomSqlType("INTEGER");
-				Map(x => x.FinY)
-                .Column("FinY")
-                .CustomType<int>()
-                .Access.Property()
-				.Generated.Never()
-                .CustomSqlType("INTEGER");*/
+                HasMany<Position>(x => x.Depart)
+                 .Not.LazyLoad()
+                 .Access.Property()
+                 .Cascade.All()
+                 .Inverse()
+                 .KeyColumns.Add("idPosition", map => map.Name("idposition")
+                                                     .SqlType("INTEGER")
+                                                     .Nullable());
+				
         }
     }
 

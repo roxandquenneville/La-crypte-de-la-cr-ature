@@ -1,5 +1,5 @@
 using FluentNHibernate.Mapping;
-using La_crypte_de_la_creature.Logic.Modele.Classes;
+using La_crypte_de_la_creature.Logic.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,33 +8,26 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
 {
-    public class CaseMap : ClassMap<Case>
+    public class PieceMap : ClassMap<piece>
     {
-        public CaseMap()
+        public PieceMap()
         {
-              Table("Cases");
+              Table("pieces");
               LazyLoad();
-              Id(x => x.idCase)
-                .Column("idCase")
+              Id(x => x.idPiece)
+                .Column("idPiece")
                 .CustomType("Int32")
                 .Access.Property()
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-				References(x => x.idPlateau)
-                .Class<Plateau>()
+               References(x => x.idCase)
+                .Class<case>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
-                .Columns("idPlateau");
-                References(x => x.idPosition)
-                  .Class<Position>()
-                  .Access.Property()
-                  .LazyLoad(Laziness.False)
-                  .Cascade.None()
-                  .Columns("idPosition");
+                .Columns("idCase");
 				
-                
         }
     }
 
