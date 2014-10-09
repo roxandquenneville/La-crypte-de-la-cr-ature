@@ -9,18 +9,18 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Pointage
     {
         #region attribut
-        private List<int> listeDePoint;
+        private int point;
 
         public virtual int? idPartie {get; set;}
         public virtual int? idPointage { get; set; }
-        public virtual int? idTypeDePlateau { get; set; }
+        
 
-        public virtual List<int> ListeDePoint
+        public virtual int Point
         {
-            get { return listeDePoint;}
+            get { return point;}
             set 
             {
-                listeDePoint = value;
+                point = value;
             }
 
         }
@@ -33,7 +33,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public Pointage()
         {
-            ListeDePoint = new List<int>();
+           
         }
 
 
@@ -46,24 +46,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
        }
 
 
-        /// <summary>
-        /// Retourne le pointage d'un joueur
-        /// </summary>
-        /// <param name="id">Numéro du joueur (1,2,3,4)</param>
-        /// <returns>Si le nombre retourner est -1 le id n'existe pas</returns>
-        public int Get_Point(int id)
-        {
-            int longueur= (ListeDePoint.Count);
-
-            if(id-1<=longueur && id>1)
-            {
-                return ListeDePoint[id-1];
-            }
-            else
-            {
-                return -1;
-            }
-        }
 
 
     }

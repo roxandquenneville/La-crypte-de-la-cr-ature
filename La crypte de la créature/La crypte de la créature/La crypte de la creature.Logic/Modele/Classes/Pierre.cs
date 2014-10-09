@@ -11,8 +11,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #region attribut
         private bool estSurPlateau;
 
-        public virtual int? idPiece { get; set; }
-        public virtual int? idPierre { get; set; }
+        //public virtual int? idPiece { get; set; }
+        public virtual int? idPierre { get { return base.idPiece; } set { base.idPiece = value; } }
 
         public virtual bool EstSurPlateau
         {
@@ -40,5 +40,27 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <returns>Retourne la string "Pierre"</returns>
         public override string Get_Type() { return "Pierre"; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Pierre p = obj as Pierre;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idPierre == p.idPierre;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
