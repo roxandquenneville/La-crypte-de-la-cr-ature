@@ -33,12 +33,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPiece");
-                HasMany<Position>(x => x.Depart)
+                HasMany<Position>(x => x.idDeplacement)
                  .Not.LazyLoad()
                  .Access.Property()
                  .Cascade.All()
                  .Inverse()
-                 .KeyColumns.Add("idPosition", map => map.Name("idposition")
+                 .KeyColumns.Add("idDeplacement", map => map.Name("idDeplacement")
                                                      .SqlType("INTEGER")
                                                      .Nullable());
 				

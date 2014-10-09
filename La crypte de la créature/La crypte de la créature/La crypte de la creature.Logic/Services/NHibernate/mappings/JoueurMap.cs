@@ -21,12 +21,6 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               References(x => x.idPion)
-                .Class<Pion>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idPion");
 				References(x => x.idPartie)
                 .Class<Partie>()
                 .Access.Property()
@@ -39,12 +33,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idCompte");
-			HasMany<Pion>(x => x.ListePion)
+			HasMany<Pion>(x => x.idJoueur)
                 .Not.LazyLoad()
                 .Access.Property()
                 .Cascade.All()
                 .Inverse()
-                .KeyColumns.Add("idPion", map => map.Name("idPion")
+                .KeyColumns.Add("idJoueur", map => map.Name("idJoueur")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
         }
