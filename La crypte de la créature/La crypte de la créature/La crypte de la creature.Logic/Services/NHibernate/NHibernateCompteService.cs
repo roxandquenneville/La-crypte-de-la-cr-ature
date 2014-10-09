@@ -39,17 +39,17 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         #region ICompteService Membres
 
 
-        public void Create(Compte propriete)
+        public void Create(Compte c)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Compte propriete)
+        public void Update(Compte c)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Compte propriete)
+        public void Delete(Compte c)
         {
             throw new NotImplementedException();
         }
