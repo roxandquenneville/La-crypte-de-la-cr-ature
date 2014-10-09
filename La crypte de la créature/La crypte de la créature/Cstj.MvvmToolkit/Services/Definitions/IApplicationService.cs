@@ -8,7 +8,6 @@ namespace Cstj.MvvmToolkit.Services.Definitions
 {
     public interface IApplicationService
     {
-        void ChangeView<T>(T view);
-        
+        void ChangeView<T>(T view);        
     }
 }

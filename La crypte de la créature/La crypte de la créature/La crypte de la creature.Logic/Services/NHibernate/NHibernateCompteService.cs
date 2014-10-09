@@ -41,17 +41,29 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 
         public void Create(Compte c)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Save(c);
+                transaction.Commit();
+            }
         }
 
         public void Update(Compte c)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Update(c);
+                transaction.Commit();
+            }
         }
 
         public void Delete(Compte c)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Delete(c);
+                transaction.Commit();
+            }
         }
 
         #endregion

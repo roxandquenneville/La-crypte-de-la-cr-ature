@@ -35,7 +35,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             CaseDeSang c = obj as CaseDeSang;
 
-            if (p == null)
+            if (c == null)
             {
                 return false;
             }

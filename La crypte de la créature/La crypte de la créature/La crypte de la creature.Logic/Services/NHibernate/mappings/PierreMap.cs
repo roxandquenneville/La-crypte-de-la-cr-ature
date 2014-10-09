@@ -20,6 +20,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
+              References(x => x.idPiece)
+                 .Class<Position>()
+                 .Access.Property()
+                 .LazyLoad(Laziness.False)
+                 .Cascade.None()
+                 .Columns("idPiece");
 				Map(x => x.EstSurPlateau)
                 .Column("estSurPlateau")
                 .CustomType<bool>()

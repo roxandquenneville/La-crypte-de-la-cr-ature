@@ -64,7 +64,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             Monstre m = obj as Monstre;
 
-            if (p == null)
+            if (m == null)
             {
                 return false;
             }

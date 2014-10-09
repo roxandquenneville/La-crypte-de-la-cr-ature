@@ -33,8 +33,8 @@
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
-        <TextBox Grid.Row="1" Height="30" Margin="131,40,129,10" Grid.ColumnSpan="2"  />
-        <PasswordBox Grid.Row="2" Height="30" Margin="131,40,129,10" Grid.ColumnSpan="2"  />
+        <TextBox Grid.Row="1" Height="30" Margin="131,40,129,10" Text="{Binding Compte.nomUsager}" Grid.ColumnSpan="2"  />
+        <TextBox Grid.Row="2" Height="30" Margin="131,40,129,10" Text="{Binding Compte.motDePasse}" Grid.ColumnSpan="2"  />
         <PasswordBox Grid.Row="3" Height="30" Margin="131,40,129,10" Grid.ColumnSpan="2"  />
 
         <Button Grid.Row="4" Margin="38,10,22,10" Content="Confirmé" Click="btn_Confirme" />

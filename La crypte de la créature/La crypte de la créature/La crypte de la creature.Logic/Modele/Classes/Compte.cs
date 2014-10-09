@@ -27,6 +27,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
         #endregion
 
+        public Compte()
+        { 
+        }
+
         /// <summary>
         /// Constructeur de la classe joueur
         /// </summary>

@@ -33,12 +33,6 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPlateau");
-				References(x => x.idPointage)
-                .Class<Pointage>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idPointage");
 			HasMany<Joueur>(x => x.idPartie)
                 .Not.LazyLoad()
                 .Access.Property()

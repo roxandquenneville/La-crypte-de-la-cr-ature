@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using La_crypte_de_la_creature.UI.ViewModel;
 
 namespace La_crypte_de_la_creature.Vue
 {
@@ -20,14 +21,18 @@ namespace La_crypte_de_la_creature.Vue
     /// </summary>
     public partial class UCCreationCompte : UserControl
     {
+        public CompteViewModel ViewModel { get{return (CompteViewModel)DataContext;}}
+
         public UCCreationCompte()
         {
             InitializeComponent();
+            DataContext = new CompteViewModel();
         }
 
         private void btn_Confirme(object sender, RoutedEventArgs e)
         {
-            this.Content = new UCChoixPartie();
+            
+            ViewModel.SauvegarderCommand();
         }
 
         private void btn_Annule(object sender, RoutedEventArgs e)

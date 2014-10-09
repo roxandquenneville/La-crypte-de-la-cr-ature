@@ -31,7 +31,7 @@
                     <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
                 </Label.Effect>
             </Label>
-            <PasswordBox Background="AliceBlue" Margin="78,65,72,10" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Row="1" />
+            <PasswordBox Background="AliceBlue" Margin="78,65,72,10" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Row="1"  />
             <Button Grid.Column="0" Grid.Row="2" Margin="71,10,10,60" Content="Connexion" Click="Btn_Connecion" IsDefault="True" />
             <Button Grid.Column="1" Grid.Row="2" Margin="10,10,72,60" Content="Quitter" Click="Btn_Quitter" />
             <Label Grid.Column="0" Grid.Row="2" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="2" Margin="100,59,112,-59" MouseDown="Lbl_Click"  >

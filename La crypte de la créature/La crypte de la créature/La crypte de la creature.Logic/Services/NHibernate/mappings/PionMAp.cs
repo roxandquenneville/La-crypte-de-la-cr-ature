@@ -21,6 +21,18 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
+              References(x => x.idPiece)
+                 .Class<Position>()
+                 .Access.Property()
+                 .LazyLoad(Laziness.False)
+                 .Cascade.None()
+                 .Columns("idPiece");
+              References(x => x.idJoueur)
+                .Class<Joueur>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idJoueur");
 			   Map(x => x.EstVivant)
                 .Column("estVivant")
                 .CustomType<bool>()
@@ -33,6 +45,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
 				.Generated.Never()
                 .CustomSqlType("BOOL");
+                Map(x => x.ValeurDeplacement)
+                .Column("valeurDeplacement")
+                .CustomType<int>()
+                .Access.Property()
+                .Generated.Never()
+                .CustomSqlType("INTEGER");
 				
         }
     }

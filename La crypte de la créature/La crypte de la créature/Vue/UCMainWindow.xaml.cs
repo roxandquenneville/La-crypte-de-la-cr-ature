@@ -32,7 +32,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void Btn_Connecion(object sender, RoutedEventArgs e)
         {
-            this.Content = new UCChoixPartie();
+            ;
 
         }
 
