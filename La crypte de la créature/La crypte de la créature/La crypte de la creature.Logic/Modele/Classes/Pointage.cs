@@ -11,6 +11,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #region attribut
         private List<int> listeDePoint;
 
+        public virtual int? idPartie {get; set;}
         public virtual int? idPointage { get; set; }
         public virtual int? idTypeDePlateau { get; set; }
 
