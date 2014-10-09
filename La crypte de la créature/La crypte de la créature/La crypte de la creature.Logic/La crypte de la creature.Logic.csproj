@@ -80,6 +80,7 @@
     <Compile Include="Services\NHibernate\mappings\MarreDeSangMap.cs" />
     <Compile Include="Services\NHibernate\mappings\MonstreMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PartieMap.cs" />
+    <Compile Include="Services\NHibernate\mappings\PieceMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PierreMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PionMAp.cs" />
     <Compile Include="Services\NHibernate\mappings\PlateauMap.cs" />
