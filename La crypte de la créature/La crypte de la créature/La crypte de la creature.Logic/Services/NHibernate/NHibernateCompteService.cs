@@ -35,5 +35,25 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         }
 
         #endregion
+
+        #region ICompteService Membres
+
+
+        public void Create(Compte propriete)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Compte propriete)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Compte propriete)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

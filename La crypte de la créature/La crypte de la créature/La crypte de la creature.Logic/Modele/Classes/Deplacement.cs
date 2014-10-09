@@ -16,6 +16,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int? idPartie { get; set; }
         public virtual int? idPiece { get; set; }
         public virtual int? idHistorique { get; set; }
+        
 
         public virtual Position Depart
         {

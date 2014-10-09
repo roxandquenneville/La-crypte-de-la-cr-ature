@@ -26,7 +26,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
         #endregion
+        public Case()
+        {
 
+        }
         /// <summary>
         /// Constructeur de la classe Case
         /// Instancier une position et la passer dans le constructeur
