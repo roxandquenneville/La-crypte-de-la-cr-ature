@@ -31,9 +31,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Constructeur de la classe pointage
         /// Créer un tableau de la bonne taille et met toutes les cases a 0
         /// </summary>
-        public Pointage()
+        public Pointage(int score = 0)
         {
-           
+           Point= score;
         }
 
 
