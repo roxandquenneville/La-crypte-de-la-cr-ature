@@ -8,8 +8,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public class CaseDeSang : Piece
     {
-        public virtual int? idPiece { get; set; }
-        public virtual int? idCaseDeSang { get; set; }
+        //public virtual int? idPiece { get; set; }
+        public virtual int? idCaseDeSang { get { return base.idPiece; } set { base.idPiece = value; } }
         public virtual int? idMarreDeSang { get; set; }
 
 
@@ -25,5 +25,27 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <returns>Retourne la string "CaseDeSang"</returns>
         public override string Get_Type() { return "CaseDeSang"; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            CaseDeSang c = obj as CaseDeSang;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idCaseDeSang == c.idCaseDeSang;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

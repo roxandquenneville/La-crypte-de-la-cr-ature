@@ -11,8 +11,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #region attribut
         private int orientation;
 
-        public virtual int? idPiece { get; set; }
-        public virtual int? idMonstre { get; set; }
+        //public virtual int? idPiece { get; set; }
+        public virtual int? idMonstre { get { return base.idPiece; } set { base.idPiece = value; } }
 
         public virtual int Orientation
         {
@@ -54,5 +54,27 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <returns>Retourne la string "Monstre"</returns>
         public override string Get_Type() { return "Monstre"; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Monstre m = obj as Monstre;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idMonstre == m.idMonstre;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

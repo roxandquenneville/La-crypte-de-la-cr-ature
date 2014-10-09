@@ -12,7 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private List<Joueur> listeDeJoueur;
         private Historique historiquePartie;
         private Plateau plateauPartie;
-        private Pointage pointagePatie;
+        private List<Pointage> listeDePointage;
 
         public virtual int? idPlateau { get; set; }
         public virtual int? idHistorique { get; set; }
@@ -46,12 +46,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
 
-        public virtual Pointage PointagePatie
+        public virtual List<Pointage> ListeDePointage
         {
-            get { return pointagePatie; }
+            get { return listeDePointage; }
             set
             {
-                pointagePatie = value;
+                listeDePointage = value;
             }
         }
         #endregion
@@ -62,12 +62,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="historique">objet historique</param>
         /// <param name="plateau">objet plateau</param>
         /// <param name="pointage">objet plateau</param>
-        public Partie(Historique historique,Plateau plateau,Pointage pointage)
+        public Partie(Historique historique,Plateau plateau)
         {
             ListeDeJoueur = new List<Joueur>();
             HistoriquePartie = historique;
             PlateauPartie = plateau;
-            PointagePatie = pointage;
+            ListeDePointage = new List<Pointage>(); ;
             
         }
 
