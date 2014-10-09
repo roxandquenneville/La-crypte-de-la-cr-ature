@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modele\Args\RetrieveCompteArgs.cs" />
+    <Compile Include="Modele\Args\RetrieveJoueurArgs.cs" />
     <Compile Include="Modele\Classes\Case.cs" />
     <Compile Include="Modele\Classes\CaseDeSang.cs" />
     <Compile Include="Modele\Classes\Compte.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Services\NHibernate\mappings\PointageMap.cs" />
     <Compile Include="Services\NHibernate\mappings\TypePlateauMap.cs" />
     <Compile Include="Services\NHibernate\NHibernateCompteService.cs" />
+    <Compile Include="Services\NHibernate\NHibernateJoueurService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
