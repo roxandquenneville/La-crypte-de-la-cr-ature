@@ -21,6 +21,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
+              References(x => x.idPartie)
+                .Class<Partie>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idPartie");
                Map(x => x.ListeDePoint)
                 .Column("ipoint")
                 .CustomType<int>()
