@@ -10,7 +10,6 @@ using System.Text;
 using NHibernate.Linq;
 using System.Threading.Tasks;
 using Immobilus.Logic.Services.Helpers;
-using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
@@ -40,17 +39,17 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         #region ICompteService Membres
 
 
-        public void Create(Compte c)
+        public void Create(Compte propriete)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Compte c)
+        public void Update(Compte propriete)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Compte c)
+        public void Delete(Compte propriete)
         {
             throw new NotImplementedException();
         }

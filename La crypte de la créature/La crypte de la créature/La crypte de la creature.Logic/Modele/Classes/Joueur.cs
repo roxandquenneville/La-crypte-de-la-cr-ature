@@ -12,6 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private List<Pion> listePion;
 
         public virtual int? idJoueur { get; set; }
+        public virtual int? idPion { get; set; }
         public virtual int? idPartie { get; set; }
         public virtual int? idCompte { get; set; }
 

@@ -12,8 +12,8 @@ namespace La_crypte_de_la_creature.Services.Definitions
     {
         IList<Compte> RetrieveAll();
         Compte Retrieve(RetrieveCompteArgs args);
-        void Create(Compte c);
-        void Update(Compte c);
-        void Delete(Compte c);
+        void Create(Compte propriete);
+        void Update(Compte propriete);
+        void Delete(Compte propriete);
     }
 }
