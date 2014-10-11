@@ -27,16 +27,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
         #endregion
 
-        public Compte()
-        { 
-        }
+
 
         /// <summary>
         /// Constructeur de la classe joueur
         /// </summary>
         /// <param name="nom">Nom d'usager</param>
         /// <param name="code">Mot de passe</param>
-        public Compte(string nom,string code)
+        public Compte(string nom="",string code="")
         {
             NomUsager = nom;
             MotDePasse = code;

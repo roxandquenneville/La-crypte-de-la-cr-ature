@@ -32,6 +32,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
            }
        }
 
+        /// <summary>
+        /// constructeur de la classe Marre de sang
+        /// </summary>
+        public MarreDeSang()
+        {
+          ListeDeCaseDeSang = new List<CaseDeSang>();
+        }
+
        /// <summary>
        /// Constructeur de la classe Marre de sang
        /// </summary>

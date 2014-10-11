@@ -26,12 +26,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
         #endregion
+
         /// <summary>
-        /// Constructeur vide de Case
+        /// Constructeur de la classe Case pour la bd
         /// </summary>
         public Case()
         {
-
+            Coordonnee = new Position();
         }
 
 
@@ -53,7 +54,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public void DetermineImage()
         {
-
         }
 
     }

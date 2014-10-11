@@ -29,6 +29,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #endregion
 
         /// <summary>
+        /// constructeur de la classe Pion
+        /// </summary>
+        public Monstre():base()
+        {
+        }
+
+
+        /// <summary>
         /// Constructeur de la classe monstre
         /// </summary>
         /// <param name="posXY">Position du monstre</param>

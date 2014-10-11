@@ -25,6 +25,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
         #endregion
 
+
+        /// <summary>
+        /// constructeur de la classe Pierre
+        /// </summary>
+        public Pierre():base()
+        {
+        }
+
+
         /// <summary>
         /// Constructeur de la classe pierre
         /// </summary>

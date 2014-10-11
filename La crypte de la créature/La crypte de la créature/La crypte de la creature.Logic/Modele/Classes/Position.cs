@@ -42,6 +42,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
         #endregion
 
+
+        /// <summary>
+        /// Constructeur de la classe Position pour la bd
+        /// </summary>
+        public Position()
+        {
+            X = 0;
+            Y = 0;
+        }
+
         /// <summary>
         /// Constructeur de la classe Position
         /// Prendre information dans la bd et la passer dans le constructeur

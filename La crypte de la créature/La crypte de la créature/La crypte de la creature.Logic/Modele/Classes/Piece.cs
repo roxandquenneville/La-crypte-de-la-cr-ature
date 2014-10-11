@@ -23,6 +23,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
         /// <summary>
+        /// constructeur de base de la classe piece
+        /// </summary>
+        public Piece()
+        {
+            Emplacement = new Position();
+        }
+
+
+        /// <summary>
         /// Constructeur de la classe piece
         /// </summary>
         /// <param name="posXY">position de la piece</param>

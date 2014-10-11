@@ -52,6 +52,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #endregion
 
         /// <summary>
+        /// constructeur de la classe Pion
+        /// </summary>
+        public Pion():base()
+        {
+        }
+
+        /// <summary>
         /// Constructeur de la classe Pion
         /// </summary>
         /// <param name="posXY">Position du pion</param>

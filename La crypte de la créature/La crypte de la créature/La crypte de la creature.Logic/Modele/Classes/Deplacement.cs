@@ -31,6 +31,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
         #endregion
 
+
+        /// <summary>
+        /// Constructeur de la classe Deplacement pour la bd
+        /// </summary>
+        public Deplacement()
+        {
+            Depart = new Position();
+            Fin = new Position();
+        }
+
+
         /// <summary>
         /// Constructeur de la classe deplacement
         /// Instancier deux positions et la passer dans le constructeur

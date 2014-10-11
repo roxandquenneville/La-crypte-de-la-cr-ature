@@ -57,14 +57,28 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #endregion
 
         /// <summary>
-        /// Constructeur de la classe Partie
+        /// Constructeur de la classe Partie pour la bd
         /// </summary>
-        /// <param name="historique">objet historique</param>
-        /// <param name="plateau">objet plateau</param>
-        /// <param name="pointage">objet plateau</param>
-        public Partie(Historique historique,Plateau plateau)
+        public Partie()
         {
             ListeDeJoueur = new List<Joueur>();
+            HistoriquePartie = new Historique();
+            PlateauPartie = new Plateau();
+            ListeDePointage = new List<Pointage>(); ;
+        }
+
+
+
+        /// <summary>
+        /// Constructeur de la classe Partie
+        /// </summary>
+        /// <param name="historique">classe historique</param>
+        /// <param name="plateau">classe plateau</param>
+        /// <param name="pointage">classe plateau</param>
+        /// <param name="listejoueur">liste de joueur</param>
+        public Partie(Historique historique,Plateau plateau,List<Joueur> listejoueur)
+        {
+            ListeDeJoueur = listejoueur;
             HistoriquePartie = historique;
             PlateauPartie = plateau;
             ListeDePointage = new List<Pointage>(); ;
