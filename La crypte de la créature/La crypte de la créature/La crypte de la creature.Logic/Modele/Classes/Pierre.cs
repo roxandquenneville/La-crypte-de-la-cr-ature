@@ -50,6 +50,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne la string "Pierre"</returns>
         public override string Get_Type() { return "Pierre"; }
 
+
+        /// <summary>
+        /// Determine l'image de la pierre
+        /// </summary>
+        public override void DetermineImage()
+        {
+            url = "../La crypte de la créature/Images/CasePillier.png";
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

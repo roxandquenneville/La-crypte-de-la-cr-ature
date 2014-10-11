@@ -17,12 +17,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int? idPlateau { get; set; }
         public virtual int? idPosition { get; set; }
 
+        public virtual bool Interne
+         {
+             get { return interne; }
+             set { interne = value; }
+        }
+
         public virtual Position Coordonnee 
         { 
             get{return coordonnee;}
             set
             {
                 coordonnee=value;
+                DetermineImage(coordonnee, interne);
             }
         }
         #endregion
@@ -46,14 +53,39 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             Coordonnee = posXY;
             interne=bInterne;
+            DetermineImage(Coordonnee, interne);
            
         }
 
         /// <summary>
         /// Determine si c'est une pierre,monstre,case,pion,case de sang à afficher. Rentre la valeur dans Url;
         /// </summary>
-        public void DetermineImage()
+        /// <param name="pos">Prends la position</param>
+        /// <param name="interieur">ici on utilise le bool Interne</param>
+        private void DetermineImage(Position pos,bool interieur)
         {
+            if(pos.X == 0 && pos.Y ==0)
+            {
+                url = "../La crypte de la créature/Images/CaseEntree.png";
+                return;
+            }
+            if (pos.X == 15 && pos.Y == 10)
+            {
+                url = "../La crypte de la créature/Images/CaseSortie.png";
+                return;
+            }
+
+            if (interieur == true)
+            {
+                url = "../La crypte de la créature/Images/CaseNormale.png";
+                return;
+            }
+            else
+            {
+                url = "../La crypte de la créature/Images/CaseGazon.png";
+                return;
+            }
+
         }
 
     }

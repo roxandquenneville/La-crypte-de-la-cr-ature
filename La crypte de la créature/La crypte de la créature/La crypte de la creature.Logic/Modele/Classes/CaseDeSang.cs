@@ -34,6 +34,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne la string "CaseDeSang"</returns>
         public override string Get_Type() { return "CaseDeSang"; }
 
+
+        /// <summary>
+        /// Determine l'image de la case de sang
+        /// </summary>
+        public override void DetermineImage()
+        {
+            url = "../La crypte de la créature/Images/CaseMareDeSang.png";
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

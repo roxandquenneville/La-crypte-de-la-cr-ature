@@ -8,7 +8,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public abstract class Piece
     {
-        private Position emplacement;
+        protected Position emplacement;
+        protected string url;
 
         public virtual int? idPiece { get; set; }
         public virtual int? idPosition { get; set; }
@@ -52,5 +53,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <returns>Retourne la string "Piece"</returns>
         public virtual string Get_Type() { return "Piece"; }
+
+
+        public virtual void DetermineImage() { }
     }
 }
