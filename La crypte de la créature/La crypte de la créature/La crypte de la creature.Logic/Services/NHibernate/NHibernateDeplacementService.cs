@@ -18,7 +18,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
     {
         private ISession session = NHibernateConnexion.OpenSession();
 
-        #region ICompteService Membres
+        #region IDeplacementService Membres
         public IList<Deplacement> RetrieveAll()
         {
             throw new NotImplementedException();

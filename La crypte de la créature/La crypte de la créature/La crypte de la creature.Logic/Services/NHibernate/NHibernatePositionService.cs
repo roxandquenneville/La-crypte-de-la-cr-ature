@@ -19,7 +19,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         private ISession session = NHibernateConnexion.OpenSession();
 
 
-        #region IJoueurService Membres
+        #region IPositionService Membres
 
         public IList<Position> RetrieveAll()
         {
