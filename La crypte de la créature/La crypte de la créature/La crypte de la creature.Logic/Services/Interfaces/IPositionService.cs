@@ -8,12 +8,12 @@ using La_crypte_de_la_creature.Logic.Modele.Args;
 
 namespace La_crypte_de_la_creature.Logic.Services.Interfaces
 {
-    public interface IJoueurService
+    public interface IPositionService
     {
-        IList<Joueur> RetrieveAll();
-        Joueur Retrieve(RetrieveJoueurArgs args);
-        void Create(Joueur j);
-        void Update(Joueur j);
-        void Delete(Joueur j);
+        IList<Position> RetrieveAll();
+        Position Retrieve(RetrievePositionArgs args);
+        void Create(Position p);
+        void Update(Position p);
+        void Delete(Position p);
     }
 }

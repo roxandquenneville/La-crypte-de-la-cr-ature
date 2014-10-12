@@ -14,7 +14,7 @@ using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
-   /* public class NHibernateJoueurService : IJoueurService
+   public class NHibernateJoueurService : IJoueurService
     {
         private ISession session = NHibernateConnexion.OpenSession();
 
@@ -63,5 +63,5 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         }
 
         #endregion
-    }*/
+    }
 }
