@@ -16,13 +16,18 @@ namespace La_crypte_de_la_creature.UI.ViewModel
     {
         
         #region Service
-        private ICompteService _proprieteCompte;
+        private ICompteService _proprieteCompte; //_CompteService ?????
         #endregion
 
         public RetrieveCompteArgs RetrieveArgs { get;set;}
 
         public CompteViewModel()
         {
+			/* C'est pas être censé plus sa ????
+			_CompteService = ServiceFactory.Instance.GetService<ICompteService>();
+            Comptes = new ObservableCollection<Compte>(_CompteService.RetrieveAll());
+            RetrieveArgs = new RetrieveCompteArgs();*/
+		
             Comptes = new ObservableCollection<Compte>(ServiceFactory.Instance.GetService<ICompteService>().RetrieveAll());
             Compte = new Compte();
         }
