@@ -41,7 +41,9 @@ namespace La_crypte_de_la_creature
             ServiceFactory.Instance.Register<IJoueurService, NHibernateJoueurService>(new NHibernateJoueurService());
             ServiceFactory.Instance.Register<IPositionService, NHibernatePositionService>(new NHibernatePositionService());
             ServiceFactory.Instance.Register<IPointageService, NHibernatePointageService>(new NHibernatePointageService());
-
+            ServiceFactory.Instance.Register<IPartieService, NHibernatePartieService>(new NHibernatePartieService());
+            ServiceFactory.Instance.Register<IPlateauService, NHibernatePlateauService>(new NHibernatePlateauService());
+            ServiceFactory.Instance.Register<ITypePlateauService, NHibernateTypePlateauService>(new NHibernateTypePlateauService());
 
             ServiceFactory.Instance.Register<IApplicationService, MainViewModel>((MainViewModel)this.DataContext);
             */
