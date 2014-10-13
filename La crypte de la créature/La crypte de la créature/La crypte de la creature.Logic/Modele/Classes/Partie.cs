@@ -70,18 +70,22 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
         /// <summary>
-        /// Constructeur de la classe Partie
+        /// Constructeur de la classe partie
         /// </summary>
-        /// <param name="historique">classe historique</param>
-        /// <param name="plateau">classe plateau</param>
-        /// <param name="pointage">classe plateau</param>
-        /// <param name="listejoueur">liste de joueur</param>
-        public Partie(Historique historique,Plateau plateau,List<Joueur> listejoueur)
+        /// <param name="nbrJoueur">Nombre de joueur</param>
+        /// <param name="nbrPion">Nombre de pion par joueur</param>
+        /// <param name="type">Passer un type de plateau</param>
+        public Partie(int nbrJoueur,int nbrPion,TypePlateau type)
         {
-            ListeDeJoueur = listejoueur;
-            HistoriquePartie = historique;
-            PlateauPartie = plateau;
-            ListeDePointage = new List<Pointage>(); ;
+            for(int i=0;i<nbrJoueur;i++)
+            {
+                ListeDeJoueur.Add(new Joueur(nbrPion));
+                ListeDePointage.Add(new Pointage());
+            }
+
+            HistoriquePartie = new Historique();
+            PlateauPartie = new Plateau(type);
+           
             
         }
 
