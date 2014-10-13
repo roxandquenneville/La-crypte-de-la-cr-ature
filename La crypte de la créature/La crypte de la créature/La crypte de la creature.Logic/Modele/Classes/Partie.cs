@@ -64,7 +64,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             ListeDeJoueur = new List<Joueur>();
             HistoriquePartie = new Historique();
             PlateauPartie = new Plateau();
-            ListeDePointage = new List<Pointage>(); ;
+            ListeDePointage = new List<Pointage>();
         }
 
 
@@ -77,6 +77,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="type">Passer un type de plateau</param>
         public Partie(int nbrJoueur,int nbrPion,TypePlateau type)
         {
+            ListeDePointage = new List<Pointage>();
+            ListeDeJoueur = new List<Joueur>();
+
             for(int i=0;i<nbrJoueur;i++)
             {
                 ListeDeJoueur.Add(new Joueur(nbrPion));

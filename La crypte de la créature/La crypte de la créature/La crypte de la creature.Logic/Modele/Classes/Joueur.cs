@@ -41,6 +41,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="nbrPion">nombre de pion</param>
         public Joueur(int nbrPion)
         {
+            ListePion = new List<Pion>();
             if(nbrPion>0)
             {
                 Random RdmDeplacement = new Random();
