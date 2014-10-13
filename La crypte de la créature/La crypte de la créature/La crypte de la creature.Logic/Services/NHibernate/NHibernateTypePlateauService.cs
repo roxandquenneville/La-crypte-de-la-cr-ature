@@ -1,4 +1,4 @@
-using La_crypte_de_la_creature.Logic.Modele.Args;
+﻿using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
 using La_crypte_de_la_creature.Services.Definitions;
@@ -14,50 +14,50 @@ using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
-    public class NHibernateCompteService : ICompteService
+    public class NHibernateTypePlateauService : ITypePlateau
     {
         private ISession session = NHibernateConnexion.OpenSession();
 
 
-        #region ICompteService Membres
+        #region ITypePlateauService Membres
 
-        public IList<Compte> RetrieveAll()
+        public IList<TypePlateau> RetrieveAll()
         {
-            return session.Query<Compte>().ToList();
+            return session.Query<TypePlateau>().ToList();
         }
 
-        public Compte Retrieve(RetrieveCompteArgs args)
+        public TypePlateau Retrieve(RetrieveTypePlateauArgs args)
         {
-            var result = from c in session.Query<Compte>()
-                         where c.idCompte == args.idCompte
-                         select c;
+            var result = from tp in session.Query<TypePlateau>()
+                         where tp.idTypePlateau == args.idTypePlateau
+                         select tp;
 
             return result.FirstOrDefault();
         }
 
-        public void Create(Compte c)
+        public void Create(TypePlateau tp)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Save(c);
+                session.Save(tp);
                 transaction.Commit();
             }
         }
 
-        public void Update(Compte c)
+        public void Update(TypePlateau tp)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(c);
+                session.Update(tp);
                 transaction.Commit();
             }
         }
 
-        public void Delete(Compte c)
+        public void Delete(TypePlateau tp)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Delete(c);
+                session.Delete(tp);
                 transaction.Commit();
             }
         }

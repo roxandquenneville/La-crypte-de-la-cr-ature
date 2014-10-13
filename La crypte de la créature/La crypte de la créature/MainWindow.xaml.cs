@@ -12,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
+using La_crypte_de_la_creature.Logic.Services.Interfaces;
+using La_crypte_de_la_creature.Logic.Services.NHibernate;
+using La_crypte_de_la_creature.Services.Definitions;
+using La_crypte_de_la_creature.UI.VueModele;
 
 namespace La_crypte_de_la_creature
 {
@@ -20,10 +26,27 @@ namespace La_crypte_de_la_creature
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public MainViewModel ViewModel { get { return (MainViewModel)DataContext; } }
         public MainWindow()
         {
             InitializeComponent();
+            Configure();
             this.Content = new Vue.UCMainWindow();
+        }
+        private void Configure()
+        {
+            /*ServiceFactory.Instance.Register<ICompteService, NHibernateCompteService>(new NHibernateCompteService());
+            ServiceFactory.Instance.Register<IDeplacementService, NHibernateDeplacementService>(new NHibernateDeplacementService());
+            ServiceFactory.Instance.Register<IHistoriqueService, NHibernateHistoriqueService>(new NHibernateHistoriqueService());
+            ServiceFactory.Instance.Register<IJoueurService, NHibernateJoueurService>(new NHibernateJoueurService());
+            ServiceFactory.Instance.Register<IPositionService, NHibernatePositionService>(new NHibernatePositionService());
+            ServiceFactory.Instance.Register<IPointageService, NHibernatePointageService>(new NHibernatePointageService());
+
+
+            ServiceFactory.Instance.Register<IApplicationService, MainViewModel>((MainViewModel)this.DataContext);
+            */
+
+
         }
     }
 }

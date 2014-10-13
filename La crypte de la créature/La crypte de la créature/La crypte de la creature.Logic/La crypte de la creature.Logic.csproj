@@ -54,7 +54,9 @@
     <Compile Include="Modele\Args\RetrieveDeplacementArgs.cs" />
     <Compile Include="Modele\Args\RetrieveHistoriqueArgs.cs" />
     <Compile Include="Modele\Args\RetrieveJoueurArgs.cs" />
+    <Compile Include="Modele\Args\RetrievePointageArgs.cs" />
     <Compile Include="Modele\Args\RetrievePositionArgs.cs" />
+    <Compile Include="Modele\Args\RetrieveTypesPlateauArgs.cs" />
     <Compile Include="Modele\Classes\Case.cs" />
     <Compile Include="Modele\Classes\CaseDeSang.cs" />
     <Compile Include="Modele\Classes\Compte.cs" />
@@ -78,7 +80,9 @@
     <Compile Include="Services\Interfaces\IDeplacementService.cs" />
     <Compile Include="Services\Interfaces\IHistoriqueService.cs" />
     <Compile Include="Services\Interfaces\IJoueurService.cs" />
+    <Compile Include="Services\Interfaces\IPointageService.cs" />
     <Compile Include="Services\Interfaces\IPositionService.cs" />
+    <Compile Include="Services\Interfaces\ITypePlateau.cs" />
     <Compile Include="Services\NHibernate\mappings\CaseMap.cs" />
     <Compile Include="Services\NHibernate\mappings\CasesDeSangMap.cs" />
     <Compile Include="Services\NHibernate\mappings\CompteMap.cs" />
@@ -98,7 +102,9 @@
     <Compile Include="Services\NHibernate\NHibernateDeplacementService.cs" />
     <Compile Include="Services\NHibernate\NHibernateHistoriqueService.cs" />
     <Compile Include="Services\NHibernate\NHibernateJoueurService.cs" />
+    <Compile Include="Services\NHibernate\NHibernatePointageService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePositionService.cs" />
+    <Compile Include="Services\NHibernate\NHibernateTypePlateauService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />

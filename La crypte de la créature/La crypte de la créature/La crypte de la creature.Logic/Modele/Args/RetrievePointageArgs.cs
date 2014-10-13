@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Args
 {
-    public class RetrievePositionArgs
+    public class RetrievePointageArgs
     {
-
-        public int idPosition { get; set; }
-        public int idDeplacement { get; set; }
-        public int X;
-        public int Y;
+        public int idPointage { get; set; }
+        public int idPartie { get; set; }
+        public int points { get; set; }
     }
 }

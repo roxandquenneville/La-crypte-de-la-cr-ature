@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
-    public class TypeDePlateau
+    public class TypePlateau
     {
         private string nomDePlateau;
 
-        public virtual int? idTypeDePlateau { get; set; }
+        public virtual int? idTypePlateau { get; set; }
 
         public virtual string NomDePlateau
         {
@@ -25,7 +25,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Constructeur de la classe Type de plateau
         /// </summary>
         /// <param name="plateau">on y passe le nom du type de plateau</param>
-        public TypeDePlateau(string plateau="")
+        public TypePlateau(string plateau="")
         {
             NomDePlateau = plateau;
         }

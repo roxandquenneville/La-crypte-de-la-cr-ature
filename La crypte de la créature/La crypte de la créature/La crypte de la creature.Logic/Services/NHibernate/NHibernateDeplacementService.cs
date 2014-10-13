@@ -21,27 +21,42 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         #region IDeplacementService Membres
         public IList<Deplacement> RetrieveAll()
         {
-            throw new NotImplementedException();
+            return session.Query<Deplacement>().ToList();
         }
 
         public Deplacement Retrieve(RetrieveDeplacementArgs args)
         {
-            throw new NotImplementedException();
+            var result = from d in session.Query<Deplacement>()
+                         where d.idDeplacement == args.idDeplacement
+                         select d;
+            return result.FirstOrDefault();
         }
 
         public void Create(Deplacement d)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Save(d);
+                transaction.Commit();
+            }
         }
 
         public void Update(Deplacement d)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Update(d);
+                transaction.Commit();
+            }
         }
 
         public void Delete(Deplacement d)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Delete(d);
+                transaction.Commit();
+            }
         }
         #endregion
     }

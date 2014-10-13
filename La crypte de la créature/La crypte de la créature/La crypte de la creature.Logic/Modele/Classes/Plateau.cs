@@ -12,7 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private List<Case> listeCase;
 
         public virtual int? idPlateau { get; set; }
-        public virtual int? idTypeDePlateau { get; set; }
+        public virtual int? idTypePlateau { get; set; }
 
         public List<Case> ListeCase
         {
@@ -36,7 +36,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <summary>
         /// Constructeur de la classe plateau
         /// </summary>
-        public Plateau(TypeDePlateau type)
+        public Plateau(TypePlateau type)
         {
             ListeCase = new List<Case>();
             if (type.NomDePlateau == "Normal")

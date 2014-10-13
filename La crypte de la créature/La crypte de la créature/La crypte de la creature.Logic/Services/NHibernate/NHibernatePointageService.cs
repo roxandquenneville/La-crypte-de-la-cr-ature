@@ -1,4 +1,4 @@
-using La_crypte_de_la_creature.Logic.Modele.Args;
+﻿using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
 using La_crypte_de_la_creature.Services.Definitions;
@@ -14,50 +14,50 @@ using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
-    public class NHibernateCompteService : ICompteService
+    public class NHibernatePointageService : IPointageService
     {
         private ISession session = NHibernateConnexion.OpenSession();
 
 
-        #region ICompteService Membres
+        #region IPointageService Membres
 
-        public IList<Compte> RetrieveAll()
+        public IList<Pointage> RetrieveAll()
         {
-            return session.Query<Compte>().ToList();
+            return session.Query<Pointage>().ToList();
         }
 
-        public Compte Retrieve(RetrieveCompteArgs args)
+        public Pointage Retrieve(RetrievePointageArgs args)
         {
-            var result = from c in session.Query<Compte>()
-                         where c.idCompte == args.idCompte
-                         select c;
+            var result = from p in session.Query<Pointage>()
+                         where p.idPointage == args.idPointage
+                         select p;
 
             return result.FirstOrDefault();
         }
 
-        public void Create(Compte c)
+        public void Create(Pointage p)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Save(c);
+                session.Save(p);
                 transaction.Commit();
             }
         }
 
-        public void Update(Compte c)
+        public void Update(Pointage p)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(c);
+                session.Update(p);
                 transaction.Commit();
             }
         }
 
-        public void Delete(Compte c)
+        public void Delete(Pointage p)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Delete(c);
+                session.Delete(p);
                 transaction.Commit();
             }
         }

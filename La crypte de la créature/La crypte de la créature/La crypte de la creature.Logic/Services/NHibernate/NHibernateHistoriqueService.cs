@@ -23,27 +23,43 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 
         public void Create(Historique h)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Save(h);
+                transaction.Commit();
+            }
         }
 
         public IList<Historique> RetrieveAll()
         {
-            throw new NotImplementedException();
+            return session.Query<Historique>().ToList();
         }
 
-        public Joueur Retrieve(RetrieveHistoriqueArgs args)
+        public Historique Retrieve(RetrieveHistoriqueArgs args)
         {
-            throw new NotImplementedException();
+            var result = from h in session.Query<Historique>()
+                         where h.idHistorique == args.idHistorique
+                         select h;
+
+            return result.FirstOrDefault();
         }
 
         public void Update(Historique h)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Update(h);
+                transaction.Commit();
+            }
         }
 
         public void Delete(Historique h)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Delete(h);
+                transaction.Commit();
+            }
         }
         #endregion
     }

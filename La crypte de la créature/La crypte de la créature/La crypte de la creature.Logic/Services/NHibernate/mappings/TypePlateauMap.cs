@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
 {
-    public class TypePlateauMap : ClassMap<TypeDePlateau>
+    public class TypePlateauMap : ClassMap<TypePlateau>
     {
         public TypePlateauMap()
         {
               Table("typesplateau");
               LazyLoad();
-              Id(x => x.idTypeDePlateau)
+              Id(x => x.idTypePlateau)
                 .Column("idTypePlateau")
                 .CustomType("Int32")
                 .Access.Property()

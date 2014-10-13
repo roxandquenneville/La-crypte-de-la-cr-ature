@@ -8,12 +8,12 @@ using La_crypte_de_la_creature.Logic.Modele.Args;
 
 namespace La_crypte_de_la_creature.Logic.Services.Interfaces
 {
-    public interface IHistoriqueService
+    public interface IPointageService
     {
-        IList<Historique> RetrieveAll();
-        Historique Retrieve(RetrieveHistoriqueArgs args);
-        void Create(Historique h);
-        void Update(Historique h);
-        void Delete(Historique h);
+        IList<Pointage> RetrieveAll();
+        Pointage Retrieve(RetrievePointageArgs args);
+        void Create(Pointage p);
+        void Update(Pointage p);
+        void Delete(Pointage p);
     }
 }

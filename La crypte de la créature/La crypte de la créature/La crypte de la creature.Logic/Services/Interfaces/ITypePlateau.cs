@@ -8,12 +8,12 @@ using La_crypte_de_la_creature.Logic.Modele.Args;
 
 namespace La_crypte_de_la_creature.Logic.Services.Interfaces
 {
-    public interface IHistoriqueService
+    public interface ITypePlateau
     {
-        IList<Historique> RetrieveAll();
-        Historique Retrieve(RetrieveHistoriqueArgs args);
-        void Create(Historique h);
-        void Update(Historique h);
-        void Delete(Historique h);
+        IList<TypePlateau> RetrieveAll();
+        TypePlateau Retrieve(RetrieveTypePlateauArgs args);
+        void Create(TypePlateau tp);
+        void Update(TypePlateau tp);
+        void Delete(TypePlateau tp);
     }
 }

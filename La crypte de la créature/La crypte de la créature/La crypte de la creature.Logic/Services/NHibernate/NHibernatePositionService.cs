@@ -23,27 +23,43 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 
         public IList<Position> RetrieveAll()
         {
-            throw new NotImplementedException();
+            return session.Query<Position>().ToList();
         }
 
         public Position Retrieve(RetrievePositionArgs args)
         {
-            throw new NotImplementedException();
+            var result = from p in session.Query<Position>()
+                         where p.idPosition == args.idPosition
+                         select p;
+
+            return result.FirstOrDefault();
         }
 
         public void Create(Position p)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Save(p);
+                transaction.Commit();
+            }
         }
 
         public void Update(Position p)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Update(p);
+                transaction.Commit();
+            }
         }
 
         public void Delete(Position p)
         {
-            throw new NotImplementedException();
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Delete(p);
+                transaction.Commit();
+            }
         }
         #endregion
     }
