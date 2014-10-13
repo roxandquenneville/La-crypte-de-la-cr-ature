@@ -63,13 +63,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="posXY">Position du pion</param>
         /// <param name="deplacement">valeur de la première face</param>
-        public Pion(Position posXY,int deplacement):base(posXY)
+        public Pion(int deplacement):base()
         {
             EstVivant=true;
             EstSortie=true;
             valeurDeplacement=deplacement;
-        
         }
+
 
         /// <summary>
         /// Change la valeurDeplacement

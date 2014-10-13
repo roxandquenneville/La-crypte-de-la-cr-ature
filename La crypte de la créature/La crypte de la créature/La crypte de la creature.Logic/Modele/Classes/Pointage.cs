@@ -20,7 +20,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return point;}
             set 
             {
-                point = value;
+                if (value > -1)
+                {
+                    point = value;
+                }
             }
 
         }

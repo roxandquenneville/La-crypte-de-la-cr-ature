@@ -33,6 +33,25 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Joueur()
         {
             ListePion = new List<Pion>();
+        }
+
+        /// <summary>
+        /// Constructeur de la classe Joueur
+        /// </summary>
+        /// <param name="nbrPion">nombre de pion</param>
+        public Joueur(int nbrPion)
+        {
+            if(nbrPion>0)
+            {
+                Random RdmDeplacement = new Random();
+                int[] tabDeplacement = new int[nbrPion];
+
+                for(int i=0;i<nbrPion;i++)
+                {
+                    tabDeplacement[i]=RdmDeplacement.Next(1,6);
+                    ListePion.Add(new Pion(tabDeplacement[i]));
+                }
+            }
 
         }
     }
