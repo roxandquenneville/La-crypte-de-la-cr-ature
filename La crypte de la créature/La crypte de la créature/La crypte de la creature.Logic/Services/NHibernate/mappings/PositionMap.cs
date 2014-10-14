@@ -27,18 +27,6 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.mappings
                .LazyLoad(Laziness.False)
                .Cascade.None()
                .Columns("idDeplacement");
-            Map(x => x.X)
-              .Column("X")
-              .CustomType<int>()
-              .Access.Property()
-              .Generated.Never()
-              .CustomSqlType("INTEGER");
-            Map(x => x.Y)
-                .Column("Y")
-                .CustomType<int>()
-                .Access.Property()
-                .Generated.Never()
-                .CustomSqlType("INTEGER");
         }  
     }
 }
