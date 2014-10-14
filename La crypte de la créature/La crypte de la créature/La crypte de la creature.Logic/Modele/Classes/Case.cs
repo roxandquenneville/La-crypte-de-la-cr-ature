@@ -64,14 +64,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="interieur">ici on utilise le bool Interne</param>
         private void DetermineImage(Position pos,bool interieur)
         {
-            if(pos.X == 0 && pos.Y ==0)
+            if (pos.X == 0 && pos.Y == 0)
             {
-                url = "../La crypte de la créature/Images/CaseEntree.png";
+                url = "../La crypte de la créature/Images/CaseSortie.png";
                 return;
             }
             if (pos.X == 15 && pos.Y == 10)
             {
-                url = "../La crypte de la créature/Images/CaseSortie.png";
+                url = "../La crypte de la créature/Images/CaseEntree.png";
                 return;
             }
 
@@ -85,7 +85,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 url = "../La crypte de la créature/Images/CaseGazon.png";
                 return;
             }
-
         }
 
     }

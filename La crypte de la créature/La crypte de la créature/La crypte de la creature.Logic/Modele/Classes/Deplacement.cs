@@ -59,24 +59,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// La fonction est Private ,car elle est appeler seulement dans la classe déplacement par une autre fonction
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        private bool Confirmation()
+        public bool Confirmation(Plateau plateau)
         {
             bool Valide=true;
 
             return Valide;
         }
 
-        /// <summary>
-        /// Fonction que fait le mouvement
-        /// </summary>
-        /// <returns>Retourne la position passer de fin si le mouvement 
-        /// est valide sinon retour le position de départ</returns>
-        public Position EffectuerDeplacement()
-        {
-            
-
-            return fin;
-        }
+       
 
     }
 }

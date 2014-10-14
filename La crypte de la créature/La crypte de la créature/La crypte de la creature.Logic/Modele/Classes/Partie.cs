@@ -93,6 +93,41 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tour"></param>
+        /// <param name="joueur"></param>
+        /// <param name="Pion"></param>
+        /// <param name="Final"></param>
+        /// <returns>Retourne un mouvement</returns>
+        public void DeplacementDePion(int tour, int joueur, int Pion, Position Final)
+        {
+            Deplacement mouvement = new Deplacement();
+
+            mouvement.Depart = ListeDeJoueur[joueur].ListePion[Pion].Emplacement;
+            mouvement.Fin = Final;
+
+            if (mouvement.Confirmation(PlateauPartie) == true)
+            {
+                ListeDeJoueur[joueur].ListePion[Pion].Emplacement = mouvement.Fin;
+                if (tour == 1)
+                {
+                    ListeDeJoueur[joueur].ListePion[Pion].EstSortie = false;
+                }
+                if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
+                {
+                    ListeDeJoueur[joueur].ListePion[Pion].EstSortie = true;
+                    ListeDePointage[joueur].Point++;
+                }
+            }
+            else
+            {
+                ListeDeJoueur[joueur].ListePion[Pion].Emplacement = mouvement.Depart;
+            }
+        }
+
+
+        /// <summary>
         /// trouve c'est le tour à qui
         /// </summary>
         /// <returns>Retourne le id du joueur</returns>
