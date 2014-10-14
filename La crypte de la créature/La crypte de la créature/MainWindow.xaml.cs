@@ -18,6 +18,7 @@ using La_crypte_de_la_creature.Logic.Services.Interfaces;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
 using La_crypte_de_la_creature.Services.Definitions;
 using La_crypte_de_la_creature.UI.VueModele;
+using La_crypte_de_la_creature.Vue;
 
 namespace La_crypte_de_la_creature
 {
@@ -26,16 +27,19 @@ namespace La_crypte_de_la_creature
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public MainViewModel ViewModel { get { return (MainViewModel)DataContext; } }
+        public MainViewModel ViewModel { get { return (MainViewModel)DataContext; } }
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
             Configure();
             this.Content = new Vue.UCMainWindow();
+            //ViewModel.CurrentView = new UCMainWindow();
+
         }
         private void Configure()
         {
-            /*ServiceFactory.Instance.Register<ICompteService, NHibernateCompteService>(new NHibernateCompteService());
+           /* ServiceFactory.Instance.Register<ICompteService, NHibernateCompteService>(new NHibernateCompteService());
             ServiceFactory.Instance.Register<IDeplacementService, NHibernateDeplacementService>(new NHibernateDeplacementService());
             ServiceFactory.Instance.Register<IHistoriqueService, NHibernateHistoriqueService>(new NHibernateHistoriqueService());
             ServiceFactory.Instance.Register<IJoueurService, NHibernateJoueurService>(new NHibernateJoueurService());
@@ -43,10 +47,10 @@ namespace La_crypte_de_la_creature
             ServiceFactory.Instance.Register<IPointageService, NHibernatePointageService>(new NHibernatePointageService());
             ServiceFactory.Instance.Register<IPartieService, NHibernatePartieService>(new NHibernatePartieService());
             ServiceFactory.Instance.Register<IPlateauService, NHibernatePlateauService>(new NHibernatePlateauService());
-            ServiceFactory.Instance.Register<ITypePlateauService, NHibernateTypePlateauService>(new NHibernateTypePlateauService());
+            ServiceFactory.Instance.Register<ITypePlateauService, NHibernateTypePlateauService>(new NHibernateTypePlateauService());*/
 
             ServiceFactory.Instance.Register<IApplicationService, MainViewModel>((MainViewModel)this.DataContext);
-            */
+            
 
 
         }

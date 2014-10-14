@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using La_crypte_de_la_creature.UI.ViewModel;
+using La_crypte_de_la_creature.UI.VueModele;
 
 namespace La_crypte_de_la_creature.Vue
 {
@@ -20,9 +22,11 @@ namespace La_crypte_de_la_creature.Vue
     /// </summary>
     public partial class UCMainWindow : UserControl
     {
+        public UCMainWindow ViewModel { get { return (UCMainWindow)DataContext; } }
         public UCMainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
 
         private void Btn_Quitter(object sender, RoutedEventArgs e)

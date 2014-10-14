@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using NHibernate.Linq;
 using System.Threading.Tasks;
-using Immobilus.Logic.Services.Helpers;
+using La_crypte_de_la_creature.Logic.Services.Helpers;
 using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate
