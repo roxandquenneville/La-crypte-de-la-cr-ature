@@ -1,7 +1,6 @@
 using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
-using La_crypte_de_la_creature.Services.Definitions;
 using NHibernate;
 using System;
 using System.Collections.Generic;

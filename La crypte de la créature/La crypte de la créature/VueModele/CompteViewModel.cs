@@ -8,7 +8,7 @@ using Cstj.MvvmToolkit;
 using Cstj.MvvmToolkit.Services;
 using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
-using La_crypte_de_la_creature.Services.Definitions;
+using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.UI.ViewModel
 {

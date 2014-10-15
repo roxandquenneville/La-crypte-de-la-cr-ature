@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Modele.Args;
 
-namespace La_crypte_de_la_creature.Services.Definitions
+namespace La_crypte_de_la_creature.Logic.Services.Interfaces
 {
     public interface ICompteService
     {
