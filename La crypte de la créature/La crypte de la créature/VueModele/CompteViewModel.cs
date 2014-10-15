@@ -9,6 +9,7 @@ using Cstj.MvvmToolkit.Services;
 using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Services.Interfaces;
+using La_crypte_de_la_creature.Logic.Services.NHibernate;
 
 namespace La_crypte_de_la_creature.UI.ViewModel
 {
@@ -27,6 +28,7 @@ namespace La_crypte_de_la_creature.UI.ViewModel
 			_CompteService = ServiceFactory.Instance.GetService<ICompteService>();
             Comptes = new ObservableCollection<Compte>(_CompteService.RetrieveAll());
             RetrieveArgs = new RetrieveCompteArgs();*/
+            
 		
             Comptes = new ObservableCollection<Compte>(ServiceFactory.Instance.GetService<ICompteService>().RetrieveAll());
             Compte = new Compte();

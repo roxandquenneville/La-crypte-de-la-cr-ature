@@ -16,7 +16,6 @@ using Cstj.MvvmToolkit.Services;
 using Cstj.MvvmToolkit.Services.Definitions;
 using La_crypte_de_la_creature.Logic.Services.Interfaces;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
-using La_crypte_de_la_creature.Services.Definitions;
 using La_crypte_de_la_creature.UI.VueModele;
 using La_crypte_de_la_creature.Vue;
 
