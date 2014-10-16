@@ -62,6 +62,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public bool Confirmation(Plateau plateau)
         {
             bool Valide=true;
+            //vérifier la case et si cest une pierre vérifier la case derriere
+            //si c une mare de sang changer position de fin
+            foreach (Piece piece in plateau.ListePiece)
+            {
+                if (piece.Emplacement.X == Fin.X && piece.Emplacement.Y == Fin.Y)
+                {
+
+                }
+                
+            }
+
 
             return Valide;
         }
