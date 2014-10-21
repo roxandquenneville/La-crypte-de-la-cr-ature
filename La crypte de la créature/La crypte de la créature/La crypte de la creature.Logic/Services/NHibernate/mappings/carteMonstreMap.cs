@@ -14,7 +14,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
         {
             Table("CartesMonstre");
             LazyLoad();
-            Id(x => x.idCase)
+            Id(x => x.idCarteMonstre)
               .Column("idCarteMonstre")
               .CustomType("Int32")
               .Access.Property()
@@ -27,7 +27,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
             .LazyLoad(Laziness.False)
             .Cascade.None()
             .Columns("idPartie");
-            Map(x => x.utilise)
+           /* Map(x => x.utilise)
                  .Column("utilise")
                  .CustomType<bool>()
                  .Access.Property()
@@ -38,7 +38,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
             .CustomType<int>()
             .Access.Property()
             .Generated.Never()
-            .CustomSqlType("INTEGER");
+            .CustomSqlType("INTEGER");*/
 
 
         }

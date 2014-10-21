@@ -49,7 +49,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .KeyColumns.Add("idPointage", map => map.Name("idPointage")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
-            HasMany<cartesMonstre>(x => x.idCarteMonstre)
+            HasMany<CartesMonstre>(x => x.idPartie)
                .Not.LazyLoad()
                .Access.Property()
                .Cascade.All()

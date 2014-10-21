@@ -12,7 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private string url;
         private List<int> listeDeCarte;
 
-        public virtual int? idCartesMonstre { get; set; }
+        public virtual int? idCarteMonstre { get; set; }
         public virtual int? idPartie { get; set; }
 
         public virtual List<int> ListeDeCarte

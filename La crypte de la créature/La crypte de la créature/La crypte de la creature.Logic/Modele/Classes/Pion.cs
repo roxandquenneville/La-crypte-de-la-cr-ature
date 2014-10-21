@@ -51,7 +51,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
         public int tmpDeplacement 
         {
-            get;
+            get { return tmpDeplacement; }
           set
           {
             if(value >0 && value < 8)
