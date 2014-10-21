@@ -49,6 +49,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 }
             }
         }
+        public int tmpDeplacement 
+        {
+            get;
+          set
+          {
+            if(value >0 && value < 8)
+            { 
+                tmpDeplacement =value;
+            }
+          }
+         }
         #endregion
 
         /// <summary>
@@ -68,6 +79,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             EstVivant=true;
             EstSortie=true;
             valeurDeplacement=deplacement;
+            tmpDeplacement=valeurDeplacement;
         }
 
 

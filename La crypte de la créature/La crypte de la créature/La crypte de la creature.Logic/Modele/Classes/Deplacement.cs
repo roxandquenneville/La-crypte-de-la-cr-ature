@@ -68,7 +68,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 if (piece.Emplacement.X == Fin.X && piece.Emplacement.Y == Fin.Y)
                 {
-
+                        
                 }
                 
             }
