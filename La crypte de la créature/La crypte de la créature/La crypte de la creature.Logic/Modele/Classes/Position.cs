@@ -12,7 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private int x;
         private int y;
 
-        public virtual int position { get; set; }
+        public virtual int? position { get; set; }
      
         public virtual int X
         {
