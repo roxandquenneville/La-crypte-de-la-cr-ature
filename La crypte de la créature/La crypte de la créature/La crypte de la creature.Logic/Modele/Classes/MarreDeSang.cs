@@ -8,20 +8,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public class MarreDeSang
     {
-       private List<CaseDeSang> listeDeCaseDeSang;
+
        private bool forme;
 
-       public virtual int? idCaseDeSang { get; set; }
+       public virtual List<CaseDeSang> CaseDeSang {get; set;}
        public virtual int? idMarreDeSang { get; set; }
 
-       public virtual List<CaseDeSang> ListeDeCaseDeSang
-       {
-           get { return listeDeCaseDeSang; }
-           set
-           {
-               listeDeCaseDeSang = value;
-           }
-       }
 
        public virtual bool Forme
        {
@@ -37,7 +29,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public MarreDeSang()
         {
-          ListeDeCaseDeSang = new List<CaseDeSang>();
+          CaseDeSang = new List<CaseDeSang>();
         }
 
        /// <summary>
@@ -47,7 +39,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public MarreDeSang(bool bForme)
         {
             forme = bForme;
-            ListeDeCaseDeSang = new List<CaseDeSang>();
+            CaseDeSang = new List<CaseDeSang>();
         }
 
     }

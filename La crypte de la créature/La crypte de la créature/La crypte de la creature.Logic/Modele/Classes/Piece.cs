@@ -8,28 +8,18 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public abstract class Piece
     {
-        protected Position emplacement;
         protected string url;
 
         public virtual int? idPiece { get; set; }
-        public virtual int? idPosition { get; set; }
-        public virtual int? idPartie { get; set; }
-
-        public virtual Position Emplacement
-        {
-            get { return emplacement; }
-            set
-            {
-                emplacement = value;
-            }
-        }
+        public virtual Position Position { get; set;}
+        public virtual Partie Partie { get; set;}
 
         /// <summary>
         /// constructeur de base de la classe piece
         /// </summary>
         public Piece()
         {
-            Emplacement = new Position();
+            Position = new Position();
         }
 
 
@@ -39,7 +29,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="posXY">position de la piece</param>
         protected  Piece(Position posXY)
         {
-            Emplacement = posXY;
+            Position = posXY;
         }
 
         /// <summary>

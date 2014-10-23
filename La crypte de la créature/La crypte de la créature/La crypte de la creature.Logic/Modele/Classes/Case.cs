@@ -14,8 +14,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private string url;
 
         public virtual int? idCase { get; set; }
-        public virtual int? idPlateau { get; set; }
-        public virtual int? idPosition { get; set; }
+        public virtual Plateau Plateau { get; set;}
 
         public virtual bool Interne
          {

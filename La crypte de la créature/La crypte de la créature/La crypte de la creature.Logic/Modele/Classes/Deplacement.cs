@@ -12,23 +12,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private Position depart;
         private Position fin;
 
-        public virtual int? idDeplacement { get; set; }
-        public virtual int? idPartie { get; set; }
-        public virtual int? idPiece { get; set; }
-        public virtual int? idHistorique { get; set; }
-        
-
-        public virtual Position Depart
-        {
-            get {return depart;}
-            set {depart=value;}
-        }
-
-        public virtual Position Fin
-        {
-            get { return fin; }
-            set { fin = value; }
-        }
+        public virtual int? IdDeplacement { get; set; }
+        public virtual Partie Partie { get; set; }
+        public virtual Piece Piece { get; set; }
+        public virtual Historique Historique { get; set; }
+        public virtual Position Depart {get; set; }
+        public virtual Position Fin { get; set;}
+      
         #endregion
 
 
@@ -59,14 +49,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// La fonction est Private ,car elle est appeler seulement dans la classe déplacement par une autre fonction
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public virtual bool Confirmation(Plateau plateau)
+        public virtual bool Confirmation()
         {
             bool Valide = true;
             string type;
             Piece pTmp;
             Case cTmp;
 
-            cTmp = plateau.ListeCase.Find(x => x.Coordonnee == Fin);
+            cTmp = Partie.Plateau.Case.Find(x => x.Position == Fin);
 
             if (cTmp == null)
             {
@@ -75,7 +65,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             //vérifier la case et si cest une pierre vérifier la case derriere
             //si c une mare de sang changer position de fin
-            pTmp = plateau.ListePiece.Find(x => x.Emplacement == Fin);
+            pTmp = Partie.Plateau.Piece.Find(x => x.Position == Fin);
 
             if (pTmp == null)
             {
@@ -94,8 +84,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         Console.WriteLine("Case 2");
                         break;
                     case "Monstre":
-                        Console.WriteLine("case 3");
-                        break;
+                        return false;
+                       
                 }
 
             }

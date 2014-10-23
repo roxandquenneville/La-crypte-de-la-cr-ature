@@ -17,7 +17,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
        // public virtual int? idPiece { get; set; }
         public virtual int? idPion { get { return base.idPiece; } set { base.idPiece = value; } }
-        public virtual int? idJoueur { get;set; }
+        public virtual Joueur Joueur {get; set;}
 
         public virtual bool EstVivant
         {
@@ -50,7 +50,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 }
             }
         }
-        public int TmpDeplacement 
+        public virtual int TmpDeplacement 
         {
             get { return tmpDeplacement; }
           set
