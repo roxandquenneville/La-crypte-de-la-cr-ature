@@ -143,7 +143,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     ListeDeJoueur[joueur-1].ListePion[Pion-1].EstSortie = true;
                     ListeDePointage[joueur-1].Point++;
                 }
-                 ListeDeJoueur[joueur-1].ListePion[Pion-1].tmpDeplacement--;
+                 ListeDeJoueur[joueur-1].ListePion[Pion-1].TmpDeplacement--;
             }
             else
             {

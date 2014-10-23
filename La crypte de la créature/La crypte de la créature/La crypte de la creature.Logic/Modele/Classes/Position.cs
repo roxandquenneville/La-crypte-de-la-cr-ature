@@ -48,8 +48,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public Position()
         {
-            X = 0;
-            Y = 0;
+            X = 15;
+            Y = 11;
         }
 
         /// <summary>

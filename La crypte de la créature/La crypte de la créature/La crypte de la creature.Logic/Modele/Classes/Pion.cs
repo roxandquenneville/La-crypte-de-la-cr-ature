@@ -12,6 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private bool estVivant;
         private bool estSortie;
         private int valeurDeplacement;
+        private int tmpDeplacement;
         private const int MAXDEPLACEMENT = 7;
 
        // public virtual int? idPiece { get; set; }
@@ -49,7 +50,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 }
             }
         }
-        public int tmpDeplacement 
+        public int TmpDeplacement 
         {
             get { return tmpDeplacement; }
           set
@@ -79,7 +80,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             EstVivant=true;
             EstSortie=true;
             valeurDeplacement=deplacement;
-            tmpDeplacement=valeurDeplacement;
+            TmpDeplacement=valeurDeplacement;
         }
 
 

@@ -61,17 +61,45 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
         public bool Confirmation(Plateau plateau)
         {
-            bool Valide=true;
+            bool Valide = true;
+            string type;
+            Piece pTmp;
+            Case cTmp;
+
+            cTmp = plateau.ListeCase.Find(x => x.Coordonnee == Fin);
+
+            if (cTmp == null)
+            {
+                return false;
+            }
+
             //vérifier la case et si cest une pierre vérifier la case derriere
             //si c une mare de sang changer position de fin
-            foreach (Piece piece in plateau.ListePiece)
+            pTmp = plateau.ListePiece.Find(x => x.Emplacement == Fin);
+
+            if (pTmp == null)
             {
-                if (piece.Emplacement.X == Fin.X && piece.Emplacement.Y == Fin.Y)
-                {
-                        
-                }
-                
+                return true;
             }
+            else
+            {
+                type = pTmp.Get_Type();
+
+                switch (type)
+                {
+                    case "Pierre":
+                        Console.WriteLine("Case 1");
+                        break;
+                    case "CaseDeSang":
+                        Console.WriteLine("Case 2");
+                        break;
+                    case "Monstre":
+                        Console.WriteLine("case 3");
+                        break;
+                }
+
+            }
+
 
 
             return Valide;
