@@ -54,6 +54,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             ListeCase = new List<Case>();
             ListePiece = new List<Piece>();
+
             if (type.NomDePlateau == "Normal")
             {
                for(int x=0;x<16;x++)

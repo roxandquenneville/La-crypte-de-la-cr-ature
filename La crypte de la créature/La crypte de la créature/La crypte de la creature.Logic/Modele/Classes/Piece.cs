@@ -13,6 +13,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual int? idPiece { get; set; }
         public virtual int? idPosition { get; set; }
+        public virtual int? idPartie { get; set; }
 
         public virtual Position Emplacement
         {

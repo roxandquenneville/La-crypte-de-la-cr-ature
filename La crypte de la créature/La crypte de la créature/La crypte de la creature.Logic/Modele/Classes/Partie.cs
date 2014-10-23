@@ -9,15 +9,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Partie
     {
         #region attribut
+        private List<Pointage> listeDePointage;
         private List<Joueur> listeDeJoueur;
+        private List<CartesMonstre> listeDeCartes;
         private Historique historiquePartie;
         private Plateau plateauPartie;
-        private List<Pointage> listeDePointage;
+ 
+        private int tourJoueur;
 
         public virtual int? idPlateau { get; set; }
         public virtual int? idHistorique { get; set; }
         public virtual int? idPointage { get; set; }
         public virtual int? idPartie { get; set; }
+        public virtual int? idMouvementMonstre { get; set; }
 
         public virtual List<Joueur> ListeDeJoueur
         {
@@ -54,6 +58,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 listeDePointage = value;
             }
         }
+
+        public virtual int TourJoueur
+        {
+            get { return tourJoueur; }
+            set
+            {
+                tourJoueur = value;
+            }
+        }
+
+        public virtual List<CartesMonstre> ListeDeCartes
+        {
+            get { return listeDeCartes; }
+            set
+            {
+                listeDeCartes = value;
+            }
+        }
         #endregion
 
         /// <summary>
@@ -65,6 +87,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             HistoriquePartie = new Historique();
             PlateauPartie = new Plateau();
             ListeDePointage = new List<Pointage>();
+            ListeDeCartes = new List<CartesMonstre>();
         }
 
 
@@ -79,6 +102,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             ListeDePointage = new List<Pointage>();
             ListeDeJoueur = new List<Joueur>();
+            ListeDeCartes = new List<CartesMonstre>();
 
             for(int i=0;i<nbrJoueur;i++)
             {
@@ -93,41 +117,42 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
         /// <summary>
-        /// 
+        /// Déplacement d'un pion
         /// </summary>
         /// <param name="tour"></param>
-        /// <param name="joueur"></param>
-        /// <param name="Pion"></param>
-        /// <param name="Final"></param>
+        /// <param name="joueur">Numéro du joueur</param>
+        /// <param name="Pion">Numéro du pion</param>
+        /// <param name="Final">Position final</param>
         /// <returns>Retourne un mouvement</returns>
         public virtual void DeplacementDePion(int tour, int joueur, int Pion, Position Final)
         {
             Deplacement mouvement = new Deplacement();
 
-            mouvement.Depart = ListeDeJoueur[joueur].ListePion[Pion].Emplacement;
+            mouvement.Depart = ListeDeJoueur[joueur-1].ListePion[Pion-1].Emplacement;
             mouvement.Fin = Final;
 
             if (mouvement.Confirmation(PlateauPartie) == true)
             {
-                ListeDeJoueur[joueur].ListePion[Pion].Emplacement = mouvement.Fin;
-                if (tour == 1)
-                {
-                    ListeDeJoueur[joueur].ListePion[Pion].EstSortie = false;
-                }
+                ListeDeJoueur[joueur-1].ListePion[Pion-1].Emplacement = mouvement.Fin;
+               // if (tour == 1)
+                //{
+               //     ListeDeJoueur[joueur-1].ListePion[Pion-1].EstSortie = false;
+               // }
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
                 {
-                    ListeDeJoueur[joueur].ListePion[Pion].EstSortie = true;
-                    ListeDePointage[joueur].Point++;
+                    ListeDeJoueur[joueur-1].ListePion[Pion-1].EstSortie = true;
+                    ListeDePointage[joueur-1].Point++;
                 }
+                 ListeDeJoueur[joueur-1].ListePion[Pion-1].TmpDeplacement--;
             }
             else
             {
-                ListeDeJoueur[joueur].ListePion[Pion].Emplacement = mouvement.Depart;
+                ListeDeJoueur[joueur-1].ListePion[Pion-1].Emplacement = mouvement.Depart;
             }
         }
 
 
-        /// <summary>
+        /*/// <summary>
         /// trouve c'est le tour à qui
         /// </summary>
         /// <returns>Retourne le id du joueur</returns>
@@ -137,6 +162,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
             return NumJoueur;
-        }
+        }*/
     }
 }
