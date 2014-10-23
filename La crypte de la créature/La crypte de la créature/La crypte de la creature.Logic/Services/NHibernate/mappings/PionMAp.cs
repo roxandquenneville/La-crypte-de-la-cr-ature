@@ -27,7 +27,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                  .LazyLoad(Laziness.False)
                  .Cascade.None()
                  .Columns("idPiece");
-              References(x => x.idJoueur)
+              References(x => x.Joueur)
                 .Class<Joueur>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)

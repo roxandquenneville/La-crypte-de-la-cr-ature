@@ -26,7 +26,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         public Deplacement Retrieve(RetrieveDeplacementArgs args)
         {
             var result = from d in session.Query<Deplacement>()
-                         where d.idDeplacement == args.idDeplacement
+                         where d.IdDeplacement == args.idDeplacement
                          select d;
             return result.FirstOrDefault();
         }

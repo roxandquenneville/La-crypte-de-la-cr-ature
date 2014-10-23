@@ -25,18 +25,20 @@ namespace La_crypte_de_la_creature.UI.ViewModel
         public CompteViewModel()
         {
             _CompteService = ServiceFactory.Instance.GetService<ICompteService>();
-            Comptes = new ObservableCollection<Compte>(_CompteService.RetrieveAll());
+        //    Comptes = new ObservableCollection<Compte>(_CompteService.RetrieveAll());
             RetrieveArgs = new RetrieveCompteArgs();
+            Compte = new Compte();
 
         }
 
         #region Bindable
         private Compte _compte;
-
+        
         public Compte Compte
-        {
+        { 
             get
             {
+                
                 return _compte;
             }
 
@@ -46,30 +48,33 @@ namespace La_crypte_de_la_creature.UI.ViewModel
                 {
                     return;
                 }
+                RaisePropertyChanging();
                 _compte = value;
+                RaisePropertyChanged();
             }
 
         }
 
-        private ObservableCollection<Compte> _comptes = new ObservableCollection<Compte>();
+        //private ObservableCollection<Compte> _comptes = new ObservableCollection<Compte>();
 
-        public ObservableCollection<Compte> Comptes
-        {
-            get
-            {
-                return _comptes;
-            }
+        //public ObservableCollection<Compte> Comptes
+        //{
+        //    get
+        //    {
+        //        return _comptes;
+        //    }
 
-            set
-            {
-                if (_comptes == value)
-                {
-                    return;
-                }
-
-                _comptes = value;
-            }
-        }
+        //    set
+        //    {
+        //        if (_comptes == value)
+        //        {
+        //            return;
+        //        }
+        //        RaisePropertyChanging();
+        //        _comptes = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
 
         #endregion
 
@@ -77,7 +82,9 @@ namespace La_crypte_de_la_creature.UI.ViewModel
 
         public void SauvegarderCommand()
         {
-            _CompteService.Update(Compte);
+            Compte.MotDePasse = RetrieveArgs.motDePasse;
+            Compte.NomUsager = RetrieveArgs.nomUsager;
+            _CompteService.Create(Compte);
         }
 
         #endregion
