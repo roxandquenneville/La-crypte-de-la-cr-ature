@@ -49,25 +49,47 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// La fonction est Private ,car elle est appeler seulement dans la classe déplacement par une autre fonction
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public virtual bool Confirmation()
+        public virtual bool Confirmation(Plateau plateau)
         {
             bool Valide = true;
+            bool Present = false;
             string type;
-            Piece pTmp;
-            Case cTmp;
+            Piece pTmp = null;
 
-            cTmp = Partie.Plateau.Case.Find(x => x.Coordonnee == Fin);
+            foreach (Case item in plateau.Case)
+            {
+                if (item.Coordonnee.X == Fin.X && item.Coordonnee.Y == Fin.Y)
+                {
+                    Present = true;
+                    //vérifie que le case est interne
+                    if (item.Interne == false)
+                    {
+                        return false;
+                    }
+                }
 
-            if (cTmp == null)
+            }
+            //La case n'existe pas
+            if (Present == false)
             {
                 return false;
             }
 
+            //reset ma variable
+            Present = false;
+
             //vérifier la case et si cest une pierre vérifier la case derriere
             //si c une mare de sang changer position de fin
-            pTmp = Partie.Plateau.Piece.Find(x => x.Position == Fin);
-
-            if (pTmp == null)
+            foreach (Piece item in plateau.Piece)
+            {
+                if (item.Position.X == Fin.X && item.Position.Y == Fin.Y)
+                {
+                    Present = true;
+                    pTmp = item;
+                }
+            }
+            //il n'y a pas de piece
+            if (Present == false)
             {
                 return true;
             }
@@ -103,13 +125,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         break;
                     case "Monstre":
                         return false;
-                       
+
                 }
 
             }
-
-
-
             return Valide;
 
 

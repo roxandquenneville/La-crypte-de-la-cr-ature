@@ -86,7 +86,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             mouvement.Depart = Joueur[joueur-1].Pion[Pion-1].Position;
             mouvement.Fin = Final;
 
-            if (mouvement.Confirmation() == true)
+            if (mouvement.Confirmation(Plateau) == true)
             {
                 Joueur[joueur-1].Pion[Pion-1].Position = mouvement.Fin;
                // if (tour == 1)
