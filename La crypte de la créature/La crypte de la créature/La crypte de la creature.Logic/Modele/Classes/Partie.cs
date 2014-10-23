@@ -83,12 +83,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             Deplacement mouvement = new Deplacement();
 
-            mouvement.Depart = Joueur[joueur-1].Pion[Pion-1].Emplacement;
+            mouvement.Depart = Joueur[joueur-1].Pion[Pion-1].Position;
             mouvement.Fin = Final;
 
             if (mouvement.Confirmation() == true)
             {
-                Joueur[joueur-1].Pion[Pion-1].Emplacement = mouvement.Fin;
+                Joueur[joueur-1].Pion[Pion-1].Position = mouvement.Fin;
                // if (tour == 1)
                 //{
                //     ListeDeJoueur[joueur-1].ListePion[Pion-1].EstSortie = false;
@@ -102,7 +102,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             else
             {
-                Joueur[joueur-1].Pion[Pion-1].Emplacement = mouvement.Depart;
+                Joueur[joueur-1].Pion[Pion-1].Position = mouvement.Depart;
             }
         }
 

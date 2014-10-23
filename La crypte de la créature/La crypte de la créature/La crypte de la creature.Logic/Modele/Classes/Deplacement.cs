@@ -56,7 +56,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Piece pTmp;
             Case cTmp;
 
-            cTmp = Partie.Plateau.Case.Find(x => x.Position == Fin);
+            cTmp = Partie.Plateau.Case.Find(x => x.Coordonnee == Fin);
 
             if (cTmp == null)
             {
