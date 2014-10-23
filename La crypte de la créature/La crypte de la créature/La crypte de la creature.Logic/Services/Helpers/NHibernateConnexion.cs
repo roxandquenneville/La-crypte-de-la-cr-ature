@@ -22,7 +22,7 @@ namespace La_crypte_de_la_creature.Logic.Services.Helpers
             if (IS_FLUENT)
             {
 
-                _sessionFactory = Fluently.Configure().Mappings(m => m.FluentMappings.AddFromAssemblyOf<NHibernateConnexion>()).BuildSessionFactory();
+               _sessionFactory = Fluently.Configure().Mappings(m => m.FluentMappings.AddFromAssemblyOf<NHibernateConnexion>()).BuildSessionFactory();
             }
             else
             {

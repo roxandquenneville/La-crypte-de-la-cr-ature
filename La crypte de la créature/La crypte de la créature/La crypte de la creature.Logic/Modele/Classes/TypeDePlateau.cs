@@ -29,6 +29,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             NomDePlateau = plateau;
         }
+        // Constructeur vide
+        public TypePlateau()
+        {
+         NomDePlateau = ""; 
+        }
 
     }
 }

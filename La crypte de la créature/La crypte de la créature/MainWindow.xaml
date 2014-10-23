@@ -8,6 +8,6 @@
     </Window.Background>
 
     <Grid>
-        
+        <ContentPresenter Content="{Binding CurrentView}"/>
     </Grid>
 </Window>

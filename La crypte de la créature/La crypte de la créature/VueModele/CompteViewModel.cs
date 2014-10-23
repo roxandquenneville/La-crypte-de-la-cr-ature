@@ -15,25 +15,21 @@ namespace La_crypte_de_la_creature.UI.ViewModel
 {
     public class CompteViewModel : BaseViewModel
     {
-        
+
         #region Service
-        private ICompteService _proprieteCompte; //_CompteService ?????
+        private ICompteService _CompteService; 
         #endregion
 
-        public RetrieveCompteArgs RetrieveArgs { get;set;}
+        public RetrieveCompteArgs RetrieveArgs { get; set; }
 
         public CompteViewModel()
         {
-			/* C'est pas être censé plus sa ????
-			_CompteService = ServiceFactory.Instance.GetService<ICompteService>();
+            _CompteService = ServiceFactory.Instance.GetService<ICompteService>();
             Comptes = new ObservableCollection<Compte>(_CompteService.RetrieveAll());
-            RetrieveArgs = new RetrieveCompteArgs();*/
-            
-		
-            Comptes = new ObservableCollection<Compte>(ServiceFactory.Instance.GetService<ICompteService>().RetrieveAll());
-            Compte = new Compte();
+            RetrieveArgs = new RetrieveCompteArgs();
+
         }
-       
+
         #region Bindable
         private Compte _compte;
 
@@ -52,7 +48,7 @@ namespace La_crypte_de_la_creature.UI.ViewModel
                 }
                 _compte = value;
             }
-             
+
         }
 
         private ObservableCollection<Compte> _comptes = new ObservableCollection<Compte>();
@@ -78,10 +74,10 @@ namespace La_crypte_de_la_creature.UI.ViewModel
         #endregion
 
         #region Command
-        
+
         public void SauvegarderCommand()
         {
-           _proprieteCompte.Update(Compte);
+            _CompteService.Update(Compte);
         }
 
         #endregion

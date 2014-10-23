@@ -50,7 +50,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Determine quel monstre sera prit
         /// </summary>
         /// <returns>retourne le nom du monstre utilisé</returns>
-        public string DeterminerMonstre()
+        public virtual string DeterminerMonstre()
         {
             string nom="";
             

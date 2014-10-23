@@ -40,12 +40,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             MotDePasse = code;
         }
 
+        public Compte()
+        {
+            NomUsager = "";
+            MotDePasse = "";
+        }
 
         /// <summary>
         /// Vérifie si la connexion est valide
         /// </summary>
         /// <returns>Retourne vrai si sa fonction sinon retourne faux</returns>
-        public bool Connexion()
+        public virtual bool Connexion()
         {
             bool Valide=true;
 

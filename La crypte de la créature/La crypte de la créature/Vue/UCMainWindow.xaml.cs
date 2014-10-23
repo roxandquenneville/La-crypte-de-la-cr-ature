@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
 using La_crypte_de_la_creature.UI.ViewModel;
 using La_crypte_de_la_creature.UI.VueModele;
 
@@ -36,13 +38,13 @@ namespace La_crypte_de_la_creature.Vue
 
         private void Btn_Connecion(object sender, RoutedEventArgs e)
         {
-            ;
-
+            
         }
 
         private void Lbl_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new UCCreationCompte();
+           IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();            
+           mainVM.ChangeView<UCCreationCompte>(new UCCreationCompte());
 
         }
 

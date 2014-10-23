@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
 using La_crypte_de_la_creature.UI.ViewModel;
 
 namespace La_crypte_de_la_creature.Vue
@@ -37,7 +39,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btn_Annule(object sender, RoutedEventArgs e)
         {
-            this.Content = new UCMainWindow();
+            
         }
 
     }

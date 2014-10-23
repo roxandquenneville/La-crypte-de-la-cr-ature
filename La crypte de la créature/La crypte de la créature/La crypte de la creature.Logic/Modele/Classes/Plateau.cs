@@ -15,7 +15,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int? idPlateau { get; set; }
         public virtual int? idTypePlateau { get; set; }
 
-        public List<Piece> ListePiece
+        public virtual List<Piece> ListePiece
         {
             get {return listePiece;}
 
@@ -27,7 +27,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
        
 
 
-        public List<Case> ListeCase
+        public virtual List<Case> ListeCase
         {
             get {return listeCase;}
 

@@ -59,7 +59,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// La fonction est Private ,car elle est appeler seulement dans la classe déplacement par une autre fonction
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public bool Confirmation(Plateau plateau)
+        public virtual bool Confirmation(Plateau plateau)
         {
             bool Valide=true;
             //vérifier la case et si cest une pierre vérifier la case derriere

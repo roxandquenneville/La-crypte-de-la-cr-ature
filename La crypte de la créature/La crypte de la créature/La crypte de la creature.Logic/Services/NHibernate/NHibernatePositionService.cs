@@ -28,7 +28,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         public Position Retrieve(RetrievePositionArgs args)
         {
             var result = from p in session.Query<Position>()
-                         where p.idPosition == args.idPosition
+                         
                          select p;
 
             return result.FirstOrDefault();

@@ -100,7 +100,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="Pion"></param>
         /// <param name="Final"></param>
         /// <returns>Retourne un mouvement</returns>
-        public void DeplacementDePion(int tour, int joueur, int Pion, Position Final)
+        public virtual void DeplacementDePion(int tour, int joueur, int Pion, Position Final)
         {
             Deplacement mouvement = new Deplacement();
 
@@ -131,7 +131,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// trouve c'est le tour à qui
         /// </summary>
         /// <returns>Retourne le id du joueur</returns>
-        public int DetermineTour()
+        public virtual int DetermineTour()
         {
             int NumJoueur=0;
 

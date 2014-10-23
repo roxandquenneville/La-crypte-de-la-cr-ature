@@ -39,14 +39,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
            Point= score;
         }
 
-
-        /// <summary>
-        /// Permet de calculer le pointage modifie le tableau de point
-        /// </summary>
-       public void CalculerPointage()
-       {
-       
-       }
+        public Pointage()
+        {
+            Point=0;
+        }
+        
+    
 
 
 

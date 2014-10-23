@@ -12,9 +12,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private int x;
         private int y;
 
-        public virtual int? idPosition { get; set; }
-        public virtual int? idDeplacement {get; set;}
-
+        public virtual int position { get; set; }
+     
         public virtual int X
         {
             get { return x; }

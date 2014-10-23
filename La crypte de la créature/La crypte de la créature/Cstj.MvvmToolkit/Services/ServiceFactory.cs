@@ -10,7 +10,6 @@ namespace Cstj.MvvmToolkit.Services
     {
         private readonly object _syncLock = new object();
         private static ServiceFactory _instance;
-
         private readonly Dictionary<Type, object> _instancesRegistry = new Dictionary<Type, object>();
 
         public void Register<TInterface, TClass>(TClass service)
