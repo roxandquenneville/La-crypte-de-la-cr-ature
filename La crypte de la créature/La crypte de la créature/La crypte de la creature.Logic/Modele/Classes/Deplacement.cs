@@ -95,14 +95,30 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             else
             {
-
-
                 type = pTmp.Get_Type();
+                string sens;
+
+                if ((Depart.X - Fin.X) > 0)
+                {
+                    sens = "gauche";
+                }
+                if ((Depart.X - Fin.X) < 0)
+                {
+                    sens = "droite";
+                }
+                if ((Depart.Y - Fin.Y) > 0)
+                {
+                    sens = "monte";
+                }
+                if ((Depart.Y - Fin.Y) < 0)
+                {
+                    sens = "descent";
+                }
 
                 switch (type)
                 {
                     case "Pierre":
-                        Console.WriteLine("Case 1");
+
                         break;
                     case "CaseDeSang":
                         Console.WriteLine("Case 2");
@@ -114,6 +130,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             }
             return Valide;
+
+
+
         }
 
        
