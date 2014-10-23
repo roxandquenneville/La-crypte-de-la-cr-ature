@@ -10,11 +10,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     {
          #region attribut
         private string url;
+       
 
         public virtual int? idCarteMonstre { get; set; }
         public virtual Partie Partie { get; set;}
+        public virtual int valeurDeplacement { get; set; }
+        public virtual bool utilise { get; set; }
         public virtual List<int> ListeDeCarte {get;set; }
-
+         #endregion
         /// <summary>
         /// constructeur vide de CartesMonstre
         /// </summary>
@@ -23,7 +26,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             ListeDeCarte = new List<int>();
         }
 
-        #endregion
+      
 
 
 

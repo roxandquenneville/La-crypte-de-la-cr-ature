@@ -14,31 +14,37 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
         {
               Table("déplacements");
               LazyLoad();
-              Id(x => x.idDeplacement)
+              Id(x => x.IdDeplacement)
                 .Column("idDeplacement")
                 .CustomType("Int32")
                 .Access.Property()
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-				References(x => x.idHistorique)
+				References(x => x.Historique)
                 .Class<Historique>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idHistorique");
-				References(x => x.idPiece)
+				References(x => x.Piece)
                 .Class<Piece>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPiece");
-                References(x => x.idp)
-                .Class<Historique>()
+                References(x => x.Depart)
+                .Class<Position>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
-                .Columns("idHistorique");
+                .Columns("idPositionDepart");
+                References(x => x.Fin)
+                .Class<Position>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idPositionFin");
 				
         }
     }

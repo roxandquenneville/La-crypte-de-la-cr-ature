@@ -21,7 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
               References(x => x.idPiece)
-                 .Class<Position>()
+                 .Class<Piece>()
                  .Access.Property()
                  .LazyLoad(Laziness.False)
                  .Cascade.None()

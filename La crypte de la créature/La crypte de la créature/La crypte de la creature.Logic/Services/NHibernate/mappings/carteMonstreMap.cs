@@ -21,24 +21,24 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
               .CustomSqlType("INTEGER")
               .Not.Nullable()
               .GeneratedBy.Identity();
-            References(x => x.idPartie)
-            .Class<Plateau>()
+            References(x => x.Partie)
+            .Class<Partie>()
             .Access.Property()
             .LazyLoad(Laziness.False)
             .Cascade.None()
             .Columns("idPartie");
-           /* Map(x => x.utilise)
+           Map(x => x.utilise)
                  .Column("utilise")
                  .CustomType<bool>()
                  .Access.Property()
                  .Generated.Never()
                  .CustomSqlType("BOOL");
-            Map(x => x.ValeurDeplacement)
+            Map(x => x.valeurDeplacement)
             .Column("valeurDeplacement")
             .CustomType<int>()
             .Access.Property()
             .Generated.Never()
-            .CustomSqlType("INTEGER");*/
+            .CustomSqlType("INTEGER");
 
 
         }

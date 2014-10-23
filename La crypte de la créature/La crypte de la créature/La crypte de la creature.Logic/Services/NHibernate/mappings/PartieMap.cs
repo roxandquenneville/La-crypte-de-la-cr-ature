@@ -21,13 +21,13 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               References(x => x.idHistorique)
+               References(x => x.Historique)
                 .Class<Historique>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idHistorique");
-				References(x => x.idPlateau)
+				References(x => x.Plateau)
                 .Class<Plateau>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
@@ -41,7 +41,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .KeyColumns.Add("idPartie", map => map.Name("idPartie")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
-            HasMany<Pointage>(x => x.idPointage)
+            HasMany<Pointage>(x => x.Pointage)
                 .Not.LazyLoad()
                 .Access.Property()
                 .Cascade.All()
@@ -49,14 +49,14 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .KeyColumns.Add("idPointage", map => map.Name("idPointage")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
-            //HasMany<CartesMonstre>(x => x.i)
-            //   .Not.LazyLoad()
-            //   .Access.Property()
-            //   .Cascade.All()
-            //   .Inverse()
-            //   .KeyColumns.Add("idCarteMonstre", map => map.Name("idCarteMonstre")
-            //                                       .SqlType("INTEGER")
-            //                                       .Nullable());
+             HasMany<CartesMonstre>(x => x.CartesMonstre)
+                .Not.LazyLoad()
+                .Access.Property()
+                .Cascade.All()
+                .Inverse()
+                .KeyColumns.Add("idCarteMonstre", map => map.Name("idCarteMonstre")
+                                                .SqlType("INTEGER")
+                                                .Nullable());
         }
     }
 

@@ -21,20 +21,20 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               References(x => x.idCompte)
+               References(x => x.Compte)
                 .Class<Pion>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idCompte");
-				References(x => x.idPartie)
+				References(x => x.Partie)
                 .Class<Partie>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idPartie");
 			
-			HasMany<Pion>(x => x.idPion)
+			HasMany<Pion>(x => x.idJoueur)
                 .Not.LazyLoad()
                 .Access.Property()
                 .Cascade.All()
