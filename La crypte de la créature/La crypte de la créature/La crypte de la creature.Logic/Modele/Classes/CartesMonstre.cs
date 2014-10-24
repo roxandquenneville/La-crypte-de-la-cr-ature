@@ -12,8 +12,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int? idCarteMonstre { get; set; }
         public virtual string Url {get;set;}
         public virtual Partie Partie { get; set;}
-        public virtual int valeurDeplacement { get; set; }
-        public virtual bool utilise { get; set; }
+        public virtual int ValeurDeplacement { get; set; }
+        public virtual bool Utilise { get; set; }
          #endregion
         /// <summary>
         /// constructeur vide de CartesMonstre

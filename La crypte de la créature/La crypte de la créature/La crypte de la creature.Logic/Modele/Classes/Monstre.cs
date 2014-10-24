@@ -11,7 +11,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #region attribut
         private int orientation;
 
-        //public virtual int? idPiece { get; set; }
         public virtual int? idMonstre { get { return base.idPiece; } set { base.idPiece = value; } }
 
         public virtual int Orientation

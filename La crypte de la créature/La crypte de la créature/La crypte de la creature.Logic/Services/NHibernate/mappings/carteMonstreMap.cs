@@ -27,13 +27,13 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
             .LazyLoad(Laziness.False)
             .Cascade.None()
             .Columns("idPartie");
-           Map(x => x.utilise)
+           Map(x => x.Utilise)
                  .Column("utilise")
                  .CustomType<bool>()
                  .Access.Property()
                  .Generated.Never()
                  .CustomSqlType("BOOL");
-            Map(x => x.valeurDeplacement)
+            Map(x => x.ValeurDeplacement)
             .Column("valeurDeplacement")
             .CustomType<int>()
             .Access.Property()

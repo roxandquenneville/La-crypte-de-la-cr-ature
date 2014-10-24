@@ -9,16 +9,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Deplacement
     {
         #region attribut
-        private Position depart;
-        private Position fin;
-
         public virtual int? IdDeplacement { get; set; }
         public virtual Partie Partie { get; set; }
         public virtual Piece Piece { get; set; }
         public virtual Historique Historique { get; set; }
         public virtual Position Depart {get; set; }
         public virtual Position Fin { get; set;}
-      
         #endregion
 
 
@@ -126,16 +122,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     case "Monstre":
                         return false;
 
-                }
-
+               }
             }
             return Valide;
-
-
-
         }
-
-       
-
     }
 }
