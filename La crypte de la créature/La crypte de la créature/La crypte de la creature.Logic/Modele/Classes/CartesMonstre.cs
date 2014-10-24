@@ -16,15 +16,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual Partie Partie { get; set;}
         public virtual int valeurDeplacement { get; set; }
         public virtual bool utilise { get; set; }
-        public virtual List<int> ListeDeCarte {get;set; }
-         #endregion
+        public virtual int Carte {get;set; }
+        #endregion
+
         /// <summary>
         /// constructeur vide de CartesMonstre
         /// </summary>
-        public CartesMonstre()
-        {
-            ListeDeCarte = new List<int>();
-        }
+        public CartesMonstre() {}
+        
 
       
 

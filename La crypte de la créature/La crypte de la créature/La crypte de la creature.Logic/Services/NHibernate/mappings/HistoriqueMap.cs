@@ -21,7 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-			HasMany<Deplacement>(x => x.ListeDeplacement)
+			HasMany<Deplacement>(x => x.Deplacement)
                 .Not.LazyLoad()
                 .Access.Property()
                 .Cascade.All()

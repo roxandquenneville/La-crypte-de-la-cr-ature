@@ -9,19 +9,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Historique
     {
         #region attribut
-        private List<Deplacement> listeDeplacement;
 
         public virtual int? idHistorique { get; set; }
 
-        public virtual List<Deplacement> ListeDeplacement
-        {
-            get { return listeDeplacement;}
-            set
-            {
-                listeDeplacement = value;
-            }
-
-        }
+        public virtual List<Deplacement> Deplacement {get; set; }
+       
         #endregion
 
         /// <summary>
@@ -29,7 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public Historique() 
         {
-            listeDeplacement = new List<Deplacement>();
+            Deplacement = new List<Deplacement>();
         }
 
         /*/// <summary>
