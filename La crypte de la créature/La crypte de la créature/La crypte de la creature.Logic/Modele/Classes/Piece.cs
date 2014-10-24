@@ -47,5 +47,28 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
         public virtual void DetermineImage() { }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Piece p = obj as Piece;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idPiece == p.idPiece;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
