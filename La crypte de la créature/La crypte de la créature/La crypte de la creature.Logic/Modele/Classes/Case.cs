@@ -11,8 +11,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #region attribut
         private Position coordonnee;
         private bool interne;
-        private string url;
 
+        public virtual string Url {get; set;}
         public virtual int? idCase { get; set; }
         public virtual Plateau Plateau { get; set;}
 
@@ -65,23 +65,23 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             if (pos.X == 0 && pos.Y == 0)
             {
-                url = "../La crypte de la créature/Images/CaseSortie.png";
+                Url = "../La crypte de la créature/Images/CaseSortie.png";
                 return;
             }
             if (pos.X == 15 && pos.Y == 10)
             {
-                url = "../La crypte de la créature/Images/CaseEntree.png";
+                Url = "../La crypte de la créature/Images/CaseEntree.png";
                 return;
             }
 
             if (interieur == true)
             {
-                url = "../La crypte de la créature/Images/CaseNormale.png";
+                Url = "../La crypte de la créature/Images/CaseNormale.png";
                 return;
             }
             else
             {
-                url = "../La crypte de la créature/Images/CaseGazon.png";
+                Url = "../La crypte de la créature/Images/CaseGazon.png";
                 return;
             }
         }
