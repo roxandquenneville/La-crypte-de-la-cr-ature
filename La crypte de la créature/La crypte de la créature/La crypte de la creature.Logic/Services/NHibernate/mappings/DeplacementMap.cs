@@ -14,7 +14,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
         {
               Table("déplacements");
               LazyLoad();
-              Id(x => x.IdDeplacement)
+              Id(x => x.idDeplacement)
                 .Column("idDeplacement")
                 .CustomType("Int32")
                 .Access.Property()

@@ -9,7 +9,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Deplacement
     {
         #region attribut
-        public virtual int? IdDeplacement { get; set; }
+        public virtual int? idDeplacement { get; set; }
         public virtual Partie Partie { get; set; }
         public virtual Piece Piece { get; set; }
         public virtual Historique Historique { get; set; }
@@ -125,6 +125,28 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                }
             }
             return Valide;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Deplacement d = obj as Deplacement;
+
+            if (d == null)
+            {
+                return false;
+            }
+
+            return this.idDeplacement == d.idDeplacement;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

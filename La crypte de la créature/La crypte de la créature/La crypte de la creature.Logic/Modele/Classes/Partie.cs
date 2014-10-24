@@ -118,5 +118,26 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             return NumJoueur;
         }*/
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Partie p = obj as Partie;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idPartie == p.idPartie;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

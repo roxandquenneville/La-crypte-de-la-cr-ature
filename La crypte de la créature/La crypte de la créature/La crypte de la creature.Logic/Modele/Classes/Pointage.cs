@@ -43,8 +43,28 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             Point=0;
         }
-        
-    
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Pointage p = obj as Pointage;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idPointage == p.idPointage;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
 
 

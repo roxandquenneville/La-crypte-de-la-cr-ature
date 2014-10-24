@@ -12,7 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         private int x;
         private int y;
 
-        public virtual int? position { get; set; }
+        public virtual int? idPosition { get; set; }
      
         public virtual int X
         {
@@ -61,6 +61,28 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             X=posX;
             Y=posY;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Position p = obj as Position;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idPosition == p.idPosition;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

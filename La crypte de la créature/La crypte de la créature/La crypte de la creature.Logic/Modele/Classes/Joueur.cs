@@ -43,5 +43,27 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Joueur j = obj as Joueur;
+
+            if (j == null)
+            {
+                return false;
+            }
+
+            return this.idJoueur == j.idJoueur;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

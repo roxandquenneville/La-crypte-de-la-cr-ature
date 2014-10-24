@@ -142,6 +142,27 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             return Interne;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Plateau p = obj as Plateau;
+
+            if (p == null)
+            {
+                return false;
+            }
+
+            return this.idPlateau == p.idPlateau;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
     }
 }

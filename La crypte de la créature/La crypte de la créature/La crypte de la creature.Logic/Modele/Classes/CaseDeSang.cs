@@ -50,14 +50,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 return false;
             }
 
-            CaseDeSang c = obj as CaseDeSang;
+            CaseDeSang cs = obj as CaseDeSang;
 
-            if (c == null)
+            if (cs == null)
             {
                 return false;
             }
 
-            return this.idCaseDeSang == c.idCaseDeSang;
+            return this.idCaseDeSang == cs.idCaseDeSang;
         }
 
         public override int GetHashCode()

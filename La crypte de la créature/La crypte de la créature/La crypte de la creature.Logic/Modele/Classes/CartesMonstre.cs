@@ -19,10 +19,30 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// constructeur vide de CartesMonstre
         /// </summary>
         public CartesMonstre(){}
-        
 
-      
 
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            CartesMonstre cm = obj as CartesMonstre;
+
+            if (cm == null)
+            {
+                return false;
+            }
+
+            return this.idCarteMonstre == cm.idCarteMonstre;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
 
         

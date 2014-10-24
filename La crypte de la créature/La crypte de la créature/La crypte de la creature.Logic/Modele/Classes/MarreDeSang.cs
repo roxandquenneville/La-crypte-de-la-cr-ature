@@ -43,5 +43,26 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             CaseDeSang = new List<CaseDeSang>();
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            MarreDeSang ms = obj as MarreDeSang;
+
+            if (ms == null)
+            {
+                return false;
+            }
+
+            return this.idMarreDeSang == ms.idMarreDeSang;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

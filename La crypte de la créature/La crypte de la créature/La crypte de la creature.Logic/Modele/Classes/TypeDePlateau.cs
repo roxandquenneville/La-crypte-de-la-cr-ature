@@ -35,5 +35,27 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
          NomDePlateau = ""; 
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            TypePlateau tp = obj as TypePlateau;
+
+            if (tp == null)
+            {
+                return false;
+            }
+
+            return this.idTypePlateau == tp.idTypePlateau;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

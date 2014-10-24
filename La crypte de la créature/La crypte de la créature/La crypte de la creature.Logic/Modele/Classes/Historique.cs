@@ -24,19 +24,26 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Deplacement = new List<Deplacement>();
         }
 
-        /*/// <summary>
-        /// Lorsqu'on prend les informations de la bd.
-        /// Ce constructeur est seulement utile lorsque 
-        /// la partie est déjà commencer lorsqu'on la charge en mémoire.
-        /// </summary>
-        /// <param name="TabDeplacement">Les déplacements de la bd dans une liste de Deplacement(Du premier coup au dernier coup)</param>
-        public Historique(List<Deplacement> BdDeplacement)
+        public override bool Equals(object obj)
         {
-            if (BdDeplacement.Count > 0)
+            if (obj == null)
             {
-                listeDeplacement = new List<Deplacement>(BdDeplacement);
+                return false;
             }
-        }*/
 
+            Historique h = obj as Historique;
+
+            if (h == null)
+            {
+                return false;
+            }
+
+            return this.idHistorique == h.idHistorique;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
