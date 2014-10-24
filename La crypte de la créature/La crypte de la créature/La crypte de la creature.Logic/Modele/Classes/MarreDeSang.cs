@@ -8,7 +8,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public class MarreDeSang
     {
-
+       #region attribut
        private bool forme;
 
        public virtual List<CaseDeSang> CaseDeSang {get; set;}
@@ -23,6 +23,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                forme = value;
            }
        }
+       #endregion
 
         /// <summary>
         /// constructeur de la classe Marre de sang

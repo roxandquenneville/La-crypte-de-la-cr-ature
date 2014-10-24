@@ -21,7 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-				References(x => x.idMarreDeSang)
+				References(x => x.MarreDeSang)
                 .Class<MarreDeSang>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)

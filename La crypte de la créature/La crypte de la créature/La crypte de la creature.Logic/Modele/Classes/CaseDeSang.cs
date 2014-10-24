@@ -8,9 +8,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public class CaseDeSang : Piece
     {
-        //public virtual int? idPiece { get; set; }
+        
         public virtual int? idCaseDeSang { get { return base.idPiece; } set { base.idPiece = value; } }
-        public virtual int? idMarreDeSang { get; set; }
+        public virtual MarreDeSang MarreDeSang { get; set;}
 
 
         /// <summary>

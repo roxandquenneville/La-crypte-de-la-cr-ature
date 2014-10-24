@@ -9,19 +9,23 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class CartesMonstre
     {
          #region attribut
-        public virtual string Url {get;set;}
-
         public virtual int? idCarteMonstre { get; set; }
+        public virtual string Url {get;set;}
         public virtual Partie Partie { get; set;}
         public virtual int valeurDeplacement { get; set; }
         public virtual bool utilise { get; set; }
-        public virtual int Carte {get;set; }
-        #endregion
-
+         #endregion
         /// <summary>
         /// constructeur vide de CartesMonstre
         /// </summary>
-        public CartesMonstre() {}
+        public CartesMonstre(){}
+        
+
+      
+
+
+
+        
 
     }
 }

@@ -10,17 +10,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     {
         #region attribut
         private Position coordonnee;
-        private bool interne;
 
-        public virtual string Url {get; set;}
         public virtual int? idCase { get; set; }
+        public virtual string Url {get; set;}
         public virtual Plateau Plateau { get; set;}
-
-        public virtual bool Interne
-         {
-             get { return interne; }
-             set { interne = value; }
-        }
+        public virtual bool Interne {get; set;}
 
         public virtual Position Coordonnee 
         { 
@@ -28,7 +22,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             set
             {
                 coordonnee=value;
-                DetermineImage(coordonnee, interne);
+                DetermineImage(coordonnee, Interne);
             }
         }
         #endregion
@@ -51,8 +45,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Case(Position posXY,bool bInterne)
         {
             Coordonnee = posXY;
-            interne=bInterne;
-            DetermineImage(Coordonnee, interne);
+            Interne=bInterne;
+            DetermineImage(Coordonnee, Interne);
            
         }
 

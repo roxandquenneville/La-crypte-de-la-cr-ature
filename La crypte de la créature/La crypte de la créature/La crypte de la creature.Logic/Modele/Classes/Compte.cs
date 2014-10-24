@@ -9,21 +9,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Compte
     {
         #region attribut
-
-
         public virtual int? idCompte { get; set; }
-
-        public virtual string NomUsager
-        {
-            get;
-            set;
-        }
-
-        public virtual string MotDePasse
-        {
-            get;
-            set;
-        }
+        public virtual string NomUsager{get;set; }
+        public virtual string MotDePasse{get;set; }
         #endregion
 
 

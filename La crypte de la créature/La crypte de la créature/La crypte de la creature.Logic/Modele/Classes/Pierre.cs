@@ -9,20 +9,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Pierre : Piece
     {
         #region attribut
-        private bool estSurPlateau;
 
         //public virtual int? idPiece { get; set; }
         public virtual int? idPierre { get { return base.idPiece; } set { base.idPiece = value; } }
 
-        public virtual bool EstSurPlateau
-        {
-            get {return estSurPlateau;}
-            set {
-                    //TODO: Vérifie que sa position est en jeu
-                    estSurPlateau=value;
-                 }
-
-        }
+        public virtual bool EstSurPlateau { get; set; }
         #endregion
 
 
