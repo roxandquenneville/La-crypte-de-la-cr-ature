@@ -33,8 +33,23 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btn_Confirme(object sender, RoutedEventArgs e)
         {
-            
-            ViewModel.SauvegarderCommand();
+            lblErreur.Content = "";
+
+            if (tbxMotDePasse.Text == tbxMotDePasseConfirme.Text)
+                try
+                {
+                    ViewModel.SauvegarderCommand();
+                }
+                catch(Exception exception)
+                {
+                    
+                }
+            else
+            {
+                lblErreur.Content = "Les mot de passe ne sont pas identique";
+                lblErreur.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void btn_Annule(object sender, RoutedEventArgs e)
