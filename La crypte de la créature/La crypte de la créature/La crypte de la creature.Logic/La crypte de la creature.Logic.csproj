@@ -76,6 +76,7 @@
     <Compile Include="Modele\Classes\Pointage.cs" />
     <Compile Include="Modele\Classes\Position.cs" />
     <Compile Include="Modele\Classes\TypeDePlateau.cs" />
+    <Compile Include="Modele\Classes\UtilisateurConnecte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Helpers\MySqlConnexion.cs" />
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />

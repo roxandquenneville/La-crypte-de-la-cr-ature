@@ -19,13 +19,15 @@ namespace La_crypte_de_la_creature.UI.ViewModel
         #region Service
         private ICompteService _CompteService; 
         #endregion
+        
+            
 
         public RetrieveCompteArgs RetrieveArgs { get; set; }
 
         public CompteViewModel()
         {
             _CompteService = ServiceFactory.Instance.GetService<ICompteService>();
-        //    Comptes = new ObservableCollection<Compte>(_CompteService.RetrieveAll());
+            Comptes =  new ObservableCollection<Compte>(_CompteService.RetrieveAll());
             RetrieveArgs = new RetrieveCompteArgs();
             Compte = new Compte();
 
@@ -55,26 +57,26 @@ namespace La_crypte_de_la_creature.UI.ViewModel
 
         }
 
-        //private ObservableCollection<Compte> _comptes = new ObservableCollection<Compte>();
+        private ObservableCollection<Compte> _comptes = new ObservableCollection<Compte>();
 
-        //public ObservableCollection<Compte> Comptes
-        //{
-        //    get
-        //    {
-        //        return _comptes;
-        //    }
+        public ObservableCollection<Compte> Comptes
+        {
+            get
+            {
+                return _comptes;
+            }
 
-        //    set
-        //    {
-        //        if (_comptes == value)
-        //        {
-        //            return;
-        //        }
-        //        RaisePropertyChanging();
-        //        _comptes = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
+            set
+            {
+                if (_comptes == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _comptes = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #endregion
 
