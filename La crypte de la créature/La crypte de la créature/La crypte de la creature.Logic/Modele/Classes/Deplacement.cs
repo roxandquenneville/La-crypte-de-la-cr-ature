@@ -14,8 +14,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual Partie Partie { get; set; }
         public virtual Piece Piece { get; set; }
         public virtual Historique Historique { get; set; }
-        public virtual Position Depart { get; set; }
-        public virtual Position Fin { get; set; }
+        public virtual Position Depart {get; set; }
+        public virtual Position Fin { get; set;}
         #endregion
 
 
@@ -35,18 +35,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="posDepart">Position de départ</param>
         /// <param name="posFin">Position de Fin</param>
-        public Deplacement(Position posDepart, Position posFin)
+        public Deplacement(Position posDepart,Position posFin)
         {
-            Depart = posDepart;
-            Fin = posFin;
+            Depart=posDepart;
+            Fin=posFin;
         }
 
         /// <summary>
         /// Confirme le mouvement. 
-        /// La fonction est Private ,car elle est appeler seulement dans la classe déplacement par une autre fonction
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public virtual bool Confirmation(Plateau plateau, ref List<Deplacement> ListeTmp)
+        public virtual bool Confirmation(Plateau plateau,ref List<Deplacement> ListeTmp)
         {
             bool Valide = true;
             bool CasePresent;
@@ -72,7 +71,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             else
             {
                 //il n'y a pas de piece
-                if (args.pTmp.Count() == 0)
+                if (pTmp.Count() == 0)
                 {
                     return true;
                 }
@@ -117,11 +116,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
 
-        public bool ConfirmationPierre(Plateau plateau, string sens, ref List<Deplacement> ListeTmp, Piece pierre)
+        public bool ConfirmationPierre(Plateau plateau, string sens,ref List<Deplacement> ListeTmp,Piece pierre)
         {
 
-            bool CasePresent = false;
-            int index = 0;
+            bool CasePresent=false;
+            int index=0;
             Position pACote = new Position(Fin.X, Fin.Y);
             Position posTmp = new Position(pACote.X, pACote.Y);
             List<Piece> pTmp = null;
@@ -140,11 +139,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //La case n'existe pas ou est externe
             if (CasePresent == false)
             {
-                ListeTmp.RemoveAt(index - 1);
+                ListeTmp.RemoveAt(index-1);
                 return false;
             }
 
-            pTmp = plateau.RetournePiece(pACote);
+            pTmp=plateau.RetournePiece(pACote);
 
             if (pTmp.Count > 1)
             {
@@ -155,7 +154,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
 
                 //il n'y a pas de piece
-                if (args.pTmp.Count() == 0)
+                if (pTmp.Count() == 0)
                 {
                     //Déplace la pierre
                     deplacement.Fin = pACote;
@@ -180,10 +179,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     return false;
                 }
             }
-
+           
         }
 
-        public void PierreSurCaseDeSang(Plateau plateau, string sens, Piece pierre, ref List<Deplacement> ListeTmp, ref RetrieveElementPierre args)
+        public void PierreSurCaseDeSang(Plateau plateau, string sens,Piece pierre ,ref List<Deplacement> ListeTmp, ref RetrieveElementPierre args)
         {
             args.posTmp.X = args.pACote.X;
             args.posTmp.Y = args.pACote.Y;
@@ -239,9 +238,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="sens">sens droite gauche monte descent</param>
         /// <param name="pACote">Position à modifier</param>
         /// <returns>Retourne la nouvelle position</returns>
-        public Position ChangePosition(string sens, Position pACote)
+        public Position ChangePosition(string sens,Position pACote)
         {
-            string test = sens;
+            string test= sens;
             switch (test)
             {
                 case "gauche":
