@@ -14,7 +14,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Args
        public int index;
        public Position pACote;
        public Position posTmp;
-       public Piece pTmp;
+       public List<Piece> pTmp;
        public Deplacement deplacement;
     }
 }

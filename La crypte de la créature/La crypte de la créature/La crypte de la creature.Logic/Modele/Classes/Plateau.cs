@@ -191,20 +191,21 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Retourne la piece 
         /// </summary>
         /// <param name="pos">Position à vérifier</param>
-        /// <returns>Retourne la une piece, s'il n'en a pas retourne null</returns>
-        public Piece RetournePiece(Position pos)
+        /// <returns>Retourne la ou les piece, s'il n'en a pas retourne null</returns>
+        public List<Piece> RetournePiece(Position pos)
         {
+            List<Piece> tmp = new List<Piece>();
             if (ConfirmationPiece(pos))
             {
                 foreach (Piece item in Piece)
                 {
                     if (item.Position.X == pos.X && item.Position.Y == pos.Y)
                     {
-                        return item;
+                        tmp.Add(item);
                     }
                 }
             }
-            return null;
+            return tmp;
         }
 
         public override bool Equals(object obj)
