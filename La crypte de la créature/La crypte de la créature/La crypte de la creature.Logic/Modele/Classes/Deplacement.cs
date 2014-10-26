@@ -202,6 +202,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public void PierreSurCaseDeSang(Plateau plateau, string sens, ref List<Deplacement> ListeTmp, ref RetrieveElementPierre args)
         {
+            Piece PieceTmp = null;
+
             args.posTmp = args.pACote;
 
             //change la position de la case à côté
@@ -218,18 +220,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 args.pTmp.Position = args.posTmp;
             }
 
-            args.pTmp = plateau.RetournePiece(args.pACote);
+            PieceTmp = plateau.RetournePiece(args.pACote);
             //tombe sur une case vide
             //arrete sur la case à cote de la case de sang
-            if (args.pTmp == null)
+            if (PieceTmp == null)
             {
                 args.deplacement.Fin = args.pACote;
-                args.pTmp.Position = args.pACote;
+                args.pTmp.Position.X = args.pACote.X;
+                args.pTmp.Position.Y = args.pACote.Y;
             }
             else if (args.pTmp.Get_Type() == "CaseDeSang")
             {
                 //rappele la fonction
-                PierreSurCaseDeSang(plateau, sens, ref ListeTmp,ref args);
+                PierreSurCaseDeSang(plateau, sens, ref ListeTmp, ref args);
             }
             //arrete sur la case de sang
             else
