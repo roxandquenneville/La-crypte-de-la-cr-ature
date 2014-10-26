@@ -72,7 +72,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             else
             {
                 //il n'y a pas de piece
-                if (pTmp[0] == null)
+                if (args.pTmp.Count() == 0)
                 {
                     return true;
                 }
@@ -155,7 +155,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
 
                 //il n'y a pas de piece
-                if (pTmp[0] == null)
+                if (args.pTmp.Count() == 0)
                 {
                     //Déplace la pierre
                     deplacement.Fin = pACote;
@@ -213,7 +213,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 //tombe sur une case vide
                 //arrete sur la case à cote de la case de sang
-                if (args.pTmp[0] == null)
+                if (args.pTmp.Count() == 0)
                 {
                     args.deplacement.Fin = args.pACote;
                     pierre.Position.X = args.pACote.X;
