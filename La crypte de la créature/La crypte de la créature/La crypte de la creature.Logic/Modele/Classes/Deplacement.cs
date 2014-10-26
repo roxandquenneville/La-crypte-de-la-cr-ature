@@ -65,14 +65,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             pTmp = plateau.RetournePiece(Fin);
 
             // pierre et case de sang gérer plus tard
-            if (pTmp.Count > 0)
+            if (pTmp.Count > 1)
             {
 
             }
             else
             {
                 //il n'y a pas de piece
-                if (pTmp == null)
+                if (pTmp[0] == null)
                 {
                     return true;
                 }
@@ -146,7 +146,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             pTmp = plateau.RetournePiece(pACote);
 
-            if (pTmp.Count > 0)
+            if (pTmp.Count > 1)
             {
                 return false;
 
@@ -205,7 +205,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             args.pTmp = plateau.RetournePiece(args.pACote);
 
             // pierre et case de sang
-            if ((args.pTmp).Count() > 0)
+            if ((args.pTmp).Count() > 1)
             {
 
             }
