@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using La_crypte_de_la_creature.Logic.Modele.Args;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
@@ -45,54 +46,34 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// La fonction est Private ,car elle est appeler seulement dans la classe déplacement par une autre fonction
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public virtual bool Confirmation(Plateau plateau)
+        public virtual bool Confirmation(Plateau plateau,ref List<Deplacement> ListeTmp)
         {
             bool Valide = true;
-            bool Present = false;
+            bool CasePresent;
             string type;
             Piece pTmp = null;
 
-            foreach (Case item in plateau.Case)
-            {
-                if (item.Coordonnee.X == Fin.X && item.Coordonnee.Y == Fin.Y)
-                {
-                    Present = true;
-                    //vérifie que le case est interne
-                    if (item.Interne == false)
-                    {
-                        return false;
-                    }
-                }
+            //Vérifie la case
+            CasePresent = plateau.ConfirmationCase(Fin);
 
-            }
-            //La case n'existe pas
-            if (Present == false)
+            //La case n'existe pas ou est externe
+            if (CasePresent == false)
             {
                 return false;
             }
 
-            //reset ma variable
-            Present = false;
+            pTmp = plateau.RetournePiece(Fin);
 
-            //vérifier la case et si cest une pierre vérifier la case derriere
-            //si c une mare de sang changer position de fin
-            foreach (Piece item in plateau.Piece)
-            {
-                if (item.Position.X == Fin.X && item.Position.Y == Fin.Y)
-                {
-                    Present = true;
-                    pTmp = item;
-                }
-            }
+            
             //il n'y a pas de piece
-            if (Present == false)
+            if (pTmp == null)
             {
                 return true;
             }
             else
             {
                 type = pTmp.Get_Type();
-                string sens;
+                string sens="";
 
                 if ((Depart.X - Fin.X) > 0)
                 {
@@ -108,13 +89,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 }
                 if ((Depart.Y - Fin.Y) < 0)
                 {
-                    sens = "descent";
+                    sens = "descend";
                 }
 
                 switch (type)
                 {
                     case "Pierre":
-
+                        Valide=ConfirmationPierre(plateau, sens,ref ListeTmp);
                         break;
                     case "CaseDeSang":
                         Console.WriteLine("Case 2");
@@ -125,6 +106,164 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                }
             }
             return Valide;
+        }
+
+
+
+        public bool ConfirmationPierre(Plateau plateau, string sens,ref List<Deplacement> ListeTmp)
+        {
+
+            bool CasePresent=false;
+            int index=0;
+            Position pACote = new Position(Fin.X, Fin.Y);
+            Position posTmp = new Position(pACote.X, pACote.Y);
+            Piece pTmp = null;
+            Deplacement deplacement = new Deplacement();
+            RetrieveElementPierre args = new RetrieveElementPierre();
+
+            deplacement.Depart = Fin;
+            ListeTmp.Add(deplacement);
+            index = ListeTmp.Count();
+
+
+            pACote = ChangePosition(sens, pACote);
+            //Vérifie la case
+            CasePresent = plateau.ConfirmationCase(pACote);
+
+            //La case n'existe pas ou est externe
+            if (CasePresent == false)
+            {
+                ListeTmp.RemoveAt(index-1);
+                return false;
+            }
+
+            pTmp=plateau.RetournePiece(pACote);
+
+            //il n'y a pas de piece
+            if (pTmp == null)
+            {
+                //Déplace la pierre
+                deplacement.Fin = pACote;
+                pTmp.Position = pACote;
+                return true;
+            }
+            else if (pTmp.Get_Type() == "CaseDeSang")
+            {
+                args.CasePresent = CasePresent;
+                args.index = index;
+                args.pACote = pACote;
+                args.posTmp = posTmp;
+                args.pTmp = pTmp;
+                args.deplacement = deplacement;
+
+                PierreSurCaseDeSang(plateau,sens, ref ListeTmp, ref args);
+
+              /*  pACote = ChangePosition(sens, pACote);
+
+                //Vérifie la case
+                CasePresent = plateau.ConfirmationCase(pACote);
+
+                //La case n'existe pas ou est externe
+                //arrete sur la case de sang
+                if (CasePresent == false)
+                {
+                    deplacement.Fin = posTmp;
+                    pTmp.Position = posTmp;
+                }
+
+                pTmp = plateau.RetournePiece(pACote);
+                //tombe sur une case vide
+                //arrete sur la case à cote de la case de sang
+                if (pTmp == null)
+                {
+                    deplacement.Fin = pACote;
+                    pTmp.Position = pACote;
+                }
+                else if (pTmp.Get_Type() == "CaseDeSang")
+                {
+
+                }
+                    //arrete sur la case de sang
+                else
+                {
+                 
+                    deplacement.Fin = posTmp;
+                    pTmp.Position = posTmp;
+                }
+                */
+            }
+            else
+            {
+                ListeTmp.RemoveAt(index-1);
+                return false;
+            }
+            return false;
+        }
+
+        public void PierreSurCaseDeSang(Plateau plateau, string sens, ref List<Deplacement> ListeTmp, ref RetrieveElementPierre args)
+        {
+            args.posTmp = args.pACote;
+
+            //change la position de la case à côté
+            args.pACote = ChangePosition(sens, args.pACote);
+
+            //Vérifie la case
+            args.CasePresent = plateau.ConfirmationCase(args.pACote);
+
+            //La case n'existe pas ou est externe
+            //arrete sur la case de sang
+            if (args.CasePresent == false)
+            {
+                args.deplacement.Fin = args.posTmp;
+                args.pTmp.Position = args.posTmp;
+            }
+
+            args.pTmp = plateau.RetournePiece(args.pACote);
+            //tombe sur une case vide
+            //arrete sur la case à cote de la case de sang
+            if (args.pTmp == null)
+            {
+                args.deplacement.Fin = args.pACote;
+                args.pTmp.Position = args.pACote;
+            }
+            else if (args.pTmp.Get_Type() == "CaseDeSang")
+            {
+                //rappele la fonction
+                PierreSurCaseDeSang(plateau, sens, ref ListeTmp,ref args);
+            }
+            //arrete sur la case de sang
+            else
+            {
+
+                args.deplacement.Fin = args.posTmp;
+                args.pTmp.Position = args.posTmp;
+            }
+        }
+
+        /// <summary>
+        /// Permet de changer la position diriger selon le sens
+        /// </summary>
+        /// <param name="sens">sens droite gauche monte descent</param>
+        /// <param name="pACote">Position à modifier</param>
+        /// <returns>Retourne la nouvelle position</returns>
+        public Position ChangePosition(string sens,Position pACote)
+        {
+            switch (sens)
+            {
+                case "gauche":
+                    pACote.X = pACote.X - 1;
+                    break;
+                case "droite":
+                    pACote.X = pACote.X + 1;
+                    break;
+                case "monte":
+                    pACote.Y = pACote.Y - 1;
+                    break;
+                case "descend":
+                    pACote.Y = pACote.Y + 1;
+                    break;
+            }
+            return pACote;
         }
 
         public override bool Equals(object obj)

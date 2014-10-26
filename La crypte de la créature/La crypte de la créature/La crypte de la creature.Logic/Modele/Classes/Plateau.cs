@@ -142,6 +142,71 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             return Interne;
         }
+        /// <summary>
+        /// Vérifie si la case n'est pas dans le plateau ou encore externe
+        /// </summary>
+        /// <param name="pos">Position à vérifier</param>
+        /// <returns>retourne true si la case est présente et non externe sinon retourne false</returns>
+        public bool ConfirmationCase( Position pos)
+        {
+            bool Present = false;
+            //vérifie si la case est dans la liste de case du plateau
+            foreach (Case item in Case)
+            {
+                if (item.Coordonnee.X == pos.X && item.Coordonnee.Y == pos.Y)
+                {
+                    Present = true;
+                    //vérifie que le case est interne
+                    if (item.Interne == false)
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return Present;
+        }
+
+        /// <summary>
+        /// Vérifie s'il y a une piece à la position passé
+        /// </summary>
+        /// <param name="pos">Position à vérifier</param>
+        /// <returns>Retourne true si y a une piece, sinon retourne false</returns>
+        private bool ConfirmationPiece(Position pos)
+        {
+            bool Present = false;
+            //vérifier la case et si cest une pierre vérifier la case derriere
+            //si c une mare de sang changer position de fin
+            foreach (Piece item in Piece)
+            {
+                if (item.Position.X == pos.X && item.Position.Y == pos.Y)
+                {
+                    Present = true;
+                }
+            }
+            return Present;
+        }
+
+        /// <summary>
+        /// Retourne la piece 
+        /// </summary>
+        /// <param name="pos">Position à vérifier</param>
+        /// <returns>Retourne la une piece, s'il n'en a pas retourne null</returns>
+        public Piece RetournePiece(Position pos)
+        {
+            if (ConfirmationPiece(pos))
+            {
+                foreach (Piece item in Piece)
+                {
+                    if (item.Position.X == pos.X && item.Position.Y == pos.Y)
+                    {
+                        return item;
+                    }
+                }
+            }
+            return null;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

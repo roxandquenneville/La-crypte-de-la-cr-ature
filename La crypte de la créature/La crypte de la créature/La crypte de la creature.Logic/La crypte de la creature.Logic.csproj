@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modele\Args\RetrieveElementPierre.cs" />
     <Compile Include="Modele\Args\RetrieveCompteArgs.cs" />
     <Compile Include="Modele\Args\RetrieveDeplacementArgs.cs" />
     <Compile Include="Modele\Args\RetrieveHistoriqueArgs.cs" />
