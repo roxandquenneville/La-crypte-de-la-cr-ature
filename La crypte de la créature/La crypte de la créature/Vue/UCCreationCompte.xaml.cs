@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Cstj.MvvmToolkit.Services;
 using Cstj.MvvmToolkit.Services.Definitions;
+using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.UI.ViewModel;
 
 namespace La_crypte_de_la_creature.Vue
@@ -24,7 +26,7 @@ namespace La_crypte_de_la_creature.Vue
     public partial class UCCreationCompte : UserControl
     {
         public CompteViewModel ViewModel { get{return (CompteViewModel)DataContext;}}
-
+        IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
         public UCCreationCompte()
         {
             InitializeComponent();
@@ -34,16 +36,36 @@ namespace La_crypte_de_la_creature.Vue
         private void btn_Confirme(object sender, RoutedEventArgs e)
         {
             lblErreur.Content = "";
-
+            bool utilisateurPresent = false;
+           
             if (tbxMotDePasse.Text == tbxMotDePasseConfirme.Text)
-                try
+            {
+                
+                foreach(Compte C in ViewModel.Comptes )
                 {
-                    ViewModel.SauvegarderCommand();
+                    if(C.NomUsager == tbxNomUsager.Text)
+                    { 
+                        utilisateurPresent = true;
+                    }
                 }
-                catch(Exception exception)
-                {
+                if(utilisateurPresent !=true)
+                { 
+                    try
+                    {
+                        ViewModel.SauvegarderCommand();
+                        mainVM.ChangeView<UCConnexion>(new UCConnexion());
+                    }
+                    catch(Exception exception)
+                    {
                     
+                    }
                 }
+                else
+                {
+                    lblErreur.Content = "Nom d'utilisateur déja utilisé";
+                    lblErreur.Visibility = Visibility.Visible;
+                }
+            }
             else
             {
                 lblErreur.Content = "Les mot de passe ne sont pas identique";
@@ -54,7 +76,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btn_Annule(object sender, RoutedEventArgs e)
         {
-            
+            mainVM.ChangeView<UCConnexion>(new UCConnexion());
         }
 
     }

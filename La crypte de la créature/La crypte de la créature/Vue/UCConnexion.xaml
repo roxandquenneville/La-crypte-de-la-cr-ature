@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="La_crypte_de_la_creature.Vue.UCConnexion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Label Height="30" Grid.ColumnSpan="2" Margin="10,10,10,60" Visibility="Hidden" Name="lblErreur"/>
+        <Label  Content="Utilisateur :" Margin="78,74,72,96" Height="30"  Width="150" Foreground="White"  Grid.ColumnSpan="2" Grid.RowSpan="2" >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
+            </Label.Effect>
+        </Label>
+        <TextBox Background="AliceBlue" Margin="78,4,72,74" Grid.Row="1" Grid.ColumnSpan="2"  Height="25" Width="150" Text="{Binding RetrieveArgs.nomUsager}" Name="tbxNomUsager" />
+        <Label Content="Mot de passe :" Margin="78,40,72,35"  Height="25" Width="150" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
+            </Label.Effect>
+        </Label>
+        <TextBox Background="AliceBlue" Margin="78,65,72,10" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding RetrieveArgs.motDePasse}" />
+        <Button Grid.Column="0" Grid.Row="2" Margin="71,10,10,60" Content="Connexion" IsDefault="True" Click="Btn_Connecion"  />
+        <Button Grid.Column="1" Grid.Row="2" Margin="10,10,72,60" Content="Quitter" Click="Btn_Quitter" IsCancel="True" />
+        <Label Grid.Column="0" Grid.Row="2" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="2" Margin="100,59,112,-59" MouseDown="Lbl_Click"  >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="1" Color="White"/>
+            </Label.Effect>
+        </Label>
+    </Grid>
+
+    
+</UserControl>

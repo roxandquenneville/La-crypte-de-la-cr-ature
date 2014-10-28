@@ -34,13 +34,17 @@
             </Label.Effect>
         </Label>
 
-        <Label Grid.Row="3" Height="30" RenderTransformOrigin="1.007,2.333" Grid.ColumnSpan="2" Margin="74,15,76,15" Visibility="Hidden" Name="lblErreur"  />
-        
-        <TextBox Grid.Row="0" Height="30" Margin="131,40,129,10" Text="{Binding RetrieveArgs.nomUsager}" Grid.ColumnSpan="2"  />
+        <Label Grid.Row="3" Height="30" RenderTransformOrigin="1.007,2.333" Grid.ColumnSpan="2" Margin="90,15,60,15" Visibility="Hidden" Name="lblErreur"  Foreground="White" >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
+            </Label.Effect>
+        </Label>
+
+        <TextBox Grid.Row="0" Height="30" Margin="131,40,129,10" Text="{Binding RetrieveArgs.nomUsager}" Grid.ColumnSpan="2" Name="tbxNomUsager"  />
         <TextBox Grid.Row="1" Height="30" Margin="131,40,129,10" Text="{Binding RetrieveArgs.motDePasse}" Grid.ColumnSpan="2" Name="tbxMotDePasse" />
         <TextBox Grid.Row="2" Height="30" Margin="131,40,129,10" Grid.ColumnSpan="2" Name="tbxMotDePasseConfirme" />        
-        <Button Grid.Row="4" Margin="38,10,22,10" Content="Confirmé" Click="btn_Confirme" />
-        <Button Grid.Row="4" Margin="20,10,38,10" Content="Annulé" Grid.Column="1" Click="btn_Annule"  />
+        <Button Grid.Row="4" Margin="38,10,22,10" Content="Confirmé" Click="btn_Confirme" IsDefault="True" />
+        <Button Grid.Row="4" Margin="20,10,38,10" Content="Annulé" Grid.Column="1" Click="btn_Annule" IsCancel="True"  />
 
     </Grid>
 </UserControl>

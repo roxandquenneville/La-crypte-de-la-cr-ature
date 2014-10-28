@@ -12,10 +12,14 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
-        <Button Grid.Row="0" Height="30" Width="180" Content="Nouvelle Partie" Click="Btn_NouvellePartie" />
-        <Button Grid.Row="1" Height="30" Width="180" Content="Reprendre Partie" />
-        <Button Grid.Row="2" Height="30" Width="180" Content="Charger Partie" />
-        <Button Grid.Row="3" Height="30" Width="180" Content="Déconnexion" Click="Btn_Deconnexion" />
+        <Label Foreground="White" Name="tbxUsagerConnecte" Height="30" Margin="0,10,0,35" Width="250">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
+            </Label.Effect>
+        </Label>
+        <Button Grid.Row="0" Height="30" Width="180" Content="Nouvelle Partie" Click="Btn_NouvellePartie" Margin="60,55,60,65" Grid.RowSpan="2" />
+        <Button Grid.Row="1" Height="30" Width="180" Content="Reprendre Partie" Margin="60,30,60,15" />
+        <Button Grid.Row="2" Height="30" Width="180" Content="Charger Partie" Margin="60,0,60,45" />
+        <Button Grid.Row="3" Height="30" Width="180" Content="Déconnexion" Click="Btn_Deconnexion" Margin="60,0,60,45" />
     </Grid>
 </UserControl>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using La_crypte_de_la_creature.Logic.Modele.Classes;
 
 namespace La_crypte_de_la_creature.Vue
 {
@@ -23,6 +24,13 @@ namespace La_crypte_de_la_creature.Vue
         public UCChoixPartie()
         {
             InitializeComponent();
+            Loaded += WindowLoaded;
+        }
+
+        private void WindowLoaded(Object o, RoutedEventArgs e)
+        {
+             StringBuilder MessageBienvenue = new StringBuilder().Append("Bienvenue, ").Append(UtilisateurConnecte.nomUsager);
+             tbxUsagerConnecte.Content = MessageBienvenue;
         }
 
         private void Btn_Deconnexion(object sender, RoutedEventArgs e)
