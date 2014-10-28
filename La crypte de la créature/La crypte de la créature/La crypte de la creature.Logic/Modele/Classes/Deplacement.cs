@@ -45,7 +45,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Confirme le mouvement. 
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public virtual bool Confirmation(Plateau plateau,ref List<Deplacement> ListeTmp)
+        public virtual bool Confirmation(Plateau plateau,ref List<Deplacement> ListeTmp,int tmpDeplacement)
         {
             bool Valide = true;
             bool CasePresent;
@@ -107,6 +107,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             break;
                         case "Monstre":
                             return false;
+                        case "Pion" :
+                            if (tmpDeplacement > 1)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
 
                     }
                 }
@@ -204,6 +213,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             args.pTmp = plateau.RetournePiece(args.pACote);
 
             // pierre et case de sang
+            // pion suit la pierre lorsqu'il pousse
             if ((args.pTmp).Count() > 1)
             {
 
