@@ -41,7 +41,7 @@ namespace La_crypte_de_la_creature.Vue
             App.Current.Shutdown();
         }
 
-        private void Btn_Connecion(object sender, RoutedEventArgs e)
+        private void Btn_Connexion(object sender, RoutedEventArgs e)
         {
             Compte CompteConnexion = new Compte();
             UtilisateurConnecte.nomUsager = null;

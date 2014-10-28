@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using La_crypte_de_la_creature.VueModele;
 
 namespace La_crypte_de_la_creature.Vue
 {
@@ -20,9 +21,22 @@ namespace La_crypte_de_la_creature.Vue
     /// </summary>
     public partial class UCPlateau : UserControl
     {
+
+        public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
+
         public UCPlateau()
         {
             InitializeComponent();
+            DataContext = new PartieViewModel();
+            Loaded += WindowsLoaded;
+
         }
+
+        private void WindowsLoaded(Object o ,RoutedEventArgs e)
+        {
+             
+        }
+   
+
     }
 }

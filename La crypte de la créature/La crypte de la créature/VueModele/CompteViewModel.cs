@@ -18,8 +18,7 @@ namespace La_crypte_de_la_creature.UI.ViewModel
 
         #region Service
         private ICompteService _CompteService; 
-        #endregion
-        
+        #endregion        
             
 
         public RetrieveCompteArgs RetrieveArgs { get; set; }

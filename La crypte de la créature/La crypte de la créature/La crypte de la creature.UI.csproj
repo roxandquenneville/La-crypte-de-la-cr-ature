@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="VueModele\CompteViewModel.cs" />
     <Compile Include="VueModele\MainViewModel.cs" />
+    <Compile Include="VueModele\PartieViewModel.cs" />
     <Compile Include="Vue\UCChoixPartie.xaml.cs">
       <DependentUpon>UCChoixPartie.xaml</DependentUpon>
     </Compile>
