@@ -21,9 +21,10 @@ namespace La_crypte_de_la_creature.VueModele
         private IPartieService _PartieService;
         private IPlateauService _PlateauService;
         private IJoueurService _JoueurService;
+        private 
         #endregion
 
-        public RetrievePartieArgs RetrievePartieArgs { get; set; }
+               RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
 
