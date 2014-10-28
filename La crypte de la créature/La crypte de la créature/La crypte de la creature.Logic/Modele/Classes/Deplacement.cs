@@ -14,8 +14,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual Partie Partie { get; set; }
         public virtual Piece Piece { get; set; }
         public virtual Historique Historique { get; set; }
-        public virtual Position Depart {get; set; }
-        public virtual Position Fin { get; set;}
+        public virtual Position Depart { get; set; }
+        public virtual Position Fin { get; set; }
         #endregion
 
 
@@ -35,17 +35,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="posDepart">Position de départ</param>
         /// <param name="posFin">Position de Fin</param>
-        public Deplacement(Position posDepart,Position posFin)
+        public Deplacement(Position posDepart, Position posFin)
         {
-            Depart=posDepart;
-            Fin=posFin;
+            Depart = posDepart;
+            Fin = posFin;
         }
 
         /// <summary>
         /// Confirme le mouvement. 
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public virtual bool Confirmation(Plateau plateau,ref List<Deplacement> ListeTmp,int tmpDeplacement)
+        public virtual bool Confirmation(Plateau plateau, List<Deplacement> ListeTmp, int tmpDeplacement)
         {
             bool Valide = true;
             bool CasePresent;
@@ -100,14 +100,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     switch (type)
                     {
                         case "Pierre":
-                            Valide = ConfirmationPierre(plateau, sens, ref ListeTmp, pTmp[0]);
+                            Valide = ConfirmationPierre(plateau, sens, ListeTmp, pTmp[0]);
                             break;
                         case "CaseDeSang":
-                            Console.WriteLine("Case 2");
+                            SurCaseDeSang(plateau, sens, ListeTmp, false);
                             break;
                         case "Monstre":
                             return false;
-                        case "Pion" :
+                        case "Pion":
                             if (tmpDeplacement > 1)
                             {
                                 return true;
@@ -125,11 +125,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
 
-        public virtual bool ConfirmationPierre(Plateau plateau, string sens,ref List<Deplacement> ListeTmp,Piece pierre)
+        public virtual bool ConfirmationPierre(Plateau plateau, string sens, List<Deplacement> ListeTmp, Piece pierre)
         {
 
-            bool CasePresent=false;
-            int index=0;
+            bool CasePresent = false;
+            int index = 0;
             Position pACote = new Position(Fin.X, Fin.Y);
             Position posTmp = new Position(pACote.X, pACote.Y);
             List<Piece> pTmp = null;
@@ -141,19 +141,21 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             index = ListeTmp.Count();
 
 
-            pACote = ChangePosition(sens, pACote);
+            ChangePosition(sens, pACote);
             //Vérifie la case
             CasePresent = plateau.ConfirmationCase(pACote);
 
             //La case n'existe pas ou est externe
             if (CasePresent == false)
             {
-                ListeTmp.RemoveAt(index-1);
+                ListeTmp.RemoveAt(index - 1);
                 return false;
             }
 
-            pTmp=plateau.RetournePiece(pACote);
+            pTmp = plateau.RetournePiece(pACote);
 
+            // sur une case de sang
+            // le pion ne peu pas pousser une pierre sur un autre pierre/pion/monstre
             if (pTmp.Count > 1)
             {
                 return false;
@@ -179,7 +181,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     args.pTmp = pTmp;
                     args.deplacement = deplacement;
 
-                    PierreSurCaseDeSang(plateau, sens, pierre, ref ListeTmp, ref args);
+                    PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
                     return true;
                 }
                 else
@@ -188,16 +190,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     return false;
                 }
             }
-           
+
         }
 
-        public virtual void PierreSurCaseDeSang(Plateau plateau, string sens,Piece pierre ,ref List<Deplacement> ListeTmp, ref RetrieveElementPierre args)
+        public virtual void PierreSurCaseDeSang(Plateau plateau, string sens, Piece pierre, List<Deplacement> ListeTmp, RetrieveElementPierre args)
         {
             args.posTmp.X = args.pACote.X;
             args.posTmp.Y = args.pACote.Y;
 
             //change la position de la case à côté
-            args.pACote = ChangePosition(sens, args.pACote);
+            ChangePosition(sens, args.pACote);
 
             //Vérifie la case
             args.CasePresent = plateau.ConfirmationCase(args.pACote);
@@ -231,9 +233,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else if ((args.pTmp[0]).Get_Type() == "CaseDeSang")
                 {
                     //rappele la fonction
-                    PierreSurCaseDeSang(plateau, sens, pierre, ref ListeTmp, ref args);
+                    PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
                 }
-                //arrete sur la case de sang
+                // arrete sur la case de sang
                 // pion sur un autre pion 
                 // pion pousse roche
                 else
@@ -244,15 +246,73 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
+        public virtual void SurCaseDeSang(Plateau plateau, string sens, List<Deplacement> ListeTmp, bool recursive)
+        {
+            if (recursive == false)
+            {
+                Position pACote = new Position(Fin.X, Fin.Y);
+                Position posTmp = new Position(pACote.X, pACote.Y);
+                bool CasePresent = true;
+                List<Piece> pTmp = null;
+            }
+
+            posTmp.X = pACote.X;
+            posTmp.Y = pACote.Y;
+
+            //change la position de la case à côté
+            ChangePosition(sens, pACote);
+
+            //Vérifie la case
+            CasePresent = plateau.ConfirmationCase(pACote);
+
+            //La case n'existe pas ou est externe
+            //arrete sur la case de sang
+            if (CasePresent == false)
+            {
+                Fin = posTmp;
+            }
+
+            pTmp = plateau.RetournePiece(pACote);
+
+            // pierre et case de sang
+            // pion suit la pierre lorsqu'il pousse
+            if ((pTmp).Count() > 1)
+            {
+
+            }
+            else
+            {
+                // Tombe sur une case vide
+                // Arrête sur la case à cote de la case de sang
+                if (pTmp.Count() == 0)
+                {
+                    Fin.X = pACote.X;
+                    Fin.Y = pACote.Y;
+                }
+                else if ((pTmp[0]).Get_Type() == "CaseDeSang")
+                {
+                    //rappele la fonction
+                    SurCaseDeSang(plateau, sens, ListeTmp, true);
+                }
+                // arrete sur la case de sang
+                // pion sur un autre pion 
+                // pion pousse roche
+                else
+                {
+
+                }
+            }
+        }
+
         /// <summary>
         /// Permet de changer la position diriger selon le sens
         /// </summary>
         /// <param name="sens">sens droite gauche monte descent</param>
         /// <param name="pACote">Position à modifier</param>
         /// <returns>Retourne la nouvelle position</returns>
-        public virtual Position ChangePosition(string sens,Position pACote)
+        public virtual void ChangePosition(string sens, Position pACote)
         {
-            string test= sens;
+            string test = sens;
             switch (test)
             {
                 case "gauche":
@@ -268,7 +328,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     pACote.Y = pACote.Y + 1;
                     break;
             }
-            return pACote;
         }
 
         public override bool Equals(object obj)
