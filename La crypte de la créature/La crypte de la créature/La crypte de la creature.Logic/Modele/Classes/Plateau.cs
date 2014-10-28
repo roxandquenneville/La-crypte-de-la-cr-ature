@@ -82,7 +82,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="y">Emplacement en x</param>
         /// <param name="type">type de plateau</param>
         /// <returns></returns>
-        private virtual bool estInterne(int x, int y,string type)
+        public virtual bool estInterne(int x, int y,string type)
         {
             bool Interne = true;
 
@@ -172,7 +172,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="pos">Position à vérifier</param>
         /// <returns>Retourne true si y a une piece, sinon retourne false</returns>
-        private virtual bool ConfirmationPiece(Position pos)
+        protected virtual bool ConfirmationPiece(Position pos)
         {
             bool Present = false;
             //vérifier la case et si cest une pierre vérifier la case derriere

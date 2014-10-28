@@ -116,7 +116,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
 
-        public bool ConfirmationPierre(Plateau plateau, string sens,ref List<Deplacement> ListeTmp,Piece pierre)
+        public virtual bool ConfirmationPierre(Plateau plateau, string sens,ref List<Deplacement> ListeTmp,Piece pierre)
         {
 
             bool CasePresent=false;
@@ -182,7 +182,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
            
         }
 
-        public void PierreSurCaseDeSang(Plateau plateau, string sens,Piece pierre ,ref List<Deplacement> ListeTmp, ref RetrieveElementPierre args)
+        public virtual void PierreSurCaseDeSang(Plateau plateau, string sens,Piece pierre ,ref List<Deplacement> ListeTmp, ref RetrieveElementPierre args)
         {
             args.posTmp.X = args.pACote.X;
             args.posTmp.Y = args.pACote.Y;
@@ -238,7 +238,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="sens">sens droite gauche monte descent</param>
         /// <param name="pACote">Position à modifier</param>
         /// <returns>Retourne la nouvelle position</returns>
-        public Position ChangePosition(string sens,Position pACote)
+        public virtual Position ChangePosition(string sens,Position pACote)
         {
             string test= sens;
             switch (test)
