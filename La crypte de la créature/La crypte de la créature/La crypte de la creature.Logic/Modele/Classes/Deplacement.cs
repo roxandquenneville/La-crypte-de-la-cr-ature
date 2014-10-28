@@ -113,7 +113,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                                  args.pACote=pACote;
                                  args.posTmp=posTmp;
 
-                                 SurCaseDeSang(plateau, sens, ListeTmp, args, tmpDeplacement);
+                                Valide = SurCaseDeSang(plateau, sens, ListeTmp, args, tmpDeplacement);
                             break;
                         case "Monstre":
                             return false;
@@ -258,8 +258,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
-        public virtual void SurCaseDeSang(Plateau plateau, string sens, List<Deplacement> ListeTmp, RetrieveElementPierre args, int tmpDeplacement)
+        public virtual bool SurCaseDeSang(Plateau plateau, string sens, List<Deplacement> ListeTmp, RetrieveElementPierre args, int tmpDeplacement)
         {
+            bool Valide=true;
+
             args.posTmp.X = args.pACote.X;
             args.posTmp.Y = args.pACote.Y;
 
@@ -274,6 +276,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             if (args.CasePresent == false)
             {
                 Fin = args.posTmp;
+                Valide= true;
             }
 
             args.pTmp = plateau.RetournePiece(args.pACote);
@@ -292,6 +295,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 {
                     Fin.X = args.pACote.X;
                     Fin.Y = args.pACote.Y;
+                    Valide= true;
                 }
                 else if ((args.pTmp[0]).Get_Type() == "CaseDeSang")
                 {
@@ -308,25 +312,39 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         {
                             Fin.X = args.pACote.X;
                             Fin.Y = args.pACote.Y;
+                            Valide= true;
                         }
                         //si on glisse sur une marre de sang et tombe sur un pion de l'autre côté
                         else
                         {
-                            return;
+                            Valide= false;
                         }
                     }
                     //On veut piller sur un monstre
                     else if (args.pTmp[0].Get_Type() == "Monstre")
                     {
-                        return;
+                        Valide=false;
                     }
                     // un pion glisse sur une case de sang et fini devant la roche
                     else
                     {
-                        
+                        Valide=ConfirmationPierre(plateau,sens,ListeTmp,args.pTmp[0]);
+                        //On peut déplacer la pierre
+                        if(Valide)
+                        {
+                            Fin.X = args.pACote.X;
+                            Fin.Y = args.pACote.Y;
+                        }
+                        //On ne peut pas pousser la pierre
+                        else
+                        {
+                            Fin.X = args.posTmp.X;
+                            Fin.Y = args.posTmp.Y;
+                        }
                     }
                 }
             }
+            return Valide;
         }
 
         /// <summary>
