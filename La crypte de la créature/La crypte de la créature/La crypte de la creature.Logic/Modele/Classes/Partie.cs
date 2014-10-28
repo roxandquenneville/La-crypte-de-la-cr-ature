@@ -25,13 +25,18 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return tourJoueur; }
             set
             {
-                //if(value >)
-                tourJoueur = value;
+                if(value == Joueur.Count()*Joueur[0].Pion.Count())
+                {
+                    MouvementMonstre();
+                    tourJoueur=0;
+                }
+                else
+                {
+                    tourJoueur = value;
+                }
             }
         }
-        #endregion
-
-       
+        #endregion  
 
         /// <summary>
         /// Constructeur de la classe Partie pour la bd
@@ -44,8 +49,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Pointage = new List<Pointage>();
             CartesMonstre = new List<CartesMonstre>();
         }
-
-
 
         /// <summary>
         /// Constructeur de la classe partie
@@ -68,6 +71,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Historique = new Historique();
             Plateau = new Plateau(type);
            
+
             
         }
 
@@ -84,19 +88,22 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //Pour supprimer le mouvement
             int index;
             Deplacement mouvement = new Deplacement();
+            Position Depart = new Position();
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
 
             mouvement.Depart = Joueur[joueur-1].Pion[Pion-1].Position;
             mouvement.Fin = Final;
 
-            if (mouvement.Confirmation(Plateau,ref ListeTmp) == true)
+            if (Joueur[joueur - 1].Pion[Pion - 1].Position == Depart && Joueur[joueur - 1].Pion[Pion - 1].EstVivant == true)
+            {
+                Joueur[joueur-1].Pion[Pion-1].EstSortie = false;
+            } 
+
+            if (mouvement.Confirmation(Plateau,ref ListeTmp,Joueur[joueur-1].Pion[Pion-1].TmpDeplacement) == true)
             {
                 Joueur[joueur-1].Pion[Pion-1].Position = mouvement.Fin;
-               // if (tour == 1)
-                //{
-               //     ListeDeJoueur[joueur-1].ListePion[Pion-1].EstSortie = false;
-               // }
+
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
                 {
                     Joueur[joueur-1].Pion[Pion-1].EstSortie = true;
@@ -111,18 +118,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
-
-        /*/// <summary>
-        /// trouve c'est le tour à qui
+        /// <summary>
+        /// fait les mouvements du monstres
         /// </summary>
-        /// <returns>Retourne le id du joueur</returns>
-        public virtual int DetermineTour()
+        public virtual void MouvementMonstre()
         {
-            int NumJoueur=0;
+        
+        }
 
-
-            return NumJoueur;
-        }*/
         public override bool Equals(object obj)
         {
             if (obj == null)

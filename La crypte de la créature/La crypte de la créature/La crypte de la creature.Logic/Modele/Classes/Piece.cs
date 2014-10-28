@@ -33,13 +33,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
         /// <summary>
-        /// Fonction de déplacement
-        /// </summary>
-        /// <param name="posDep">Position de départ</param>
-        /// <param name="posFin">Position de Fin</param>
-        public virtual void Deplacer(Position posDep,Position posFin) { }
-
-        /// <summary>
         /// fonction pour déterminer si c'est une piece, un monstre,un pion,une pierre,une case de sang
         /// </summary>
         /// <returns>Retourne la string "Piece"</returns>
