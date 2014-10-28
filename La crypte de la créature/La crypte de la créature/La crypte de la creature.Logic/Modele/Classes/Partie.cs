@@ -48,6 +48,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Plateau = new Plateau();
             Pointage = new List<Pointage>();
             CartesMonstre = new List<CartesMonstre>();
+
+            //met liste pion dans plateau
+            List<Piece> listeTmp= new List<Piece>();
+
+            foreach(Joueur item in Joueur)
+            {
+                listeTmp.AddRange(item.Pion);
+            }
+            Plateau.Piece.AddRange(listeTmp);
         }
 
         /// <summary>
@@ -70,8 +79,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             Historique = new Historique();
             Plateau = new Plateau(type);
-           
 
+            //met liste pion dans plateau
+            List<Piece> listeTmp = new List<Piece>();
+
+            foreach (Joueur item in Joueur)
+            {
+                listeTmp.AddRange(item.Pion);
+            }
+            Plateau.Piece.AddRange(listeTmp);
             
         }
 

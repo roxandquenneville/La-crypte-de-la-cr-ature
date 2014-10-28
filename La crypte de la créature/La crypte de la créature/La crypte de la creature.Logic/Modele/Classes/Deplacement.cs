@@ -234,6 +234,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     PierreSurCaseDeSang(plateau, sens, pierre, ref ListeTmp, ref args);
                 }
                 //arrete sur la case de sang
+                // pion sur un autre pion 
+                // pion pousse roche
                 else
                 {
                     args.deplacement.Fin = args.posTmp;
