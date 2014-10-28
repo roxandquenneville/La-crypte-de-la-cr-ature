@@ -103,7 +103,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             Valide = ConfirmationPierre(plateau, sens, ListeTmp, pTmp[0]);
                             break;
                         case "CaseDeSang":
-                            SurCaseDeSang(plateau, sens, ListeTmp, false);
+
+                                 Position pACote = new Position(Fin.X, Fin.Y);
+                                 Position posTmp = new Position(pACote.X, pACote.Y);
+                                 RetrieveElementPierre args = new RetrieveElementPierre();
+
+                                 args.CasePresent= CasePresent;
+                                 args.pTmp=pTmp;
+                                 args.pACote=pACote;
+                                 args.posTmp=posTmp;
+
+                                 SurCaseDeSang(plateau, sens, ListeTmp, args, tmpDeplacement);
                             break;
                         case "Monstre":
                             return false;
@@ -172,6 +182,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     pierre.Position = pACote;
                     return true;
                 }
+                // on est sur une case de sang
                 else if (pTmp[0].Get_Type() == "CaseDeSang")
                 {
                     args.CasePresent = CasePresent;
@@ -184,6 +195,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
                     return true;
                 }
+                //pousser une pierre sur une pierre/pion/monstre
                 else
                 {
                     ListeTmp.RemoveAt(index - 1);
@@ -246,37 +258,29 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
-        public virtual void SurCaseDeSang(Plateau plateau, string sens, List<Deplacement> ListeTmp, bool recursive)
+        public virtual void SurCaseDeSang(Plateau plateau, string sens, List<Deplacement> ListeTmp, RetrieveElementPierre args, int tmpDeplacement)
         {
-            if (recursive == false)
-            {
-                Position pACote = new Position(Fin.X, Fin.Y);
-                Position posTmp = new Position(pACote.X, pACote.Y);
-                bool CasePresent = true;
-                List<Piece> pTmp = null;
-            }
-
-            posTmp.X = pACote.X;
-            posTmp.Y = pACote.Y;
+            args.posTmp.X = args.pACote.X;
+            args.posTmp.Y = args.pACote.Y;
 
             //change la position de la case à côté
-            ChangePosition(sens, pACote);
+            ChangePosition(sens, args.pACote);
 
             //Vérifie la case
-            CasePresent = plateau.ConfirmationCase(pACote);
+            args.CasePresent = plateau.ConfirmationCase(args.pACote);
 
             //La case n'existe pas ou est externe
             //arrete sur la case de sang
-            if (CasePresent == false)
+            if (args.CasePresent == false)
             {
-                Fin = posTmp;
+                Fin = args.posTmp;
             }
 
-            pTmp = plateau.RetournePiece(pACote);
+            args.pTmp = plateau.RetournePiece(args.pACote);
 
             // pierre et case de sang
             // pion suit la pierre lorsqu'il pousse
-            if ((pTmp).Count() > 1)
+            if ((args.pTmp).Count() > 1)
             {
 
             }
@@ -284,22 +288,43 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 // Tombe sur une case vide
                 // Arrête sur la case à cote de la case de sang
-                if (pTmp.Count() == 0)
+                if (args.pTmp.Count() == 0)
                 {
-                    Fin.X = pACote.X;
-                    Fin.Y = pACote.Y;
+                    Fin.X = args.pACote.X;
+                    Fin.Y = args.pACote.Y;
                 }
-                else if ((pTmp[0]).Get_Type() == "CaseDeSang")
+                else if ((args.pTmp[0]).Get_Type() == "CaseDeSang")
                 {
                     //rappele la fonction
-                    SurCaseDeSang(plateau, sens, ListeTmp, true);
+                    SurCaseDeSang(plateau, sens, ListeTmp, args, tmpDeplacement);
                 }
-                // arrete sur la case de sang
-                // pion sur un autre pion 
-                // pion pousse roche
+                //L'autre coté de la marre de sang il y a une pièce
                 else
                 {
-
+                    if (args.pTmp[0].Get_Type() == "Pion")
+                    {
+                        //Il nous reste des point de déplacement et on fini sur un pion
+                        if (tmpDeplacement > 1)
+                        {
+                            Fin.X = args.pACote.X;
+                            Fin.Y = args.pACote.Y;
+                        }
+                        //si on glisse sur une marre de sang et tombe sur un pion de l'autre côté
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    //On veut piller sur un monstre
+                    else if (args.pTmp[0].Get_Type() == "Monstre")
+                    {
+                        return;
+                    }
+                    // un pion glisse sur une case de sang et fini devant la roche
+                    else
+                    {
+                        
+                    }
                 }
             }
         }
