@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modele\Args\RetrieveCarteMonstreArgs.cs" />
     <Compile Include="Modele\Args\RetrieveCaseArgs.cs" />
     <Compile Include="Modele\Args\RetrieveCaseSangArgs.cs" />
     <Compile Include="Modele\Args\RetrieveElementPierre.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Modele\Classes\Case.cs" />
     <Compile Include="Modele\Classes\CaseDeSang.cs" />
     <Compile Include="Modele\Classes\Compte.cs" />
-    <Compile Include="Modele\Classes\ConstanteGlobale.cs" />
     <Compile Include="Modele\Classes\Deplacement.cs" />
     <Compile Include="Modele\Classes\Historique.cs" />
     <Compile Include="Modele\Classes\Joueur.cs" />
@@ -89,12 +89,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Helpers\MySqlConnexion.cs" />
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />
+    <Compile Include="Services\Interfaces\ICarteMonstreService.cs" />
+    <Compile Include="Services\Interfaces\ICaseSangService.cs" />
+    <Compile Include="Services\Interfaces\ICaseService.cs" />
     <Compile Include="Services\Interfaces\ICompteService.cs" />
     <Compile Include="Services\Interfaces\IDeplacementService.cs" />
     <Compile Include="Services\Interfaces\IHistoriqueService.cs" />
     <Compile Include="Services\Interfaces\IJoueurService.cs" />
+    <Compile Include="Services\Interfaces\IMarreDeSang.cs" />
+    <Compile Include="Services\Interfaces\IMonstreService.cs" />
     <Compile Include="Services\Interfaces\IPartieService.cs" />
-    <Compile Include="Services\Interfaces\IPieceService.cs.cs" />
+    <Compile Include="Services\Interfaces\IPieceService.cs" />
+    <Compile Include="Services\Interfaces\IPierreService.cs" />
+    <Compile Include="Services\Interfaces\IPionService.cs" />
     <Compile Include="Services\Interfaces\IPlateauService.cs" />
     <Compile Include="Services\Interfaces\IPointageService.cs" />
     <Compile Include="Services\Interfaces\IPositionService.cs" />
@@ -116,12 +123,19 @@
     <Compile Include="Services\NHibernate\mappings\PointageMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PositionMap.cs" />
     <Compile Include="Services\NHibernate\mappings\TypePlateauMap.cs" />
+    <Compile Include="Services\NHibernate\NHibernateCarteMonstreService.cs" />
+    <Compile Include="Services\NHibernate\NHibernateCaseSangService.cs" />
+    <Compile Include="Services\NHibernate\NHibernateCaseService.cs" />
     <Compile Include="Services\NHibernate\NHibernateCompteService.cs" />
     <Compile Include="Services\NHibernate\NHibernateDeplacementService.cs" />
     <Compile Include="Services\NHibernate\NHibernateHistoriqueService.cs" />
     <Compile Include="Services\NHibernate\NHibernateJoueurService.cs" />
+    <Compile Include="Services\NHibernate\NHibernateMarreSangService.cs" />
+    <Compile Include="Services\NHibernate\NHibernateMonstreService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePartieService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePieceService.cs" />
+    <Compile Include="Services\NHibernate\NHibernatePierreService.cs" />
+    <Compile Include="Services\NHibernate\NHibernatePionService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePlateauService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePointageService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePositionService.cs" />
