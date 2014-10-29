@@ -23,11 +23,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return valeurDeplacement; }
             set
             {
-                if (value != 0)
+                if (value > 0)
                 {
-
                     valeurDeplacement = value;
                 }
+               TmpDeplacement=ValeurDeplacement;
             }
         }
         public virtual int TmpDeplacement 
