@@ -82,27 +82,27 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
                     if ((Depart.X - Fin.X) > 0)
                     {
-                        sens = "gauche";
+                        sens = ConstanteGlobale.Gauche;
                     }
                     if ((Depart.X - Fin.X) < 0)
                     {
-                        sens = "droite";
+                        sens = ConstanteGlobale.Droite ;
                     }
                     if ((Depart.Y - Fin.Y) > 0)
                     {
-                        sens = "monte";
+                        sens = ConstanteGlobale.Monte;
                     }
                     if ((Depart.Y - Fin.Y) < 0)
                     {
-                        sens = "descend";
+                        sens = ConstanteGlobale.Descend;
                     }
 
                     switch (type)
                     {
-                        case "Pierre":
+                        case ConstanteGlobale.Pierre:
                             Valide = ConfirmationPierre(plateau, sens, ListeTmp, pTmp[0]);
                             break;
-                        case "CaseDeSang":
+                        case ConstanteGlobale.CaseDeSang:
 
                                  Position pACote = new Position(Fin.X, Fin.Y);
                                  Position posTmp = new Position(pACote.X, pACote.Y);
@@ -115,9 +115,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
                                 Valide = SurCaseDeSang(plateau, sens, ListeTmp, args, tmpDeplacement);
                             break;
-                        case "Monstre":
+                        case ConstanteGlobale.Monstre:
                             return false;
-                        case "Pion":
+                        case ConstanteGlobale.Pion:
                             if (tmpDeplacement > 1)
                             {
                                 return true;
@@ -181,7 +181,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     return true;
                 }
                 // on est sur une case de sang
-                else if (pTmp[0].Get_Type() == "CaseDeSang")
+                else if (pTmp[0].Get_Type() == ConstanteGlobale.CaseDeSang)
                 {
                     args.CasePresent = CasePresent;
                     args.index = index;
@@ -242,7 +242,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     pierre.Position.X = args.pACote.X;
                     pierre.Position.Y = args.pACote.Y;
                 }
-                else if ((args.pTmp[0]).Get_Type() == "CaseDeSang")
+                else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CaseDeSang)
                 {
                     //rappele la fonction
                     PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
@@ -298,7 +298,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     Fin.Y = args.pACote.Y;
                     Valide= true;
                 }
-                else if ((args.pTmp[0]).Get_Type() == "CaseDeSang")
+                else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CaseDeSang)
                 {
                     //rappele la fonction
                     SurCaseDeSang(plateau, sens, ListeTmp, args, tmpDeplacement);
@@ -306,7 +306,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 //L'autre coté de la marre de sang il y a une pièce
                 else
                 {
-                    if (args.pTmp[0].Get_Type() == "Pion")
+                    if (args.pTmp[0].Get_Type() == ConstanteGlobale.Pion)
                     {
                         //Il nous reste des point de déplacement et on fini sur un pion
                         if (tmpDeplacement > 1)
@@ -322,7 +322,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         }
                     }
                     //On veut piller sur un monstre
-                    else if (args.pTmp[0].Get_Type() == "Monstre")
+                    else if (args.pTmp[0].Get_Type() == ConstanteGlobale.Monstre)
                     {
                         Valide=false;
                     }
@@ -359,16 +359,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             string test = sens;
             switch (test)
             {
-                case "gauche":
+                case ConstanteGlobale.Gauche:
                     pACote.X = pACote.X - 1;
                     break;
-                case "droite":
+                case ConstanteGlobale.Droite:
                     pACote.X = pACote.X + 1;
                     break;
-                case "monte":
+                case ConstanteGlobale.Monte:
                     pACote.Y = pACote.Y - 1;
                     break;
-                case "descend":
+                case ConstanteGlobale.Descend:
                     pACote.Y = pACote.Y + 1;
                     break;
             }

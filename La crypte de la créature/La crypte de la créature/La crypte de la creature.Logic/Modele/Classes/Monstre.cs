@@ -18,7 +18,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return orientation; }
             set 
             {
-                if (value > 0 && value < 4)
+                if (value > -1 && value < 4)
                 {
                     orientation = value;
                 }
@@ -60,7 +60,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Retourne le type
         /// </summary>
         /// <returns>Retourne la string "Monstre"</returns>
-        public override string Get_Type() { return "Monstre"; }
+        public override string Get_Type() { return ConstanteGlobale.Monstre ; }
 
         public override bool Equals(object obj)
         {

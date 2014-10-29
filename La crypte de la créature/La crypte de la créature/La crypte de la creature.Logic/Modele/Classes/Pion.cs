@@ -76,7 +76,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Retourne le type
         /// </summary>
         /// <returns>Retourne la string "Pion"</returns>
-        public override string Get_Type() { return "Pion"; }
+        public override string Get_Type() { return ConstanteGlobale.Pion; }
 
 
         public override bool Equals(object obj)

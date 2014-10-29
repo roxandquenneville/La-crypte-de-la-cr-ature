@@ -64,6 +64,7 @@
     <Compile Include="Modele\Classes\Case.cs" />
     <Compile Include="Modele\Classes\CaseDeSang.cs" />
     <Compile Include="Modele\Classes\Compte.cs" />
+    <Compile Include="Modele\Classes\ConstanteGlobale.cs" />
     <Compile Include="Modele\Classes\Deplacement.cs" />
     <Compile Include="Modele\Classes\Historique.cs" />
     <Compile Include="Modele\Classes\Joueur.cs" />

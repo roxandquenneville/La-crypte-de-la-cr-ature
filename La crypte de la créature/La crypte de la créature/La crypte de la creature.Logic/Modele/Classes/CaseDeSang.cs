@@ -32,7 +32,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Retourne le type
         /// </summary>
         /// <returns>Retourne la string "CaseDeSang"</returns>
-        public override string Get_Type() { return "CaseDeSang"; }
+        public override string Get_Type() { return ConstanteGlobale.CaseDeSang; }
 
 
         /// <summary>

@@ -208,6 +208,22 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return tmp;
         }
 
+        /// <summary>
+        /// Retourne la piece monstre
+        /// </summary>
+        /// <returns>Si il retourne null le monstre n'est pas dans le plateau</returns>
+        public virtual Monstre RetourneMonstre()
+        {
+            foreach (Piece item in Piece)
+            {
+                if (item.Get_Type() == "Monstre")
+                {
+                    return (Monstre)item;
+                }
+            }
+            return null;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

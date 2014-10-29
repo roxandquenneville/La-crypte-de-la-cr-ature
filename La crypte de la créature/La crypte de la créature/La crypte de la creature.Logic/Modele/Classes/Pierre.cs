@@ -39,7 +39,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Retourne le type
         /// </summary>
         /// <returns>Retourne la string "Pierre"</returns>
-        public override string Get_Type() { return "Pierre"; }
+        public override string Get_Type() { return ConstanteGlobale.Pierre; }
 
 
         /// <summary>

@@ -111,22 +111,28 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             mouvement.Depart = Joueur[joueur - 1].Pion[pion - 1].Position;
             mouvement.Fin = Final;
 
+            //Pour mettre le pion sur le plateau
             if (Joueur[joueur - 1].Pion[pion - 1].Position == Depart && Joueur[joueur - 1].Pion[pion - 1].EstVivant == true)
             {
                 Joueur[joueur - 1].Pion[pion - 1].EstSortie = false;
             }
 
+            // vérifie le mouvement
             if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion - 1].TmpDeplacement) == true)
             {
+                // change la position du pion
                 Joueur[joueur - 1].Pion[pion - 1].Position = mouvement.Fin;
 
+                // Vérifie si le pion est dans la sortie
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
                 {
                     Joueur[joueur - 1].Pion[pion - 1].EstSortie = true;
                     Pointage[joueur - 1].Point++;
                 }
+                //Réduit de 1 les points de déplacement
                 Joueur[joueur - 1].Pion[pion - 1].TmpDeplacement--;
             }
+            //Le mouvement n'est pas valide
             else
             {
                 Joueur[joueur - 1].Pion[pion - 1].Position = mouvement.Depart;
@@ -160,7 +166,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 foreach(Piece item in pTmp)
                 {
                     // Vérifie si il a deux pions
-                   if(item.Get_Type() == "Pion")
+                   if(item.Get_Type() == ConstanteGlobale.Pion)
                    {
                         compteur ++;
                    }
@@ -189,10 +195,34 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
         /// <summary>
-        /// fait les mouvements du monstres
+        /// Fait les mouvements du monstres
         /// </summary>
         public virtual void MouvementMonstre()
         {
+            Monstre monstre= null;
+            String sens;
+
+            monstre=Plateau.RetourneMonstre();
+
+            if(!(monstre == null))
+            {
+                switch(monstre.Orientation)
+                {
+                    case 1: 
+                        sens = ConstanteGlobale.Gauche;
+                        break;
+                    case 2:
+                        sens = ConstanteGlobale.Monte;
+                        break;
+                    case 3:
+                        sens = ConstanteGlobale.Droite;
+                        break;
+                    case 4:
+                        sens = ConstanteGlobale.Descend;
+                        break;
+                }
+
+            }
 
         }
 
