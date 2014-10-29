@@ -60,7 +60,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Retourne le type
         /// </summary>
         /// <returns>Retourne la string "Monstre"</returns>
-        public override string Get_Type() { return ConstanteGlobale.Monstre ; }
+        public override string Get_Type() { return ConstanteGlobale.MONSTRE ; }
 
         public override bool Equals(object obj)
         {
