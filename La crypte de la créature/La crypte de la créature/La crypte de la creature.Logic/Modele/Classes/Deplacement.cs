@@ -63,7 +63,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             pTmp = plateau.RetournePiece(Fin);
 
-            // pierre et case de sang gérer plus tard
+            // piece et case de sang gérer plus tard
             if (pTmp.Count > 1)
             {
 
@@ -169,11 +169,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             if (pTmp.Count > 1)
             {
                 return false;
-
             }
             else
             {
-
                 //il n'y a pas de piece
                 if (pTmp.Count() == 0)
                 {
@@ -226,11 +224,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             args.pTmp = plateau.RetournePiece(args.pACote);
 
-            // pierre et case de sang
-            // pion suit la pierre lorsqu'il pousse
+            // il y a une piece sur la case de sang
+            // la pierre qui a été pousser s'arrête sur la case de sang a cote de la piece
             if ((args.pTmp).Count() > 1)
             {
-
+                args.deplacement.Fin = args.posTmp;
+                pierre.Position.X = args.posTmp.X;
+                pierre.Position.Y = args.posTmp.Y;
             }
             else
             {
@@ -248,12 +248,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
                 }
                 // arrete sur la case de sang
-                // pion sur un autre pion 
-                // pion pousse roche
+                // pion pousse roche elle arrête sur la case de sang
+                // ,car il y a une piece de l'autre côté
                 else
                 {
                     args.deplacement.Fin = args.posTmp;
-                    pierre.Position = args.posTmp;
+                    pierre.Position.X = args.posTmp.X;
+                    pierre.Position.Y = args.posTmp.Y;
                 }
             }
         }
@@ -281,7 +282,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             args.pTmp = plateau.RetournePiece(args.pACote);
 
-            // pierre et case de sang
+            // piece et case de sang
             // pion suit la pierre lorsqu'il pousse
             if ((args.pTmp).Count() > 1)
             {
