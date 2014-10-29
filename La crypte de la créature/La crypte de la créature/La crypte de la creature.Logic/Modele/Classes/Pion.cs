@@ -67,7 +67,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <summary>
         /// Change la valeurDeplacement
         /// </summary>
-        void CalculerFace() 
+        public virtual void CalculerFace() 
         {
             ValeurDeplacement = MAXDEPLACEMENT - ValeurDeplacement;
         }

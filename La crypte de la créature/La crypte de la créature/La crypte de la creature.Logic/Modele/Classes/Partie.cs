@@ -99,7 +99,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="Pion">Numéro du pion</param>
         /// <param name="Final">Position final</param>
         /// <returns>Retourne un mouvement</returns>
-        public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int Pion, Position Final)
+        public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion, Position Final)
         {
             //Pour supprimer le mouvement
             int index;
@@ -108,30 +108,84 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
 
-            mouvement.Depart = Joueur[joueur - 1].Pion[Pion - 1].Position;
+            mouvement.Depart = Joueur[joueur - 1].Pion[pion - 1].Position;
             mouvement.Fin = Final;
 
-            if (Joueur[joueur - 1].Pion[Pion - 1].Position == Depart && Joueur[joueur - 1].Pion[Pion - 1].EstVivant == true)
+            if (Joueur[joueur - 1].Pion[pion - 1].Position == Depart && Joueur[joueur - 1].Pion[pion - 1].EstVivant == true)
             {
-                Joueur[joueur - 1].Pion[Pion - 1].EstSortie = false;
+                Joueur[joueur - 1].Pion[pion - 1].EstSortie = false;
             }
 
-            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[Pion - 1].TmpDeplacement) == true)
+            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion - 1].TmpDeplacement) == true)
             {
-                Joueur[joueur - 1].Pion[Pion - 1].Position = mouvement.Fin;
+                Joueur[joueur - 1].Pion[pion - 1].Position = mouvement.Fin;
 
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
                 {
-                    Joueur[joueur - 1].Pion[Pion - 1].EstSortie = true;
+                    Joueur[joueur - 1].Pion[pion - 1].EstSortie = true;
                     Pointage[joueur - 1].Point++;
                 }
-                Joueur[joueur - 1].Pion[Pion - 1].TmpDeplacement--;
+                Joueur[joueur - 1].Pion[pion - 1].TmpDeplacement--;
             }
             else
             {
-                Joueur[joueur - 1].Pion[Pion - 1].Position = mouvement.Depart;
+                Joueur[joueur - 1].Pion[pion - 1].Position = mouvement.Depart;
                 ListeTmp.RemoveAt(index - 1);
             }
+        }
+
+        /// <summary>
+        /// Lorsqu'on clique sur confirmer, ajoute la liste temporaire dans l'historique
+        /// </summary>
+        /// <param name="ListeTmp">Liste de déplacement</param>
+        /// <param name="joueur">Le numéro de joueur</param>
+        /// <param name="pion">Numéro du pion</param>
+        /// <returns>Si retourne false le mouvement est illégal,reload les info de la bd
+        /// sinon si il est true le mouvement est confirmer on peu ajouter à la bd</returns>
+        public virtual bool ConfirmerDeplacementPion(List<Deplacement> ListeTmp, int joueur, int pion)
+        {
+            Position tmp = new Position();
+            List<Piece> pTmp = null;
+
+            tmp = Joueur[joueur-1].Pion[pion-1].Position ;
+
+
+            pTmp=Plateau.RetournePiece(tmp);
+
+            // si il y plus d'un piece sur la meme position
+            if (pTmp.Count > 1)
+            {
+                int compteur=0;
+
+                foreach(Piece item in pTmp)
+                {
+                    // Vérifie si il a deux pions
+                   if(item.Get_Type() == "Pion")
+                   {
+                        compteur ++;
+                   }
+                }
+                // Il y a deux pion
+                if (compteur > 1) 
+                { 
+                    return false;
+                }
+                //Le pion est arrêter sur une case de sang
+                else
+                {
+                    Historique.Deplacement.AddRange(ListeTmp);
+                    Joueur[joueur - 1].Pion[pion - 1].CalculerFace();
+                    return true;
+                }
+            }
+            // Il y a seulement le pion à cette position
+            else
+            {
+                Historique.Deplacement.AddRange(ListeTmp);
+                Joueur[joueur-1].Pion[pion-1].CalculerFace();
+                return true;
+            }
+
         }
 
         /// <summary>
