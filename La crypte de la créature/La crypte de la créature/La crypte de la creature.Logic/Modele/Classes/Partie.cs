@@ -166,7 +166,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 foreach(Piece item in pTmp)
                 {
                     // Vérifie si il a deux pions
-                   if(item.Get_Type() == ConstanteGlobale.Pion)
+                   if(item.Get_Type() == ConstanteGlobale.PION)
                    {
                         compteur ++;
                    }
@@ -209,16 +209,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 switch(monstre.Orientation)
                 {
                     case 1: 
-                        sens = ConstanteGlobale.Gauche;
+                        sens = ConstanteGlobale.GAUCHE;
                         break;
                     case 2:
-                        sens = ConstanteGlobale.Monte;
+                        sens = ConstanteGlobale.MONTE;
                         break;
                     case 3:
-                        sens = ConstanteGlobale.Droite;
+                        sens = ConstanteGlobale.DROITE;
                         break;
                     case 4:
-                        sens = ConstanteGlobale.Descend;
+                        sens = ConstanteGlobale.DESCEND;
                         break;
                 }
 

@@ -8,13 +8,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public static class ConstanteGlobale
     {
-        public static const String Monstre = "Monstre";
-        public static const String Pion = "Pion";
-        public static const String Pierre = "Pierre";
-        public static const String CaseDeSang = "CaseDeSang";
-        public static const String Monte = "Monte";
-        public static const String Droite = "Droite";
-        public static const String Gauche = "Gauche";
-        public static const String Descend = "Descend";
+        public const String MONSTRE = "Monstre";
+        public const String PION = "Pion";
+        public const String PIERRE = "Pierre";
+        public const String CASEDESANG = "CaseDeSang";
+        public const String MONTE = "Monte";
+        public const String DROITE = "Droite";
+        public const String GAUCHE = "Gauche";
+        public const String DESCEND = "Descend";
     }
 }
