@@ -50,12 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modele\Args\RetrieveCaseArgs.cs" />
+    <Compile Include="Modele\Args\RetrieveCaseSangArgs.cs" />
     <Compile Include="Modele\Args\RetrieveElementPierre.cs" />
     <Compile Include="Modele\Args\RetrieveCompteArgs.cs" />
     <Compile Include="Modele\Args\RetrieveDeplacementArgs.cs" />
     <Compile Include="Modele\Args\RetrieveHistoriqueArgs.cs" />
     <Compile Include="Modele\Args\RetrieveJoueurArgs.cs" />
+    <Compile Include="Modele\Args\RetrieveMarreSangArgs.cs" />
+    <Compile Include="Modele\Args\RetrieveMonstreArgs.cs" />
     <Compile Include="Modele\Args\RetrievePartieArgs.cs" />
+    <Compile Include="Modele\Args\RetrievePieceArgs.cs" />
+    <Compile Include="Modele\Args\RetrievePierreArgs.cs" />
+    <Compile Include="Modele\Args\RetrievePionArgs.cs" />
     <Compile Include="Modele\Args\RetrievePlateauArgs.cs" />
     <Compile Include="Modele\Args\RetrievePointageArgs.cs" />
     <Compile Include="Modele\Args\RetrievePositionArgs.cs" />
@@ -87,6 +94,7 @@
     <Compile Include="Services\Interfaces\IHistoriqueService.cs" />
     <Compile Include="Services\Interfaces\IJoueurService.cs" />
     <Compile Include="Services\Interfaces\IPartieService.cs" />
+    <Compile Include="Services\Interfaces\IPieceService.cs.cs" />
     <Compile Include="Services\Interfaces\IPlateauService.cs" />
     <Compile Include="Services\Interfaces\IPointageService.cs" />
     <Compile Include="Services\Interfaces\IPositionService.cs" />
@@ -113,6 +121,7 @@
     <Compile Include="Services\NHibernate\NHibernateHistoriqueService.cs" />
     <Compile Include="Services\NHibernate\NHibernateJoueurService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePartieService.cs" />
+    <Compile Include="Services\NHibernate\NHibernatePieceService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePlateauService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePointageService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePositionService.cs" />
