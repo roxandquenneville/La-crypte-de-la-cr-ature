@@ -15,6 +15,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int ValeurDeplacement { get; set; }
         public virtual bool Utilise { get; set; }
          #endregion
+
         /// <summary>
         /// constructeur vide de CartesMonstre
         /// </summary>

@@ -16,5 +16,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public const String DROITE = "Droite";
         public const String GAUCHE = "Gauche";
         public const String DESCEND = "Descend";
+        public const int[] VALEURDEPLACEMENTMONSTRE ={5,5,7,7,8,8,10,10};
     }
 }
