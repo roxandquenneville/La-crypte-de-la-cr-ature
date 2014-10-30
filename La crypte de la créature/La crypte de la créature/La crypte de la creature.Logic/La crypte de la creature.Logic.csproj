@@ -58,7 +58,7 @@
     <Compile Include="Modele\Args\RetrieveDeplacementArgs.cs" />
     <Compile Include="Modele\Args\RetrieveHistoriqueArgs.cs" />
     <Compile Include="Modele\Args\RetrieveJoueurArgs.cs" />
-    <Compile Include="Modele\Args\RetrieveMarreSangArgs.cs" />
+    <Compile Include="Modele\Args\RetrieveMareSangArgs.cs" />
     <Compile Include="Modele\Args\RetrieveMonstreArgs.cs" />
     <Compile Include="Modele\Args\RetrievePartieArgs.cs" />
     <Compile Include="Modele\Args\RetrievePieceArgs.cs" />
@@ -76,7 +76,7 @@
     <Compile Include="Modele\Classes\Deplacement.cs" />
     <Compile Include="Modele\Classes\Historique.cs" />
     <Compile Include="Modele\Classes\Joueur.cs" />
-    <Compile Include="Modele\Classes\MarreDeSang.cs" />
+    <Compile Include="Modele\Classes\MareDeSang.cs" />
     <Compile Include="Modele\Classes\Monstre.cs" />
     <Compile Include="Modele\Classes\Partie.cs" />
     <Compile Include="Modele\Classes\Piece.cs" />
@@ -97,7 +97,7 @@
     <Compile Include="Services\Interfaces\IDeplacementService.cs" />
     <Compile Include="Services\Interfaces\IHistoriqueService.cs" />
     <Compile Include="Services\Interfaces\IJoueurService.cs" />
-    <Compile Include="Services\Interfaces\IMarreDeSang.cs" />
+    <Compile Include="Services\Interfaces\IMareDeSang.cs" />
     <Compile Include="Services\Interfaces\IMonstreService.cs" />
     <Compile Include="Services\Interfaces\IPartieService.cs" />
     <Compile Include="Services\Interfaces\IPieceService.cs" />
@@ -131,7 +131,7 @@
     <Compile Include="Services\NHibernate\NHibernateDeplacementService.cs" />
     <Compile Include="Services\NHibernate\NHibernateHistoriqueService.cs" />
     <Compile Include="Services\NHibernate\NHibernateJoueurService.cs" />
-    <Compile Include="Services\NHibernate\NHibernateMarreSangService.cs" />
+    <Compile Include="Services\NHibernate\NHibernateMareSangService.cs" />
     <Compile Include="Services\NHibernate\NHibernateMonstreService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePartieService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePieceService.cs" />
