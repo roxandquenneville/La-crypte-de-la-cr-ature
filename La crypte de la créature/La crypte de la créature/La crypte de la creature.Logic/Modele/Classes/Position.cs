@@ -19,7 +19,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return x; }
             set 
             { 
-                if(value>=0)
+                if(value>=0 && value < 16)
                 {
                  x = value;
                 }
@@ -32,7 +32,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return y; }
             set
             {
-                if (value >= 0)
+                if (value >= 0 && value <11)
                 {
                     y = value;
                 }
