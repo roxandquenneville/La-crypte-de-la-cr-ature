@@ -79,20 +79,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 {
                     type = pTmp[0].Get_Type();
                     string sens = "";
-
                     if ((Depart.X - Fin.X) > 0)
                     {
                         sens = ConstanteGlobale.GAUCHE;
-                    }
-                    if ((Depart.X - Fin.X) < 0)
+                    } 
+                    else if ((Depart.X - Fin.X) < 0)
                     {
                         sens = ConstanteGlobale.DROITE;
                     }
-                    if ((Depart.Y - Fin.Y) > 0)
+                    else if ((Depart.Y - Fin.Y) > 0)
                     {
                         sens = ConstanteGlobale.MONTE;
                     }
-                    if ((Depart.Y - Fin.Y) < 0)
+                    else if ((Depart.Y - Fin.Y) < 0)
                     {
                         sens = ConstanteGlobale.DESCEND;
                     }

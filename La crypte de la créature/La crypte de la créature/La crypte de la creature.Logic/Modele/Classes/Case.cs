@@ -68,7 +68,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 return;
             }
 
-            if (interieur == true)
+            if (interieur)
             {
                 Url = "../La crypte de la créature/Images/CaseNormale.png";
                 return;
