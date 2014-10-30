@@ -10,14 +10,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     {
         #region attribut
 
-        private int tourJoueur;
-
+        private int tourJoueur;        
         public virtual int? idPartie { get; set; }
         public virtual Plateau Plateau { get; set; }
         public virtual Historique Historique { get; set; }
         public virtual List<Pointage> Pointage { get; set; }
         public virtual List<CartesMonstre> CartesMonstre { get; set; }
-        public virtual List<Joueur> Joueur { get; set; }
+        public virtual List<Joueur> Joueur { get;  set; }
 
 
         public virtual int TourJoueur
@@ -129,6 +128,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Position Depart = new Position();
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
+
+            
 
             mouvement.Depart = Joueur[joueur - 1].Pion[pion - 1].Position;
             mouvement.Fin = Final;

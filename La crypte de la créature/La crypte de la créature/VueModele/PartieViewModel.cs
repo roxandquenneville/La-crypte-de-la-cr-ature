@@ -36,7 +36,7 @@ namespace La_crypte_de_la_creature.VueModele
 
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
-            Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
+       //     Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
             
 
             RetrieveJoueurArgs = new RetrieveJoueurArgs();
@@ -45,7 +45,7 @@ namespace La_crypte_de_la_creature.VueModele
 
 
             Plateau = new Plateau();
-            Partie = new Partie();
+            Partie = new Partie(1,2,new TypePlateau ("Normal"));
             
 
         }

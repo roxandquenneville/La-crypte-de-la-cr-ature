@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.VueModele;
 
+
 namespace La_crypte_de_la_creature.Vue
 {
     /// <summary>
@@ -25,7 +26,8 @@ namespace La_crypte_de_la_creature.Vue
     {
 
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
-
+        public List<Deplacement> tmpList = new List<Deplacement>();
+        public Position PositionDeplacement = new Position();
         public UCPlateau()
         {
             InitializeComponent();
@@ -37,33 +39,56 @@ namespace La_crypte_de_la_creature.Vue
         private void WindowsLoaded(Object o ,RoutedEventArgs e)
         {
              lblNomUsager.Content = UtilisateurConnecte.nomUsager;
-             this.Focusable  = true;
-             //this.Focus;
-            
+             this.Focusable  = true;  
+        }
+
+        private void GridJeu_Loaded(object sender, RoutedEventArgs e)
+        {
+            GridJeu.Focus();
         }
    
-        private void Form_keyDown(Object sender, System.Windows.Forms.KeyEventArgs e, System.Windows.Forms.KeyEventHandler h)
+        public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            if (e.Key == Key.Left)
+            {
+                PositionDeplacement.Y= Grid.GetRow(imgPion);
+                PositionDeplacement.X = Grid.GetColumn (imgPion)-1;
+                PartieViewModel.Partie.DeplacementDePion(tmpList,1,1,PositionDeplacement);               
+                
+                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
+            }
+            if (e.Key == Key.Right)
+            {
 
-            if(e.KeyCode == Keys.Left)
-            {               
-               Grid.SetColumn(imgPion, (Grid.GetColumn(imgPion)-1));
+                PositionDeplacement.Y = Grid.GetRow(imgPion);
+                PositionDeplacement.X = Grid.GetColumn(imgPion) + 1;
+                PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
+
+                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
+                
             }
-            if (e.KeyCode == Keys.Right)
+            if (e.Key == Key.Up)
             {
-                Grid.SetColumn(imgPion, (Grid.GetColumn(imgPion) +1));
+                PositionDeplacement.Y = Grid.GetRow(imgPion)-1;
+                PositionDeplacement.X = Grid.GetColumn(imgPion);
+                PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
+
+                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
             }
-            if (e.KeyCode == Keys.Up)
+            if (e.Key == Key.Down)
             {
-                Grid.SetColumn(imgPion, (Grid.GetColumn(imgPion) - 1));
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                Grid.SetColumn(imgPion, (Grid.GetColumn(imgPion) + 1));
+                PositionDeplacement.Y = Grid.GetRow(imgPion) + 1;
+                PositionDeplacement.X = Grid.GetColumn(imgPion);
+                PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
+
+                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
             } 
         }
 
-       
 
     }
 }

@@ -32,14 +32,14 @@
             </Label.Effect>
         </Label>
         <TextBox Background="AliceBlue" Margin="78,65,72,10" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding RetrieveArgs.motDePasse}" />
-        <Button Grid.Column="0" Grid.Row="2" Margin="71,10,10,60" Content="Connexion" IsDefault="True" Click="Btn_Connexion"  />
-        <Button Grid.Column="1" Grid.Row="2" Margin="10,10,72,60" Content="Quitter" Click="Btn_Quitter" IsCancel="True" />
-        <Label Grid.Column="0" Grid.Row="2" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="2" Margin="100,59,112,-59" MouseDown="Lbl_Click"  >
+        <Button  Height="30" Width="70" Grid.Column="0" Grid.Row="2" Margin="0,10,9,0" Content="Connexion" IsDefault="True" Click="Btn_Connexion" HorizontalAlignment="Right" VerticalAlignment="Top"  />
+        <Button Height="30" Width="70" Grid.Column="1" Grid.Row="2" Margin="10,10,0,0" Content="Quitter" Click="Btn_Quitter" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Grid.Column="0" Grid.Row="2" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="2" Margin="105,45,107,-45" MouseDown="Lbl_Click"  >
             <Label.Effect>
                 <DropShadowEffect BlurRadius="0" ShadowDepth="1" Color="White"/>
             </Label.Effect>
         </Label>
     </Grid>
 
-    
+
 </UserControl>

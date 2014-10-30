@@ -22,7 +22,6 @@ C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créat
 C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\FluentNHibernate.xml
 C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\Iesi.Collections.xml
 C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\NHibernate.xml
-D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la creature.Logic.csprojResolveAssemblyReference.cache
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\La crypte de la créature.Logic.dll
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\La crypte de la créature.Logic.pdb
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\Cstj.MvvmToolkit.dll
@@ -33,5 +32,6 @@ D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\FluentNHibernate.xml
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\Iesi.Collections.xml
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\bin\Debug\NHibernate.xml
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la creature.Logic.csprojResolveAssemblyReference.cache
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la créature.Logic.dll
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\La crypte de la creature.Logic\obj\Debug\La crypte de la créature.Logic.pdb

@@ -48,7 +48,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Position()
         {
             X = 15;
-            Y = 11;
+            Y = 10;
         }
 
         /// <summary>
