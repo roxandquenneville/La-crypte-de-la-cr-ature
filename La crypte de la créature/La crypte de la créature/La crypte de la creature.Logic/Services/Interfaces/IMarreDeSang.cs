@@ -8,12 +8,12 @@ using La_crypte_de_la_creature.Logic.Modele.Args;
 
 namespace La_crypte_de_la_creature.Logic.Services.Interfaces
 {
-    public interface IMarreSangService
+    public interface IMareSangService
     {
-        IList<MarreDeSang> RetrieveAll();
-        MarreDeSang Retrieve(RetrieveMarreSangArgs args);
-        void Create(MarreDeSang c);
-        void Update(MarreDeSang c);
-        void Delete(MarreDeSang c);
+        IList<MareDeSang> RetrieveAll();
+        MareDeSang Retrieve(RetrieveMareSangArgs args);
+        void Create(MareDeSang c);
+        void Update(MareDeSang c);
+        void Delete(MareDeSang c);
     }
 }

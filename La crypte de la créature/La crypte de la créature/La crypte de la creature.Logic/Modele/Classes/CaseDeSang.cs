@@ -10,7 +10,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     {
         
         public virtual int? idCaseDeSang { get { return base.idPiece; } set { base.idPiece = value; } }
-        public virtual MarreDeSang MarreDeSang { get; set;}
+        public virtual MareDeSang MareDeSang { get; set;}
 
 
         /// <summary>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Args
 {
-    public class RetrieveMarreSangArgs
+    public class RetrieveMareSangArgs
     {
-        public int idMarre { get; set; }
+        public int idMare { get; set; }
         public string forme { get; set; }
     }
 }

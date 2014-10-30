@@ -10,6 +10,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Args
     {
         public int idSang { get; set; }
         public int idPiece { get; set; }
-        public int idMarre { get; set; }
+        public int idMare { get; set; }
     }
 }

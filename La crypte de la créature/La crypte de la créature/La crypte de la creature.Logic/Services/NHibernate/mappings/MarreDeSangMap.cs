@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
 {
-    public class MarreDeSangMap : ClassMap<MarreDeSang>
+    public class MareDeSangMap : ClassMap<MareDeSang>
     {
-        public MarreDeSangMap()
+        public MareDeSangMap()
         {
-              Table("marresDeSang");
+              Table("MaresDeSang");
               LazyLoad();
-              Id(x => x.idMarreDeSang)
-                .Column("idMarre")
+              Id(x => x.idMareDeSang)
+                .Column("idMare")
                 .CustomType("Int32")
                 .Access.Property()
                 .CustomSqlType("INTEGER")
@@ -27,12 +27,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
-			  HasMany<MarreDeSang>(x => x.idMarreDeSang)
+			  HasMany<MareDeSang>(x => x.idMareDeSang)
                 .Not.LazyLoad()
                 .Access.Property()
                 .Cascade.All()
                 .Inverse()
-                .KeyColumns.Add("idMarre", map => map.Name("idMarre")
+                .KeyColumns.Add("idMare", map => map.Name("idMare")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
 				

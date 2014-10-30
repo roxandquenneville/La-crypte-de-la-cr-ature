@@ -13,27 +13,27 @@ using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
-    public class NHibernateMarreDeSangService : IMarreSangService
+    public class NHibernateMareDeSangService : IMareSangService
     {
         private ISession session = NHibernateConnexion.OpenSession();
-        #region IMarreDeSangService Members
+        #region IMareDeSangService Members
 
-        public IList<MarreDeSang> RetrieveAll()
+        public IList<MareDeSang> RetrieveAll()
         {
-            return session.Query<MarreDeSang>().ToList();
+            return session.Query<MareDeSang>().ToList();
         }
 
-        public MarreDeSang Retrieve(RetrieveMarreSangArgs args)
+        public MareDeSang Retrieve(RetrieveMareSangArgs args)
         {
-            var result = from p in session.Query<MarreDeSang>()
-                         where p.idMarreDeSang == args.idMarre
+            var result = from p in session.Query<MareDeSang>()
+                         where p.idMareDeSang == args.idMare
                          select p;
 
             return result.FirstOrDefault();
 
         }
 
-        public void Create(MarreDeSang p)
+        public void Create(MareDeSang p)
         {
             using (var transaction = session.BeginTransaction())
             {
@@ -42,7 +42,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
             }
         }
 
-        public void Update(MarreDeSang p)
+        public void Update(MareDeSang p)
         {
             using (var transaction = session.BeginTransaction())
             {
@@ -51,7 +51,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
             }
         }
 
-        public void Delete(MarreDeSang p)
+        public void Delete(MareDeSang p)
         {
             using (var transaction = session.BeginTransaction())
             {

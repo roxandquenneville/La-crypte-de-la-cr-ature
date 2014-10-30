@@ -303,7 +303,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     //rappele la fonction
                     SurCaseDeSang(plateau, sens, ListeTmp, args, tmpDeplacement);
                 }
-                //L'autre coté de la marre de sang il y a une pièce
+                //L'autre coté de la Mare de sang il y a une pièce
                 else
                 {
                     if (args.pTmp[0].Get_Type() == ConstanteGlobale.PION)
@@ -315,7 +315,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             Fin.Y = args.pACote.Y;
                             Valide= true;
                         }
-                        //si on glisse sur une marre de sang et tombe sur un pion de l'autre côté
+                        //si on glisse sur une Mare de sang et tombe sur un pion de l'autre côté
                         else
                         {
                             Valide= false;
