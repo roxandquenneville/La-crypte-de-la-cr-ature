@@ -234,7 +234,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 switch(monstre.Orientation)
                 {
                     case 1: 
-                        sens = ConstanteGlobale.GAUCHE;
+                        monstre.VisionMonstre(sens,Plateau);
                         break;
                     case 2:
                         sens = ConstanteGlobale.MONTE;

@@ -150,7 +150,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             index = ListeTmp.Count();
 
 
-            ChangePosition(sens, pACote);
+            pACote.ChangePosition(sens);
             //Vérifie la case
             CasePresent = plateau.ConfirmationCase(pACote);
 
@@ -208,7 +208,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             args.posTmp.Y = args.pACote.Y;
 
             //change la position de la case à côté
-            ChangePosition(sens, args.pACote);
+            args.pACote.ChangePosition(sens);
 
             //Vérifie la case
             args.CasePresent = plateau.ConfirmationCase(args.pACote);
@@ -266,7 +266,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             args.posTmp.Y = args.pACote.Y;
 
             //change la position de la case à côté
-            ChangePosition(sens, args.pACote);
+            args.pACote.ChangePosition(sens);
 
             //Vérifie la case
             args.CasePresent = plateau.ConfirmationCase(args.pACote);
@@ -345,57 +345,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 }
             }
             return Valide;
-        }
-
-        public virtual void Monstre(string sens,Plateau plateau,Monstre monstre)
-        {
-            //     - - - -  -    - - - - 
-            //     - - - -  -    - - - -
-            //     - - - - M(m) - - - -
-            //     - - - -  -    - - - - 
-            //     - - - -  -    - - - -
-
-            Position tmp= new Position();
-            tmp = monstre.Position;
-           
-
-            switch (sens)
-            {
-                case ConstanteGlobale.MONTE:
-                    while (tmp.X > -1)
-                    {
-                        ChangePosition(ConstanteGlobale.GAUCHE,tmp);
-                    }
-                    break;
-
-            }
-
-        }
-
-        /// <summary>
-        /// Permet de changer la position diriger selon le sens
-        /// </summary>
-        /// <param name="sens">sens droite gauche monte descent</param>
-        /// <param name="pACote">Position à modifier</param>
-        /// <returns>Retourne la nouvelle position</returns>
-        public virtual void ChangePosition(string sens, Position pACote)
-        {
-            string test = sens;
-            switch (test)
-            {
-                case ConstanteGlobale.GAUCHE:
-                    pACote.X = pACote.X - 1;
-                    break;
-                case ConstanteGlobale.DROITE:
-                    pACote.X = pACote.X + 1;
-                    break;
-                case ConstanteGlobale.MONTE:
-                    pACote.Y = pACote.Y - 1;
-                    break;
-                case ConstanteGlobale.DESCEND:
-                    pACote.Y = pACote.Y + 1;
-                    break;
-            }
         }
 
         public override bool Equals(object obj)

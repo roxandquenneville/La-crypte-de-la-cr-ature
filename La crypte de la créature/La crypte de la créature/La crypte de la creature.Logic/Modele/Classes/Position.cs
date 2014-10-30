@@ -63,6 +63,32 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Y=posY;
         }
 
+        /// <summary>
+        /// Permet de changer la position diriger selon le sens
+        /// </summary>
+        /// <param name="sens">sens droite gauche monte descent</param>
+        /// <param name="pACote">Position à modifier</param>
+        /// <returns>Retourne la nouvelle position</returns>
+        public virtual void ChangePosition(string sens)
+        {
+            string test = sens;
+            switch (test)
+            {
+                case ConstanteGlobale.GAUCHE:
+                    X = X - 1;
+                    break;
+                case ConstanteGlobale.DROITE:
+                    X = X + 1;
+                    break;
+                case ConstanteGlobale.MONTE:
+                    Y = Y - 1;
+                    break;
+                case ConstanteGlobale.DESCEND:
+                    Y = Y + 1;
+                    break;
+            }
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)
