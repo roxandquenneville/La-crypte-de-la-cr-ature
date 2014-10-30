@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
+using La_crypte_de_la_creature.VueModele;
 
 namespace La_crypte_de_la_creature.Vue
 {
@@ -21,9 +22,12 @@ namespace La_crypte_de_la_creature.Vue
     /// </summary>
     public partial class UCChoixPartie : UserControl
     {
+
+        public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         public UCChoixPartie()
         {
             InitializeComponent();
+            DataContext = new PartieViewModel();
             Loaded += WindowLoaded;
         }
 
@@ -42,6 +46,7 @@ namespace La_crypte_de_la_creature.Vue
         {
        
             Application.Current.MainWindow.Background = Brushes.White;
+            PartieViewModel.CreerPartieCommand();
             this.Content = new UCInvitationJoueur();
         }
 

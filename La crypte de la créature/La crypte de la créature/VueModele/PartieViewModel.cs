@@ -141,7 +141,17 @@ namespace La_crypte_de_la_creature.VueModele
 
         #region command
 
+        public void CreerPartieCommand()
+        {
+        // Mapping a corriger 
+    //        _PartieService.Create(Partie);
+        }
 
+        public void SauvegarderCommand()
+        {            
+            _PartieService.Update(Partie);
+            
+        }
 
         #endregion
 

@@ -31,10 +31,10 @@
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
-        <TextBox Background="AliceBlue" Margin="78,65,72,10" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding RetrieveArgs.motDePasse}" />
+        <TextBox Background="AliceBlue" Margin="78,65,72,10" Height="25" Width="150" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding RetrieveArgs.motDePasse , UpdateSourceTrigger=PropertyChanged}" />
         <Button  Height="30" Width="70" Grid.Column="0" Grid.Row="2" Margin="0,10,9,0" Content="Connexion" IsDefault="True" Click="Btn_Connexion" HorizontalAlignment="Right" VerticalAlignment="Top"  />
         <Button Height="30" Width="70" Grid.Column="1" Grid.Row="2" Margin="10,10,0,0" Content="Quitter" Click="Btn_Quitter" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Grid.Column="0" Grid.Row="2" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="2" Margin="105,45,107,-45" MouseDown="Lbl_Click"  >
+        <Label Grid.Column="0" Grid.Row="2" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="1" Margin="0,50,-40,0" MouseDown="Lbl_Click" HorizontalAlignment="Right" Width="88"  >
             <Label.Effect>
                 <DropShadowEffect BlurRadius="0" ShadowDepth="1" Color="White"/>
             </Label.Effect>

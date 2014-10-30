@@ -26,7 +26,7 @@ namespace La_crypte_de_la_creature.Vue
     {
         public CompteViewModel CompteViewModel { get { return (CompteViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();  
-        String NomUsager;
+        //String NomUsager;
 
         public UCConnexion()
         {
@@ -64,7 +64,7 @@ namespace La_crypte_de_la_creature.Vue
                     //Nom utilsateur inexistant
                    
                 }
-                if (UtilisateurConnecte.nomUsager != null)
+                if (UtilisateurConnecte.nomUsager == null)
                 {
                     lblErreur.Content = "Erreur lors de la connexion, veuillez réessayer.";
                     lblErreur.Visibility = Visibility.Visible;

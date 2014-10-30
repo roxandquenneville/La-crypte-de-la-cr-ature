@@ -8,25 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/alain1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/alain2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/alain3.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/alain4.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/background.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/cartesmonstre10.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/cartesmonstre5.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/cartesmonstre7.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/cartesmonstre8.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/caseentree.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/casegazon.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/casemaredesang.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/casenormale.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/casepillier.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/casesang.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/casesortie.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/robert1.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/robert2.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/robert3.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/robert4.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/plateau.jpg")]
 
 

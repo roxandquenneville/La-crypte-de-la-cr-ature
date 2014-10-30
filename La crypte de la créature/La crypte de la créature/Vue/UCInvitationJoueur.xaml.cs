@@ -43,6 +43,7 @@ namespace La_crypte_de_la_creature.Vue
         {   
             foreach(Compte C in CompteViewModel.Comptes)
             {
+                if(UtilisateurConnecte.nomUsager != C.NomUsager)
                 lbxDisponible.Items.Add(C.NomUsager);
             }
 
@@ -54,5 +55,36 @@ namespace La_crypte_de_la_creature.Vue
             Application.Current.MainWindow.MinWidth = 750;
             mainVM.ChangeView<UCPlateau>(new UCPlateau());
         }
+
+        private void btnAjouterJoueur(object sender, RoutedEventArgs e)
+        {
+            if (lbxDisponible.SelectedIndex != -1)
+            {
+                lbxInviter.Items.Add(lbxDisponible.Items[lbxDisponible.SelectedIndex]);
+                lbxDisponible.Items.RemoveAt(lbxDisponible.SelectedIndex);
+            }
+            
+        }
+        private void btnEnleverJoueur(object sender, RoutedEventArgs e)
+        {
+            if (lbxInviter.SelectedIndex != -1)
+            {
+                lbxDisponible.Items.Add(lbxInviter.Items[lbxInviter.SelectedIndex]);
+                lbxInviter.Items.RemoveAt(lbxInviter.SelectedIndex); 
+            }
+          
+        }
+
+        private void lbxDisponible_GotFocus(object sender, RoutedEventArgs e)
+        {
+            lbxInviter.SelectedIndex = -1;
+        }
+
+        private void lbxInviter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            lbxDisponible.SelectedIndex = -1;
+        }
+
+      
     }
 }

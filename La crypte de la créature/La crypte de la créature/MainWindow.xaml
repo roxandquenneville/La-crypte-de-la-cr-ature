@@ -1,13 +1,15 @@
 ﻿<Window x:Class="La_crypte_de_la_creature.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="La crypte de la Créature" Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" MinHeight="350" MinWidth="460" ResizeMode="NoResize"
-        Topmost="False" WindowState="Maximized" WindowStartupLocation="CenterScreen" 
+        x:Name = "HomePage"
+        Title="La crypte de la Créature" 
+        WindowStyle="None" ResizeMode="NoResize"  
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
         >
 
-  <!--  <Window.Background>
+    <Window.Background>
         <ImageBrush ImageSource="./Images/BackGround.jpg" />
-    </Window.Background> -->
+    </Window.Background>
 
     <Grid>
         <ContentPresenter Content="{Binding CurrentView}"/>

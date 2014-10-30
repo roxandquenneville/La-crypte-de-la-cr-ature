@@ -7,19 +7,19 @@
              d:DesignHeight="350" d:DesignWidth="460">
     <Grid>
         <Label Content="Sélectionner le ou les joueurs à inviter dans la partie" Margin="10,0,0,0" />
-        <Label Content="Joueurs disponibles" Margin="10,25,300,300" />
-        <ListBox Width="150" Margin="10,50,300,50" Name="lbxDisponible" >
-         
+        <Label Content="Joueurs disponibles" Margin="10,25,0,0" HorizontalAlignment="Left" Width="150" Height="25" VerticalAlignment="Top" />
+        <ListBox Width="150" Margin="10,50,0,-100" Name="lbxDisponible" Height="400" VerticalAlignment="Top" HorizontalAlignment="Left" GotFocus="lbxDisponible_GotFocus" >
+
         </ListBox>
 
-        <Button Height="25" Content="→" Width="25" Margin="0,50,0,0" />
-        <Button Content="←" Height="25" Width="25" />
-        <Label Content="Joueurs invité" Margin="300,25,10,300" />
-        <ListBox  Width="150" Margin="300,50,10,50"   Name="lbxInviter">
-          
+        <Button Height="25" Content="→" Width="25" Margin="218,188,0,0" Click="btnAjouterJoueur" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button Content="←" Height="25" Width="25" Click="btnEnleverJoueur" HorizontalAlignment="Left" Margin="218,162,0,0" VerticalAlignment="Top" />
+        <Label Content="Joueurs invité" Margin="300,25,0,0" HorizontalAlignment="Left" Width="150" Height="25" VerticalAlignment="Top" />
+        <ListBox  Width="150" Margin="300,50,0,0"   Name="lbxInviter" HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" GotFocus="lbxInviter_GotFocus"  >
+
         </ListBox>
 
-        <Button Content="Invité" Width="150" Height="25" Margin="92,315,218,10" Click="Button_Click" />
-        <Button Content="Annulé" Width="150" Height="25" Margin="247,315,63,10"  />
+        <Button Content="Invité" Width="150" Height="25" Margin="93,465,0,-140" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button Content="Annulé" Width="150" Height="25" Margin="248,465,0,-140" HorizontalAlignment="Left" VerticalAlignment="Top"  />
     </Grid>
 </UserControl>
