@@ -40,7 +40,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void MyWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            mainVM.ChangeView<UCPlateau>(new UCPlateau());
+            mainVM.ChangeView<UCConnexion>(new UCConnexion());
         }
 
 

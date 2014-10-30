@@ -222,7 +222,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual void MouvementMonstre()
         {
             Monstre monstre= null;
-            String sens;
+            String sens=null;
 
             monstre=Plateau.RetourneMonstre();
 

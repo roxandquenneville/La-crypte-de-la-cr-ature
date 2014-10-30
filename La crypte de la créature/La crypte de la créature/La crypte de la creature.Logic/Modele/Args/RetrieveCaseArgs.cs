@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Args
 {
-    class RetrieveCaseArgs
+    public class RetrieveCaseArgs
     {
         public int idCase { get; set; }
         public int idPlateau { get; set; }
