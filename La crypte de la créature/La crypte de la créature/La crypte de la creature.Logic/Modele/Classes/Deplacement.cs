@@ -348,6 +348,31 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return Valide;
         }
 
+        public virtual void Monstre(string sens,Plateau plateau,Monstre monstre)
+        {
+            //     - - - -  -    - - - - 
+            //     - - - -  -    - - - -
+            //     - - - - M(m) - - - -
+            //     - - - -  -    - - - - 
+            //     - - - -  -    - - - -
+
+            Position tmp= new Position();
+            tmp = monstre.Position;
+           
+
+            switch (sens)
+            {
+                case ConstanteGlobale.MONTE:
+                    while (tmp.X > -1)
+                    {
+                        ChangePosition(ConstanteGlobale.GAUCHE,tmp);
+                    }
+                    break;
+
+            }
+
+        }
+
         /// <summary>
         /// Permet de changer la position diriger selon le sens
         /// </summary>

@@ -203,6 +203,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 {
                     Historique.Deplacement.AddRange(ListeTmp);
                     Joueur[joueur - 1].Pion[pion - 1].CalculerFace();
+                    TourJoueur++;
                     return true;
                 }
             }
@@ -211,6 +212,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 Historique.Deplacement.AddRange(ListeTmp);
                 Joueur[joueur-1].Pion[pion-1].CalculerFace();
+                TourJoueur++;
                 return true;
             }
 
@@ -244,6 +246,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         break;
                 }
 
+              
             }
 
         }

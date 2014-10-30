@@ -114,7 +114,7 @@
     <Compile Include="Services\NHibernate\mappings\DeplacementMap.cs" />
     <Compile Include="Services\NHibernate\mappings\HistoriqueMap.cs" />
     <Compile Include="Services\NHibernate\mappings\JoueurMap.cs" />
-    <Compile Include="Services\NHibernate\mappings\MarreDeSangMap.cs" />
+    <Compile Include="Services\NHibernate\mappings\MareDeSangMap.cs" />
     <Compile Include="Services\NHibernate\mappings\MonstreMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PartieMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PieceMap.cs" />
