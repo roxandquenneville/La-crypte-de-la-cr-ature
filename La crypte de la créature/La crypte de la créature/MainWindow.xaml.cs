@@ -34,7 +34,7 @@ namespace La_crypte_de_la_creature
             InitializeComponent();
             DataContext = new MainViewModel();
             Configure();
-            ViewModel.CurrentView = new UCConnexion();
+            ViewModel.CurrentView = new UCPlateau();
 
         }
 

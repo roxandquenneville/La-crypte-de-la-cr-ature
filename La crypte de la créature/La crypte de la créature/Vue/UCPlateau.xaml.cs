@@ -64,8 +64,11 @@ namespace La_crypte_de_la_creature.Vue
         private void GridJeu_Loaded(object sender, RoutedEventArgs e)
         {
             GridJeu.Focus();
+
             AffichePlateau();
+          
             
+
         }
 
 
@@ -117,7 +120,7 @@ namespace La_crypte_de_la_creature.Vue
                 case Key.Left:
                     PositionDeplacement.Y = Grid.GetRow(imgPion);
                     PositionDeplacement.X = Grid.GetColumn(imgPion) - 1;
-                   
+                    Position p = PartieViewModel.Partie.Joueur[0].Pion[0].Position;
                     PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, PositionDeplacement);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
