@@ -33,6 +33,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Pierre(Position posXY, bool enJeu):base(posXY)
         {
             EstSurPlateau=enJeu;
+            DetermineImage();
         }
 
         /// <summary>

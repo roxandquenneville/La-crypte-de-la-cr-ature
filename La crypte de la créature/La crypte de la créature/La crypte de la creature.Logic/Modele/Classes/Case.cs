@@ -59,23 +59,23 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             if (pos.X == 0 && pos.Y == 0)
             {
-                Url = "../La crypte de la créature/Images/CaseSortie.png";
+                Url = "../Images/CaseSortie.png";
                 return;
             }
             if (pos.X == 15 && pos.Y == 10)
             {
-                Url = "../La crypte de la créature/Images/CaseEntree.png";
+                Url = "../Images/CaseEntree.png";
                 return;
             }
 
             if (interieur)
             {
-                Url = "../La crypte de la créature/Images/CaseNormale.png";
+                Url = "../Images/CaseNormale.png";
                 return;
             }
             else
             {
-                Url = "../La crypte de la créature/Images/CaseGazon.png";
+                Url = "../Images/CaseGazon.png";
                 return;
             }
         }
