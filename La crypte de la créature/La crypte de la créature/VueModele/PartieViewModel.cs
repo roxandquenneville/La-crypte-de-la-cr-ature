@@ -22,33 +22,35 @@ namespace La_crypte_de_la_creature.VueModele
         private IPlateauService _PlateauService;
         private IJoueurService _JoueurService;
         private IHistoriqueService _HistoriqueService;
-    //    private IPointageService _PointageService;
+        private IPointageService _PointageService;
         #endregion
 
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
         public RetrieveHistoriqueArgs RetrieveHistoriqueArgs { get; set; }
-      //  public RetrievePointageArgs RetrievePointageArgs { get; set;}
+        public RetrievePointageArgs RetrievePointageArgs { get; set;}
         public PartieViewModel()
         {
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
             _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
-          //  _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
+            _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
             Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
-         //   Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
+            Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
             Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
 
             RetrieveJoueurArgs = new RetrieveJoueurArgs();
             RetrievePartieArgs = new RetrievePartieArgs();
             RetrievePlateauArgs = new RetrievePlateauArgs();
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
-        //    RetrievePointageArgs = new RetrievePointageArgs();
+            RetrievePointageArgs = new RetrievePointageArgs();
 
+
+            Pointage = new Pointage();
             Historique = new Historique();
             Plateau = new Plateau();
             Partie = new Partie(1,2,new TypePlateau ("Normal"));
@@ -146,24 +148,24 @@ namespace La_crypte_de_la_creature.VueModele
         }
 
 
-        //private ObservableCollection<Pointage> _Pointages;
-        //public ObservableCollection<Pointage> Pointages
-        //{
-        //    get
-        //    {
-        //        return _Pointages;
-        //    }
-        //    set
-        //    {
-        //        if (_Pointages == value)
-        //        {
-        //            return;
-        //        }
-        //        RaisePropertyChanging();
-        //        _Pointages = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
+        private ObservableCollection<Pointage> _Pointages;
+        public ObservableCollection<Pointage> Pointages
+        {
+            get
+            {
+                return _Pointages;
+            }
+            set
+            {
+                if (_Pointages == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _Pointages = value;
+                RaisePropertyChanged();
+            }
+        }
 
 
 
