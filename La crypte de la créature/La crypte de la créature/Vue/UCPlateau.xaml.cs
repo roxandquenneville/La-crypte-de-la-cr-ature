@@ -40,15 +40,24 @@ namespace La_crypte_de_la_creature.Vue
         {
             InitializeComponent();
             DataContext = new PartieViewModel();
-            Loaded += WindowsLoaded;
-
-
+            Loaded += WindowsLoaded;            
 
         }
 
         private void WindowsLoaded(Object o, RoutedEventArgs e)
         {
             lblNomUsager.Content = UtilisateurConnecte.nomUsager;
+            int c = 0;
+            
+
+            foreach(Pointage p in PartieViewModel.Partie.Pointage)
+            {
+               
+
+               StringBuilder Joueur = new StringBuilder().Append("Joueur ").Append(c).Append(" : ").Append(p.Point);
+               lboxPointage.Items.Add(Joueur);
+               c++;
+            }
 
         }
 
@@ -169,6 +178,8 @@ namespace La_crypte_de_la_creature.Vue
         {
             mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
         }
+
+
 
 
     }

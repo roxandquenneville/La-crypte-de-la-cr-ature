@@ -587,6 +587,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
         #endregion
+
         public override bool Equals(object obj)
         {
             if (obj == null)

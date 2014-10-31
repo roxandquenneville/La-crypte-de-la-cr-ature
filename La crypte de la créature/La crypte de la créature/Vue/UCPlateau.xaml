@@ -71,6 +71,9 @@
 
         <Label Content="Carte du Monstre" Margin="0,290,0,84" Grid.Row="1"></Label>
         <Image Source="../Images/CartesMonstre5.png" Margin="0,316,0,4" Grid.Row="1"/>
+        <Label Content="Pointage" HorizontalAlignment="Left" Height="31" Margin="10,23,0,0" Grid.Row="1" VerticalAlignment="Top" Width="68"/>
+        <ListBox Name="lboxPointage" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.478,1.866" Margin="10,59,0,0" Grid.Row="1"/>
+
 
     </Grid>
 </UserControl>
