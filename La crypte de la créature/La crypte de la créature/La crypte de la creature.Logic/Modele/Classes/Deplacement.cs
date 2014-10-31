@@ -41,6 +41,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Fin = posFin;
         }
 
+        #region Pion
         /// <summary>
         /// Confirme le mouvement. 
         /// </summary>
@@ -52,6 +53,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             string type;
             List<Piece> pTmp = null;
            
+           if(Depart== Fin)
+           {
+               return false;
+           }
+
             //Vérifie la case
             CasePresent = plateau.ConfirmationCase(Fin);
 
@@ -151,6 +157,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
             pACote.ChangePosition(sens);
+
+            // Case extérieur au plateau
+            if (pACote == pierre.Position)
+            {
+                return false;
+            }
+
             //Vérifie la case
             CasePresent = plateau.ConfirmationCase(pACote);
 
@@ -209,6 +222,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             //change la position de la case à côté
             args.pACote.ChangePosition(sens);
+
+            if(args.pACote == args.posTmp)
+            {
+                pierre.Position= args.pACote;
+                return;
+            }
 
             //Vérifie la case
             args.CasePresent = plateau.ConfirmationCase(args.pACote);
@@ -346,7 +365,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             return Valide;
         }
-
+        #endregion
+        #region Monstre
         public virtual void MonstreDeplacement(Plateau plateau, string sens)
         {
             bool casePresent=true;
@@ -357,7 +377,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             if (casePresent==false) 
             {
-            #region
+            #region Magie
               /*  //condition 0,0 et 15,11
 
                 if(Fin.X == 0 && Fin.Y==0)
@@ -450,6 +470,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
             pACote.ChangePosition(sens);
+
+            // la case est hors plateau
+            if(pACote == Fin)
+            {
+                deplacement.Fin = Fin;
+                ((Pierre)pierre).EstSurPlateau = false;
+                return;
+            }
             //Vérifie la case
             CasePresent = plateau.ConfirmationCase(pACote);
 
@@ -458,6 +486,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                deplacement.Fin = Fin;
                ((Pierre)pierre).EstSurPlateau= false;
+               return;
             }
 
             pTmp = plateau.RetournePiece(pACote);
@@ -481,24 +510,79 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else if (pTmp[0].Get_Type() == ConstanteGlobale.CASEDESANG)
                 {
                     args.CasePresent = CasePresent;
-                    args.index = index;
                     args.pACote = pACote;
                     args.posTmp = posTmp;
                     args.pTmp = pTmp;
                     args.deplacement = deplacement;
 
-                    PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
-                    return true;
+                    PierreSurCaseDeSang(plateau, sens, pierre,args);
                 }
                 //pousser une pierre sur une pierre/pion/monstre
                 else
                 {
-                    
+                    deplacement.Fin.ChangePosition(sens);
+                    deplacement.ConfirmationPierre(plateau,sens,pTmp[0]);
                 }
             }
 
         }
 
+        public virtual void PierreSurCaseDeSang(Plateau plateau, string sens, Piece pierre,RetrieveElementPierre args)
+        {
+            args.posTmp.X = args.pACote.X;
+            args.posTmp.Y = args.pACote.Y;
+
+            //change la position de la case à côté
+            args.pACote.ChangePosition(sens);
+
+            //Vérifie la case
+            args.CasePresent = plateau.ConfirmationCase(args.pACote);
+
+            //La case n'existe pas ou est externe
+            //arrete sur la case de sang
+            if (args.CasePresent == false)
+            {
+                args.deplacement.Fin = args.posTmp;
+                pierre.Position = args.posTmp;
+            }
+
+            args.pTmp = plateau.RetournePiece(args.pACote);
+
+            // il y a une piece sur la case de sang
+            // la pierre qui a été pousser s'arrête sur la case de sang a cote de la piece
+            if ((args.pTmp).Count() > 1)
+            {
+                args.deplacement.Fin = args.posTmp;
+                pierre.Position.X = args.posTmp.X;
+                pierre.Position.Y = args.posTmp.Y;
+            }
+            else
+            {
+                //tombe sur une case vide
+                //arrete sur la case à cote de la case de sang
+                if (args.pTmp.Count() == 0)
+                {
+                    args.deplacement.Fin = args.pACote;
+                    pierre.Position.X = args.pACote.X;
+                    pierre.Position.Y = args.pACote.Y;
+                }
+                else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CASEDESANG)
+                {
+                    //rappele la fonction
+                    PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
+                }
+                // arrete sur la case de sang
+                // pion pousse roche elle arrête sur la case de sang
+                // ,car il y a une piece de l'autre côté
+                else
+                {
+                    args.deplacement.Fin = args.posTmp;
+                    pierre.Position.X = args.posTmp.X;
+                    pierre.Position.Y = args.posTmp.Y;
+                }
+            }
+        }
+        #endregion
         public override bool Equals(object obj)
         {
             if (obj == null)
