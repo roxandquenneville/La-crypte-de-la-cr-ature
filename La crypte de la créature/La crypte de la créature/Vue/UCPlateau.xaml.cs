@@ -114,7 +114,7 @@ namespace La_crypte_de_la_creature.Vue
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            tmpList.Clear();
+            
             switch(e.Key)
             {
                 case Key.Left:
