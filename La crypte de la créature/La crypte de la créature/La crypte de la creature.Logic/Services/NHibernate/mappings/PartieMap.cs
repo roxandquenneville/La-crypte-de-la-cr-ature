@@ -46,7 +46,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Cascade.All()
                 .Inverse()
-                .KeyColumns.Add("idPointage", map => map.Name("idPointage")
+                .KeyColumns.Add("idPartie", map => map.Name("idPartie")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
              HasMany<CartesMonstre>(x => x.CartesMonstre)
