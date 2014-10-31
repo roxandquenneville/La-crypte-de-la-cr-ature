@@ -21,36 +21,88 @@ namespace La_crypte_de_la_creature.VueModele
         private IPartieService _PartieService;
         private IPlateauService _PlateauService;
         private IJoueurService _JoueurService;
-        private 
+        private IHistoriqueService _HistoriqueService;
+    //    private IPointageService _PointageService;
         #endregion
 
-               RetrievePartieArgs RetrievePartieArgs { get; set; }
+        public RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
-
+        public RetrieveHistoriqueArgs RetrieveHistoriqueArgs { get; set; }
+      //  public RetrievePointageArgs RetrievePointageArgs { get; set;}
         public PartieViewModel()
         {
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
-
+            _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
+          //  _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
-       //     Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
-            
+            Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
+         //   Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
+            Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
 
             RetrieveJoueurArgs = new RetrieveJoueurArgs();
             RetrievePartieArgs = new RetrievePartieArgs();
             RetrievePlateauArgs = new RetrievePlateauArgs();
+            RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
+        //    RetrievePointageArgs = new RetrievePointageArgs();
 
-
+            Historique = new Historique();
             Plateau = new Plateau();
             Partie = new Partie(1,2,new TypePlateau ("Normal"));
+            
             
 
         }
 
-        #region Bindables
+        #region Bindable
+
+
+
+        private Historique _Historique;
+
+        public Historique Historique
+        {
+            get
+            {
+                return _Historique;
+            }
+            set
+            {
+                if (_Historique == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _Historique = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        private ObservableCollection<Historique> _Historiques;
+
+        public ObservableCollection<Historique> Historiques
+        {
+            get
+            {
+                return _Historiques;
+            }
+            set
+            {
+                if (_Historiques == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _Historiques = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
 
         private ObservableCollection<Joueur> _Joueurs;
 
@@ -89,6 +141,48 @@ namespace La_crypte_de_la_creature.VueModele
                 }
                 RaisePropertyChanging();
                 _Plateau = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        //private ObservableCollection<Pointage> _Pointages;
+        //public ObservableCollection<Pointage> Pointages
+        //{
+        //    get
+        //    {
+        //        return _Pointages;
+        //    }
+        //    set
+        //    {
+        //        if (_Pointages == value)
+        //        {
+        //            return;
+        //        }
+        //        RaisePropertyChanging();
+        //        _Pointages = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
+
+
+
+        private Pointage _Pointage;
+
+        public Pointage Pointage
+        {
+            get
+            {
+                return _Pointage;
+            }
+            set
+            {
+                if (_Pointage == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _Pointage = value;
                 RaisePropertyChanged();
             }
         }
@@ -143,8 +237,8 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {
-        // Mapping a corriger 
-    //        _PartieService.Create(Partie);
+            //Mapping a corriger 
+           _PartieService.Create(Partie);
         }
 
         public void SauvegarderCommand()

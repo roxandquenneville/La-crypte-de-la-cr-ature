@@ -51,7 +51,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             bool CasePresent;
             string type;
             List<Piece> pTmp = null;
-
+           
             //Vérifie la case
             CasePresent = plateau.ConfirmationCase(Fin);
 

@@ -41,22 +41,22 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .KeyColumns.Add("idPartie", map => map.Name("idPartie")
                                                     .SqlType("INTEGER")
                                                     .Nullable());
-            HasMany<Pointage>(x => x.Pointage)
-                .Not.LazyLoad()
-                .Access.Property()
-                .Cascade.All()
-                .Inverse()
-                .KeyColumns.Add("idPartie", map => map.Name("idPartie")
-                                                    .SqlType("INTEGER")
-                                                    .Nullable());
-             HasMany<CartesMonstre>(x => x.CartesMonstre)
-                .Not.LazyLoad()
-                .Access.Property()
-                .Cascade.All()
-                .Inverse()
-                .KeyColumns.Add("idCarteMonstre", map => map.Name("idCarteMonstre")
-                                                .SqlType("INTEGER")
-                                                .Nullable());
+            //HasMany<Pointage>(x => x.Pointage)
+            //    .Not.LazyLoad()
+            //    .Access.Property()
+            //    .Cascade.All()
+            //    .Inverse()
+            //    .KeyColumns.Add("idPartie", map => map.Name("idPartie")
+            //                                        .SqlType("INTEGER")
+            //                                        .Nullable());
+             //HasMany<CartesMonstre>(x => x.CartesMonstre)
+             //   .Not.LazyLoad()
+             //   .Access.Property()
+             //   .Cascade.All()
+             //   .Inverse()
+             //   .KeyColumns.Add("idCarteMonstre", map => map.Name("idCarteMonstre")
+             //                                   .SqlType("INTEGER")
+             //                                   .Nullable());
         }
     }
 

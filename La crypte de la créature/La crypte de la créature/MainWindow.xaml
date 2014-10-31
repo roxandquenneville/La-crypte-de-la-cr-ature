@@ -7,9 +7,9 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
         >
 
-    <Window.Background>
+    <!--<Window.Background>
         <ImageBrush ImageSource="./Images/BackGround.jpg" />
-    </Window.Background>
+    </Window.Background>-->
 
     <Grid>
         <ContentPresenter Content="{Binding CurrentView}"/>
