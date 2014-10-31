@@ -25,7 +25,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Constructeur de la classe Case De Sang
         /// </summary>
         /// <param name="posXY">Position de la case de sang</param>
-        public CaseDeSang(Position posXY):base(posXY){ }
+        public CaseDeSang(Position posXY):base(posXY){
+            DetermineImage();
+         }
 
 
         /// <summary>

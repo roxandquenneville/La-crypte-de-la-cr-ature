@@ -54,11 +54,19 @@ namespace La_crypte_de_la_creature.Vue
         {
             GridJeu.Focus();
 
+            AffichePlateau();
+            AfficherPiece();
+            
 
+        }
+
+
+        private void AffichePlateau()
+        {
             foreach (Case c in PartieViewModel.Partie.Plateau.Case)
             {
                 String stringPath = c.Url;
-                Uri imageUri = new Uri(stringPath, UriKind.Relative);
+                Uri imageUri = new Uri(stringPath, UriKind.RelativeOrAbsolute);
                 BitmapImage imageBitmap = new BitmapImage(imageUri);
                 Image myImage = new Image();
                 myImage.Source = imageBitmap;
@@ -67,63 +75,79 @@ namespace La_crypte_de_la_creature.Vue
                 Grid.SetColumn(myImage, c.Coordonnee.X);
                 Grid.SetRow(myImage, c.Coordonnee.Y);
             }
+        }
+
+        private void AfficherPiece()
+        {
             foreach (Piece c in PartieViewModel.Partie.Plateau.Piece)
             {
                 String stringPath = c.Url;
-                Uri imageUri = new Uri(stringPath, UriKind.Relative);
-                BitmapImage imageBitmap = new BitmapImage(imageUri);
-                Image myImage = new Image();
-                myImage.Source = imageBitmap;
-                
-                GridJeu.Children.Add(myImage);
-                Grid.SetColumn(myImage, c.Position.X);
-                Grid.SetRow(myImage, c.Position.Y);
+                if( stringPath !=null)
+                {
+                    Uri imageUri = new Uri(stringPath, UriKind.RelativeOrAbsolute);
+                    BitmapImage imageBitmap = new BitmapImage(imageUri);
+                    Image myImage = new Image();
+                    myImage.Source = imageBitmap;
+
+                    GridJeu.Children.Add(myImage);
+                    Grid.SetColumn(myImage, c.Position.X);
+                    Grid.SetRow(myImage, c.Position.Y);
+               }
+
             }
-
         }
-
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == Key.Left)
+            tmpList.Clear();
+            switch(e.Key)
             {
-                PositionDeplacement.Y = Grid.GetRow(imgPion);
-                PositionDeplacement.X = Grid.GetColumn(imgPion) - 1;
-               Position p = PartieViewModel.Partie.Joueur[0].Pion[0].Position;
-                PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
+                case Key.Left:
+                    PositionDeplacement.Y = Grid.GetRow(imgPion);
+                    PositionDeplacement.X = Grid.GetColumn(imgPion) - 1;
+                    Position p = PartieViewModel.Partie.Joueur[0].Pion[0].Position;
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
 
-                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
-                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
-            }
-            if (e.Key == Key.Right)
-            {
+                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
+                    AffichePlateau();
+                    AfficherPiece();
+                break;
 
-                PositionDeplacement.Y = Grid.GetRow(imgPion);
-                PositionDeplacement.X = Grid.GetColumn(imgPion) + 1;
-                PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
+                case Key.Right:
+                    PositionDeplacement.Y = Grid.GetRow(imgPion);
+                    PositionDeplacement.X = Grid.GetColumn(imgPion) + 1;
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
 
-                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
-                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
+                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
+                    AffichePlateau();
+                    AfficherPiece();
+                break;
 
-            }
-            if (e.Key == Key.Up)
-            {
-                PositionDeplacement.Y = Grid.GetRow(imgPion) - 1;
-                PositionDeplacement.X = Grid.GetColumn(imgPion);
-                PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
+                case Key.Up:
+                    PositionDeplacement.Y = Grid.GetRow(imgPion) - 1;
+                    PositionDeplacement.X = Grid.GetColumn(imgPion);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
 
-                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
-                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
-            }
-            if (e.Key == Key.Down)
-            {
-                PositionDeplacement.Y = Grid.GetRow(imgPion) + 1;
-                PositionDeplacement.X = Grid.GetColumn(imgPion);
-                PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
+                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
+                    AffichePlateau();
+                    AfficherPiece();
+                break;
+                case Key.Down:
+                    PositionDeplacement.Y = Grid.GetRow(imgPion) + 1;
+                    PositionDeplacement.X = Grid.GetColumn(imgPion);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, 1, PositionDeplacement);
 
-                Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
-                Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
-            }
+                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.X));
+                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y));
+                    AffichePlateau();
+                    AfficherPiece();
+                break;
+            }       
+          
+   
         }
 
         private void btnConfirme(object sender, RoutedEventArgs e)
