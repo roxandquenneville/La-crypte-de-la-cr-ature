@@ -247,25 +247,18 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         monstre.VisionMonstre(sens,Plateau);
                         tmp.Fin.ChangePosition(sens);
                         tmp.MonstreDeplacement(Plateau,sens);
-                        monstre.Position = tmp.Fin;
                         break;
                     case 2:
                         monstre.VisionMonstre(sens, Plateau);
                         tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau,sens);
-                        monstre.Position = tmp.Fin;
                         break;
                     case 3:
                         monstre.VisionMonstre(sens, Plateau);
                         tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau,sens);
-                        monstre.Position = tmp.Fin;
                         break;
                     case 4:
                         monstre.VisionMonstre(sens, Plateau);
                         tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau,sens);
-                        monstre.Position = tmp.Fin;
                         break;
                 }
 
