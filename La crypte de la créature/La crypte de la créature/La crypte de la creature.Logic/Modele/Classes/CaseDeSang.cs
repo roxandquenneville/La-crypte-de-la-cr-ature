@@ -40,7 +40,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public override void DetermineImage()
         {
-            Url = "../La crypte de la créature/Images/CaseMareDeSang.png";
+            Url = "pack://application:,,,/Images/CaseMareDeSang.png";
         }
 
         public override bool Equals(object obj)

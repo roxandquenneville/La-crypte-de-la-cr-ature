@@ -347,6 +347,94 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return Valide;
         }
 
+        public virtual void MonstreDeplacement(Plateau plateau, string sens)
+        {
+            bool casePresent=true;
+            List<Piece> pTmp = null;
+            string type="";
+
+            casePresent=plateau.ConfirmationCase(Fin);
+
+            if (casePresent==false) 
+            {
+            #region
+              /*  //condition 0,0 et 15,11
+
+                if(Fin.X == 0 && Fin.Y==0)
+                {
+                    if (sens == ConstanteGlobale.MONTE)
+                    {
+                        Fin.Y= 6;
+                    }
+                    else if (sens == ConstanteGlobale.GAUCHE)
+                    {
+                        Fin.X =11;
+                    }
+                    else if (sens == ConstanteGlobale.DROITE)
+                    {
+                        Fin.X ++;
+                    }
+                    else
+                    {
+                        Fin.Y ++;
+                    }
+                }
+                else if(Fin.X == 15 && Fin.Y==11)
+                {
+                    if (sens == ConstanteGlobale.DROITE)
+                    {
+                        Fin.X = 4;
+                    }
+                    else if (sens == ConstanteGlobale.DESCEND)
+                    {
+                        Fin.Y = 3;
+                    }
+                    else if (sens == ConstanteGlobale.GAUCHE)
+                    {
+                        Fin.X --;
+                    }
+                    else
+                    {
+                        Fin.Y --;
+                    }
+                }
+                else if((Fin.X >-1 && Fin.X <4) || (Fin.X >11))
+                {
+
+                }*/
+                #endregion
+            }
+            else 
+            {
+                pTmp = plateau.RetournePiece(Fin);
+
+                if(pTmp.Count > 1)
+                {
+                    //il n'y a pas de piece
+                    if (pTmp.Count() == 0)
+                    {
+                        return;
+                    }
+
+                   type = pTmp[0].Get_Type();
+                    
+                    switch (type)
+                    {
+                        case ConstanteGlobale.CASEDESANG:
+                        break;
+                        case ConstanteGlobale.PIERRE:
+                        //ConfirmationPierre(plateau,sens)
+                        break;
+                        case ConstanteGlobale.PION:
+                        ((Pion)pTmp[0]).EstVivant =false;
+                        ((Pion)pTmp[0]).EstSortie = true;
+                        break; 
+                    }
+                }
+            }
+            
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

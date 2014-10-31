@@ -129,9 +129,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
 
-            
-
-            mouvement.Depart = Joueur[joueur - 1].Pion[pion - 1].Position;
+            mouvement.Depart.X = Joueur[joueur - 1].Pion[pion - 1].Position.X;
+            mouvement.Depart.Y = Joueur[joueur - 1].Pion[pion - 1].Position.Y;
             mouvement.Fin = Final;
 
             //Pour mettre le pion sur le plateau
@@ -224,10 +223,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public virtual void MouvementMonstre()
         {
-            Monstre monstre= null;
+            Monstre monstre=null;
             String sens=null;
+            Deplacement tmp = new Deplacement();
 
             monstre=Plateau.RetourneMonstre();
+
+            tmp.Depart = monstre.Position;
+            tmp.Fin = tmp.Depart;
+            
 
             if(!(monstre == null))
             {
@@ -235,15 +239,20 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 {
                     case 1: 
                         monstre.VisionMonstre(sens,Plateau);
+                        tmp.Fin.ChangePosition(sens);
+                        tmp.MonstreDeplacement(Plateau,sens);
                         break;
                     case 2:
-                        sens = ConstanteGlobale.MONTE;
+                        monstre.VisionMonstre(sens, Plateau);
+                        tmp.Fin.ChangePosition(sens);
                         break;
                     case 3:
-                        sens = ConstanteGlobale.DROITE;
+                        monstre.VisionMonstre(sens, Plateau);
+                        tmp.Fin.ChangePosition(sens);
                         break;
                     case 4:
-                        sens = ConstanteGlobale.DESCEND;
+                        monstre.VisionMonstre(sens, Plateau);
+                        tmp.Fin.ChangePosition(sens);
                         break;
                 }
 
