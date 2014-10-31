@@ -49,6 +49,8 @@ namespace La_crypte_de_la_creature.VueModele
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
             RetrievePointageArgs = new RetrievePointageArgs();
 
+
+            Pointage = new Pointage();
             Historique = new Historique();
             Plateau = new Plateau();
             Partie = new Partie(1,2,new TypePlateau ("Normal"));
