@@ -224,6 +224,20 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return null;
         }
 
+        public virtual List<Pion> Retournepion()
+        {
+            List<Pion> lPion = new List<Pion>();
+            foreach (Piece item in Piece)
+            {
+                if (item.Get_Type() == "Pion")
+                {
+                    lPion.Add((Pion)item);
+                }
+            }
+            return lPion;
+        }
+
+
         public override bool Equals(object obj)
         {
             if (obj == null)
