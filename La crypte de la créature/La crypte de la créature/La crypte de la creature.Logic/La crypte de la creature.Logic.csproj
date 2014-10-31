@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -88,6 +89,11 @@
     <Compile Include="Modele\Classes\TypeDePlateau.cs" />
     <Compile Include="Modele\Classes\UtilisateurConnecte.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\Helpers\MySqlConnexion.cs" />
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />
     <Compile Include="Services\Interfaces\ICarteMonstreService.cs" />
@@ -153,6 +159,75 @@
       <Project>{b0b71ff7-b28f-4412-ab1f-972c094c800e}</Project>
       <Name>Cstj.MvvmToolkit</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alain1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alain2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alain3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alain4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartesmonstre10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartesmonstre5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartesmonstre7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartesmonstre8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caseentree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casegazon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casemaredesang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casenormale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casepillier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casesang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casesortie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plateau.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\robert1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\robert2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\robert3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\robert4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

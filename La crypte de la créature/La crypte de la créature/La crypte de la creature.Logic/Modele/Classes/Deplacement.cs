@@ -435,6 +435,70 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             
         }
 
+        public virtual void ConfirmationPierre(Plateau plateau, string sens,Piece pierre)
+        {
+
+            bool CasePresent = false;
+            Position pACote = new Position(Fin.X, Fin.Y);
+            Position posTmp = new Position(pACote.X, pACote.Y);
+            List<Piece> pTmp = null;
+            Deplacement deplacement = new Deplacement();
+            RetrieveElementPierre args = new RetrieveElementPierre();
+
+            deplacement.Depart = Fin;
+            Historique.Deplacement.Add(deplacement);
+
+
+            pACote.ChangePosition(sens);
+            //Vérifie la case
+            CasePresent = plateau.ConfirmationCase(pACote);
+
+            //pousse une pierre hors plateau
+            if (CasePresent == false)
+            {
+               deplacement.Fin = Fin;
+               ((Pierre)pierre).EstSurPlateau= false;
+            }
+
+            pTmp = plateau.RetournePiece(pACote);
+
+            // sur une case de sang
+            // le pion ne peu pas pousser une pierre sur un autre pierre/pion/monstre
+            if (pTmp.Count > 1)
+            {
+                
+            }
+            else
+            {
+                //il n'y a pas de piece
+                if (pTmp.Count() == 0)
+                {
+                    //Déplace la pierre
+                    deplacement.Fin = pACote;
+                    pierre.Position = pACote;
+                }
+                // on est sur une case de sang
+                else if (pTmp[0].Get_Type() == ConstanteGlobale.CASEDESANG)
+                {
+                    args.CasePresent = CasePresent;
+                    args.index = index;
+                    args.pACote = pACote;
+                    args.posTmp = posTmp;
+                    args.pTmp = pTmp;
+                    args.deplacement = deplacement;
+
+                    PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
+                    return true;
+                }
+                //pousser une pierre sur une pierre/pion/monstre
+                else
+                {
+                    
+                }
+            }
+
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

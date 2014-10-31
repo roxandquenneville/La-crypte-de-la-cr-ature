@@ -227,6 +227,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             String sens=null;
             Deplacement tmp = new Deplacement();
 
+            Historique.Deplacement.Add(tmp);
+
             monstre=Plateau.RetourneMonstre();
 
             tmp.Depart = monstre.Position;
