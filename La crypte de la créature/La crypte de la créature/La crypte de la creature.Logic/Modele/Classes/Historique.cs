@@ -51,7 +51,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             
            int index = Deplacement.Count();
-           string builder = "Depart : "+Deplacement[index].Depart.X.ToString()+ " , "+Deplacement[index].Depart.Y.ToString() + " / fin:"  +Deplacement[index].Fin.X.ToString()+Deplacement[index].Fin.Y.ToString();
+           string builder;
+           if(index !=0)
+                builder = "Depart : "+Deplacement[index-1].Depart.X.ToString()+ " , "+Deplacement[index-1].Depart.Y.ToString() + " / fin:"  +Deplacement[index-1].Fin.X.ToString()+Deplacement[index-1].Fin.Y.ToString();
+           else
+            return "";
            return builder;
         }
 

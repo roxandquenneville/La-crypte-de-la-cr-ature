@@ -175,7 +175,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Position tmp = new Position();
             List<Piece> pTmp = null;
 
-            tmp = Joueur[joueur-1].Pion[pion-1].Position ;
+            tmp = Joueur[joueur-1].Pion[pion].Position ;
 
 
             pTmp=Plateau.RetournePiece(tmp);
@@ -203,7 +203,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else
                 {
                     Historique.Deplacement.AddRange(ListeTmp);
-                    Joueur[joueur - 1].Pion[pion - 1].CalculerFace();
+                    Joueur[joueur - 1].Pion[pion].CalculerFace();
                     TourJoueur++;
                     ListeTmp = null;
                     return true;
@@ -213,7 +213,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             else
             {
                 Historique.Deplacement.AddRange(ListeTmp);
-                Joueur[joueur-1].Pion[pion-1].CalculerFace();
+                Joueur[joueur-1].Pion[pion].CalculerFace();
                 TourJoueur++;
                 ListeTmp = null;
                 return true;

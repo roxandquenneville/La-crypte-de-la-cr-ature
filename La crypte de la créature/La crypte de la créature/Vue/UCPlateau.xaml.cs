@@ -47,17 +47,18 @@ namespace La_crypte_de_la_creature.Vue
         private void WindowsLoaded(Object o, RoutedEventArgs e)
         {
             lblNomUsager.Content = UtilisateurConnecte.nomUsager;
-            int c = 0;
+            //int c = 0;
             
 
-            foreach(Pointage p in PartieViewModel.Partie.Pointage)
-            {
+            //foreach(Pointage p in PartieViewModel.Partie.Pointage)
+            //{
                
 
-               StringBuilder Joueur = new StringBuilder().Append("Joueur ").Append(c).Append(" : ").Append(p.Point);
-               lboxPointage.Items.Add(Joueur);
-               c++;
-            }
+            //   //StringBuilder Joueur = new StringBuilder().Append("Joueur ").Append(c).Append(" : ").Append(p.Point);
+            //   //lboxPointage.Items.Add(Joueur);
+            //   //lboxPointage.Focusable=false;
+            //   //c++;
+            //}
 
         }
 
@@ -66,7 +67,8 @@ namespace La_crypte_de_la_creature.Vue
             GridJeu.Focus();
 
             AffichePlateau();
-          
+             
+           // lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             
 
         }
@@ -75,7 +77,7 @@ namespace La_crypte_de_la_creature.Vue
         private void AffichePlateau()
         {
             GridJeu.Children.Clear();
-
+            lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             foreach (Case c in PartieViewModel.Partie.Plateau.Case)
             {
                 String stringPath = c.Url;
@@ -114,7 +116,7 @@ namespace La_crypte_de_la_creature.Vue
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            
+            GridJeu.Focus();
             switch(e.Key)
             {
                 case Key.Left:
@@ -172,6 +174,8 @@ namespace La_crypte_de_la_creature.Vue
               Pion=1;
               else
               Pion=0;
+              PartieViewModel.Partie.ConfirmerDeplacementPion(tmpList,1,Pion);
+              lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
