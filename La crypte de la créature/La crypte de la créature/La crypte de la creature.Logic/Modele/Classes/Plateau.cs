@@ -147,7 +147,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="pos">Position à vérifier</param>
         /// <returns>retourne true si la case est présente et non externe sinon retourne false</returns>
-        public virtual bool ConfirmationCase( Position pos)
+        public virtual bool ConfirmationCase(Position pos)
         {
             bool Present = false;
             //vérifie si la case est dans la liste de case du plateau
@@ -223,6 +223,20 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             return null;
         }
+
+        public virtual List<Pion> Retournepion()
+        {
+            List<Pion> lPion = new List<Pion>();
+            foreach (Piece item in Piece)
+            {
+                if (item.Get_Type() == "Pion")
+                {
+                    lPion.Add((Pion)item);
+                }
+            }
+            return lPion;
+        }
+
 
         public override bool Equals(object obj)
         {

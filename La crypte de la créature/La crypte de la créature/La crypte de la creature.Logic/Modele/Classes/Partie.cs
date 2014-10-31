@@ -224,8 +224,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual void MouvementMonstre()
         {
             Monstre monstre=null;
+            List<Pion> pion= null;
             String sens=null;
             Deplacement tmp = new Deplacement();
+
+            Historique.Deplacement.Add(tmp);
 
             monstre=Plateau.RetourneMonstre();
 
@@ -258,7 +261,20 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
               
             }
-
+            pion = Plateau.Retournepion();
+            bool verification = false;
+            foreach(Pion item in pion)
+            {
+               if(item.EstSortie==false && item.EstVivant== true)
+               {
+                    verification = true;
+                    break;
+               }
+            }
+            if(verification == false)
+            {
+                //les joueurs sont soient tous mort, tous sorti ou une combinaison des deux  
+            }
         }
 
         public override bool Equals(object obj)
