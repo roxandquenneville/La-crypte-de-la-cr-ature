@@ -129,35 +129,35 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
 
-            mouvement.Depart.X = Joueur[joueur - 1].Pion[pion - 1].Position.X;
-            mouvement.Depart.Y = Joueur[joueur - 1].Pion[pion - 1].Position.Y;
+            mouvement.Depart.X = Joueur[joueur - 1].Pion[pion].Position.X;
+            mouvement.Depart.Y = Joueur[joueur - 1].Pion[pion].Position.Y;
             mouvement.Fin = Final;
 
             //Pour mettre le pion sur le plateau
-            if (Joueur[joueur - 1].Pion[pion - 1].Position == Depart && Joueur[joueur - 1].Pion[pion - 1].EstVivant == true)
+            if (Joueur[joueur - 1].Pion[pion].Position == Depart && Joueur[joueur - 1].Pion[pion].EstVivant == true)
             {
-                Joueur[joueur - 1].Pion[pion - 1].EstSortie = false;
+                Joueur[joueur - 1].Pion[pion].EstSortie = false;
             }
 
             // vérifie le mouvement
-            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion - 1].TmpDeplacement) == true)
+            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion].TmpDeplacement) == true)
             {
                 // change la position du pion
-                Joueur[joueur - 1].Pion[pion - 1].Position = mouvement.Fin;
+                Joueur[joueur - 1].Pion[pion].Position = mouvement.Fin;
 
                 // Vérifie si le pion est dans la sortie
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
                 {
-                    Joueur[joueur - 1].Pion[pion - 1].EstSortie = true;
+                    Joueur[joueur - 1].Pion[pion].EstSortie = true;
                     Pointage[joueur - 1].Point++;
                 }
                 //Réduit de 1 les points de déplacement
-                Joueur[joueur - 1].Pion[pion - 1].TmpDeplacement--;
+                Joueur[joueur - 1].Pion[pion].TmpDeplacement--;
             }
             //Le mouvement n'est pas valide
             else
             {
-                Joueur[joueur - 1].Pion[pion - 1].Position = mouvement.Depart;
+                Joueur[joueur - 1].Pion[pion].Position = mouvement.Depart;
                 ListeTmp.RemoveAt(index - 1);
             }
         }
@@ -196,6 +196,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 // Il y a deux pion
                 if (compteur > 1) 
                 { 
+                    ListeTmp =null;
                     return false;
                 }
                 //Le pion est arrêter sur une case de sang
@@ -204,6 +205,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     Historique.Deplacement.AddRange(ListeTmp);
                     Joueur[joueur - 1].Pion[pion - 1].CalculerFace();
                     TourJoueur++;
+                    ListeTmp = null;
                     return true;
                 }
             }
@@ -213,6 +215,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 Historique.Deplacement.AddRange(ListeTmp);
                 Joueur[joueur-1].Pion[pion-1].CalculerFace();
                 TourJoueur++;
+                ListeTmp = null;
                 return true;
             }
 

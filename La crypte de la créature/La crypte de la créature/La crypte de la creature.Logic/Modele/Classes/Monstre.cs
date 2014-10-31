@@ -43,6 +43,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Monstre(Position posXY, int Sens): base(posXY)
         {
             Orientation = Sens;
+            DetermineImage();
         }
 
         /// <summary>
@@ -56,11 +57,22 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return nom;
         }
 
+
+
         /// <summary>
         /// Retourne le type
         /// </summary>
         /// <returns>Retourne la string "Monstre"</returns>
         public override string Get_Type() { return ConstanteGlobale.MONSTRE ; }
+
+        /// <summary>
+        /// Determine l'image du monstre
+        /// </summary>
+        public override void DetermineImage()
+        {
+            Url = "pack://application:,,,/Images/Alain2.png";
+        }
+
 
         public virtual string VisionMonstre(string sens, Plateau plateau)
         {

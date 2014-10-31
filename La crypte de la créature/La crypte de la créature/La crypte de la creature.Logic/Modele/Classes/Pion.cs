@@ -61,6 +61,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             EstSortie=true;
             valeurDeplacement=deplacement;
             TmpDeplacement=valeurDeplacement;
+            DetermineImage();
         }
 
 
@@ -77,6 +78,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <returns>Retourne la string "Pion"</returns>
         public override string Get_Type() { return ConstanteGlobale.PION; }
+
+        /// <summary>
+        /// Determine l'image du Pion
+        /// </summary>
+        public override void DetermineImage()
+        {
+            Url = "pack://application:,,,/Images/Robert2.png";
+        }
 
 
         public override bool Equals(object obj)
