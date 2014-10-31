@@ -521,7 +521,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else
                 {
                     deplacement.Fin.ChangePosition(sens);
-                    deplacement.ConfirmationPierre(plateau,sens,pTmp[0]);
+                    if(pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)
+                    {
+                        deplacement.ConfirmationPierre(plateau, sens, pTmp[0]);
+                    }
+                    
                 }
             }
 
@@ -569,7 +573,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CASEDESANG)
                 {
                     //rappele la fonction
-                    PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
+                   // PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
                 }
                 // arrete sur la case de sang
                 // pion pousse roche elle arrête sur la case de sang
