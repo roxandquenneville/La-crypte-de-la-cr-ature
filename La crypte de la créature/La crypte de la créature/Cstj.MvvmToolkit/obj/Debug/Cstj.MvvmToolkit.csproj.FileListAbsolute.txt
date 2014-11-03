@@ -12,3 +12,4 @@ D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\bin\Debug\Cstj.MvvmToolkit.pdb
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.dll
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.csprojResolveAssemblyReference.cache
