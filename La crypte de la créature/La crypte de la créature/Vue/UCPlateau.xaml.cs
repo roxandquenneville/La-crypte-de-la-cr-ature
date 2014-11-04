@@ -179,7 +179,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btnConfirme(object sender, RoutedEventArgs e)
         {
-        //    PartieViewModel.SauvegarderCommand();
+        //    PartieViewModel.SauvegarderCommand(); 
               if(Pion==0)
               Pion=1;
               else
