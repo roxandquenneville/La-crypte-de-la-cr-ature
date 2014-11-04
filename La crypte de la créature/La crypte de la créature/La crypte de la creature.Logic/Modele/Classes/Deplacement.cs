@@ -46,7 +46,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Confirme le mouvement. 
         /// </summary>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
-        public virtual bool Confirmation(Plateau plateau, List<Deplacement> ListeTmp, int tmpDeplacement)
+        public virtual bool Confirmation(Plateau plateau, List<Deplacement> ListeTmp, int tmpDeplacement,string sens)
         {
             bool Valide = true;
             bool CasePresent;
@@ -84,23 +84,23 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else
                 {
                     type = pTmp[0].Get_Type();
-                    string sens = "";
-                    if ((Depart.X - Fin.X) > 0)
-                    {
-                        sens = ConstanteGlobale.GAUCHE;
-                    } 
-                    else if ((Depart.X - Fin.X) < 0)
-                    {
-                        sens = ConstanteGlobale.DROITE;
-                    }
-                    else if ((Depart.Y - Fin.Y) > 0)
-                    {
-                        sens = ConstanteGlobale.MONTE;
-                    }
-                    else if ((Depart.Y - Fin.Y) < 0)
-                    {
-                        sens = ConstanteGlobale.DESCEND;
-                    }
+                    //string sens = "";
+                    //if ((Depart.X - Fin.X) > 0)
+                    //{
+                    //    sens = ConstanteGlobale.GAUCHE;
+                    //} 
+                    //else if ((Depart.X - Fin.X) < 0)
+                    //{
+                    //    sens = ConstanteGlobale.DROITE;
+                    //}
+                    //else if ((Depart.Y - Fin.Y) > 0)
+                    //{
+                    //    sens = ConstanteGlobale.MONTE;
+                    //}
+                    //else if ((Depart.Y - Fin.Y) < 0)
+                    //{
+                    //    sens = ConstanteGlobale.DESCEND;
+                    //}
 
                     switch (type)
                     {

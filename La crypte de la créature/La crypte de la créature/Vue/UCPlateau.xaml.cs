@@ -156,7 +156,7 @@ namespace La_crypte_de_la_creature.Vue
 
                 case Key.Up:
                    
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, ConstanteGlobale.MONTE);
+                    APartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, ConstanteGlobale.MONTE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));

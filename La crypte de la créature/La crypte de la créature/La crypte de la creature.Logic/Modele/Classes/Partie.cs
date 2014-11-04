@@ -120,7 +120,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="Pion">Numéro du pion</param>
         /// <param name="Final">Position final</param>
         /// <returns>Retourne un mouvement</returns>
-        public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion, Position Final)
+        public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
             //Pour supprimer le mouvement
             int index;
@@ -131,7 +131,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             mouvement.Depart.X = Joueur[joueur - 1].Pion[pion].Position.X;
             mouvement.Depart.Y = Joueur[joueur - 1].Pion[pion].Position.Y;
-            mouvement.Fin = Final;
+            mouvement.Fin.X = mouvement.Depart.X;
+            mouvement.Fin.Y = mouvement.Depart.Y;
+
+            mouvement.Fin.ChangePosition(sens);
 
             //Pour mettre le pion sur le plateau
             if (Joueur[joueur - 1].Pion[pion].Position == Depart && Joueur[joueur - 1].Pion[pion].EstVivant == true)
@@ -140,10 +143,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
             // vérifie le mouvement
-            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion].TmpDeplacement) == true)
+            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion].TmpDeplacement,sens) == true)
             {
                 // change la position du pion
-                Joueur[joueur - 1].Pion[pion].Position = mouvement.Fin;
+                Joueur[joueur - 1].Pion[pion].Position.X = mouvement.Fin.X;
+                Joueur[joueur - 1].Pion[pion].Position.Y = mouvement.Fin.Y;
 
                 // Vérifie si le pion est dans la sortie
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
@@ -157,7 +161,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //Le mouvement n'est pas valide
             else
             {
-                Joueur[joueur - 1].Pion[pion].Position = mouvement.Depart;
+                Joueur[joueur - 1].Pion[pion].Position.X = mouvement.Depart.X;
+                Joueur[joueur - 1].Pion[pion].Position.Y = mouvement.Depart.Y;
                 ListeTmp.RemoveAt(index - 1);
             }
         }
@@ -247,18 +252,29 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         monstre.VisionMonstre(sens,Plateau);
                         tmp.Fin.ChangePosition(sens);
                         tmp.MonstreDeplacement(Plateau,sens);
+                        monstre.Position.X=tmp.Fin.X;
+                        monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 2:
                         monstre.VisionMonstre(sens, Plateau);
                         tmp.Fin.ChangePosition(sens);
+                        tmp.MonstreDeplacement(Plateau,sens);
+                        monstre.Position.X=tmp.Fin.X;
+                        monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 3:
                         monstre.VisionMonstre(sens, Plateau);
                         tmp.Fin.ChangePosition(sens);
+                        tmp.MonstreDeplacement(Plateau,sens);
+                        monstre.Position.X=tmp.Fin.X;
+                        monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 4:
                         monstre.VisionMonstre(sens, Plateau);
                         tmp.Fin.ChangePosition(sens);
+                        tmp.MonstreDeplacement(Plateau,sens);
+                        monstre.Position.X=tmp.Fin.X;
+                        monstre.Position.Y=tmp.Fin.Y; 
                         break;
                 }
 
