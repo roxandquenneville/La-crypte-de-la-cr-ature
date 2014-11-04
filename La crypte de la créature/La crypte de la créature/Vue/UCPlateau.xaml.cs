@@ -136,7 +136,7 @@ namespace La_crypte_de_la_creature.Vue
             {
                 case Key.Left:                    
                    
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, ConstanteGlobale.GAUCHE);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.GAUCHE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -146,7 +146,7 @@ namespace La_crypte_de_la_creature.Vue
 
                 case Key.Right:
                    
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, ConstanteGlobale.DROITE);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.DROITE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -156,7 +156,7 @@ namespace La_crypte_de_la_creature.Vue
 
                 case Key.Up:
                    
-                    APartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, ConstanteGlobale.MONTE);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.MONTE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -165,7 +165,7 @@ namespace La_crypte_de_la_creature.Vue
                 break;
                 case Key.Down:
                  
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, ConstanteGlobale.DESCEND);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.DESCEND);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));

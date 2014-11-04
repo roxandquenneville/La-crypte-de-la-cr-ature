@@ -129,7 +129,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
 
-            if(Joueur[joueur].Pion[pion].TmpDeplacement<=0)
+           if(Joueur[joueur].Pion[pion].TmpDeplacement<=0)
             {
                 return;
             }
@@ -149,7 +149,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
             // vérifie le mouvement
-            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion].TmpDeplacement,sens) == true)
+            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur].Pion[pion].TmpDeplacement,sens) == true)
             {
                 // change la position du pion
                 Joueur[joueur].Pion[pion].Position.X = mouvement.Fin.X;
