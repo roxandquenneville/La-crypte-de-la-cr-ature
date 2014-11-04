@@ -32,10 +32,14 @@ namespace La_crypte_de_la_creature.Vue
         {
             InitializeComponent();
             DataContext = new CompteViewModel();
-            lblErreur.Visibility = Visibility.Hidden;          
+            lblErreur.Visibility = Visibility.Hidden;
+            Loaded += WindowsLoaded;        
         }
                
-      
+       private void WindowsLoaded(object sender, RoutedEventArgs e)
+        {
+            tbxNomUsager.Focus(); 
+        }
 
         private void Btn_Quitter(object sender, RoutedEventArgs e)
         {

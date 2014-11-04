@@ -25,7 +25,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Constructeur de la classe Type de plateau
         /// </summary>
         /// <param name="plateau">on y passe le nom du type de plateau</param>
-        public TypePlateau(string plateau="")
+        public TypePlateau(string plateau)
         {
             NomDePlateau = plateau;
         }

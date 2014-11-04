@@ -263,9 +263,9 @@ namespace La_crypte_de_la_creature.VueModele
         #region command
 
         public void CreerPartieCommand()
-        {
+        { 
            
-            Plateau.TypePlateau = new TypePlateau("Normal");
+            Plateau.TypePlateau = _TypePlateauService.RetrieveAll().First();
             _HistoriqueService.Create(Historique);
             _PlateauService.Create(Plateau);
             _PartieService.Create(Partie);
