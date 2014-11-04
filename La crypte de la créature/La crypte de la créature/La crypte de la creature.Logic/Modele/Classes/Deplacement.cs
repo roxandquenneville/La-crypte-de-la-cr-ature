@@ -72,7 +72,41 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             // piece et case de sang gérer plus tard
             if (pTmp.Count > 1)
             {
+                string type2;
+                string tmp;
+                int index;
 
+                type = pTmp[0].Get_Type();
+                type2 = pTmp[1].Get_Type();
+
+                if(type != ConstanteGlobale.CASEDESANG)
+                {
+                    tmp=type;
+                    index=0;
+                }
+                else
+                {
+                    index=1;
+                    tmp=type2;
+                }
+
+                switch (type)
+                {
+                    case ConstanteGlobale.PIERRE:
+                        Valide = ConfirmationPierre(plateau, sens, ListeTmp, pTmp[index]);
+                        break;
+                    case ConstanteGlobale.MONSTRE:
+                        return false;
+                    case ConstanteGlobale.PION:
+                        if (tmpDeplacement > 1)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                }
             }
             else
             {
