@@ -152,7 +152,7 @@ namespace La_crypte_de_la_creature.Vue
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
                     AffichePlateau();
                     
-                break;
+                break; 
 
                 case Key.Up:
                    
