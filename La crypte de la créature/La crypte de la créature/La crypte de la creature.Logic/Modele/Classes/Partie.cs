@@ -120,7 +120,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="Pion">Numéro du pion</param>
         /// <param name="Final">Position final</param>
         /// <returns>Retourne un mouvement</returns>
-        public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion, Position Final)
+        public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
             //Pour supprimer le mouvement
             int index;
@@ -131,7 +131,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             mouvement.Depart.X = Joueur[joueur - 1].Pion[pion].Position.X;
             mouvement.Depart.Y = Joueur[joueur - 1].Pion[pion].Position.Y;
-            mouvement.Fin = Final;
+            mouvement.Fin = mouvement.Depart;
+
+             mouvement.Fin.ChangePosition(sens);
 
             //Pour mettre le pion sur le plateau
             if (Joueur[joueur - 1].Pion[pion].Position == Depart && Joueur[joueur - 1].Pion[pion].EstVivant == true)
@@ -140,7 +142,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
             // vérifie le mouvement
-            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion].TmpDeplacement) == true)
+            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion].TmpDeplacement,sens) == true)
             {
                 // change la position du pion
                 Joueur[joueur - 1].Pion[pion].Position = mouvement.Fin;
