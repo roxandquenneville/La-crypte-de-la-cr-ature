@@ -188,8 +188,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 if (pTmp.Count() == 0)
                 {
                     //Déplace la pierre
-                    deplacement.Fin = pACote;
-                    pierre.Position = pACote;
+                    deplacement.Fin.X = pACote.X;
+                    deplacement.Fin.Y = pACote.Y;
+                    pierre.Position.X = pACote.X;
+                    pierre.Position.Y = pACote.Y;
                     return true;
                 }
                 // on est sur une case de sang
@@ -225,7 +227,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             if(args.pACote == args.posTmp)
             {
-                pierre.Position= args.pACote;
+                pierre.Position.X = args.pACote.X;
+                pierre.Position.Y = args.pACote.Y;
                 return;
             }
 
@@ -236,8 +239,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //arrete sur la case de sang
             if (args.CasePresent == false)
             {
-                args.deplacement.Fin = args.posTmp;
-                pierre.Position = args.posTmp;
+                args.deplacement.Fin.X = args.posTmp.X;
+                args.deplacement.Fin.Y = args.posTmp.Y;
+                pierre.Position.X = args.posTmp.X;
+                pierre.Position.Y = args.posTmp.Y;
             }
 
             args.pTmp = plateau.RetournePiece(args.pACote);
@@ -246,7 +251,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             // la pierre qui a été pousser s'arrête sur la case de sang a cote de la piece
             if ((args.pTmp).Count() > 1)
             {
-                args.deplacement.Fin = args.posTmp;
+                args.deplacement.Fin.X = args.posTmp.X;
+                args.deplacement.Fin.Y = args.posTmp.Y;
                 pierre.Position.X = args.posTmp.X;
                 pierre.Position.Y = args.posTmp.Y;
             }
@@ -256,7 +262,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 //arrete sur la case à cote de la case de sang
                 if (args.pTmp.Count() == 0)
                 {
-                    args.deplacement.Fin = args.pACote;
+                    args.deplacement.Fin.X = args.pACote.X;
+                    args.deplacement.Fin.Y = args.pACote.Y;
                     pierre.Position.X = args.pACote.X;
                     pierre.Position.Y = args.pACote.Y;
                 }
@@ -270,7 +277,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 // ,car il y a une piece de l'autre côté
                 else
                 {
-                    args.deplacement.Fin = args.posTmp;
+                    args.deplacement.Fin.X = args.posTmp.X;
+                    args.deplacement.Fin.Y = args.posTmp.Y;
                     pierre.Position.X = args.posTmp.X;
                     pierre.Position.Y = args.posTmp.Y;
                 }
@@ -294,7 +302,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //arrete sur la case de sang
             if (args.CasePresent == false)
             {
-                Fin = args.posTmp;
+                Fin.X = args.posTmp.X;
+                Fin.Y = args.posTmp.Y;
                 Valide= true;
             }
 
@@ -366,6 +375,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return Valide;
         }
         #endregion
+
         #region Monstre
         public virtual void MonstreDeplacement(Plateau plateau, string sens)
         {
@@ -587,6 +597,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
         #endregion
+
         public override bool Equals(object obj)
         {
             if (obj == null)

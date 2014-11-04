@@ -120,10 +120,7 @@ namespace La_crypte_de_la_creature.Vue
             switch(e.Key)
             {
                 case Key.Left:
-                    PositionDeplacement.Y = Grid.GetRow(imgPion);
-                    PositionDeplacement.X = Grid.GetColumn(imgPion) - 1;
-                    Position p = PartieViewModel.Partie.Joueur[0].Pion[0].Position;
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, PositionDeplacement);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion,ConstanteGlobale.GAUCHE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -132,9 +129,7 @@ namespace La_crypte_de_la_creature.Vue
                 break;
 
                 case Key.Right:
-                    PositionDeplacement.Y = Grid.GetRow(imgPion);
-                    PositionDeplacement.X = Grid.GetColumn(imgPion) + 1;
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, PositionDeplacement);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion,ConstanteGlobale.DROITE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -143,9 +138,7 @@ namespace La_crypte_de_la_creature.Vue
                 break;
 
                 case Key.Up:
-                    PositionDeplacement.Y = Grid.GetRow(imgPion) - 1;
-                    PositionDeplacement.X = Grid.GetColumn(imgPion);
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, PositionDeplacement);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion,ConstanteGlobale.MONTE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -153,9 +146,7 @@ namespace La_crypte_de_la_creature.Vue
                     
                 break;
                 case Key.Down:
-                    PositionDeplacement.Y = Grid.GetRow(imgPion) + 1;
-                    PositionDeplacement.X = Grid.GetColumn(imgPion);
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion, PositionDeplacement);
+                    PartieViewModel.Partie.DeplacementDePion(tmpList, 1, Pion,ConstanteGlobale.DESCEND);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
