@@ -9,7 +9,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Args
 {
     public class RetrieveDeplacementArgs
     {
-        public int idDeplacement { get; set; }
+        public int? idDeplacement { get; set; }
         public int idPartie { get; set; }
         public int idPiece { get; set; }
         public int idHistorique { get; set; }

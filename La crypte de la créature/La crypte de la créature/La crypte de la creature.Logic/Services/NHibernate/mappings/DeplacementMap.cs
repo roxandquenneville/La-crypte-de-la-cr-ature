@@ -12,7 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
     {
         public DeplacementMap()
         {
-              Table("déplacements");
+              Table("deplacements");
               LazyLoad();
               Id(x => x.idDeplacement)
                 .Column("idDeplacement")

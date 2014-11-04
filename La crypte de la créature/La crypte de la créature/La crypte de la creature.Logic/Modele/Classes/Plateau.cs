@@ -11,9 +11,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #region attribut
 
         public virtual int? idPlateau { get; set; }
-        public virtual TypePlateau TypePlateau {get; set; }
-        public virtual List<Piece> Piece { get; set;}
-        public virtual List<Case> Case { get;set;}
+        public virtual TypePlateau TypePlateau {get ; set; }
+        public virtual IList<Piece> Piece { get; set;}
+        public virtual IList<Case> Case { get;set;}
         
         #endregion
 

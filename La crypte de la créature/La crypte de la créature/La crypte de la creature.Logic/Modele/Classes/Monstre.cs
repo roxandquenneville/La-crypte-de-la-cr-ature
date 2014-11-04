@@ -427,7 +427,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual Piece RegardePiece(List<Piece> pTmp)
         {
-            if (pTmp.Count > 0)
+            if (pTmp.Count > 1)
             {
                 //Il y a une pierre on voit pas plus loin
                 if (pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)

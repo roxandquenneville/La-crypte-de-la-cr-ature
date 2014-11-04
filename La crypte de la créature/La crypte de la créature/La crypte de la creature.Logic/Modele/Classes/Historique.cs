@@ -12,7 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual int? idHistorique { get; set; }
 
-        public virtual List<Deplacement> Deplacement {get; set; }
+        public virtual IList<Deplacement> Deplacement {get; set; }
        
         #endregion
 
