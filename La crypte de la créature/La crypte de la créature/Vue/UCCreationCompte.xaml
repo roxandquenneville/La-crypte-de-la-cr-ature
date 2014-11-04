@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500" >
-    <Grid>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 
 
         <Label Grid.Row="0" Content="Nouveau Nom:" Margin="10,74,0,0" Height="30" Foreground="White" HorizontalAlignment="Left" Width="206" VerticalAlignment="Top" >
