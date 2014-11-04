@@ -366,6 +366,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return Valide;
         }
         #endregion
+
         #region Monstre
         public virtual void MonstreDeplacement(Plateau plateau, string sens)
         {
@@ -517,9 +518,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
                     PierreSurCaseDeSang(plateau, sens, pierre,args);
                 }
-                //pousser une pierre sur une pierre/pion/monstre
+                //pousser une pierre sur une pierre/pion
                 else
                 {
+                    pierre.Position.X = deplacement.Fin.X;
+                    pierre.Position.Y = deplacement.Fin.Y;
+
                     deplacement.Fin.ChangePosition(sens);
                     if(pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)
                     {
@@ -587,6 +591,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
         #endregion
+
         public override bool Equals(object obj)
         {
             if (obj == null)

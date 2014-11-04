@@ -129,25 +129,31 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
 
-            mouvement.Depart.X = Joueur[joueur - 1].Pion[pion].Position.X;
-            mouvement.Depart.Y = Joueur[joueur - 1].Pion[pion].Position.Y;
+            if(Joueur[joueur].Pion[pion].TmpDeplacement<=0)
+            {
+                return;
+            }
+            
+
+            mouvement.Depart.X = Joueur[joueur].Pion[pion].Position.X;
+            mouvement.Depart.Y = Joueur[joueur].Pion[pion].Position.Y;
             mouvement.Fin.X = mouvement.Depart.X;
             mouvement.Fin.Y = mouvement.Depart.Y;
 
             mouvement.Fin.ChangePosition(sens);
 
             //Pour mettre le pion sur le plateau
-            if (Joueur[joueur - 1].Pion[pion].Position == Depart && Joueur[joueur - 1].Pion[pion].EstVivant == true)
+            if (Joueur[joueur].Pion[pion].Position == Depart && Joueur[joueur - 1].Pion[pion].EstVivant == true)
             {
-                Joueur[joueur - 1].Pion[pion].EstSortie = false;
+                Joueur[joueur].Pion[pion].EstSortie = false;
             }
 
             // vérifie le mouvement
             if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur - 1].Pion[pion].TmpDeplacement,sens) == true)
             {
                 // change la position du pion
-                Joueur[joueur - 1].Pion[pion].Position.X = mouvement.Fin.X;
-                Joueur[joueur - 1].Pion[pion].Position.Y = mouvement.Fin.Y;
+                Joueur[joueur].Pion[pion].Position.X = mouvement.Fin.X;
+                Joueur[joueur].Pion[pion].Position.Y = mouvement.Fin.Y;
 
                 // Vérifie si le pion est dans la sortie
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
@@ -156,13 +162,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     Pointage[joueur - 1].Point++;
                 }
                 //Réduit de 1 les points de déplacement
-                Joueur[joueur - 1].Pion[pion].TmpDeplacement--;
+                Joueur[joueur].Pion[pion].TmpDeplacement--;
             }
             //Le mouvement n'est pas valide
             else
             {
-                Joueur[joueur - 1].Pion[pion].Position.X = mouvement.Depart.X;
-                Joueur[joueur - 1].Pion[pion].Position.Y = mouvement.Depart.Y;
+                Joueur[joueur].Pion[pion].Position.X = mouvement.Depart.X;
+                Joueur[joueur].Pion[pion].Position.Y = mouvement.Depart.Y;
                 ListeTmp.RemoveAt(index - 1);
             }
         }
