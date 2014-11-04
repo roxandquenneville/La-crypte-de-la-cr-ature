@@ -122,18 +122,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne un mouvement</returns>
         public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
+            if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
+            {
+                return;
+            }
+
             //Pour supprimer le mouvement
             int index;
             Deplacement mouvement = new Deplacement();
             Position Depart = new Position();
             ListeTmp.Add(mouvement);
-            index = ListeTmp.Count();
-
-           if(Joueur[joueur].Pion[pion].TmpDeplacement<=0)
-            {
-                return;
-            }
-            
+            index = ListeTmp.Count();   
 
             mouvement.Depart.X = Joueur[joueur].Pion[pion].Position.X;
             mouvement.Depart.Y = Joueur[joueur].Pion[pion].Position.Y;
@@ -254,34 +253,35 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 switch(monstre.Orientation)
                 {
+                    case 0:
+                        monstre.VisionMonstre(ConstanteGlobale.GAUCHE, Plateau);
+                        tmp.Fin.ChangePosition(ConstanteGlobale.GAUCHE);
+                        tmp.MonstreDeplacement(Plateau, sens);
+                        monstre.Position.X = tmp.Fin.X;
+                        monstre.Position.Y = tmp.Fin.Y;
+                        break;
                     case 1: 
-                        monstre.VisionMonstre(sens,Plateau);
-                        tmp.Fin.ChangePosition(sens);
+                        monstre.VisionMonstre(ConstanteGlobale.MONTE,Plateau);
+                        tmp.Fin.ChangePosition(ConstanteGlobale.MONTE);
                         tmp.MonstreDeplacement(Plateau,sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 2:
-                        monstre.VisionMonstre(sens, Plateau);
-                        tmp.Fin.ChangePosition(sens);
+                        monstre.VisionMonstre(ConstanteGlobale.DROITE, Plateau);
+                        tmp.Fin.ChangePosition(ConstanteGlobale.DROITE);
                         tmp.MonstreDeplacement(Plateau,sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 3:
-                        monstre.VisionMonstre(sens, Plateau);
-                        tmp.Fin.ChangePosition(sens);
+                        monstre.VisionMonstre(ConstanteGlobale.DESCEND, Plateau);
+                        tmp.Fin.ChangePosition(ConstanteGlobale.DESCEND);
                         tmp.MonstreDeplacement(Plateau,sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
-                    case 4:
-                        monstre.VisionMonstre(sens, Plateau);
-                        tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau,sens);
-                        monstre.Position.X=tmp.Fin.X;
-                        monstre.Position.Y=tmp.Fin.Y; 
-                        break;
+                    
                 }
 
               

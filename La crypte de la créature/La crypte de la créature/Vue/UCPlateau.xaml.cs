@@ -127,6 +127,9 @@ namespace La_crypte_de_la_creature.Vue
             GridJeu.Children.Add(myImage);
             Grid.SetColumn(myImage, P.Position.X);
             Grid.SetRow(myImage, P.Position.Y);
+
+            if (P.Get_Type() == ConstanteGlobale.PIERRE)
+                GridJeu.Children[GridJeu.Children.Count - 1].SetValue(System.Windows.Controls.Panel.ZIndexProperty, 5);
         }
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
