@@ -5,24 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center"> 
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <Label Height="30" Grid.ColumnSpan="2" Margin="10,10,10,60" Visibility="Hidden" Name="lblErreur"/>
+        <Label Height="30" Margin="30,197,0,70" Visibility="Hidden" Name="lblErreur" Foreground="Red" />
+      
 
-        <Label  Content="Utilisateur :" Margin="30,117,0,0" Height="30" Foreground="White" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" >
+        <Label  Content="Utilisateur :" Margin="30,117,0,0" Height="30" Foreground="White" HorizontalAlignment="Left" Width="192" VerticalAlignment="Top" >
             <Label.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
 
-        <TextBox Background="AliceBlue" Margin="155,117,0,0"  Height="30" Text="{Binding RetrieveArgs.nomUsager}" Name="tbxNomUsager" HorizontalAlignment="Left" Width="312" VerticalAlignment="Top" />
-        <Label Content="Mot de passe :" Margin="30,162,0,0"  Height="30" Foreground="White" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" >
+        <TextBox GotFocus="GotFocus" Background="AliceBlue" Margin="227,117,0,0"  Height="30" Text="{Binding RetrieveArgs.nomUsager}" Name="tbxNomUsager" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top" />
+        <Label Content="Mot de passe :" Margin="30,162,0,0"  Height="30" Foreground="White" HorizontalAlignment="Left" Width="192" VerticalAlignment="Top" >
             <Label.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
-        <TextBox Background="AliceBlue" Margin="155,162,0,0" Height="30" Text="{Binding RetrieveArgs.motDePasse , UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="312" VerticalAlignment="Top" />
-        <Button  Height="30" Width="70" Grid.Column="0" Margin="139,267,0,0" Content="Connexion" IsDefault="True" Click="Btn_Connexion" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+        <TextBox GotFocus="GotFocus" Background="AliceBlue" Margin="227,162,0,0" Height="30" Text="{Binding RetrieveArgs.motDePasse , UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top" />
+        <Button Height="30" Width="70" Grid.Column="0" Margin="139,267,0,0" Content="Connexion" IsDefault="True" Click="Btn_Connexion" HorizontalAlignment="Left" VerticalAlignment="Top"  />
         <Button Height="30" Width="70" Margin="219,267,0,0" Content="Quitter" Click="Btn_Quitter" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Label Grid.Column="0" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="1" Margin="108,222,0,0" MouseDown="Lbl_Click" HorizontalAlignment="Left" Width="226" Height="30" VerticalAlignment="Top"  >
             <Label.Effect>

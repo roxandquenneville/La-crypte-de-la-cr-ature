@@ -24,29 +24,29 @@
             </Label.Effect>
         </Label>
 
-        <Label Grid.Row="3" Height="30" RenderTransformOrigin="1.007,2.333" Grid.ColumnSpan="2" Margin="90,15,60,15" Visibility="Hidden" Name="lblErreur"  Foreground="White" >
+        <Label Height="30" RenderTransformOrigin="1.007,2.333" Margin="10,232,10,35" Visibility="Hidden" Name="lblErreur"  Foreground="White" >
             <Label.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
 
-        <TextBox Grid.Row="0" Height="30" Margin="221,69,0,0" Text="{Binding RetrieveArgs.nomUsager}" Name="tbxNomUsager" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top"  />
-        <TextBox Height="30" Margin="221,104,0,0" Text="{Binding RetrieveArgs.motDePasse}" Name="tbxMotDePasse" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top" />
-        <TextBox Height="30" Margin="221,139,0,0" Name="tbxMotDePasseConfirme" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" />
-        <Button Height="30" Width="90" Margin="131,412,0,0" Content="Confirmé" Click="btn_Confirme" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Button Height="30" Width="90" Margin="248,412,0,0" Content="Annulé" Click="btn_Annule" IsCancel="True" VerticalAlignment="Top" HorizontalAlignment="Left"  />
+        <TextBox GotFocus="GotFocus" Grid.Row="0" Height="30" Margin="221,69,0,0" Text="{Binding RetrieveArgs.nomUsager}" Name="tbxNomUsager" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top"  />
+        <TextBox GotFocus="GotFocus" Height="30" Margin="221,104,0,0" Text="{Binding RetrieveArgs.motDePasse}" Name="tbxMotDePasse" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top"  />
+        <TextBox GotFocus="GotFocus" Height="30" Margin="221,139,0,0" Name="tbxMotDePasseConfirme" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" />
+        <Button Height="30" Width="70" Margin="139,267,0,0" Content="Confirmé" Click="btn_Confirme" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top" TabIndex="10" />
+        <Button Height="30" Width="70" Margin="219,267,0,0" Content="Annulé" Click="btn_Annule" IsCancel="True" VerticalAlignment="Top" HorizontalAlignment="Left" TabIndex="11" />
         <Label Foreground="White" Content="E-mail :" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Width="206" Height="30">
             <Label.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="221,174,0,0" TextWrapping="Wrap" Text="{Binding RetrieveArgs.email}"   VerticalAlignment="Top" Width="240"/>
+        <TextBox GotFocus="GotFocus" HorizontalAlignment="Left" Height="30" Margin="221,174,0,0" TextWrapping="Wrap" Text="{Binding RetrieveArgs.email}"   VerticalAlignment="Top" Width="240" Name="tbxEmail" />
         <Label Foreground="White" Content="Confirmation E-mail :" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Height="30" Width="206">
             <Label.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
-        <TextBox Height="30" HorizontalAlignment="Left"  Margin="221,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240"/>
+        <TextBox GotFocus="GotFocus" Height="30" HorizontalAlignment="Left"  Margin="221,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Name="tbxEmailConfirme" />
 
     </Grid>
 </UserControl>

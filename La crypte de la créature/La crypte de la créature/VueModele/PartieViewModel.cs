@@ -42,13 +42,14 @@ namespace La_crypte_de_la_creature.VueModele
             Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
          //   Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
             Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
+         //   Joueur = _JoueurService.Retrieve(RetrieveJoueurArgs);
 
             RetrieveJoueurArgs = new RetrieveJoueurArgs();
             RetrievePartieArgs = new RetrievePartieArgs();
             RetrievePlateauArgs = new RetrievePlateauArgs();
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
         //    RetrievePointageArgs = new RetrievePointageArgs();
-
+            Joueur = new Joueur();
             Historique = new Historique();
             Plateau = new Plateau();
             Partie = new Partie(1,2,new TypePlateau ("Normal"));
@@ -58,6 +59,29 @@ namespace La_crypte_de_la_creature.VueModele
         }
 
         #region Bindable
+
+
+
+        private Joueur _Joueur;
+
+        public Joueur Joueur
+        {
+            get
+            {
+                return _Joueur;
+            }
+            set
+            {
+                if (_Joueur == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _Joueur = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
 
 
@@ -237,8 +261,9 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {
-            //Mapping a corriger 
-           _PartieService.Create(Partie);
+           //_HistoriqueService.Create(Historique);                     
+           //_PlateauService.Create(Plateau);
+           //_PartieService.Create(Partie);
         }
 
         public void SauvegarderCommand()

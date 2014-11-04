@@ -35,7 +35,7 @@ namespace La_crypte_de_la_creature.Vue
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
         public List<Deplacement> tmpList = new List<Deplacement>();
-        public Position PositionDeplacement = new Position();
+        public Position PositionAvantTour = new Position();
         public UCPlateau()
         {
             InitializeComponent();
@@ -47,32 +47,38 @@ namespace La_crypte_de_la_creature.Vue
         private void WindowsLoaded(Object o, RoutedEventArgs e)
         {
             lblNomUsager.Content = UtilisateurConnecte.nomUsager;
-            //int c = 0;
-            
+            afficherPointage();
 
-            //foreach(Pointage p in PartieViewModel.Partie.Pointage)
-            //{
-               
+        }
 
-            //   //StringBuilder Joueur = new StringBuilder().Append("Joueur ").Append(c).Append(" : ").Append(p.Point);
-            //   //lboxPointage.Items.Add(Joueur);
-            //   //lboxPointage.Focusable=false;
-            //   //c++;
-            //}
 
+        private void afficherPointage()
+        {
+            int c = 1;
+            foreach (Pointage p in PartieViewModel.Partie.Pointage)
+            {
+                StringBuilder Joueur = new StringBuilder().Append("Joueur ").Append(c).Append(" : ").Append(p.Point);
+                lboxPointage.Items.Add(Joueur);
+                c++;
+            }
         }
 
         private void GridJeu_Loaded(object sender, RoutedEventArgs e)
         {
             GridJeu.Focus();
-
             AffichePlateau();
-             
-           // lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+            SetPositionPion();
+            lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             
 
         }
 
+
+        private void SetPositionPion()
+        {
+            PositionAvantTour.X = PartieViewModel.Joueurs[0].Pion[0].Position.X;
+            PositionAvantTour.Y = PartieViewModel.Joueurs[0].Pion[0].Position.Y; 
+        }
 
         private void AffichePlateau()
         {
@@ -105,19 +111,19 @@ namespace La_crypte_de_la_creature.Vue
                     {                        
                         if(!((Pion)c).EstSortie || ((Pion)c).EstVivant)
                         {
-                            afficherPiece(stringPath, c);
+                            AfficherPieceImage(stringPath, c);
                         } 
                     }
                     else
                     {
-                        afficherPiece(stringPath, c);
+                        AfficherPieceImage(stringPath, c);
                     }
                 }
             }
         }
 
 
-        private void afficherPiece(String url, Piece P )        
+        private void AfficherPieceImage(String url, Piece P )        
         {
             Uri imageUri = new Uri(url, UriKind.RelativeOrAbsolute);
             BitmapImage imageBitmap = new BitmapImage(imageUri);
@@ -131,7 +137,8 @@ namespace La_crypte_de_la_creature.Vue
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            GridJeu.Focus();
+            
+
             switch(e.Key)
             {
                 case Key.Left:                    
@@ -184,6 +191,7 @@ namespace La_crypte_de_la_creature.Vue
               Pion=1;
               else
               Pion=0;
+              SetPositionPion();
               PartieViewModel.Partie.ConfirmerDeplacementPion(tmpList,1,Pion);
               lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
         }
@@ -191,6 +199,13 @@ namespace La_crypte_de_la_creature.Vue
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            PartieViewModel.Joueur.Pion[Pion].Position.X = PositionAvantTour.X;
+            PartieViewModel.Joueur.Pion[Pion].Position.Y = PositionAvantTour.Y;
+            AffichePlateau();
         }
 
 

@@ -35,10 +35,10 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btn_Confirme(object sender, RoutedEventArgs e)
         {
-            lblErreur.Content = "";
+            lblErreur.Content = String.Empty;
             bool utilisateurPresent = false;
            
-            if (tbxMotDePasse.Text == tbxMotDePasseConfirme.Text)
+            if (tbxMotDePasse.Text == tbxMotDePasseConfirme.Text && tbxEmail.Text == tbxEmailConfirme.Text  )
             {
                 
                 foreach(Compte C in ViewModel.Comptes )
@@ -68,16 +68,34 @@ namespace La_crypte_de_la_creature.Vue
             }
             else
             {
-                lblErreur.Content = "Les mot de passe ne sont pas identique";
-                lblErreur.Visibility = Visibility.Visible;
-            }
-
+                if(tbxMotDePasse.Text != tbxMotDePasseConfirme.Text && tbxEmail.Text != tbxEmailConfirme.Text)
+                { 
+                    lblErreur.Content = "Les mot de passe et les E-mails ne sont pas identique";
+                    lblErreur.Visibility = Visibility.Visible;
+                }
+                else if (tbxMotDePasse.Text != tbxMotDePasseConfirme.Text)
+                {
+                    lblErreur.Content = "Les mot de passe ne sont pas identique";
+                    lblErreur.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    lblErreur.Content = "Les E-mails ne sont pas identique";
+                    lblErreur.Visibility = Visibility.Visible;
+                }
+              }
         }
 
         private void btn_Annule(object sender, RoutedEventArgs e)
         {
             mainVM.ChangeView<UCConnexion>(new UCConnexion());
         }
+
+        private void GotFocus(object sender, RoutedEventArgs e)
+        {
+            lblErreur.Visibility = Visibility.Hidden;
+        }
+
 
     }
 }

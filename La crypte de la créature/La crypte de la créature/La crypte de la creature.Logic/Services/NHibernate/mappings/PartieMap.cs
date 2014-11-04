@@ -21,18 +21,18 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-               References(x => x.Historique)
-                .Class<Historique>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idHistorique");
-				References(x => x.Plateau)
-                .Class<Plateau>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idPlateau");
+              References(x => x.Historique)
+               .Class<Historique>()
+               .Access.Property()
+               .LazyLoad(Laziness.False)
+               .Cascade.None()
+               .Columns("idHistorique");
+              References(x => x.Plateau)
+              .Class<Plateau>()
+              .Access.Property()
+              .LazyLoad(Laziness.False)
+              .Cascade.None()
+              .Columns("idPlateau");
 			HasMany<Joueur>(x => x.idPartie)
                 .Not.LazyLoad()
                 .Access.Property()

@@ -46,7 +46,8 @@ namespace La_crypte_de_la_creature.Vue
         {
        
             Application.Current.MainWindow.Background = Brushes.White;
-         // PartieViewModel.CreerPartieCommand();
+           
+            PartieViewModel.CreerPartieCommand();
             this.Content = new UCInvitationJoueur();
         }
 

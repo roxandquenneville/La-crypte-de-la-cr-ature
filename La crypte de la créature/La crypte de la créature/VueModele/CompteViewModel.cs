@@ -85,6 +85,7 @@ namespace La_crypte_de_la_creature.UI.ViewModel
         {
             Compte.MotDePasse = RetrieveArgs.motDePasse;
             Compte.NomUsager = RetrieveArgs.nomUsager;
+            Compte.Email = RetrieveArgs.email;
             _CompteService.Create(Compte);
         }
 

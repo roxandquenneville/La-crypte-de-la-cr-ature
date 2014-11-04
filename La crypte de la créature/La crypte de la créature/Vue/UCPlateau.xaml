@@ -62,10 +62,10 @@
         <Label Content="Bonjour, :"/>
         <Label Margin="0,25,0,0" Name="lblNomUsager" />
 
-        <Label Name="lblHistoriqueCourte" Grid.Column="1" BorderThickness="1" BorderBrush="Black" Content=" Historique Courte: Dernier Movement Historique     Dernier mouvement du monstre"/>
+        <Label Focusable="False" Name="lblHistoriqueCourte" Grid.Column="1" BorderThickness="1" BorderBrush="Black" Content=" Historique Courte: Dernier Movement Historique     Dernier mouvement du monstre"/>
         <Button Grid.Row="1" Height="30" Content="Confirmer tour" Focusable="False" Click="btnConfirme" >
         </Button>
-        <Button Grid.Row="1" Height="30" Content="Annuler tour" Margin="0,70,0,0" Focusable="False">
+        <Button Grid.Row="1" Height="30" Content="Annuler tour" Margin="0,70,0,0" Focusable="False" Click="Button_Click_1">
         </Button>
         <Button Grid.Row="1" Height="30" Content="Revenir" Margin="0,140,0,0" Focusable="False" Click="Button_Click"  />
 

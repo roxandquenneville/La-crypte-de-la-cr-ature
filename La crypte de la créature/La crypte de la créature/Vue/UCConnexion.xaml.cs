@@ -32,9 +32,10 @@ namespace La_crypte_de_la_creature.Vue
         {
             InitializeComponent();
             DataContext = new CompteViewModel();
-            lblErreur.Visibility = Visibility.Hidden;
+            lblErreur.Visibility = Visibility.Hidden;          
         }
                
+      
 
         private void Btn_Quitter(object sender, RoutedEventArgs e)
         {
@@ -77,6 +78,11 @@ namespace La_crypte_de_la_creature.Vue
          
            mainVM.ChangeView<UCCreationCompte>(new UCCreationCompte());
 
+        }
+     
+        private void GotFocus(object sender, RoutedEventArgs e)
+        {
+            lblErreur.Visibility = Visibility.Hidden; 
         }
 
 
