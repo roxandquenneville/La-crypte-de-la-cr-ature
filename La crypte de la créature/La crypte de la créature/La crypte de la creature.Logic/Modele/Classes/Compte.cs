@@ -12,6 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int? idCompte { get; set; }
         public virtual string NomUsager{get;set; }
         public virtual string MotDePasse{get;set; }
+        public virtual string Email { get;set;}
         #endregion
 
 
@@ -21,16 +22,18 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="nom">Nom d'usager</param>
         /// <param name="code">Mot de passe</param>
-        public Compte(string nom, string code)
+        public Compte(string nom, string code, string email)
         {
             NomUsager = nom;
             MotDePasse = code;
+            Email = email ;
         }
 
         public Compte()
         {
-            NomUsager = "";
-            MotDePasse = "";
+            NomUsager = string.Empty;
+            MotDePasse = string.Empty;
+            Email = string.Empty;
         }
 
         /// <summary>
