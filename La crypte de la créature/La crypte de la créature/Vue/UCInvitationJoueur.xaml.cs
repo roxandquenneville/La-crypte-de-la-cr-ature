@@ -85,6 +85,11 @@ namespace La_crypte_de_la_creature.Vue
             lbxDisponible.SelectedIndex = -1;
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
+        }
+
       
     }
 }
