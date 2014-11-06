@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public class Partie
@@ -24,15 +25,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return tourJoueur; }
             set
             {
-                if (value == Joueur.Count() * Joueur[0].Pion.Count())
-                {
-                    MouvementMonstre();
-                    tourJoueur = 0;
-                }
-                else
-                {
-                    tourJoueur = value;
-                }
+               tourJoueur = value;
             }
         }
         #endregion
@@ -55,7 +48,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            Plateau.Piece.Concat(listeTmp);
+            ((List<Piece>)Plateau.Piece).AddRange(listeTmp);
         }
 
         /// <summary>
@@ -108,7 +101,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            Plateau.Piece.Concat(listeTmp);
+            ((List<Piece>)Plateau.Piece).AddRange(listeTmp);
 
         }
 
@@ -206,13 +199,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 // Il y a deux pion
                 if (compteur > 1) 
                 { 
-                    ListeTmp =null;
+                    ListeTmp.Clear();
                     return false;
                 }
                 //Le pion est arrêter sur une case de sang
                 else
                 {
-                    Historique.Deplacement.Concat(ListeTmp);
+                    ((List<Deplacement>)Historique.Deplacement).AddRange(ListeTmp);
                     Joueur[joueur - 1].Pion[pion].CalculerFace();
                     TourJoueur++;
                     ListeTmp = null;
@@ -222,7 +215,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             // Il y a seulement le pion à cette position
             else
             {
-                Historique.Deplacement.Concat(ListeTmp);
+                ((List<Deplacement>)Historique.Deplacement).AddRange(ListeTmp);
                 Joueur[joueur-1].Pion[pion].CalculerFace();
                 TourJoueur++;
                 ListeTmp = null;
@@ -237,7 +230,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual void MouvementMonstre()
         {
             Monstre monstre=null;
-            List<Pion> pion= null;
+            List<Pion> pion= new List<Pion>();
             String sens=null;
             Deplacement tmp = new Deplacement();
 
@@ -245,8 +238,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             monstre=Plateau.RetourneMonstre();
 
-            tmp.Depart = monstre.Position;
-            tmp.Fin = tmp.Depart;
+            tmp.Depart.X = monstre.Position.X;
+            tmp.Depart.Y = monstre.Position.Y;
+            tmp.Fin.X = tmp.Depart.X;
+            tmp.Fin.Y = tmp.Depart.Y;
             
 
             if(!(monstre == null))
@@ -283,9 +278,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         break;
                     
                 }
-
-              
             }
+
+
+
             pion = Plateau.Retournepion();
             bool verification = false;
             foreach(Pion item in pion)

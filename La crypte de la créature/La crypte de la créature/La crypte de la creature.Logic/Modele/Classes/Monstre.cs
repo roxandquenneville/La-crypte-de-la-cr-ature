@@ -82,7 +82,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //     - - - -  -    - - - - 
             //     - - - -  -    - - - -
 
-            List<Piece> pTmp = null;
+            List<Piece> pTmp = new List<Piece>();
             List<int> iTmp = new List<int>();
 
 
@@ -248,6 +248,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     pTmp.Add(MonstreRegarde(plateau,ConstanteGlobale.DESCEND));
                     iTmp.Add(CompteDistance(pTmp[2]));
 
+                    if(iTmp[0] == -1)
+                    {
+                        iTmp[0] = 5000;    
+                    }
+                    if (iTmp[1] == -1)
+                    {
+                        iTmp[1] = 5000;
+                    }
+                    if (iTmp[2] == -1)
+                    {
+                        iTmp[2] = 5000;
+                    }
+
+                    if(iTmp.Min() == 5000)
+                    {
+                        return sens;
+                    }
+
                     if (iTmp[0] < iTmp[1])
                     {
                         if (iTmp[0] < iTmp[2])
@@ -284,9 +302,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         {
                             return sens;
                         }
-                        else
+                        else if (iTmp[1] > iTmp[2])
                         {
                             return ConstanteGlobale.DESCEND;
+                        }
+                        else
+                        {
+                            return sens;
                         }
                     }
             }
@@ -298,7 +320,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             List<Piece> pTmp = null;
             Piece pionTmp = null;
             Position tmp = new Position();
-            tmp = Position;
+            tmp.X = Position.X;
+            tmp.Y = Position.Y;
 
             // Regarde les cases à gauche
             // tmp.x <15
@@ -312,7 +335,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     {
                     
                       tmp.ChangePosition(ConstanteGlobale.GAUCHE);
-                        pTmp = plateau.RetournePiece(tmp);
+                       pTmp = plateau.RetournePiece(tmp);
 
                         if (!(pTmp.Count == 0))
                         {
@@ -321,7 +344,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             // Il y a une pierre
                             if (pionTmp == null)
                             {
-                                return null;
+                                return pionTmp;
                             }
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
@@ -333,13 +356,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                                 return pionTmp;
                             }
                         }
+                        if (tmp.X == 0)
+                        {
+                            return pionTmp;
+                        }
                     }
-                    return null;
+                    return pionTmp;
 
                 case ConstanteGlobale.DROITE:
-                    while (tmp.X < 15)
+                    while (tmp.X < 16)
                     {
-                        tmp.ChangePosition(ConstanteGlobale.GAUCHE);
+                        tmp.ChangePosition(ConstanteGlobale.DROITE);
+
+
                         pTmp = plateau.RetournePiece(tmp);
 
                         if (!(pTmp.Count == 0))
@@ -349,7 +378,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             // Il y a une pierre
                             if (pionTmp == null)
                             {
-                                return null;
+                                return pionTmp;
                             }
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
@@ -361,8 +390,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                                 return pionTmp;
                             }
                         }
+                        if (tmp.X == 15)
+                        {
+                            return pionTmp;
+                        }
                     }
-                    return null;
+                    return pionTmp;
 
                 case ConstanteGlobale.MONTE:
                     while (tmp.Y > 0)
@@ -377,7 +410,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             // Il y a une pierre
                             if (pionTmp == null)
                             {
-                                return null;
+                                return pionTmp;
                             }
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
@@ -389,8 +422,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                                 return pionTmp;
                             }
                         }
+                        if (tmp.Y == 0)
+                        {
+                            return pionTmp;
+                        }
                     }
-                    return null;
+                    return pionTmp;
 
                 case ConstanteGlobale.DESCEND:
                     while (tmp.Y < 11)
@@ -405,7 +442,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             // Il y a une pierre
                             if (pionTmp == null)
                             {
-                                return null;
+                                return pionTmp;
                             }
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
@@ -417,8 +454,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                                 return pionTmp;
                             }
                         }
+                        if(tmp.Y == 10)
+                        {
+                            return pionTmp;
+                        }
                     }
-                    return null;
+                    return pionTmp;
 
 
             }
@@ -427,17 +468,18 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual Piece RegardePiece(List<Piece> pTmp)
         {
+          Piece tmp = null;
             if (pTmp.Count > 1)
             {
                 //Il y a une pierre on voit pas plus loin
                 if (pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)
                 {
-                    return null;
+                    return tmp;
                 }
                 //Il y a une pierre on voit pas plus loin
                 else if (pTmp[1].Get_Type() == ConstanteGlobale.PIERRE)
                 {
-                    return null;
+                    return tmp;
                 }
                 //Il y a un pion on le retourne
                 else if (pTmp[0].Get_Type() == ConstanteGlobale.PION)
@@ -466,7 +508,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 //Il y a une pierre on voit pas plus loin
                 if (pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)
                 {
-                    return null;
+                    return tmp;
                 }
                 //Il y a un pion on le retourne
                 else if (pTmp[0].Get_Type() == ConstanteGlobale.PION)
@@ -478,7 +520,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     return pTmp[0];
                 }
             }
-            return null;
+            return tmp;
         }
 
         public virtual int CompteDistance(Piece pion)
