@@ -254,29 +254,29 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 switch(monstre.Orientation)
                 {
                     case 0:
-                        monstre.VisionMonstre(ConstanteGlobale.GAUCHE, Plateau);
-                        tmp.Fin.ChangePosition(ConstanteGlobale.GAUCHE);
+                        sens = monstre.VisionMonstre(ConstanteGlobale.GAUCHE, Plateau);
+                        tmp.Fin.ChangePosition(sens);
                         tmp.MonstreDeplacement(Plateau, sens);
                         monstre.Position.X = tmp.Fin.X;
                         monstre.Position.Y = tmp.Fin.Y;
                         break;
-                    case 1: 
-                        monstre.VisionMonstre(ConstanteGlobale.MONTE,Plateau);
-                        tmp.Fin.ChangePosition(ConstanteGlobale.MONTE);
+                    case 1:
+                        sens = monstre.VisionMonstre(ConstanteGlobale.MONTE, Plateau);
+                        tmp.Fin.ChangePosition(sens);
                         tmp.MonstreDeplacement(Plateau,sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 2:
-                        monstre.VisionMonstre(ConstanteGlobale.DROITE, Plateau);
-                        tmp.Fin.ChangePosition(ConstanteGlobale.DROITE);
+                        sens = monstre.VisionMonstre(ConstanteGlobale.DROITE, Plateau);
+                        tmp.Fin.ChangePosition(sens);
                         tmp.MonstreDeplacement(Plateau,sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 3:
-                        monstre.VisionMonstre(ConstanteGlobale.DESCEND, Plateau);
-                        tmp.Fin.ChangePosition(ConstanteGlobale.DESCEND);
+                        sens = monstre.VisionMonstre(ConstanteGlobale.DESCEND, Plateau);
+                        tmp.Fin.ChangePosition(sens);
                         tmp.MonstreDeplacement(Plateau,sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
