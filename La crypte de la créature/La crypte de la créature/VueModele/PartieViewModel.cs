@@ -54,7 +54,7 @@ namespace La_crypte_de_la_creature.VueModele
             //    RetrievePointageArgs = new RetrievePointageArgs();
             Joueur = new Joueur();
             Historique = new Historique();
-            Plateau = new Plateau();
+            Plateau = new Plateau(_TypePlateauService.RetrieveAll().First());
             Partie = new Partie(1, 2, new TypePlateau("Normal"));
 
 
@@ -263,12 +263,13 @@ namespace La_crypte_de_la_creature.VueModele
         #region command
 
         public void CreerPartieCommand()
-        { 
-           
-            Plateau.TypePlateau = _TypePlateauService.RetrieveAll().First();
-            _HistoriqueService.Create(Historique);
-            _PlateauService.Create(Plateau);
-            _PartieService.Create(Partie);
+        {   
+            //Plateau.TypePlateau = _TypePlateauService.RetrieveAll().FirstOrDefault();
+            //Plateau.Cases = Partie.Plateau.Cases;
+            //Plateau.Pieces = Partie.Plateau.Pieces;   
+            //_HistoriqueService.Create(Historique);
+            //_PlateauService.Create(Plateau);
+            //_PartieService.Create(Partie);
         }
 
         public void SauvegarderCommand()

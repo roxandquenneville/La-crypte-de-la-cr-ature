@@ -84,7 +84,7 @@ namespace La_crypte_de_la_creature.Vue
         {
             GridJeu.Children.Clear();
             lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
-            foreach (Case c in PartieViewModel.Partie.Plateau.Case)
+            foreach (Case c in PartieViewModel.Partie.Plateau.Cases)
             {
                 String stringPath = c.Url;
                 Uri imageUri = new Uri(stringPath, UriKind.RelativeOrAbsolute);
@@ -102,7 +102,7 @@ namespace La_crypte_de_la_creature.Vue
         private void AfficherPiece()
         {
             
-            foreach (Piece c in PartieViewModel.Partie.Plateau.Piece)
+            foreach (Piece c in PartieViewModel.Partie.Plateau.Pieces)
             {
                 String stringPath = c.Url;
                 if( stringPath !=null)

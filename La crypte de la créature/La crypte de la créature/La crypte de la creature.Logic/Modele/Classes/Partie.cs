@@ -55,7 +55,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            Plateau.Piece.Concat(listeTmp);
+            Plateau.Pieces.Concat(listeTmp);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            Plateau.Piece.Concat(listeTmp);
+            Plateau.Pieces.Concat(listeTmp);
 
         }
 

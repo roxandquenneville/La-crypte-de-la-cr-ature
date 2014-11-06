@@ -12,8 +12,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual int? idPlateau { get; set; }
         public virtual TypePlateau TypePlateau {get ; set; }
-        public virtual IList<Piece> Piece { get; set;}
-        public virtual IList<Case> Case { get;set;}
+        public virtual IList<Piece> Pieces { get; set;}
+        public virtual IList<Case> Cases { get;set;}
         
         #endregion
 
@@ -22,8 +22,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public Plateau()
         {
-          Case = new List<Case>();
-          Piece = new List<Piece>();
+          Cases = new List<Case>();
+          Pieces = new List<Piece>();
         }
 
         /// <summary>
@@ -31,8 +31,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public Plateau(TypePlateau type)
         {
-            Case = new List<Case>();
-            Piece = new List<Piece>();
+            Cases = new List<Case>();
+            Pieces = new List<Piece>();
 
             if (type.NomDePlateau == "Normal")
             {
@@ -40,36 +40,36 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 {
                     for(int y=0;y<11;y++)
                     {
-                        Case.Add(new Case(new Position(x, y), estInterne(x, y, type.NomDePlateau)));
+                        Cases.Add(new Case(new Position(x, y), estInterne(x, y, type.NomDePlateau)));
                     }
                 }
 
                 //Selon la page 3 du manuel
                 //Ajout des pierres
-                Piece.Add(new Pierre(new Position(2,2),true));
-                Piece.Add(new Pierre(new Position(4,7), true));
-                Piece.Add(new Pierre(new Position(5,9), true));
-                Piece.Add(new Pierre(new Position(6, 6), true));
-                Piece.Add(new Pierre(new Position(7, 4), true));
-                Piece.Add(new Pierre(new Position(8, 5), true));
-                Piece.Add(new Pierre(new Position(8, 9), true));
-                Piece.Add(new Pierre(new Position(12, 3), true));
-                Piece.Add(new Pierre(new Position(12, 7), true));
-                Piece.Add(new Pierre(new Position(13, 5), true));
-                Piece.Add(new Pierre(new Position(14, 8), true));
+                Pieces.Add(new Pierre(new Position(2,2),true));
+                Pieces.Add(new Pierre(new Position(4,7), true));
+                Pieces.Add(new Pierre(new Position(5,9), true));
+                Pieces.Add(new Pierre(new Position(6, 6), true));
+                Pieces.Add(new Pierre(new Position(7, 4), true));
+                Pieces.Add(new Pierre(new Position(8, 5), true));
+                Pieces.Add(new Pierre(new Position(8, 9), true));
+                Pieces.Add(new Pierre(new Position(12, 3), true));
+                Pieces.Add(new Pierre(new Position(12, 7), true));
+                Pieces.Add(new Pierre(new Position(13, 5), true));
+                Pieces.Add(new Pierre(new Position(14, 8), true));
 
                 //Ajout des cases de sang
-                Piece.Add(new CaseDeSang(new Position(8, 2)));
-                Piece.Add(new CaseDeSang(new Position(8, 3)));
-                Piece.Add(new CaseDeSang(new Position(9, 2)));
-                Piece.Add(new CaseDeSang(new Position(9, 3)));
-                Piece.Add(new CaseDeSang(new Position(4, 8)));
-                Piece.Add(new CaseDeSang(new Position(5, 8)));
-                Piece.Add(new CaseDeSang(new Position(6, 8)));
-                Piece.Add(new CaseDeSang(new Position(7, 8)));
+                Pieces.Add(new CaseDeSang(new Position(8, 2)));
+                Pieces.Add(new CaseDeSang(new Position(8, 3)));
+                Pieces.Add(new CaseDeSang(new Position(9, 2)));
+                Pieces.Add(new CaseDeSang(new Position(9, 3)));
+                Pieces.Add(new CaseDeSang(new Position(4, 8)));
+                Pieces.Add(new CaseDeSang(new Position(5, 8)));
+                Pieces.Add(new CaseDeSang(new Position(6, 8)));
+                Pieces.Add(new CaseDeSang(new Position(7, 8)));
 
                 //Ajout du monstre
-                Piece.Add(new Monstre(new Position(0, 0), 2));
+                Pieces.Add(new Monstre(new Position(0, 0), 2));
             }
 
         }
@@ -151,7 +151,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             bool Present = false;
             //vérifie si la case est dans la liste de case du plateau
-            foreach (Case item in Case)
+            foreach (Case item in Cases)
             {
                 if (item.Coordonnee.X == pos.X && item.Coordonnee.Y == pos.Y)
                 {
@@ -177,7 +177,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             bool Present = false;
             //vérifier la case et si cest une pierre vérifier la case derriere
             //si c une mare de sang changer position de fin
-            foreach (Piece item in Piece)
+            foreach (Piece item in Pieces)
             {
                 if (item.Position.X == pos.X && item.Position.Y == pos.Y)
                 {
@@ -197,7 +197,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             List<Piece> tmp = new List<Piece>();
             if (ConfirmationPiece(pos))
             {
-                foreach (Piece item in Piece)
+                foreach (Piece item in Pieces)
                 {
                     if (item.Position.X == pos.X && item.Position.Y == pos.Y)
                     {
@@ -214,7 +214,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Si il retourne null le monstre n'est pas dans le plateau</returns>
         public virtual Monstre RetourneMonstre()
         {
-            foreach (Piece item in Piece)
+            foreach (Piece item in Pieces)
             {
                 if (item.Get_Type() == "Monstre")
                 {
@@ -227,7 +227,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual List<Pion> Retournepion()
         {
             List<Pion> lPion = new List<Pion>();
-            foreach (Piece item in Piece)
+            foreach (Piece item in Pieces)
             {
                 if (item.Get_Type() == "Pion")
                 {
