@@ -240,7 +240,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         }
                     }
 
-                case ConstanteGlobale.DROITE:
+                case ConstanteGlobale.DROITE: 
                     pTmp.Add(MonstreRegarde(plateau, ConstanteGlobale.DROITE));
                     iTmp.Add(CompteDistance( pTmp[0]));
                     pTmp.Add(MonstreRegarde(plateau,ConstanteGlobale.MONTE));
