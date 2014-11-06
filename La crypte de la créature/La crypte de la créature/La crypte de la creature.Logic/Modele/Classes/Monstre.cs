@@ -332,7 +332,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 case ConstanteGlobale.GAUCHE:
                     while (tmp.X > 0)
-                    {
+                    {  
                     
                       tmp.ChangePosition(ConstanteGlobale.GAUCHE);
                        pTmp = plateau.RetournePiece(tmp);

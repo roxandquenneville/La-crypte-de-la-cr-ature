@@ -309,7 +309,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 return false;
             }
 
-            Partie p = obj as Partie;
+            Partie p = obj as Partie;   
 
             if (p == null)
             {
