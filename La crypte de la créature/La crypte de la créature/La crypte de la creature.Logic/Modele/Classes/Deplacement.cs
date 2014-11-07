@@ -465,6 +465,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
                 if(pTmp.Count > 1)
                 {
+
+                }
+                else
+                {
                     //il n'y a pas de piece
                     if (pTmp.Count() == 0)
                     {
