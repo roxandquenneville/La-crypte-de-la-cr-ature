@@ -70,6 +70,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
                 //Ajout du monstre
                 Piece.Add(new Monstre(new Position(0, 0), 2));
+
+
             }
 
         }
@@ -236,6 +238,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             return lPion;
         }
+
+       
 
 
         public override bool Equals(object obj)

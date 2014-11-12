@@ -33,6 +33,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
+                Map(x => x.Email)
+                .Column("email")
+                .CustomType<string>()
+                .Access.Property()
+                .Generated.Never()
+                .CustomSqlType("VARCHAR");  
         }
     }
 

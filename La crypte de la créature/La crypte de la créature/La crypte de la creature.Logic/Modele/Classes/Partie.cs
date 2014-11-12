@@ -287,6 +287,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
               
             }
             pion = Plateau.Retournepion();
+           
             bool verification = false;
             foreach(Pion item in pion)
             {
