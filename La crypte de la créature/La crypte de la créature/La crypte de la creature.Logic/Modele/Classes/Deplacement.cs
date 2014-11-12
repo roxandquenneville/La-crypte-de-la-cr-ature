@@ -211,7 +211,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             pTmp = plateau.RetournePiece(pACote);
 
             // sur une case de sang
-            // le pion ne peu pas pousser une pierre sur un autre pierre/pion/monstre
+            // le pion ne peut pas pousser une pierre sur un autre pierre/pion/monstre
             if (pTmp.Count > 1)
             {
                 return false;
