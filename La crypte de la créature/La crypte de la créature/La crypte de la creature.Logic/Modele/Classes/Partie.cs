@@ -24,15 +24,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             get { return tourJoueur; }
             set
             {
-                if (value == Joueur.Count() * Joueur[0].Pion.Count())
-                {
-                    MouvementMonstre();
-                    tourJoueur = 0;
-                }
-                else
-                {
                     tourJoueur = value;
-                }
             }
         }
         #endregion
@@ -55,7 +47,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            Plateau.Piece.Concat(listeTmp);
+            ((List<Piece>)Plateau.Pieces).AddRange(listeTmp);
         }
 
         /// <summary>
@@ -108,7 +100,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            Plateau.Piece.Concat(listeTmp);
+            ((List<Piece>)Plateau.Pieces).AddRange(listeTmp);
 
         }
 
@@ -122,10 +114,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne un mouvement</returns>
         public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
-            if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
-            {
-                return;
-            }
+           // if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
+            //{
+               // return;
+           // }
 
             //Pour supprimer le mouvement
             int index;
@@ -157,8 +149,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 // Vérifie si le pion est dans la sortie
                 if (mouvement.Fin.X == 0 && mouvement.Fin.Y == 0)
                 {
-                    Joueur[joueur - 1].Pion[pion].EstSortie = true;
-                    Pointage[joueur - 1].Point++;
+                    Joueur[joueur].Pion[pion].EstSortie = true;
+                    Pointage[joueur].Point++;
                 }
                 //Réduit de 1 les points de déplacement
                 Joueur[joueur].Pion[pion].TmpDeplacement--;
@@ -206,26 +198,26 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 // Il y a deux pion
                 if (compteur > 1) 
                 { 
-                    ListeTmp =null;
+                    ListeTmp.Clear();
                     return false;
                 }
                 //Le pion est arrêter sur une case de sang
                 else
                 {
-                    Historique.Deplacement.Concat(ListeTmp);
+                    ((List<Deplacement>)Historique.Deplacement).AddRange(ListeTmp);
                     Joueur[joueur - 1].Pion[pion].CalculerFace();
                     TourJoueur++;
-                    ListeTmp = null;
+                    ListeTmp.Clear();
                     return true;
                 }
             }
             // Il y a seulement le pion à cette position
             else
             {
-                Historique.Deplacement.Concat(ListeTmp);
+                ((List<Deplacement>)Historique.Deplacement).AddRange(ListeTmp);
                 Joueur[joueur-1].Pion[pion].CalculerFace();
                 TourJoueur++;
-                ListeTmp = null;
+                ListeTmp.Clear();
                 return true;
             }
 
@@ -245,9 +237,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             monstre=Plateau.RetourneMonstre();
 
-            tmp.Depart = monstre.Position;
-            tmp.Fin = tmp.Depart;
-            
+            tmp.Depart.X = monstre.Position.X;
+            tmp.Depart.Y = monstre.Position.Y;
+            tmp.Fin.X = tmp.Depart.X;
+            tmp.Fin.Y = tmp.Depart.Y;
 
             if(!(monstre == null))
             {
@@ -310,7 +303,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 return false;
             }
 
-            Partie p = obj as Partie;
+            Partie p = obj as Partie;   
 
             if (p == null)
             {
