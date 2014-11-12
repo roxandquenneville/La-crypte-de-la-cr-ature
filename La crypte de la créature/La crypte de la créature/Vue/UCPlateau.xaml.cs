@@ -76,8 +76,8 @@ namespace La_crypte_de_la_creature.Vue
 
         private void SetPositionPion()
         {
-            PositionAvantTour.X = PartieViewModel.Joueurs[0].Pion[0].Position.X;
-            PositionAvantTour.Y = PartieViewModel.Joueurs[0].Pion[0].Position.Y; 
+            PositionAvantTour.X = PartieViewModel.Partie.Joueur[0].Pion[0].Position.X;
+            PositionAvantTour.Y = PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y; 
         }
 
         private void AffichePlateau()
@@ -197,6 +197,14 @@ namespace La_crypte_de_la_creature.Vue
               SetPositionPion();
               PartieViewModel.Partie.ConfirmerDeplacementPion(tmpList,1,Pion);
               lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+              if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+              {
+                  PartieViewModel.Partie.MouvementMonstre();
+                  AffichePlateau();
+                  PartieViewModel.Partie.TourJoueur = 0;
+              }
+              tmpList.Clear();
+              
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
