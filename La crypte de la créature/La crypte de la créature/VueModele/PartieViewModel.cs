@@ -52,7 +52,7 @@ namespace La_crypte_de_la_creature.VueModele
             RetrievePlateauArgs = new RetrievePlateauArgs();
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
             //    RetrievePointageArgs = new RetrievePointageArgs();
-            Joueur = new Joueur();
+            Joueur = new Joueur(2);
             Historique = new Historique();
             Plateau = new Plateau(_TypePlateauService.RetrieveAll().First());
             Partie = new Partie(1, 2, new TypePlateau("Normal"));
