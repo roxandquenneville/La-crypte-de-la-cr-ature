@@ -97,6 +97,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     pTmp.Add(MonstreRegarde(plateau, ConstanteGlobale.MONTE));
                     iTmp.Add(CompteDistance( pTmp[2]));
 
+                    if(iTmp[0] == -1)
+                    {
+                        iTmp[0] = 5000;    
+                    }
+                    if (iTmp[1] == -1)
+                    {
+                        iTmp[1] = 5000;
+                    }
+                    if (iTmp[2] == -1)
+                    {
+                        iTmp[2] = 5000;
+                    }
+
+                    if(iTmp.Min() == 5000)
+                    {
+                        return sens;
+                    }
+
                     if (iTmp[0] < iTmp[1])
                     {
                         if (iTmp[0] < iTmp[2])
@@ -146,6 +164,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     iTmp.Add(CompteDistance(pTmp[1]));
                     pTmp.Add(MonstreRegarde(plateau,ConstanteGlobale.DESCEND));
                     iTmp.Add(CompteDistance(pTmp[2]));
+                    
+                    if(iTmp[0] == -1)
+                    {
+                        iTmp[0] = 5000;    
+                    }
+                    if (iTmp[1] == -1)
+                    {
+                        iTmp[1] = 5000;
+                    }
+                    if (iTmp[2] == -1)
+                    {
+                        iTmp[2] = 5000;
+                    }
+
+                    if(iTmp.Min() == 5000)
+                    {
+                        return sens;
+                    }
 
                     if (iTmp[0] < iTmp[1])
                     {
@@ -197,6 +233,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     iTmp.Add(CompteDistance(pTmp[1]));
                     pTmp.Add(MonstreRegarde(plateau,ConstanteGlobale.DESCEND));
                     iTmp.Add(CompteDistance(pTmp[2]));
+
+                    if(iTmp[0] == -1)
+                    {
+                        iTmp[0] = 5000;    
+                    }
+                    if (iTmp[1] == -1)
+                    {
+                        iTmp[1] = 5000;
+                    }
+                    if (iTmp[2] == -1)
+                    {
+                        iTmp[2] = 5000;
+                    }
+
+                    if(iTmp.Min() == 5000)
+                    {
+                        return sens;
+                    }
 
                     if (iTmp[0] < iTmp[1])
                     {
