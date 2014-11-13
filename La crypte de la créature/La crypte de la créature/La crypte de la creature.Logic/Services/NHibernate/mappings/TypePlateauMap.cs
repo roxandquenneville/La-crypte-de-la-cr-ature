@@ -1,4 +1,4 @@
-using FluentNHibernate.Mapping;
+/*using FluentNHibernate.Mapping;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using System;
 using System.Collections.Generic;
@@ -32,4 +32,4 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
         }
     }
 
-}
+}*/

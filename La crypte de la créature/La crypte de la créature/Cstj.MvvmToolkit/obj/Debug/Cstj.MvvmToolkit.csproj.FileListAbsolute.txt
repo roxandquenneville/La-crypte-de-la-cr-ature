@@ -1,15 +1,4 @@
-C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\bin\Debug\Cstj.MvvmToolkit.dll
-C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\bin\Debug\Cstj.MvvmToolkit.pdb
-C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.csprojResolveAssemblyReference.cache
-C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.dll
-C:\Users\Jean-Sébastien\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.pdb
-C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\bin\Debug\Cstj.MvvmToolkit.dll
-C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\bin\Debug\Cstj.MvvmToolkit.pdb
-C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.csprojResolveAssemblyReference.cache
-C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.dll
-C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.pdb
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\bin\Debug\Cstj.MvvmToolkit.dll
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\bin\Debug\Cstj.MvvmToolkit.pdb
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.dll
 D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.pdb
-D:\La-crypte-de-la-cr-ature\La crypte de la créature\La crypte de la créature\Cstj.MvvmToolkit\obj\Debug\Cstj.MvvmToolkit.csprojResolveAssemblyReference.cache

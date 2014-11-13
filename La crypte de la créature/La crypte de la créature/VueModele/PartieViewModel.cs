@@ -22,7 +22,7 @@ namespace La_crypte_de_la_creature.VueModele
         private IPlateauService _PlateauService;
         private IJoueurService _JoueurService;
         private IHistoriqueService _HistoriqueService;
-        private ITypePlateauService _TypePlateauService;
+        //private ITypePlateauService _TypePlateauService;
         //    private IPointageService _PointageService;
         #endregion
         public RetrieveTypePlateauArgs RetrieveTypePlateauArgs { get; set; }
@@ -33,7 +33,7 @@ namespace La_crypte_de_la_creature.VueModele
         //  public RetrievePointageArgs RetrievePointageArgs { get; set;}
         public PartieViewModel()
         {
-            _TypePlateauService = ServiceFactory.Instance.GetService<ITypePlateauService>();
+            //_TypePlateauService = ServiceFactory.Instance.GetService<ITypePlateauService>();
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
@@ -54,8 +54,8 @@ namespace La_crypte_de_la_creature.VueModele
             //    RetrievePointageArgs = new RetrievePointageArgs();
             Joueur = new Joueur(2);
             Historique = new Historique();
-            Plateau = new Plateau(_TypePlateauService.RetrieveAll().First());
-            Partie = new Partie(1, 2, new TypePlateau("Normal"));
+            Plateau = new Plateau("Normal");
+            Partie = new Partie(1, 2, "Normal");
 
 
 

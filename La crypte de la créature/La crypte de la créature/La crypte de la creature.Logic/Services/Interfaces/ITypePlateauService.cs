@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,4 +16,4 @@ namespace La_crypte_de_la_creature.Logic.Services.Interfaces
         void Update(TypePlateau tp);
         void Delete(TypePlateau tp);
     }
-}
+}*/

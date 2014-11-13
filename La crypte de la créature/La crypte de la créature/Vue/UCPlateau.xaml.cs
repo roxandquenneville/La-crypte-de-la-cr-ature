@@ -102,7 +102,7 @@ namespace La_crypte_de_la_creature.Vue
         private void AfficherPiece()
         {
             
-            foreach (Piece c in PartieViewModel.Partie.Plateau.Piece)
+            foreach (Piece c in PartieViewModel.Partie.Piece)
             {
                 String stringPath = c.Url;
                 if( stringPath !=null)

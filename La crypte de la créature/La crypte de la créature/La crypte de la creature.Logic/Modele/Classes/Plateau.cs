@@ -9,10 +9,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Plateau
     {
         #region attribut
-        public String nom;
-
+        public virtual String type { get; set; }
         public virtual int? idPlateau { get; set; }
-        public virtual TypePlateau TypePlateau {get ; set; }
         public virtual IList<Case> Case { get;set;}
 
         

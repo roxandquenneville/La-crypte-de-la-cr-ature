@@ -1,4 +1,4 @@
-﻿using La_crypte_de_la_creature.Logic.Modele.Args;
+﻿/*using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
 using NHibernate;
@@ -63,4 +63,4 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 
         #endregion
     }
-}
+}*/

@@ -58,7 +58,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="nbrJoueur">Nombre de joueur</param>
         /// <param name="nbrPion">Nombre de pion par joueur</param>
         /// <param name="type">Passer un type de plateau</param>
-        public Partie(int nbrJoueur, int nbrPion, TypePlateau type)
+        public Partie(int nbrJoueur, int nbrPion, String type)
         {
             Pointage = new List<Pointage>();
             Joueur = new List<Joueur>();
@@ -94,7 +94,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
             Historique = new Historique();
-            Plateau = new Plateau();
+            Plateau = new Plateau("Normal");
 
             //Selon la page 3 du manuel
             //Ajout des pierres
