@@ -8,7 +8,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public abstract class Piece
     {
-        public virtual string Url {get; set;}
+        public string Url {get; set;}
 
         public virtual int? idPiece { get; set; }
         public virtual Position Position { get; set;}

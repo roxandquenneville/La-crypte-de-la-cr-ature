@@ -17,6 +17,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual List<Pointage> Pointage { get; set; }
         public virtual List<CartesMonstre> CartesMonstre { get; set; }
         public virtual List<Joueur> Joueur { get;  set; }
+        public virtual IList<Piece> Piece { get; set; }
 
 
         public virtual int TourJoueur
@@ -39,6 +40,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Plateau = new Plateau();
             Pointage = new List<Pointage>();
             CartesMonstre = new List<CartesMonstre>();
+            Piece = new List<Piece>();
 
             //met liste pion dans plateau
             List<Piece> listeTmp = new List<Piece>();
@@ -47,7 +49,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            ((List<Piece>)Plateau.Piece).AddRange(listeTmp);
+            ((List<Piece>)Piece).AddRange(listeTmp);
         }
 
         /// <summary>
@@ -61,6 +63,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Pointage = new List<Pointage>();
             Joueur = new List<Joueur>();
             CartesMonstre = new List<CartesMonstre>();
+            Piece = new List<Piece>();
 
             /*//prend la taille du tableau
             int tmp=ConstanteGlobale.VALEURDEPLACEMENTMONSTRE.Length;
@@ -91,7 +94,34 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
             Historique = new Historique();
-            Plateau = new Plateau(type);
+            Plateau = new Plateau();
+
+            //Selon la page 3 du manuel
+            //Ajout des pierres
+            Piece.Add(new Pierre(new Position(2, 2), true));
+            Piece.Add(new Pierre(new Position(4, 7), true));
+            Piece.Add(new Pierre(new Position(5, 9), true));
+            Piece.Add(new Pierre(new Position(6, 6), true));
+            Piece.Add(new Pierre(new Position(7, 4), true));
+            Piece.Add(new Pierre(new Position(8, 5), true));
+            Piece.Add(new Pierre(new Position(8, 9), true));
+            Piece.Add(new Pierre(new Position(12, 3), true));
+            Piece.Add(new Pierre(new Position(12, 7), true));
+            Piece.Add(new Pierre(new Position(13, 5), true));
+            Piece.Add(new Pierre(new Position(14, 8), true));
+
+            //Ajout des cases de sang
+            Piece.Add(new CaseDeSang(new Position(8, 2)));
+            Piece.Add(new CaseDeSang(new Position(8, 3)));
+            Piece.Add(new CaseDeSang(new Position(9, 2)));
+            Piece.Add(new CaseDeSang(new Position(9, 3)));
+            Piece.Add(new CaseDeSang(new Position(4, 8)));
+            Piece.Add(new CaseDeSang(new Position(5, 8)));
+            Piece.Add(new CaseDeSang(new Position(6, 8)));
+            Piece.Add(new CaseDeSang(new Position(7, 8)));
+
+            //Ajout du monstre
+            Piece.Add(new Monstre(new Position(0, 0), 2));
 
             //met liste pion dans plateau
             List<Piece> listeTmp = new List<Piece>();
@@ -100,8 +130,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 listeTmp.AddRange(item.Pion);
             }
-            ((List<Piece>)Plateau.Piece).AddRange(listeTmp);
-
+            ((List<Piece>)Piece).AddRange(listeTmp);
         }
 
         /// <summary>
@@ -140,7 +169,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
             // vérifie le mouvement
-            if (mouvement.Confirmation(Plateau, ListeTmp, Joueur[joueur].Pion[pion].TmpDeplacement,sens) == true)
+            if (mouvement.Confirmation(this, ListeTmp, Joueur[joueur].Pion[pion].TmpDeplacement,sens) == true)
             {
                 // change la position du pion
                 Joueur[joueur].Pion[pion].Position.X = mouvement.Fin.X;
@@ -180,7 +209,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             tmp = Joueur[joueur-1].Pion[pion].Position ;
 
 
-            pTmp=Plateau.RetournePiece(tmp);
+            pTmp=RetournePiece(tmp);
 
             // si il y plus d'un piece sur la meme position
             if (pTmp.Count > 1)
@@ -235,7 +264,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             Historique.Deplacement.Add(tmp);
 
-            monstre=Plateau.RetourneMonstre();
+            monstre=RetourneMonstre();
 
             tmp.Depart.X = monstre.Position.X;
             tmp.Depart.Y = monstre.Position.Y;
@@ -247,30 +276,30 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 switch(monstre.Orientation)
                 {
                     case 0:
-                        sens = monstre.VisionMonstre(ConstanteGlobale.GAUCHE, Plateau);
+                        sens = monstre.VisionMonstre(ConstanteGlobale.GAUCHE, this);
                         tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau, sens);
+                        tmp.MonstreDeplacement(this, sens);
                         monstre.Position.X = tmp.Fin.X;
                         monstre.Position.Y = tmp.Fin.Y;
                         break;
                     case 1:
-                        sens = monstre.VisionMonstre(ConstanteGlobale.MONTE, Plateau);
+                        sens = monstre.VisionMonstre(ConstanteGlobale.MONTE, this);
                         tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau,sens);
+                        tmp.MonstreDeplacement(this, sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 2:
-                        sens = monstre.VisionMonstre(ConstanteGlobale.DROITE, Plateau);
+                        sens = monstre.VisionMonstre(ConstanteGlobale.DROITE, this);
                         tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau,sens);
+                        tmp.MonstreDeplacement(this, sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
                     case 3:
-                        sens = monstre.VisionMonstre(ConstanteGlobale.DESCEND, Plateau);
+                        sens = monstre.VisionMonstre(ConstanteGlobale.DESCEND, this);
                         tmp.Fin.ChangePosition(sens);
-                        tmp.MonstreDeplacement(Plateau,sens);
+                        tmp.MonstreDeplacement(this, sens);
                         monstre.Position.X=tmp.Fin.X;
                         monstre.Position.Y=tmp.Fin.Y; 
                         break;
@@ -279,7 +308,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
               
             }
-            pion = Plateau.Retournepion();
+            pion = Retournepion();
            
             bool verification = false;
             foreach(Pion item in pion)
@@ -294,6 +323,77 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 //les joueurs sont soient tous mort, tous sorti ou une combinaison des deux  
             }
+        }
+
+
+        /// <summary>
+        /// Vérifie s'il y a une piece à la position passé
+        /// </summary>
+        /// <param name="pos">Position à vérifier</param>
+        /// <returns>Retourne true si y a une piece, sinon retourne false</returns>
+        protected virtual bool ConfirmationPiece(Position pos)
+        {
+            bool Present = false;
+            //vérifier la case et si cest une pierre vérifier la case derriere
+            //si c une mare de sang changer position de fin
+            foreach (Piece item in Piece)
+            {
+                if (item.Position.X == pos.X && item.Position.Y == pos.Y)
+                {
+                    Present = true;
+                }
+            }
+            return Present;
+        }
+
+        /// <summary>
+        /// Retourne la piece 
+        /// </summary>
+        /// <param name="pos">Position à vérifier</param>
+        /// <returns>Retourne la ou les piece, s'il n'en a pas retourne null</returns>
+        public virtual List<Piece> RetournePiece(Position pos)
+        {
+            List<Piece> tmp = new List<Piece>();
+            if (ConfirmationPiece(pos))
+            {
+                foreach (Piece item in Piece)
+                {
+                    if (item.Position.X == pos.X && item.Position.Y == pos.Y)
+                    {
+                        tmp.Add(item);
+                    }
+                }
+            }
+            return tmp;
+        }
+
+        /// <summary>
+        /// Retourne la piece monstre
+        /// </summary>
+        /// <returns>Si il retourne null le monstre n'est pas dans le plateau</returns>
+        public virtual Monstre RetourneMonstre()
+        {
+            foreach (Piece item in Piece)
+            {
+                if (item.Get_Type() == "Monstre")
+                {
+                    return (Monstre)item;
+                }
+            }
+            return null;
+        }
+
+        public virtual List<Pion> Retournepion()
+        {
+            List<Pion> lPion = new List<Pion>();
+            foreach (Piece item in Piece)
+            {
+                if (item.Get_Type() == "Pion")
+                {
+                    lPion.Add((Pion)item);
+                }
+            }
+            return lPion;
         }
 
         public override bool Equals(object obj)
