@@ -186,6 +186,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             RetrieveElementPierre args = new RetrieveElementPierre();
 
             deplacement.Depart = Fin;
+            deplacement.Piece = pierre;
             ListeTmp.Add(deplacement);
             index = ListeTmp.Count();
 
@@ -414,60 +415,38 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             bool casePresent=true;
             List<Piece> pTmp = null;
             string type="";
+            Position  posTmp= new Position(Fin.X,Fin.Y);
+
+            Fin.ChangePosition(sens);
 
             casePresent=partie.Plateau.ConfirmationCase(Fin);
 
-            if (casePresent==false) 
+            if ((posTmp.X == Fin.X && posTmp.Y == posTmp.Y) || casePresent == false) 
             {
             #region Magie
-              /*  //condition 0,0 et 15,11
+             //condition mur
 
-                if(Fin.X == 0 && Fin.Y==0)
+                if(posTmp.X == Fin.X && posTmp.Y == Fin.Y)
                 {
-                    if (sens == ConstanteGlobale.MONTE)
+                    switch (sens)
                     {
-                        Fin.Y= 6;
-                    }
-                    else if (sens == ConstanteGlobale.GAUCHE)
-                    {
-                        Fin.X =11;
-                    }
-                    else if (sens == ConstanteGlobale.DROITE)
-                    {
-                        Fin.X ++;
-                    }
-                    else
-                    {
-                        Fin.Y ++;
+                        case ConstanteGlobale.DESCEND:
+                            Fin.Y = 0;
+                            break;
+                        case ConstanteGlobale.MONTE:
+                            Fin.Y = 10;
+                            break;
+                        case ConstanteGlobale.GAUCHE:
+                            Fin.X = 15;
+                            break;
+                        case ConstanteGlobale.DROITE:
+                            Fin.X = 0;
+                            break;
                     }
                 }
-                else if(Fin.X == 15 && Fin.Y==11)
-                {
-                    if (sens == ConstanteGlobale.DROITE)
-                    {
-                        Fin.X = 4;
-                    }
-                    else if (sens == ConstanteGlobale.DESCEND)
-                    {
-                        Fin.Y = 3;
-                    }
-                    else if (sens == ConstanteGlobale.GAUCHE)
-                    {
-                        Fin.X --;
-                    }
-                    else
-                    {
-                        Fin.Y --;
-                    }
-                }
-                else if((Fin.X >-1 && Fin.X <4) || (Fin.X >11))
-                {
-
-                }*/
                 #endregion
             }
-            else 
-            {
+           
                 pTmp = partie.RetournePiece(Fin);
 
                 if(pTmp.Count > 1)
@@ -489,7 +468,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         case ConstanteGlobale.CASEDESANG:
                         break;
                         case ConstanteGlobale.PIERRE:
-                        //ConfirmationPierre(plateau,sens)
+                        ConfirmationPierre(Partie,sens,pTmp[0]);
                         break;
                         case ConstanteGlobale.PION:
                         ((Pion)pTmp[0]).EstVivant =false;
@@ -498,7 +477,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     }
                 }
                 
-            }
+            
             
         }
 
@@ -512,8 +491,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Deplacement deplacement = new Deplacement();
             RetrieveElementPierre args = new RetrieveElementPierre();
 
+            deplacement.Piece = pierre;
             deplacement.Depart = Fin;
-            Historique.Deplacement.Add(deplacement);
+            partie.Historique.Deplacement.Add(deplacement);
 
 
             pACote.ChangePosition(sens);

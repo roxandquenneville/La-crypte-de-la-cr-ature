@@ -21,6 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 if (value > -1 && value < 4)
                 {
                     orientation = value;
+                    DetermineImage();
                 }
             }
 
@@ -65,16 +66,68 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne la string "Monstre"</returns>
         public override string Get_Type() { return ConstanteGlobale.MONSTRE ; }
 
+        public virtual string Get_OrientationAsSens()
+        {
+            switch (Orientation)
+            {
+                case  0:
+                     return ConstanteGlobale.GAUCHE;
+                case 1:
+                     return ConstanteGlobale.MONTE;
+                case 2:
+                     return ConstanteGlobale.DROITE;
+                case 3:
+                     return ConstanteGlobale.DESCEND;
+                default : return null;
+            }
+        }
+
+        /// <summary>
+        /// Transforme le sens en orientation
+        /// </summary>
+        /// <param name="sens">Le sens du monstre</param>
+        public virtual void ChangeOrientation(string sens)
+        {
+            switch (sens)
+            {
+                case ConstanteGlobale.GAUCHE:
+                     Orientation=0;
+                     break;
+                case ConstanteGlobale.MONTE:
+                     Orientation=1;
+                     break;
+                case ConstanteGlobale.DROITE:
+                     Orientation=2;
+                     break;
+                case ConstanteGlobale.DESCEND:
+                     Orientation=3;
+                     break;
+            }
+        }
         /// <summary>
         /// Determine l'image du monstre
         /// </summary>
         public override void DetermineImage()
         {
-            Url = "pack://application:,,,/Images/Alain2.png";
+            switch (Orientation)
+            { 
+                case 0:
+                        Url = "pack://application:,,,/Images/Alain3.png";
+                        break;
+                case 1:
+                        Url = "pack://application:,,,/Images/Alain4.png";
+                        break;
+                case 2:
+                        Url = "pack://application:,,,/Images/Alain1.png";
+                        break;
+                case 3:
+                        Url = "pack://application:,,,/Images/Alain2.png";
+                        break;
+            }
         }
 
 
-        public virtual string VisionMonstre(string sens, Partie partie)
+        public virtual string VisionMonstre(Partie partie)
         {
             //     - - - -  -    - - - - 
             //     - - - -  -    - - - -
@@ -85,7 +138,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             List<Piece> pTmp = new List<Piece>();
             List<int> iTmp = new List<int>();
 
-
+            String sens=Get_OrientationAsSens();
 
             switch (sens)
             {
@@ -221,7 +274,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         }
                         else
                         {
-                            return ConstanteGlobale.MONTE;
+                            return ConstanteGlobale.DESCEND;
                         }
                     }
 

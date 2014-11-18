@@ -33,3 +33,38 @@ D:\La-crypte-de-la-creature\La crypte de la creature\La crypte de la creature\ob
 D:\La-crypte-de-la-creature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csproj.GenerateResource.Cache
 D:\La-crypte-de-la-creature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.exe
 D:\La-crypte-de-la-creature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.exe.config
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.exe
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Cstj.MvvmToolkit.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.Logic.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\FluentNHibernate.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\NHibernate.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Iesi.Collections.dll
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Cstj.MvvmToolkit.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.Logic.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\FluentNHibernate.xml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\NHibernate.xml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Iesi.Collections.xml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csprojResolveAssemblyReference.cache
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\MainWindow.baml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCChoixPartie.baml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCConnexion.baml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCCreationCompte.baml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCInvitationJoueur.baml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCMainWindow.baml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCPlateau.baml
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\MainWindow.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCChoixPartie.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCConnexion.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCCreationCompte.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCInvitationJoueur.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCMainWindow.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCPlateau.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\App.g.cs
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature_MarkupCompile.cache
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.g.resources
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La_crypte_de_la_creature.Properties.Resources.resources
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csproj.GenerateResource.Cache
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.exe
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.pdb
