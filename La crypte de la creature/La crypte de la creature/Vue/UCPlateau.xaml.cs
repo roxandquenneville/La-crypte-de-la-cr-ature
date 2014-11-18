@@ -54,6 +54,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void afficherPointage()
         {
+            lboxPointage.Items.Clear();
             int c = 1;
             foreach (Pointage p in PartieViewModel.Partie.Pointage)
             {
@@ -82,6 +83,8 @@ namespace La_crypte_de_la_creature.Vue
 
         private void AffichePlateau()
         {
+            
+            afficherPointage();
             GridJeu.Children.Clear();
             lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             foreach (Case c in PartieViewModel.Partie.Plateau.Case)

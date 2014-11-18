@@ -468,7 +468,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         case ConstanteGlobale.CASEDESANG:
                         break;
                         case ConstanteGlobale.PIERRE:
-                        ConfirmationPierre(Partie,sens,pTmp[0]);
+                        ConfirmationPierre(partie,sens,pTmp[0]);
                         break;
                         case ConstanteGlobale.PION:
                         ((Pion)pTmp[0]).EstVivant =false;
