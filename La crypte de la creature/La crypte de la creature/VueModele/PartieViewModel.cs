@@ -22,10 +22,9 @@ namespace La_crypte_de_la_creature.VueModele
         private IPlateauService _PlateauService;
         private IJoueurService _JoueurService;
         private IHistoriqueService _HistoriqueService;
-        //private ITypePlateauService _TypePlateauService;
         //    private IPointageService _PointageService;
         #endregion
-        public RetrieveTypePlateauArgs RetrieveTypePlateauArgs { get; set; }
+       
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
@@ -33,7 +32,7 @@ namespace La_crypte_de_la_creature.VueModele
         //  public RetrievePointageArgs RetrievePointageArgs { get; set;}
         public PartieViewModel()
         {
-            //_TypePlateauService = ServiceFactory.Instance.GetService<ITypePlateauService>();
+            
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
@@ -46,7 +45,7 @@ namespace La_crypte_de_la_creature.VueModele
             Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
             //   Joueur = _JoueurService.Retrieve(RetrieveJoueurArgs);
 
-            RetrieveTypePlateauArgs = new RetrieveTypePlateauArgs();
+            
             RetrieveJoueurArgs = new RetrieveJoueurArgs();
             RetrievePartieArgs = new RetrievePartieArgs();
             RetrievePlateauArgs = new RetrievePlateauArgs();
@@ -264,7 +263,7 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {   
-            //Plateau.TypePlateau = _TypePlateauService.RetrieveAll().FirstOrDefault();
+            
             //Plateau.Cases = Partie.Plateau.Cases;
             //Plateau.Pieces = Partie.Plateau.Pieces;   
             //_HistoriqueService.Create(Historique);

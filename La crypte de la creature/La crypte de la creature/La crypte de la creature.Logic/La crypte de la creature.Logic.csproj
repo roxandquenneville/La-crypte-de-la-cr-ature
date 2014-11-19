@@ -68,7 +68,6 @@
     <Compile Include="Modele\Args\RetrievePlateauArgs.cs" />
     <Compile Include="Modele\Args\RetrievePointageArgs.cs" />
     <Compile Include="Modele\Args\RetrievePositionArgs.cs" />
-    <Compile Include="Modele\Args\RetrieveTypesPlateauArgs.cs" />
     <Compile Include="Modele\Classes\CartesMonstre.cs" />
     <Compile Include="Modele\Classes\Case.cs" />
     <Compile Include="Modele\Classes\CaseDeSang.cs" />
