@@ -25,10 +25,10 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 
         public Plateau Retrieve(RetrievePlateauArgs args)
         {
-            var result = from p in session.Query<Plateau>()
+            var result = from  p in session.Query<Plateau>()
                          where p.idPlateau == args.idPlateau
                          select p;
-
+                         
             return result.FirstOrDefault();
 
         }
