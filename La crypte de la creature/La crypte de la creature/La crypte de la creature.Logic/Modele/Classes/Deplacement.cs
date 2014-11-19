@@ -492,17 +492,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             RetrieveElementPierre args = new RetrieveElementPierre();
 
             deplacement.Piece = pierre;
-            deplacement.Depart = Fin;
+            deplacement.Depart.X = Fin.X;
+            deplacement.Depart.Y = Fin.Y;
             partie.Historique.Deplacement.Add(deplacement);
-
+            int index = partie.Historique.Deplacement.Count;
 
             pACote.ChangePosition(sens);
 
-            // la case est hors plateau
+
+            // la case est externe
             if(pACote == Fin)
             {
-                deplacement.Fin = Fin;
                 ((Pierre)pierre).EstSurPlateau = false;
+                partie.Historique.Deplacement.RemoveAt(index-1);
                 return;
             }
             //Vérifie la case
@@ -511,8 +513,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //pousse une pierre hors plateau
             if (CasePresent == false)
             {
-               deplacement.Fin = Fin;
                ((Pierre)pierre).EstSurPlateau= false;
+               partie.Historique.Deplacement.RemoveAt(index-1);
                return;
             }
 
@@ -530,8 +532,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 if (pTmp.Count() == 0)
                 {
                     //Déplace la pierre
-                    deplacement.Fin = pACote;
-                    pierre.Position = pACote;
+                    deplacement.Fin.X = pACote.X;
+                    deplacement.Fin.Y = pACote.Y;
+                    pierre.Position.X = pACote.X;
+                    pierre.Position.Y = pACote.Y;
                 }
                 // on est sur une case de sang
                 else if (pTmp[0].Get_Type() == ConstanteGlobale.CASEDESANG)
@@ -547,8 +551,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 //pousser une pierre sur une pierre/pion
                 else
                 {
-                    pierre.Position.X = deplacement.Fin.X;
-                    pierre.Position.Y = deplacement.Fin.Y;
+                    pierre.Position.X = pACote.X;
+                    pierre.Position.Y = pACote.Y;
+
+                    deplacement.Fin.X = pACote.X;
+                    pierre.Position.Y = pACote.Y;
 
                     deplacement.Fin.ChangePosition(sens);
                     if(pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)

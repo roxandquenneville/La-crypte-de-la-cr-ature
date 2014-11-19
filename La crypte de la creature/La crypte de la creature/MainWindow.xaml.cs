@@ -34,7 +34,7 @@ namespace La_crypte_de_la_creature
             InitializeComponent();
             DataContext = new MainViewModel();
             Configure();
-            ViewModel.CurrentView = new UCConnexion();
+            ViewModel.CurrentView = new UCPlateau();
 
         }
 
@@ -48,7 +48,6 @@ namespace La_crypte_de_la_creature
             ServiceFactory.Instance.Register<IPointageService, NHibernatePointageService>(new NHibernatePointageService());
             ServiceFactory.Instance.Register<IPartieService, NHibernatePartieService>(new NHibernatePartieService());
             ServiceFactory.Instance.Register<IPlateauService, NHibernatePlateauService>(new NHibernatePlateauService());
-            //ServiceFactory.Instance.Register<ITypePlateauService, NHibernateTypePlateauService>(new NHibernateTypePlateauService());
             ServiceFactory.Instance.Register<IApplicationService, MainViewModel>((MainViewModel)this.DataContext);
 
         }

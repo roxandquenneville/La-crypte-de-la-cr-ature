@@ -261,9 +261,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual void MouvementMonstre()
         {
             Monstre monstre=null;
-            List<Pion> pion= null;
             String sens=null;
             Deplacement tmp = new Deplacement();
+            bool mort;
 
             Historique.Deplacement.Add(tmp);
 
@@ -286,24 +286,37 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                // }
               
             }
+            mort =VerificationFinPartie();
+
+          /*  if (mort == false)
+            {
+                //les joueurs sont soient tous mort, tous sorti ou une combinaison des deux  
+
+            }*/
+            //return mort;
+        }
+
+        public virtual bool VerificationFinPartie()
+        {
+            List<Pion> pion = null;
 
             //Fin de partie
             pion = Retournepion();
-           
+
             bool verification = false;
-            foreach(Pion item in pion)
+            foreach (Pion item in pion)
             {
-               if(item.EstSortie==false && item.EstVivant== true)
-               {
+                if (item.EstSortie == false && item.EstVivant == true)
+                {
                     verification = true;
                     break;
-               }
+                }
             }
-            if(verification == false)
-            {
-                //les joueurs sont soient tous mort, tous sorti ou une combinaison des deux  
-            }
+
+            return verification;
+           
         }
+
 
 
         /// <summary>
