@@ -33,14 +33,20 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
               .LazyLoad(Laziness.False)
               .Cascade.None()
               .Columns("idPlateau");
-			HasMany<Joueur>(x => x.idPartie)
-                .Not.LazyLoad()
+              Map(x => x.TourJoueur)
+                .Column("tour")
+                .CustomType<int>()
                 .Access.Property()
-                .Cascade.All()
-                .Inverse()
-                .KeyColumns.Add("idPartie", map => map.Name("idPartie")
-                                                    .SqlType("INTEGER")
-                                                    .Nullable());
+                .Generated.Never()
+                .CustomSqlType("INTEGER");
+              //HasMany<Joueur>(x => x.idPartie)
+              //    .Not.LazyLoad()
+              //    .Access.Property()
+              //    .Cascade.All()
+              //    .Inverse()
+              //    .KeyColumns.Add("idPartie", map => map.Name("idPartie")
+              //                                        .SqlType("INTEGER")
+              //                                        .Nullable());
             //HasMany<Pointage>(x => x.Pointage)
             //    .Not.LazyLoad()
             //    .Access.Property()

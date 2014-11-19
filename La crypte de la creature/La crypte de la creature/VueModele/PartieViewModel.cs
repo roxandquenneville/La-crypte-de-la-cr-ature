@@ -22,14 +22,14 @@ namespace La_crypte_de_la_creature.VueModele
         private IPlateauService _PlateauService;
         private IJoueurService _JoueurService;
         private IHistoriqueService _HistoriqueService;
-        //    private IPointageService _PointageService;
+        private IPointageService _PointageService;
         #endregion
        
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
         public RetrieveHistoriqueArgs RetrieveHistoriqueArgs { get; set; }
-        //  public RetrievePointageArgs RetrievePointageArgs { get; set;}
+        public RetrievePointageArgs RetrievePointageArgs { get; set; }
         public PartieViewModel()
         {
             
@@ -37,11 +37,11 @@ namespace La_crypte_de_la_creature.VueModele
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
             _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
-            //  _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
+            _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
             Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
-            //   Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
+            Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
             Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
             //   Joueur = _JoueurService.Retrieve(RetrieveJoueurArgs);
 
@@ -52,12 +52,14 @@ namespace La_crypte_de_la_creature.VueModele
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
             RetrievePlateauArgs.idPlateau = 1;
             RetrievePlateauArgs.type = "Normal";
-            
-            //    RetrievePointageArgs = new RetrievePointageArgs();
-            Joueur = new Joueur(2);
+
+            RetrievePointageArgs = new RetrievePointageArgs();
+            //Joueur = new Joueur(2);
+            Pointage = new Pointage();
+            Joueur = new Joueur();
             Historique = new Historique();
-            
-            Partie = new Partie(1, 2, "Normal");
+            Partie = new Partie();
+            //Partie = new Partie(1, 2, "Normal");
 
 
 
@@ -175,24 +177,24 @@ namespace La_crypte_de_la_creature.VueModele
         }
 
 
-        //private ObservableCollection<Pointage> _Pointages;
-        //public ObservableCollection<Pointage> Pointages
-        //{
-        //    get
-        //    {
-        //        return _Pointages;
-        //    }
-        //    set
-        //    {
-        //        if (_Pointages == value)
-        //        {
-        //            return;
-        //        }
-        //        RaisePropertyChanging();
-        //        _Pointages = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
+        private ObservableCollection<Pointage> _Pointages;
+        public ObservableCollection<Pointage> Pointages
+        {
+            get
+            {
+                return _Pointages;
+            }
+            set
+            {
+                if (_Pointages == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _Pointages = value;
+                RaisePropertyChanged();
+            }
+        }
 
 
 
@@ -215,7 +217,6 @@ namespace La_crypte_de_la_creature.VueModele
                 RaisePropertyChanged();
             }
         }
-
 
         private ObservableCollection<Partie> _Parties = new ObservableCollection<Partie>();
 
@@ -266,13 +267,33 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {   
-            
-            
-           /* _PlateauService.Retrieve(RetrievePlateauArgs);
+            /* la faut faire marcher les list*/
 
-            _HistoriqueService.Create(Historique);
+
+            Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
            
-            _PartieService.Create(Partie);*/
+           //Créer l'historique
+            _HistoriqueService.Create(Historique);
+          
+           //met les liens
+            Partie.Historique = Historique;
+            Partie.Plateau = Plateau;
+
+            // Créer la partie
+            _PartieService.Create(Partie);
+
+            Joueur.Partie = Partie;
+            Joueur.Compte.idCompte = UtilisateurConnecte.idCompte;
+
+            _JoueurService.Create(Joueur);
+
+            Pointage.Partie = Partie;
+
+            _PointageService.Create(Pointage);
+
+            Partie.Joueur.Add(Joueur);
+
+
         }
 
         public void SauvegarderCommand()

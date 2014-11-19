@@ -21,6 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Joueur()
         {
             Pion = new List<Pion>();
+            Compte = new Compte();
         }
 
         /// <summary>

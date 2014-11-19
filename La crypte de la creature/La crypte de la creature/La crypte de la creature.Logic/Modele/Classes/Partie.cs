@@ -9,8 +9,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     public class Partie
     {
         #region attribut
-
-        private int tourJoueur;        
+      
         public virtual int? idPartie { get; set; }
         public virtual Plateau Plateau { get; set; }
         public virtual Historique Historique { get; set; }
@@ -18,16 +17,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual List<CartesMonstre> CartesMonstre { get; set; }
         public virtual List<Joueur> Joueur { get;  set; }
         public virtual IList<Piece> Piece { get; set; }
-
-
-        public virtual int TourJoueur
-        {
-            get { return tourJoueur; }
-            set
-            {
-                    tourJoueur = value;
-            }
-        }
+        public virtual int TourJoueur { get; set;}
+        
         #endregion
 
         /// <summary>
@@ -42,6 +33,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             CartesMonstre = new List<CartesMonstre>();
             Piece = new List<Piece>();
 
+            TourJoueur=0;
             //met liste pion dans plateau
             List<Piece> listeTmp = new List<Piece>();
 
@@ -64,6 +56,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Joueur = new List<Joueur>();
             CartesMonstre = new List<CartesMonstre>();
             Piece = new List<Piece>();
+            TourJoueur = 0;
 
             /*//prend la taille du tableau
             int tmp=ConstanteGlobale.VALEURDEPLACEMENTMONSTRE.Length;

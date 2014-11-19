@@ -77,8 +77,8 @@ namespace La_crypte_de_la_creature.Vue
 
         private void SetPositionPion()
         {
-            PositionAvantTour.X = PartieViewModel.Partie.Joueur[0].Pion[0].Position.X;
-            PositionAvantTour.Y = PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y; 
+            //PositionAvantTour.X = PartieViewModel.Partie.Joueur[0].Pion[0].Position.X;
+            //PositionAvantTour.Y = PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y; 
         }
 
         private void AffichePlateau()
