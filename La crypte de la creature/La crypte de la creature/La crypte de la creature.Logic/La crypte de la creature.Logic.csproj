@@ -93,7 +93,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\Helpers\MySqlConnexion.cs" />
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />
     <Compile Include="Services\Interfaces\ICarteMonstreService.cs" />
     <Compile Include="Services\Interfaces\ICaseSangService.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="Services\Interfaces\IPlateauService.cs" />
     <Compile Include="Services\Interfaces\IPointageService.cs" />
     <Compile Include="Services\Interfaces\IPositionService.cs" />
-    <Compile Include="Services\Interfaces\ITypePlateauService.cs" />
     <Compile Include="Services\NHibernate\mappings\CarteMonstreMap.cs" />
     <Compile Include="Services\NHibernate\mappings\CaseMap.cs" />
     <Compile Include="Services\NHibernate\mappings\CasesDeSangMap.cs" />
@@ -128,7 +126,6 @@
     <Compile Include="Services\NHibernate\mappings\PlateauMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PointageMap.cs" />
     <Compile Include="Services\NHibernate\mappings\PositionMap.cs" />
-    <Compile Include="Services\NHibernate\mappings\TypePlateauMap.cs" />
     <Compile Include="Services\NHibernate\NHibernateCarteMonstreService.cs" />
     <Compile Include="Services\NHibernate\NHibernateCaseSangService.cs" />
     <Compile Include="Services\NHibernate\NHibernateCaseService.cs" />
@@ -145,7 +142,6 @@
     <Compile Include="Services\NHibernate\NHibernatePlateauService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePointageService.cs" />
     <Compile Include="Services\NHibernate\NHibernatePositionService.cs" />
-    <Compile Include="Services\NHibernate\NHibernateTypePlateauService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />

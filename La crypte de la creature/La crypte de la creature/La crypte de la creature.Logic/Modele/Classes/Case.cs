@@ -64,7 +64,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
             if (pos.X == 15 && pos.Y == 10)
             {
-                Url = ".pack://application:,,,/Images/CaseEntree.png";
+                Url = "pack://application:,,,/Images/CaseEntree.png";
                 return;
             }
 
