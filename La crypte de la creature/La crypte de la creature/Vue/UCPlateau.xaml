@@ -52,7 +52,7 @@
                 <RowDefinition Height="35*"/>
             </Grid.RowDefinitions>
 
-            <Image Grid.Row="10" Grid.Column="15" Source="../Images/Robert2.png" Name="imgPion" Panel.ZIndex="10" />
+            <Image Grid.Row="10" Grid.Column="15"  Name="imgPion" Panel.ZIndex="10" />
 
 
         </Grid>
