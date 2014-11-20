@@ -270,15 +270,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             if(!(monstre == null))
             {
-                for(int i=0;i<5;i++)
-                { 
+              
                     sens = monstre.VisionMonstre(this);
                     monstre.ChangeOrientation(sens);
                     tmp.MonstreDeplacement(this, sens);
                     monstre.Position.X = tmp.Fin.X;
                     monstre.Position.Y = tmp.Fin.Y;
-                    Thread.Sleep(200);
-                }
+
+                
               
             }
             mort =VerificationFinPartie();
