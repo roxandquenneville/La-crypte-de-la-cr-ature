@@ -22,6 +22,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public CartesMonstre(){}
 
 
+        public CartesMonstre(int deplacement) 
+        { 
+            ValeurDeplacement=deplacement;
+            Utilise= false;
+        }
+
 
         public override bool Equals(object obj)
         {
