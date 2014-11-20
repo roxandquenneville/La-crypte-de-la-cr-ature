@@ -24,7 +24,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
               References(x => x.Historique)
                 .Column("idHistorique")
                 .Cascade.All();
-             References(x => x.Plateau)
+            References(x => x.Plateau)
                 .Column("idPlateau")
                 .Cascade.All();
               Map(x => x.TourJoueur)
@@ -35,12 +35,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER");
 
               HasMany(x => x.Joueur)
-               .KeyColumn("idPartie")
-               .Inverse()
-               .Cascade.AllDeleteOrphan()
-             .KeyColumns.Add("idPartie", map => map.Name("idPartie")
-                                                 .SqlType("INTEGER")
-                                                 .Not.Nullable());
+             .KeyColumn("idPartie")
+             .Inverse()
+             .Cascade.AllDeleteOrphan()
+               .KeyColumns.Add("idPartie", map => map.Name("idPartie")
+                                                   .SqlType("INTEGER")
+                                                   .Not.Nullable());
              /* HasMany(x => x.Joueur).KeyColumn("idPartie");*/
               //HasMany<Joueur>(x => x.idPartie)
               //    .Not.LazyLoad()
