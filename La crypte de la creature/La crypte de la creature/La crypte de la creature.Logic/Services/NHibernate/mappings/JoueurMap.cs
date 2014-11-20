@@ -22,18 +22,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
                References(x => x.Compte)
-                .Class<Compte>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idCompte");
-				References(x => x.Partie)
-                .Class<Partie>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idPartie");
-			
+               .Column("idCompte")
+               .Cascade.All();
+               References(x => x.Partie)
+               .Column("idPartie")
+               .Cascade.All();
+               HasMany(x => x.Pion).KeyColumn("idJoueur");
             //HasMany<Pion>(x => x.idJoueur)
             //    .Not.LazyLoad()
             //    .Access.Property()

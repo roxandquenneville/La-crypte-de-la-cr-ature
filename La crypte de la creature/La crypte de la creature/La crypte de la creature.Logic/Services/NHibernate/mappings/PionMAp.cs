@@ -28,11 +28,8 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                  .Cascade.None()
                  .Columns("idPiece");
               References(x => x.Joueur)
-                .Class<Joueur>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idJoueur");
+                .Column("idJoueur")
+                .Cascade.All();
 			   Map(x => x.EstVivant)
                 .Column("estVivant")
                 .CustomType<bool>()

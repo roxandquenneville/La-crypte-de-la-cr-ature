@@ -21,12 +21,9 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-				References(x => x.Plateau)
-                .Class<Plateau>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idPlateau");
+				References( x => x.Plateau ) 
+                .Column("idPlateau")
+                .Cascade.All();
                 References(x => x.Coordonnee)
                   .Class<Position>()
                   .Access.Property()
