@@ -28,7 +28,14 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
-            HasMany(x => x.Case).KeyColumn("idPlateau");
+            HasMany(x => x.Case)
+                 .KeyColumn("idPlateau")
+                 .Inverse()
+                 .Cascade.AllDeleteOrphan()
+                 .KeyColumns.Add("idPlateau", map => map.Name("idPlateau")
+                                                     .SqlType("INTEGER")
+                                                     .Not.Nullable());
+           
            
            
         }
