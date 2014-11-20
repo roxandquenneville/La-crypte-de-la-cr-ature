@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cstj.MvvmToolkit.Services;
+using La_crypte_de_la_creature.Logic.Services.Interfaces;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
@@ -12,7 +14,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual String type { get; set; }
         public virtual int? idPlateau { get; set; }
         public virtual IList<Case> Case { get;set;}
-
+       
         
         #endregion
 
@@ -22,7 +24,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Plateau()
         {
           Case = new List<Case>();
-         
+          
+        }
+        public Plateau(IList<Case> cases)
+        {
+
+
         }
 
         /// <summary>

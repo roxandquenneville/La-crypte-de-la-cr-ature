@@ -11,6 +11,7 @@ namespace La_crypte_de_la_creature.Logic.Services.Interfaces
     public interface ICaseService
     {
         IList<Case> RetrieveAll();
+        IList<Case> RetrievePlateau(int idPlateau);
         Case Retrieve(RetrieveCaseArgs args);
         void Create(Case c);
         void Update(Case c);

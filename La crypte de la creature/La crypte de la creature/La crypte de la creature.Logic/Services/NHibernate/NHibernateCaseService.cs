@@ -22,6 +22,16 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         {
             return session.Query<Case>().ToList();
         }
+        public IList<Case> RetrievePlateau(int idPlateau)
+        {
+
+            var result = from p in session.Query<Case>()
+                         where p.Plateau.idPlateau == idPlateau     
+                                           
+                         select p;
+
+            return result.ToList();
+        }
 
         public Case Retrieve(RetrieveCaseArgs args)
         {

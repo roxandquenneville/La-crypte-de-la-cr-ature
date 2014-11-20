@@ -23,6 +23,7 @@ namespace La_crypte_de_la_creature.VueModele
         private IJoueurService _JoueurService;
         private IHistoriqueService _HistoriqueService;
         private IPointageService _PointageService;
+        private ICaseService _CaseService;
         #endregion
        
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
@@ -38,6 +39,7 @@ namespace La_crypte_de_la_creature.VueModele
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
             _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
             _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
+            _CaseService = ServiceFactory.Instance.GetService<ICaseService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
             Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
@@ -60,14 +62,32 @@ namespace La_crypte_de_la_creature.VueModele
             Historique = new Historique();
             Partie = new Partie();
             //Partie = new Partie(1, 2, "Normal");
-
+            Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
 
 
         }
 
         #region Bindable
 
+        private ObservableCollection<Case> _Cases;
+        public ObservableCollection<Case> Cases
+        {
+            get
+            {
+                return _Cases;
+            }
+            set
+            {
+                if (_Cases == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _Cases = value;
+                RaisePropertyChanged();
+            }
 
+        }
 
         private Joueur _Joueur;
 
@@ -155,7 +175,7 @@ namespace La_crypte_de_la_creature.VueModele
             }
         }
 
-
+        
         private Plateau _Plateau;
 
         public Plateau Plateau
@@ -268,10 +288,10 @@ namespace La_crypte_de_la_creature.VueModele
         public void CreerPartieCommand()
         {   
             /* la faut faire marcher les list*/
-
+            
 
             Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
-           
+            Plateau.Case = Cases;
            //Créer l'historique
             _HistoriqueService.Create(Historique);
           

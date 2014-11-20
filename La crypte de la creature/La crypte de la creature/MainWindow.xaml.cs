@@ -48,6 +48,7 @@ namespace La_crypte_de_la_creature
             ServiceFactory.Instance.Register<IPointageService, NHibernatePointageService>(new NHibernatePointageService());
             ServiceFactory.Instance.Register<IPartieService, NHibernatePartieService>(new NHibernatePartieService());
             ServiceFactory.Instance.Register<IPlateauService, NHibernatePlateauService>(new NHibernatePlateauService());
+            ServiceFactory.Instance.Register<ICaseService,NHibernateCaseService>(new NHibernateCaseService());
             ServiceFactory.Instance.Register<IApplicationService, MainViewModel>((MainViewModel)this.DataContext);
 
         }
