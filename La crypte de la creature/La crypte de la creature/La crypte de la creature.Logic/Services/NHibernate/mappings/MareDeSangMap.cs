@@ -33,7 +33,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Cascade.All()
                 .KeyColumns.Add("idMare", map => map.Name("idMare")
                                                     .SqlType("INTEGER")
-                                                    .Nullable());
+                                                    .Not.Nullable());
 				
         }
     }

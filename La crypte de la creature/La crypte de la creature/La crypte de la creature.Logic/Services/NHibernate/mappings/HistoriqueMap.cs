@@ -22,7 +22,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
 			HasMany<Deplacement>(x => x.Deplacement)
-                .Not.LazyLoad()
+                .LazyLoad()
                 .Access.Property()
                 .Cascade.All()
                 .KeyColumns.Add("idHistorique", map => map.Name("idHistorique")

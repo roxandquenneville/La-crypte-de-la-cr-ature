@@ -39,7 +39,13 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("INTEGER");
-             /* HasMany(x => x.Joueur).KeyColumn("idPartie");*/
+              HasMany(x => x.Joueur)
+              .KeyColumn("idPartie")
+              .Inverse()
+              .Cascade.AllDeleteOrphan()
+                .KeyColumns.Add("idPartie", map => map.Name("idPartie")
+                                                    .SqlType("INTEGER")
+                                                    .Not.Nullable());
               //HasMany<Joueur>(x => x.idPartie)
               //    .Not.LazyLoad()
               //    .Access.Property()
