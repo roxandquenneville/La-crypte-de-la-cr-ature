@@ -24,6 +24,7 @@ namespace La_crypte_de_la_creature.VueModele
         private IHistoriqueService _HistoriqueService;
         private IPointageService _PointageService;
         private ICaseService _CaseService;
+        private ICarteMonstreService _CarteMonstreService;
         #endregion
        
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
@@ -40,6 +41,7 @@ namespace La_crypte_de_la_creature.VueModele
             _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
             _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
             _CaseService = ServiceFactory.Instance.GetService<ICaseService>();
+            _CarteMonstreService = ServiceFactory.Instance.GetService<ICarteMonstreService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
         //    Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
@@ -108,7 +110,6 @@ namespace La_crypte_de_la_creature.VueModele
                 RaisePropertyChanged();
             }
         }
-
 
         private Historique _Historique;
 
@@ -284,33 +285,50 @@ namespace La_crypte_de_la_creature.VueModele
         #region command
 
         public void CreerPartieCommand()
-        {   
-           // /* la faut faire marcher les list*/
-           // Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
-           // Plateau.Case = Cases;
-           ////Créer l'historique
-           // _HistoriqueService.Create(Historique);
-            
-           ////met les liens
-           // Partie.Historique = Historique;
-           // Partie.Plateau = Plateau;
+        {
+            /* la faut faire marcher les list*/
+            Plateau = _PlateauService.Retrieve(RetrievePlateauArgs);
+            Plateau.Case = Cases;
+            //Créer l'historique
+            _HistoriqueService.Create(Historique);
 
-           // // Créer la partie
-           // _PartieService.Create(Partie);
+            //met les liens
+            Partie.Historique = Historique;
+            Partie.Plateau = Plateau;
 
-           // Joueur.Partie = Partie;
-           // Joueur.Compte.idCompte = UtilisateurConnecte.idCompte;
+            // Créer la partie
+            _PartieService.Create(Partie);
 
-           // _JoueurService.Create(Joueur);
+            Joueur.Partie = Partie;
+            Joueur.Compte.idCompte = UtilisateurConnecte.idCompte;
 
-           // Pointage.Partie = Partie;
+            _JoueurService.Create(Joueur);
 
-           // _PointageService.Create(Pointage);
+            Pointage.Partie = Partie;
 
-           // Partie.Joueur.Add(Joueur);
+            _PointageService.Create(Pointage);
 
-           // Partie.Pointage.Add(Pointage);
+            Partie.Joueur.Add(Joueur);
 
+            Partie.Pointage.Add(Pointage);
+
+            Partie.CartesMonstre.Add(new CartesMonstre(5));
+            Partie.CartesMonstre.Add(new CartesMonstre(5));
+            Partie.CartesMonstre.Add(new CartesMonstre(7));
+            Partie.CartesMonstre.Add(new CartesMonstre(7));
+            Partie.CartesMonstre.Add(new CartesMonstre(8));
+            Partie.CartesMonstre.Add(new CartesMonstre(8));
+            Partie.CartesMonstre.Add(new CartesMonstre(10));
+            Partie.CartesMonstre.Add(new CartesMonstre(10));
+
+            for (int i = 0; i < Partie.CartesMonstre.Count(); i++)
+            {
+                Partie.CartesMonstre[i].Partie = Partie;
+                _CarteMonstreService.Create(Partie.CartesMonstre[i]);
+            }
+
+            //_PionService.Create(Partie.Joueur[0].Pion[0]);
+            //_PionService.Create(Partie.Joueur[0].Pion[1]);
 
         }
 
