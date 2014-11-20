@@ -288,8 +288,6 @@ namespace La_crypte_de_la_creature.VueModele
         public void CreerPartieCommand()
         {   
             /* la faut faire marcher les list*/
-            
-
             Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
             Plateau.Case = Cases;
            //Créer l'historique
@@ -312,6 +310,8 @@ namespace La_crypte_de_la_creature.VueModele
             _PointageService.Create(Pointage);
 
             Partie.Joueur.Add(Joueur);
+
+            Partie.Pointage.Add(Pointage);
 
 
         }
