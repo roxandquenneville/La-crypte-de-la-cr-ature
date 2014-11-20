@@ -25,7 +25,6 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Not.LazyLoad()
                 .Access.Property()
                 .Cascade.All()
-                .Inverse()
                 .KeyColumns.Add("idHistorique", map => map.Name("idHistorique")
                                                     .SqlType("INTEGER")
                                                     .Nullable());

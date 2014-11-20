@@ -22,11 +22,17 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
               References(x => x.Historique)
-                .Column("idHistorique")
-                .Cascade.All();
-             /* References(x => x.Plateau)
-                .Column("idPlateau")
-                .Cascade.All();*/
+              .Class<Historique>()
+              .Access.Property()
+              .LazyLoad(Laziness.False)
+              .Cascade.None()
+              .Columns("idHistorique");
+              References(x => x.Plateau)
+               .Class<Plateau>()
+               .Access.Property()
+               .LazyLoad(Laziness.False)
+               .Cascade.None()
+               .Columns("idPlateau");
               Map(x => x.TourJoueur)
                 .Column("tour")
                 .CustomType<int>()
