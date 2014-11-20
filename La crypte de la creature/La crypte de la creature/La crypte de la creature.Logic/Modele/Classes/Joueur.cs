@@ -10,7 +10,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     {
         #region attribut
         public virtual int? idJoueur { get; set; }
-        public virtual List<Pion> Pion { get; set;}
+        public virtual IList<Pion> Pion { get; set;}
         public virtual Partie Partie { get; set;}
         public virtual Compte Compte { get; set;}
         #endregion
@@ -30,6 +30,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="nbrPion">nombre de pion</param>
         public Joueur(int nbrPion)
         {
+            Compte = new Compte();
             Pion = new List<Pion>();
             if(nbrPion>0)
             {
