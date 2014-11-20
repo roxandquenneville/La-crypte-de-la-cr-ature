@@ -501,7 +501,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
             // la case est externe
-            if(pACote == Fin)
+            if(pACote.X == Fin.X && pACote.Y == Fin.Y)
             {
                 ((Pierre)pierre).EstSurPlateau = false;
                 partie.Historique.Deplacement.RemoveAt(index-1);
@@ -555,9 +555,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     pierre.Position.Y = pACote.Y;
 
                     deplacement.Fin.X = pACote.X;
-                    pierre.Position.Y = pACote.Y;
+                    deplacement.Fin.Y = pACote.Y;
 
-                    deplacement.Fin.ChangePosition(sens);
                     if(pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)
                     {
                         deplacement.ConfirmationPierre(partie, sens, pTmp[0]);
