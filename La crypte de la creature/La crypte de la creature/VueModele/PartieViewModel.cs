@@ -45,6 +45,7 @@ namespace La_crypte_de_la_creature.VueModele
             Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
             Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
             Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
+            Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
             //   Joueur = _JoueurService.Retrieve(RetrieveJoueurArgs);
 
             
@@ -61,8 +62,9 @@ namespace La_crypte_de_la_creature.VueModele
             Joueur = new Joueur();
             Historique = new Historique();
             Partie = new Partie();
+            Plateau = new Plateau();
             //Partie = new Partie(1, 2, "Normal");
-            Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
+            
 
 
         }
@@ -288,22 +290,22 @@ namespace La_crypte_de_la_creature.VueModele
         public void CreerPartieCommand()
         {   
             /* la faut faire marcher les list*/
-            Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
-            Plateau.Case = Cases;
+            Partie.Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
+            Partie.Plateau.Case = _CaseService.RetrievePlateau(1);
            //Créer l'historique
-            _HistoriqueService.Create(Historique);
+            _HistoriqueService.Create(Partie.Historique);
           
-           //met les liens
-            Partie.Historique = Historique;
-            Partie.Plateau = Plateau;
+           ////met les liens
+           // Partie.Historique = Historique;
+           // Partie.Plateau = Plateau;
 
             // Créer la partie
             _PartieService.Create(Partie);
 
-            Joueur.Partie = Partie;
-            Joueur.Compte.idCompte = UtilisateurConnecte.idCompte;
+            Partie.Joueur[0].Partie = Partie;
+            Partie.Joueur[0].Compte.idCompte = UtilisateurConnecte.idCompte;
 
-            _JoueurService.Create(Joueur);
+            _JoueurService.Create(Partie.Joueur[0]);
 
             Pointage.Partie = Partie;
 
