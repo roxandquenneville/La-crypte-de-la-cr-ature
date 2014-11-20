@@ -60,9 +60,13 @@
 
 
         <Label Content="Bonjour, :"/>
-        <Label Margin="0,25,0,0" Name="lblNomUsager" />
+        <Label Margin="0,25,0,34" Name="lblNomUsager" />
+        <Label Content="Il vous reste " Margin="5,45,395,10" Grid.Column="1"/>
+        <Label Name="Coups"  Margin="84,47,395,10" Grid.Column="1" />
+        <Label Content="coups a jouer" Margin="110,45,302,5" Grid.Column="1" RenderTransformOrigin="0.193,0.4"/>
 
-        <Label Focusable="False" Name="lblHistoriqueCourte" Grid.Column="1" BorderThickness="1" BorderBrush="Black" Content=" Historique Courte: Dernier Movement Historique     Dernier mouvement du monstre"/>
+
+        <Label Focusable="False" Name="lblHistoriqueCourte" Grid.Column="1" BorderThickness="1" BorderBrush="Black" Content=" Historique Courte: Dernier Movement Historique     Dernier mouvement du monstre" Margin="5,-1,-5,1"/>
         <Button Grid.Row="1" Height="30" Content="Confirmer tour" Focusable="False" Click="btnConfirme" >
         </Button>
         <Button Grid.Row="1" Height="30" Content="Annuler tour" Margin="0,70,0,0" Focusable="False" Click="Button_Click_1">
@@ -72,8 +76,8 @@
 
         <Label Focusable="False" Content="Pointage" HorizontalAlignment="Left" Height="31" Margin="10,23,0,0" Grid.Row="1" VerticalAlignment="Top" Width="68"/>
         <ListBox Focusable="False" Name="lboxPointage" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.478,1.866" Margin="10,59,0,0" Grid.Row="1">
-        <ListBox.ItemContainerStyle>
-            <Style TargetType="Control">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="Control">
                     <Setter Property="Focusable" Value="False"/>
                 </Style>
             </ListBox.ItemContainerStyle>

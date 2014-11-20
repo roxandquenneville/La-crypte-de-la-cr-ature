@@ -16,6 +16,7 @@ using Cstj.MvvmToolkit.Services;
 using Cstj.MvvmToolkit.Services.Definitions;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.UI.ViewModel;
+using La_crypte_de_la_creature.VueModele;
 
 namespace La_crypte_de_la_creature.Vue
 {
@@ -32,8 +33,11 @@ namespace La_crypte_de_la_creature.Vue
         {
             InitializeComponent();
             DataContext = new CompteViewModel();
+
             lblErreur.Visibility = Visibility.Hidden;
-            Loaded += WindowsLoaded;        
+            Loaded += WindowsLoaded;
+            CompteViewModel.HarvestPassword += (sender, args) =>
+            args.Password = PasswordBox1.Password;    
         }
                
        private void WindowsLoaded(object sender, RoutedEventArgs e)
@@ -48,32 +52,8 @@ namespace La_crypte_de_la_creature.Vue
 
         private void Btn_Connexion(object sender, RoutedEventArgs e)
         {
-            Compte CompteConnexion = new Compte();
-            UtilisateurConnecte.nomUsager = null;
-            UtilisateurConnecte.idCompte = null;
-
-            CompteConnexion.MotDePasse = CompteViewModel.RetrieveArgs.motDePasse;
-            CompteConnexion.NomUsager = CompteViewModel.RetrieveArgs.nomUsager;
-                foreach( Compte C in  CompteViewModel.Comptes)
-                {
-                    if (CompteConnexion.NomUsager == C.NomUsager)
-                    {
-                        if (CompteConnexion.MotDePasse == C.MotDePasse)
-                        {
-                            //Utilisateur Confirme
-                            UtilisateurConnecte.nomUsager = CompteConnexion.NomUsager;
-                            UtilisateurConnecte.idCompte = C.idCompte;
-                            mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
-                        }                     
-                    }
-                    //Nom utilsateur inexistant
-                   
-                }
-                if (UtilisateurConnecte.nomUsager == null)
-                {
-                    lblErreur.Content = "Erreur lors de la connexion, veuillez réessayer.";
-                    lblErreur.Visibility = Visibility.Visible;
-                }
+            
+            CompteViewModel.ConnexionCommand();
             
         }
 

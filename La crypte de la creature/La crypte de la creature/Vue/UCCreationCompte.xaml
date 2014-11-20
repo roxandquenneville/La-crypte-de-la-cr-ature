@@ -31,8 +31,8 @@
         </Label>
 
         <TextBox GotFocus="GotFocus" Grid.Row="0" Height="30" Margin="221,69,0,0" Text="{Binding RetrieveArgs.nomUsager}" Name="tbxNomUsager" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top"  />
-        <TextBox GotFocus="GotFocus" Height="30" Margin="221,104,0,0" Text="{Binding RetrieveArgs.motDePasse}" Name="tbxMotDePasse" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top"  />
-        <TextBox GotFocus="GotFocus" Height="30" Margin="221,139,0,0" Name="tbxMotDePasseConfirme" VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" />
+        <PasswordBox GotFocus="GotFocus" Height="30" Margin="221,104,0,0"  HorizontalAlignment="Left" Width="240" VerticalAlignment="Top" Name="PasswordBox1"  />
+        <PasswordBox GotFocus="GotFocus" Height="30" Margin="221,139,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="240" Name="PasswordBox2" />
         <Button Height="30" Width="70" Margin="139,267,0,0" Content="Confirmer" Click="btn_Confirme" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top" TabIndex="10" />
         <Button Height="30" Width="70" Margin="219,267,0,0" Content="Annuler" Click="btn_Annule" IsCancel="True" VerticalAlignment="Top" HorizontalAlignment="Left" TabIndex="11" />
         <Label Foreground="White" Content="E-mail :" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Width="206" Height="30">

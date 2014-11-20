@@ -22,7 +22,7 @@
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
-        <TextBox GotFocus="GotFocus" Background="AliceBlue" Margin="227,162,0,0" Height="30" Text="{Binding RetrieveArgs.motDePasse , UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="240" VerticalAlignment="Top" />
+        <PasswordBox GotFocus="GotFocus" Background="AliceBlue" Margin="227,162,0,0" Height="30"  HorizontalAlignment="Left" Width="240" VerticalAlignment="Top" Name="PasswordBox1" />
         <Button Height="30" Width="70" Grid.Column="0" Margin="139,267,0,0" Content="Connexion" IsDefault="True" Click="Btn_Connexion" HorizontalAlignment="Left" VerticalAlignment="Top"  />
         <Button Height="30" Width="70" Margin="219,267,0,0" Content="Quitter" Click="Btn_Quitter" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Label Grid.Column="0" Content="Pas de compte? Créer en un maintenant." Foreground="Blue" Grid.ColumnSpan="1" Margin="108,222,0,0" MouseDown="Lbl_Click" HorizontalAlignment="Left" Width="226" Height="30" VerticalAlignment="Top"  >

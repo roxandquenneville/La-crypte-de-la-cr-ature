@@ -6,15 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Cstj.MvvmToolkit;
 using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
 using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Services.Interfaces;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
+using La_crypte_de_la_creature.Vue;
+using La_crypte_de_la_creature.VueModele;
 
 namespace La_crypte_de_la_creature.UI.ViewModel
 {
-    public class CompteViewModel : BaseViewModel
+    public class CompteViewModel : BaseViewModel    
     {
+        public event EventHandler<HarvestPasswordEventArgs> HarvestPassword;
+        IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>(); 
 
         #region Service
         private ICompteService _CompteService; 
@@ -82,11 +87,46 @@ namespace La_crypte_de_la_creature.UI.ViewModel
         #region Command
 
         public void SauvegarderCommand()
-        {
-            Compte.MotDePasse = RetrieveArgs.motDePasse;
+        {          
+
+            var pwargs = new HarvestPasswordEventArgs();
+            HarvestPassword(this, pwargs);
+
+            Compte.MotDePasse = pwargs.Password;    
             Compte.NomUsager = RetrieveArgs.nomUsager;
             Compte.Email = RetrieveArgs.email;
             _CompteService.Create(Compte);
+        }
+
+        public void ConnexionCommand()
+        {
+            Compte CompteConnexion = new Compte();
+            UtilisateurConnecte.nomUsager = null;
+            UtilisateurConnecte.idCompte = null;
+
+
+
+            var pwargs = new HarvestPasswordEventArgs();
+            HarvestPassword(this, pwargs);
+
+            CompteConnexion.MotDePasse = pwargs.Password;
+            CompteConnexion.NomUsager = this.RetrieveArgs.nomUsager;
+            foreach (Compte C in this.Comptes)
+            {
+                if (CompteConnexion.NomUsager == C.NomUsager)
+                {
+                    if (CompteConnexion.MotDePasse == C.MotDePasse)
+                    {
+                        //Utilisateur Confirme
+                        UtilisateurConnecte.nomUsager = CompteConnexion.NomUsager;
+                        UtilisateurConnecte.idCompte = C.idCompte;
+                        mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
+                    }
+                }
+                //Nom utilsateur inexistant
+
+            }
+      
         }
 
         #endregion

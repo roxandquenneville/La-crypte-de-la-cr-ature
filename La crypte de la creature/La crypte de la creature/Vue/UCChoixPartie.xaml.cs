@@ -29,6 +29,7 @@ namespace La_crypte_de_la_creature.Vue
             InitializeComponent();
             DataContext = new PartieViewModel();
             Loaded += WindowLoaded;
+
         }
 
         private void WindowLoaded(Object o, RoutedEventArgs e)
@@ -44,12 +45,11 @@ namespace La_crypte_de_la_creature.Vue
 
         private void Btn_NouvellePartie(object sender, RoutedEventArgs e)
         {
-       
-            Application.Current.MainWindow.Background = Brushes.White;
-           
-            
+               
+            Application.Current.MainWindow.Background = Brushes.White; 
             this.Content = new UCInvitationJoueur();
             PartieViewModel.CreerPartieCommand();
+
         }
 
     }

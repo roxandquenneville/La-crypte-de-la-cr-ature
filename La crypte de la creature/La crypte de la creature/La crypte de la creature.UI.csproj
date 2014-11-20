@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmFx.Windows.WebGUI">
+      <HintPath>packages\MvvmFx-WebGUI.2.0.2\lib\net40-full\MvvmFx.Windows.WebGUI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -49,6 +55,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase.WebGUI">
+      <HintPath>packages\MvvmFx-WebGUI.2.0.2\lib\net40-full\WindowsBase.WebGUI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -56,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="VueModele\CompteViewModel.cs" />
+    <Compile Include="VueModele\HarvestPasswordEventArgs.cs" />
     <Compile Include="VueModele\MainViewModel.cs" />
     <Compile Include="VueModele\PartieViewModel.cs" />
     <Compile Include="Vue\UCChoixPartie.xaml.cs">

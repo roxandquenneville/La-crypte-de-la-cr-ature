@@ -36,13 +36,13 @@ namespace La_crypte_de_la_creature.VueModele
             
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
-            _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
+         //   _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
             _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
             _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
             _CaseService = ServiceFactory.Instance.GetService<ICaseService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
-            Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
+        //    Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
             Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
             Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
             //   Joueur = _JoueurService.Retrieve(RetrieveJoueurArgs);
@@ -60,8 +60,8 @@ namespace La_crypte_de_la_creature.VueModele
             Pointage = new Pointage();
             Joueur = new Joueur();
             Historique = new Historique();
-            Partie = new Partie();
-            //Partie = new Partie(1, 2, "Normal");
+         //   Partie = new Partie();
+            Partie = new Partie(1, 2, "Normal");
             Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
 
 
@@ -108,8 +108,6 @@ namespace La_crypte_de_la_creature.VueModele
                 RaisePropertyChanged();
             }
         }
-
-
 
 
         private Historique _Historique;
@@ -287,31 +285,31 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {   
-            /* la faut faire marcher les list*/
-            Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
-            Plateau.Case = Cases;
-           //Créer l'historique
-            _HistoriqueService.Create(Historique);
-          
-           //met les liens
-            Partie.Historique = Historique;
-            Partie.Plateau = Plateau;
+           // /* la faut faire marcher les list*/
+           // Plateau=_PlateauService.Retrieve(RetrievePlateauArgs);
+           // Plateau.Case = Cases;
+           ////Créer l'historique
+           // _HistoriqueService.Create(Historique);
+            
+           ////met les liens
+           // Partie.Historique = Historique;
+           // Partie.Plateau = Plateau;
 
-            // Créer la partie
-            _PartieService.Create(Partie);
+           // // Créer la partie
+           // _PartieService.Create(Partie);
 
-            Joueur.Partie = Partie;
-            Joueur.Compte.idCompte = UtilisateurConnecte.idCompte;
+           // Joueur.Partie = Partie;
+           // Joueur.Compte.idCompte = UtilisateurConnecte.idCompte;
 
-            _JoueurService.Create(Joueur);
+           // _JoueurService.Create(Joueur);
 
-            Pointage.Partie = Partie;
+           // Pointage.Partie = Partie;
 
-            _PointageService.Create(Pointage);
+           // _PointageService.Create(Pointage);
 
-            Partie.Joueur.Add(Joueur);
+           // Partie.Joueur.Add(Joueur);
 
-            Partie.Pointage.Add(Pointage);
+           // Partie.Pointage.Add(Pointage);
 
 
         }

@@ -70,7 +70,8 @@ namespace La_crypte_de_la_creature.Vue
             AffichePlateau();
             SetPositionPion();
             lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
-            
+            NombreCoupAJouer();
+
 
         }
 
@@ -187,7 +188,13 @@ namespace La_crypte_de_la_creature.Vue
                 break;
             }       
           
+           NombreCoupAJouer();
    
+        }
+
+        private void NombreCoupAJouer()
+        {
+            Coups.Content = PartieViewModel.Partie.Joueur[0].Pion[Pion].TmpDeplacement;
         }
 
         private void btnConfirme(object sender, RoutedEventArgs e)
@@ -200,14 +207,17 @@ namespace La_crypte_de_la_creature.Vue
               SetPositionPion();
               PartieViewModel.Partie.ConfirmerDeplacementPion(tmpList,1,Pion);
               lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+
+
               if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
               {
                   PartieViewModel.Partie.MouvementMonstre();
                   AffichePlateau();
                   PartieViewModel.Partie.TourJoueur = 0;
               }
+
               tmpList.Clear();
-              
+              NombreCoupAJouer();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

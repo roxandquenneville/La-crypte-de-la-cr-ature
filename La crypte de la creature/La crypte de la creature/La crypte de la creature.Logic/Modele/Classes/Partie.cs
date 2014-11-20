@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
@@ -136,10 +137,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne un mouvement</returns>
         public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
-           // if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
-            //{
-               // return;
-           // }
+            if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
+            {
+                return;
+            }
 
             //Pour supprimer le mouvement
             int index;
@@ -269,14 +270,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             if(!(monstre == null))
             {
-                //for(int i=0;i<5;i++)
-               // { 
+                for(int i=0;i<5;i++)
+                { 
                     sens = monstre.VisionMonstre(this);
                     monstre.ChangeOrientation(sens);
                     tmp.MonstreDeplacement(this, sens);
                     monstre.Position.X = tmp.Fin.X;
                     monstre.Position.Y = tmp.Fin.Y;
-               // }
+                    Thread.Sleep(200);
+                }
               
             }
             mort =VerificationFinPartie();

@@ -15,7 +15,9 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
     public class NHibernatepieceService : IPieceService
     {
+        
         private ISession session = NHibernateConnexion.OpenSession();
+
         #region IpieceService Members
 
         public IList<Piece> RetrieveAll()

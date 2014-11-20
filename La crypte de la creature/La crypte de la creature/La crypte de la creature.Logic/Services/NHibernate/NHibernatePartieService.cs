@@ -32,7 +32,8 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         }
 
         public void Create(Partie p)
-        {
+        {           
+            
             using (var transaction = session.BeginTransaction())
             {
                 session.Save(p);
