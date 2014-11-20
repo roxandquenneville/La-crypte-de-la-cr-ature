@@ -33,6 +33,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("INTEGER");
+<<<<<<< HEAD
 
               HasMany(x => x.Joueur)
                .KeyColumn("idPartie")
@@ -41,6 +42,8 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
              .KeyColumns.Add("idPartie", map => map.Name("idPartie")
                                                  .SqlType("INTEGER")
                                                  .Not.Nullable());
+=======
+>>>>>>> parent of 4f79282... yay
              /* HasMany(x => x.Joueur).KeyColumn("idPartie");*/
               //HasMany<Joueur>(x => x.idPartie)
               //    .Not.LazyLoad()
