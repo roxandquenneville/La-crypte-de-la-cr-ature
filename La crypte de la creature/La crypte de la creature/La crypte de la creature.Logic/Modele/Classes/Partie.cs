@@ -14,9 +14,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int? idPartie { get; set; }
         public virtual Plateau Plateau { get; set; }
         public virtual Historique Historique { get; set; }
-        public virtual List<Pointage> Pointage { get; set; }
-        public virtual List<CartesMonstre> CartesMonstre { get; set; }
-        public virtual List<Joueur> Joueur { get;  set; }
+        public virtual IList<Pointage> Pointage { get; set; }
+        public virtual IList<CartesMonstre> CartesMonstre { get; set; }
+        public virtual IList<Joueur> Joueur { get;  set; }
         public virtual IList<Piece> Piece { get; set; }
         public virtual int TourJoueur { get; set;}
         
@@ -270,15 +270,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             if(!(monstre == null))
             {
-                for(int i=0;i<5;i++)
-                { 
+              
                     sens = monstre.VisionMonstre(this);
                     monstre.ChangeOrientation(sens);
                     tmp.MonstreDeplacement(this, sens);
                     monstre.Position.X = tmp.Fin.X;
                     monstre.Position.Y = tmp.Fin.Y;
-                    Thread.Sleep(200);
-                }
+
+                
               
             }
             mort =VerificationFinPartie();

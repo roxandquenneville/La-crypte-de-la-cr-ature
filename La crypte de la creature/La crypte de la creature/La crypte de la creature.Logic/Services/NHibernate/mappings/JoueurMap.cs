@@ -26,15 +26,24 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                .Cascade.All();
                References(x => x.Partie)
 <<<<<<< HEAD
-               .Column("idPartie")
-               .Cascade.All();
+                .Class<Partie>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idPartie");
+                HasMany(x => x.Pion)
+              .KeyColumn("idJoueur")
+              .Inverse()
+              .Cascade.AllDeleteOrphan()
+               .KeyColumns.Add("idJoueur", map => map.Name("idJoueur")
+                                                   .SqlType("INTEGER")
+                                                    .Not.Nullable());
 =======
               .Class<Partie>()
               .Access.Property()
               .LazyLoad(Laziness.False)
               .Cascade.None()
               .Columns("idPartie");
->>>>>>> parent of 4f79282... yay
                HasMany(x => x.Pion).KeyColumn("idJoueur");
             //HasMany<Pion>(x => x.idJoueur)
             //    .Not.LazyLoad()
@@ -44,6 +53,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
             //    .KeyColumns.Add("idJoueur", map => map.Name("idJoueur")
             //                                        .SqlType("INTEGER")
             //                                        .Nullable());
+>>>>>>> parent of 4f79282... yay
         }
     }
 

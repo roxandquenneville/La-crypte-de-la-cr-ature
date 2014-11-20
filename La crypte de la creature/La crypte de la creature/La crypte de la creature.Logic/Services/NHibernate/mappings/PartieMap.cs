@@ -24,15 +24,35 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
               References(x => x.Historique)
                 .Column("idHistorique")
                 .Cascade.All();
-             /* References(x => x.Plateau)
+            References(x => x.Plateau)
                 .Column("idPlateau")
-                .Cascade.All();*/
+                .Cascade.All();
               Map(x => x.TourJoueur)
                 .Column("tour")
                 .CustomType<int>()
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("INTEGER");
+<<<<<<< HEAD
+
+              HasMany(x => x.Joueur)
+<<<<<<< HEAD
+             .KeyColumn("idPartie")
+             .Inverse()
+             .Cascade.AllDeleteOrphan()
+               .KeyColumns.Add("idPartie", map => map.Name("idPartie")
+                                                   .SqlType("INTEGER")
+                                                   .Not.Nullable());
+=======
+               .KeyColumn("idPartie")
+               .Inverse()
+               .Cascade.AllDeleteOrphan()
+             .KeyColumns.Add("idPartie", map => map.Name("idPartie")
+                                                 .SqlType("INTEGER")
+                                                 .Not.Nullable());
+=======
+>>>>>>> parent of 4f79282... yay
+>>>>>>> origin/master
              /* HasMany(x => x.Joueur).KeyColumn("idPartie");*/
               //HasMany<Joueur>(x => x.idPartie)
               //    .Not.LazyLoad()
