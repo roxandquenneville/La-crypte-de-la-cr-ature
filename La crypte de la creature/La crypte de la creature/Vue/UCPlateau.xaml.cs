@@ -211,8 +211,12 @@ namespace La_crypte_de_la_creature.Vue
 
               if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
               {
-                  PartieViewModel.Partie.MouvementMonstre();
-                  AffichePlateau();
+                  for (int i = 0; i < 5; i++)
+                  {
+                      PartieViewModel.Partie.MouvementMonstre();
+                      AffichePlateau();                 
+                      Thread.Sleep(1500);
+                  }
                   PartieViewModel.Partie.TourJoueur = 0;
               }
 
