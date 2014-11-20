@@ -276,8 +276,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     tmp.MonstreDeplacement(this, sens);
                     monstre.Position.X = tmp.Fin.X;
                     monstre.Position.Y = tmp.Fin.Y;
-
-                
+                   
               
             }
             mort =VerificationFinPartie();

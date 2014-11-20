@@ -28,7 +28,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("VARCHAR");
-<<<<<<< HEAD
+
             HasMany(x => x.Case)
                  .KeyColumn("idPlateau")
                  .Inverse()
@@ -36,10 +36,9 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                  .KeyColumns.Add("idPlateau", map => map.Name("idPlateau")
                                                      .SqlType("INTEGER")
                                                      .Not.Nullable());
+
            
-=======
-            HasMany(x => x.Case).KeyColumn("idPlateau");
->>>>>>> parent of 4f79282... yay
+
            
            
         }

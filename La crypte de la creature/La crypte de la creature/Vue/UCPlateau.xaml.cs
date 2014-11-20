@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -33,6 +34,10 @@ namespace La_crypte_de_la_creature.Vue
         public int Pion = 0;
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+        static System.Timers.Timer _timer; // From System.Timers
+        
+        
+
 
         public List<Deplacement> tmpList = new List<Deplacement>();
         public Position PositionAvantTour = new Position();
@@ -40,7 +45,8 @@ namespace La_crypte_de_la_creature.Vue
         {
             InitializeComponent();
             DataContext = new PartieViewModel();
-            Loaded += WindowsLoaded;            
+            Loaded += WindowsLoaded; 
+                  
 
         }
 
@@ -192,6 +198,57 @@ namespace La_crypte_de_la_creature.Vue
    
         }
 
+        private int counter;
+        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+
+        private void InitializeTimer()
+        {
+            counter = 0;
+            t.Interval = 750;
+
+            DoMything();
+
+            t.Tick += new EventHandler(timer1_Tick);
+
+            t.Enabled = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (counter >= 4 )
+            {
+                t.Enabled = false;
+            }
+            else
+            {
+                //do something here 
+                counter++;
+
+            
+                DoMything();
+            }
+        }
+
+
+        private void DoMything()
+        {
+            
+                PartieViewModel.Partie.MouvementMonstre();
+                AffichePlateau();
+
+                if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
+                    Pion = 1;
+                else if ( Pion == 1 && PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
+                    Pion = 0;
+           
+          
+        }
+
+
+
+
+
+
         private void NombreCoupAJouer()
         {
             Coups.Content = PartieViewModel.Partie.Joueur[0].Pion[Pion].TmpDeplacement;
@@ -200,10 +257,12 @@ namespace La_crypte_de_la_creature.Vue
         private void btnConfirme(object sender, RoutedEventArgs e)
         {
         //    PartieViewModel.SauvegarderCommand(); 
-              if(Pion==0)
-              Pion=1;
-              else
-              Pion=0;
+
+                if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
+                    Pion = 1;
+                else if (PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
+                    Pion = 0;
+
               SetPositionPion();
               PartieViewModel.Partie.ConfirmerDeplacementPion(tmpList,1,Pion);
               lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
@@ -211,18 +270,19 @@ namespace La_crypte_de_la_creature.Vue
 
               if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
               {
-                  for (int i = 0; i < 5; i++)
-                  {
-                      PartieViewModel.Partie.MouvementMonstre();
-                      AffichePlateau();                 
-                      Thread.Sleep(1500);
-                  }
-                  PartieViewModel.Partie.TourJoueur = 0;
+
+                InitializeTimer();
+               
+
+                PartieViewModel.Partie.TourJoueur=0;
+
               }
 
               tmpList.Clear();
               NombreCoupAJouer();
         }
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -234,10 +294,8 @@ namespace La_crypte_de_la_creature.Vue
             PartieViewModel.Joueur.Pion[Pion].Position.X = PositionAvantTour.X;
             PartieViewModel.Joueur.Pion[Pion].Position.Y = PositionAvantTour.Y;
             AffichePlateau();
+            
         }
-
-
-
 
     }
 }
