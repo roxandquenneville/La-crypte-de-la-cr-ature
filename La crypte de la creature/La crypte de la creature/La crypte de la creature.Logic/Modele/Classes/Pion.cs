@@ -58,7 +58,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Pion(int deplacement):base()
         {
             EstVivant=true;
-            EstSortie=true;
+            EstSortie=false;
             valeurDeplacement=deplacement;
             TmpDeplacement=valeurDeplacement;
             DetermineImage();

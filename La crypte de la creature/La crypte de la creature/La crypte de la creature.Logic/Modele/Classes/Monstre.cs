@@ -16,7 +16,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int Orientation
         {
             get { return orientation; }
-            set 
+            set
             {
                 if (value > -1 && value < 4)
                 {
@@ -31,7 +31,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <summary>
         /// constructeur de la classe Pion
         /// </summary>
-        public Monstre():base()
+        public Monstre()
+            : base()
         {
         }
 
@@ -41,7 +42,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="posXY">Position du monstre</param>
         /// <param name="Sens">LE sens du monstre 0 = gauche 1 = haut 2 = droite 3 = bas</param>
-        public Monstre(Position posXY, int Sens): base(posXY)
+        public Monstre(Position posXY, int Sens)
+            : base(posXY)
         {
             Orientation = Sens;
             DetermineImage();
@@ -53,8 +55,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>retourne le nom du monstre utilisé</returns>
         public virtual string DeterminerMonstre()
         {
-            string nom="";
-            
+            string nom = "";
+
             return nom;
         }
 
@@ -64,21 +66,21 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// Retourne le type
         /// </summary>
         /// <returns>Retourne la string "Monstre"</returns>
-        public override string Get_Type() { return ConstanteGlobale.MONSTRE ; }
+        public override string Get_Type() { return ConstanteGlobale.MONSTRE; }
 
         public virtual string Get_OrientationAsSens()
         {
             switch (Orientation)
             {
-                case  0:
-                     return ConstanteGlobale.GAUCHE;
+                case 0:
+                    return ConstanteGlobale.GAUCHE;
                 case 1:
-                     return ConstanteGlobale.MONTE;
+                    return ConstanteGlobale.MONTE;
                 case 2:
-                     return ConstanteGlobale.DROITE;
+                    return ConstanteGlobale.DROITE;
                 case 3:
-                     return ConstanteGlobale.DESCEND;
-                default : return null;
+                    return ConstanteGlobale.DESCEND;
+                default: return null;
             }
         }
 
@@ -91,17 +93,17 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             switch (sens)
             {
                 case ConstanteGlobale.GAUCHE:
-                     Orientation=0;
-                     break;
+                    Orientation = 0;
+                    break;
                 case ConstanteGlobale.MONTE:
-                     Orientation=1;
-                     break;
+                    Orientation = 1;
+                    break;
                 case ConstanteGlobale.DROITE:
-                     Orientation=2;
-                     break;
+                    Orientation = 2;
+                    break;
                 case ConstanteGlobale.DESCEND:
-                     Orientation=3;
-                     break;
+                    Orientation = 3;
+                    break;
             }
         }
         /// <summary>
@@ -110,19 +112,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public override void DetermineImage()
         {
             switch (Orientation)
-            { 
+            {
                 case 0:
-                        Url = "pack://application:,,,/Images/Alain3.png";
-                        break;
+                    Url = "pack://application:,,,/Images/Alain3.png";
+                    break;
                 case 1:
-                        Url = "pack://application:,,,/Images/Alain4.png";
-                        break;
+                    Url = "pack://application:,,,/Images/Alain4.png";
+                    break;
                 case 2:
-                        Url = "pack://application:,,,/Images/Alain1.png";
-                        break;
+                    Url = "pack://application:,,,/Images/Alain1.png";
+                    break;
                 case 3:
-                        Url = "pack://application:,,,/Images/Alain2.png";
-                        break;
+                    Url = "pack://application:,,,/Images/Alain2.png";
+                    break;
             }
         }
 
@@ -138,21 +140,22 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             List<Piece> pTmp = new List<Piece>();
             List<int> iTmp = new List<int>();
 
-            String sens=Get_OrientationAsSens();
+            String sens = Get_OrientationAsSens();
+            int modificateur = 0;
 
             switch (sens)
             {
                 case ConstanteGlobale.MONTE:
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.GAUCHE));
-                    iTmp.Add(CompteDistance(pTmp[0]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DROITE));
-                    iTmp.Add(CompteDistance(pTmp[1]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.MONTE));
-                    iTmp.Add(CompteDistance( pTmp[2]));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.GAUCHE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[0], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DROITE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[1], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.MONTE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[2], modificateur));
 
-                    if(iTmp[0] == -1)
+                    if (iTmp[0] == -1)
                     {
-                        iTmp[0] = 5000;    
+                        iTmp[0] = 5000;
                     }
                     if (iTmp[1] == -1)
                     {
@@ -163,7 +166,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         iTmp[2] = 5000;
                     }
 
-                    if(iTmp.Min() == 5000)
+                    if (iTmp.Min() == 5000)
                     {
                         return sens;
                     }
@@ -211,16 +214,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     }
 
                 case ConstanteGlobale.DESCEND:
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.GAUCHE));
-                    iTmp.Add(CompteDistance(pTmp[0]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DROITE));
-                    iTmp.Add(CompteDistance(pTmp[1]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DESCEND));
-                    iTmp.Add(CompteDistance(pTmp[2]));
-                    
-                    if(iTmp[0] == -1)
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.GAUCHE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[0], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DROITE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[1], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DESCEND, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[2], modificateur));
+
+                    if (iTmp[0] == -1)
                     {
-                        iTmp[0] = 5000;    
+                        iTmp[0] = 5000;
                     }
                     if (iTmp[1] == -1)
                     {
@@ -231,7 +234,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         iTmp[2] = 5000;
                     }
 
-                    if(iTmp.Min() == 5000)
+                    if (iTmp.Min() == 5000)
                     {
                         return sens;
                     }
@@ -280,16 +283,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
 
                 case ConstanteGlobale.GAUCHE:
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.GAUCHE));
-                    iTmp.Add(CompteDistance(pTmp[0]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.MONTE));
-                    iTmp.Add(CompteDistance(pTmp[1]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DESCEND));
-                    iTmp.Add(CompteDistance(pTmp[2]));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.GAUCHE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[0], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.MONTE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[1], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DESCEND, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[2], modificateur));
 
-                    if(iTmp[0] == -1)
+                    if (iTmp[0] == -1)
                     {
-                        iTmp[0] = 5000;    
+                        iTmp[0] = 5000;
                     }
                     if (iTmp[1] == -1)
                     {
@@ -300,7 +303,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         iTmp[2] = 5000;
                     }
 
-                    if(iTmp.Min() == 5000)
+                    if (iTmp.Min() == 5000)
                     {
                         return sens;
                     }
@@ -348,16 +351,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     }
 
                 case ConstanteGlobale.DROITE:
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DROITE));
-                    iTmp.Add(CompteDistance( pTmp[0]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.MONTE));
-                    iTmp.Add(CompteDistance(pTmp[1]));
-                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DESCEND));
-                    iTmp.Add(CompteDistance(pTmp[2]));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DROITE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[0], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.MONTE, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[1], modificateur));
+                    pTmp.Add(MonstreRegarde(partie, ConstanteGlobale.DESCEND, ref modificateur));
+                    iTmp.Add(CompteDistance(pTmp[2], modificateur));
 
-                    if(iTmp[0] == -1)
+                    if (iTmp[0] == -1)
                     {
-                        iTmp[0] = 5000;    
+                        iTmp[0] = 5000;
                     }
                     if (iTmp[1] == -1)
                     {
@@ -368,7 +371,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         iTmp[2] = 5000;
                     }
 
-                    if(iTmp.Min() == 5000)
+                    if (iTmp.Min() == 5000)
                     {
                         return sens;
                     }
@@ -409,20 +412,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         {
                             return sens;
                         }
-                        else if (iTmp[1] > iTmp[2])
-                        {
-                            return ConstanteGlobale.DESCEND;
-                        }
                         else
                         {
-                            return sens;
+                            return ConstanteGlobale.DESCEND;
                         }
                     }
             }
             return sens;
         }
 
-        public virtual Piece MonstreRegarde(Partie partie, string sens)
+        public virtual Piece MonstreRegarde(Partie partie, string sens, ref int modificateur)
         {
             List<Piece> pTmp = null;
             Piece pionTmp = null;
@@ -434,15 +433,18 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             // tmp.x <15
             // tmp.y > 0
             // tmp.y < 11
-            
+
+            //Je le remet à 0
+            modificateur = 0;
+
             switch (sens)
             {
                 case ConstanteGlobale.GAUCHE:
                     while (tmp.X > 0)
-                    {  
-                    
-                      tmp.ChangePosition(ConstanteGlobale.GAUCHE);
-                       pTmp = partie.RetournePiece(tmp);
+                    {
+
+                        tmp.ChangePosition(ConstanteGlobale.GAUCHE);
+                        pTmp = partie.RetournePiece(tmp);
 
                         if (!(pTmp.Count == 0))
                         {
@@ -455,6 +457,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             }
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
+                            {
+                                modificateur++;
+                                pionTmp = null;
+                            }
+                            else if (pionTmp.Get_Type() == ConstanteGlobale.MONSTRE)
                             {
                                 pionTmp = null;
                             }
@@ -490,6 +497,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
                             {
+                                modificateur++;
+                                pionTmp = null;
+                            }
+                            else if (pionTmp.Get_Type() == ConstanteGlobale.MONSTRE)
+                            {
                                 pionTmp = null;
                             }
                             else
@@ -521,6 +533,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             }
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
+                            {
+                                modificateur++;
+                                pionTmp = null;
+                            }
+                            else if (pionTmp.Get_Type() == ConstanteGlobale.MONSTRE)
                             {
                                 pionTmp = null;
                             }
@@ -554,6 +571,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             // Si il retourne une case de sang
                             else if (pionTmp.Get_Type() == ConstanteGlobale.CASEDESANG)
                             {
+                                modificateur++;
+                                pionTmp = null;
+                            }
+                            else if (pionTmp.Get_Type() == ConstanteGlobale.MONSTRE)
+                            {
                                 pionTmp = null;
                             }
                             else
@@ -561,7 +583,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                                 return pionTmp;
                             }
                         }
-                        if(tmp.Y == 10)
+                        if (tmp.Y == 10)
                         {
                             return pionTmp;
                         }
@@ -575,7 +597,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual Piece RegardePiece(List<Piece> pTmp)
         {
-          Piece tmp = null;
+            Piece tmp = null;
             if (pTmp.Count > 1)
             {
                 //Il y a une pierre on voit pas plus loin
@@ -630,7 +652,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             return tmp;
         }
 
-        public virtual int CompteDistance(Piece pion)
+        public virtual int CompteDistance(Piece pion, int modificateur)
         {
             int tmp;
             // Si il n'y pas de pion
@@ -643,6 +665,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
                 tmp = Math.Abs(Position.X - pion.Position.X);
                 tmp = tmp + Math.Abs(Position.Y - pion.Position.Y);
+                tmp = tmp - modificateur;
                 return tmp;
             }
         }

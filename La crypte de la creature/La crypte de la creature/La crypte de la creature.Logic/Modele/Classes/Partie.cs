@@ -158,12 +158,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             mouvement.Fin.ChangePosition(sens);
 
-            //Pour mettre le pion sur le plateau
-            if (pionDeplacer.Position == Depart && pionDeplacer.EstVivant == true)
-            {
-                pionDeplacer.EstSortie = false;
-            }
-
             // vérifie le mouvement
             if (mouvement.Confirmation(this, ListeTmp, pionDeplacer.TmpDeplacement, sens) == true)
             {
@@ -345,8 +339,25 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 foreach (Piece item in Piece)
                 {
                     if (item.Position.X == pos.X && item.Position.Y == pos.Y)
-                    {
-                        tmp.Add(item);
+                    {   
+                        if(item.Get_Type() == ConstanteGlobale.PION)
+                        {
+                            if(((Pion)item).EstVivant == true && ((Pion)item).EstSortie == false)
+                            {
+                                tmp.Add(item);
+                            }
+                        }
+                        else if (item.Get_Type() == ConstanteGlobale.PIERRE)
+                        {
+                            if(((Pierre)item).EstSurPlateau == true)
+                            {
+                                tmp.Add(item);
+                            }
+                        }
+                        else
+                        { 
+                            tmp.Add(item);
+                        }
                     }
                 }
             }
