@@ -25,6 +25,8 @@ namespace La_crypte_de_la_creature.VueModele
         private IPointageService _PointageService;
         private ICaseService _CaseService;
         private ICarteMonstreService _CarteMonstreService;
+        private IPionService _PionService;
+        private ICompteService _CompteService;
         #endregion
        
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
@@ -32,16 +34,19 @@ namespace La_crypte_de_la_creature.VueModele
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
         public RetrieveHistoriqueArgs RetrieveHistoriqueArgs { get; set; }
         public RetrievePointageArgs RetrievePointageArgs { get; set; }
+        public RetrieveCompteArgs RetrieveCompteArgs { get; set; }
         public PartieViewModel()
         {
             
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
-         //   _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
+            _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
             _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
             _PointageService = ServiceFactory.Instance.GetService<IPointageService>();
             _CaseService = ServiceFactory.Instance.GetService<ICaseService>();
             _CarteMonstreService = ServiceFactory.Instance.GetService<ICarteMonstreService>();
+            _PionService = ServiceFactory.Instance.GetService<IPionService>();
+            _CompteService = ServiceFactory.Instance.GetService<ICompteService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
         //    Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
@@ -54,15 +59,16 @@ namespace La_crypte_de_la_creature.VueModele
             RetrievePartieArgs = new RetrievePartieArgs();
             RetrievePlateauArgs = new RetrievePlateauArgs();
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
+            RetrieveCompteArgs = new RetrieveCompteArgs();
             RetrievePlateauArgs.idPlateau = 1;
             RetrievePlateauArgs.type = "Normal";
 
             RetrievePointageArgs = new RetrievePointageArgs();
-            //Joueur = new Joueur(2);
+            Joueur = new Joueur(2);
             Pointage = new Pointage();
-            Joueur = new Joueur();
+            //Joueur = new Joueur();
             Historique = new Historique();
-         //   Partie = new Partie();
+            //Partie = new Partie();
             Partie = new Partie(1, 2, "Normal");
             Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
 
@@ -299,8 +305,25 @@ namespace La_crypte_de_la_creature.VueModele
             // Créer la partie
             _PartieService.Create(Partie);
 
-            Joueur.Partie = Partie;
-            Joueur.Compte.idCompte = UtilisateurConnecte.idCompte;
+            for(int i=0;i<Partie.Joueur.Count-1;i++)
+            {
+                Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
+
+                if(i==0)
+                {
+                    RetrieveCompteArgs.idCompte = UtilisateurConnecte.idCompte;
+                }
+                else
+                {
+
+                }
+
+                Partie.Joueur[i].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
+            }
+            
+            
+
+          
 
             _JoueurService.Create(Joueur);
 
@@ -326,9 +349,12 @@ namespace La_crypte_de_la_creature.VueModele
                 Partie.CartesMonstre[i].Partie = Partie;
                 _CarteMonstreService.Create(Partie.CartesMonstre[i]);
             }
+            Joueur.Pion[0].Joueur= Joueur;
+            Joueur.Pion[0].Partie = Partie;
+            Joueur.Pion[0].Position.idPosition = 175;
 
-            //_PionService.Create(Partie.Joueur[0].Pion[0]);
-            //_PionService.Create(Partie.Joueur[0].Pion[1]);
+            _PionService.Create(Joueur.Pion[0]);
+            _PionService.Create(Joueur.Pion[1]);
 
         }
 

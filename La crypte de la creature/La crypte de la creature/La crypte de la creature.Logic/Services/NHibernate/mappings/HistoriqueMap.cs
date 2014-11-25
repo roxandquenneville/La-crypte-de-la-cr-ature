@@ -21,14 +21,14 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-			HasMany<Deplacement>(x => x.Deplacement)
-                .Not.LazyLoad()
-                .Access.Property()
-                .Cascade.All()
-                .Inverse()
-                .KeyColumns.Add("idHistorique", map => map.Name("idHistorique")
-                                                    .SqlType("INTEGER")
-                                                    .Nullable());
+            //HasMany<Deplacement>(x => x.Deplacement)
+            //    .Not.LazyLoad()
+            //    .Access.Property()
+            //    .Cascade.All()
+            //    .Inverse()
+            //    .KeyColumns.Add("idHistorique", map => map.Name("idHistorique")
+            //                                        .SqlType("INTEGER")
+            //                                        .Nullable());
 				
         }
     }
