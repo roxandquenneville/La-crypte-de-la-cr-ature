@@ -53,7 +53,11 @@ namespace La_crypte_de_la_creature.Vue
         private void Btn_Connexion(object sender, RoutedEventArgs e)
         {
             
-            CompteViewModel.ConnexionCommand();
+           if(CompteViewModel.ConnexionCommand())
+           {    
+                lblErreur.Visibility = Visibility.Visible;
+                lblErreur.Content = "Utilisateur inexistant";
+           }
             
         }
 

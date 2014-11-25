@@ -62,7 +62,7 @@ namespace La_crypte_de_la_creature.Vue
                         try
                         {
                             ViewModel.SauvegarderCommand();
-                            UtilisateurConnecte.nomUsager = tbxNomUsager.Text;
+                            UtilisateurConnecte.nomUsager = tbxNomUsager.Text;                            
                             mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
                             
                         }

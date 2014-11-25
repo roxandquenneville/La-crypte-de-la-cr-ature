@@ -37,8 +37,7 @@ namespace La_crypte_de_la_creature.Vue
         public UCInvitationJoueur()
         {
             InitializeComponent();
-            DataContext = new CompteViewModel();
-            DataContext = new PartieViewModel();
+            DataContext = new CompteViewModel();            
             Loaded += WindowsLoaded;
         }
 

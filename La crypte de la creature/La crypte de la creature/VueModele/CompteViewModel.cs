@@ -120,7 +120,7 @@ namespace La_crypte_de_la_creature.UI.ViewModel
             _CompteService.Create(Compte);
         }
 
-        public void ConnexionCommand()
+        public bool ConnexionCommand()
         {
             Compte CompteConnexion = new Compte();
             UtilisateurConnecte.nomUsager = null;
@@ -143,12 +143,13 @@ namespace La_crypte_de_la_creature.UI.ViewModel
                         UtilisateurConnecte.nomUsager = CompteConnexion.NomUsager;
                         UtilisateurConnecte.idCompte = C.idCompte;
                         mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
+                        return false;
                     }
                 }
-                //Nom utilsateur inexistant
+                
 
             }
-      
+            return true;
         }
 
         #endregion
