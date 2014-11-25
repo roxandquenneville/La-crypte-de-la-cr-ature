@@ -35,9 +35,6 @@ namespace La_crypte_de_la_creature.Vue
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
        
-        
-        
-
 
         public Historique tmpList = new Historique();
         public Position PositionAvantTour = new Position();
@@ -127,6 +124,13 @@ namespace La_crypte_de_la_creature.Vue
                             AfficherPieceImage(stringPath, c);
                         } 
                     }
+                    else if(c.Get_Type() == ConstanteGlobale.PIERRE)
+                    {
+                        if (((Pierre)c).EstSurPlateau)
+                        {
+                            AfficherPieceImage(stringPath, c);
+                        } 
+                    }
                     else
                     {
                         AfficherPieceImage(stringPath, c);
@@ -153,8 +157,6 @@ namespace La_crypte_de_la_creature.Vue
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            
-
             switch(e.Key)
             {
                 case Key.Left:                    
@@ -240,10 +242,10 @@ namespace La_crypte_de_la_creature.Vue
                 PartieViewModel.Partie.MouvementMonstre();
                 AffichePlateau();
 
-                if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
-                    Pion = 1;
-                else if ( Pion == 1 && PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
-                    Pion = 0;
+                //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
+                //    Pion = 1;
+                //else if ( Pion == 1 && PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
+                //    Pion = 0;
            
           
         }
@@ -257,10 +259,18 @@ namespace La_crypte_de_la_creature.Vue
         {
         //    PartieViewModel.SauvegarderCommand(); 
 
-                if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
+                //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
+                //    Pion = 1;
+                //else if (PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
+                //    Pion = 0;
+                if(Pion ==0)
+                {
                     Pion = 1;
-                else if (PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
+                }
+                else
+                {
                     Pion = 0;
+                }
 
               SetPositionPion();
               PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, 1, Pion);

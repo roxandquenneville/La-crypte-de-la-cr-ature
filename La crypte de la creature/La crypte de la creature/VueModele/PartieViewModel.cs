@@ -78,6 +78,7 @@ namespace La_crypte_de_la_creature.VueModele
             RetrievePlateauArgs.type = "Normal";
 
             RetrievePointageArgs = new RetrievePointageArgs();
+            
             Joueur = new Joueur(2);
             Pointage = new Pointage();
             //Joueur = new Joueur();
@@ -326,9 +327,10 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {
+            Position pTmp = new Position();
             ListJoueurInvite = CompteViewModel.ComptesInvite;
 
-            Partie = new Partie((ListJoueurInvite.Count) + 1, 2, "Normal");
+            Partie = new Partie(((ListJoueurInvite.Count) + 1), 2, "Normal");
 
             /* la faut faire marcher les list*/
             Plateau = _PlateauService.Retrieve(RetrievePlateauArgs);
@@ -393,7 +395,10 @@ namespace La_crypte_de_la_creature.VueModele
                     Partie.Joueur[i].Pion[x].Joueur = Partie.Joueur[i];
                     RetrievePositionArgs.X = Partie.Joueur[i].Pion[x].Position.X;
                     RetrievePositionArgs.Y = Partie.Joueur[i].Pion[x].Position.Y;
-                    Partie.Joueur[i].Pion[x].Position=_PositionService.Retrieve(RetrievePositionArgs);
+                    pTmp=_PositionService.Retrieve(RetrievePositionArgs);
+                    Partie.Joueur[i].Pion[x].Position.idPosition = pTmp.idPosition;
+                    Partie.Joueur[i].Pion[x].Position.X = pTmp.X;
+                    Partie.Joueur[i].Pion[x].Position.Y = pTmp.Y;
                     _PionService.Create((Pion)Partie.Joueur[i].Pion[x]);
                 }
            }
@@ -403,7 +408,11 @@ namespace La_crypte_de_la_creature.VueModele
                 Partie.Piece[i].Partie = Partie;
                 RetrievePositionArgs.X = Partie.Piece[i].Position.X;
                 RetrievePositionArgs.Y = Partie.Piece[i].Position.Y;
-                Partie.Piece[i].Position = _PositionService.Retrieve(RetrievePositionArgs);
+                pTmp = _PositionService.Retrieve(RetrievePositionArgs);
+                Partie.Piece[i].Position.idPosition = pTmp.idPosition;
+                Partie.Piece[i].Position.X = pTmp.X;
+                Partie.Piece[i].Position.Y = pTmp.Y;
+               
 
                 switch (Partie.Piece[i].Get_Type())
                 {
