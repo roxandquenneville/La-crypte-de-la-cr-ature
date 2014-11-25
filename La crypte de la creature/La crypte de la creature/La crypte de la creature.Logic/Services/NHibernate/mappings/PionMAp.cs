@@ -27,6 +27,18 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
               //   .LazyLoad(Laziness.False)
               //   .Cascade.None()
               //   .Columns("idPiece");
+              References(x => x.Position)
+               .Class<Position>()
+               .Access.Property()
+               .LazyLoad(Laziness.False)
+               .Cascade.None()
+               .Columns("idPosition");
+              References(x => x.Partie)
+                .Class<Partie>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idPartie");
               References(x => x.Joueur)
                 .Column("idJoueur")
                 .Cascade.All();
@@ -48,18 +60,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .Access.Property()
                 .Generated.Never()
                 .CustomSqlType("INTEGER");
-                References(x => x.Position)
-                .Class<Position>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idPosition");
-                References(x => x.Partie)
-                  .Class<Partie>()
-                  .Access.Property()
-                  .LazyLoad(Laziness.False)
-                  .Cascade.None()
-                  .Columns("idPartie");
+               
 				
         }
     }
