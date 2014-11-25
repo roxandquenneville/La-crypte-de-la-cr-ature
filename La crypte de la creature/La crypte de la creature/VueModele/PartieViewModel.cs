@@ -28,7 +28,7 @@ namespace La_crypte_de_la_creature.VueModele
         private IPionService _PionService;
         private ICompteService _CompteService;
         #endregion
-       
+
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
@@ -38,7 +38,7 @@ namespace La_crypte_de_la_creature.VueModele
 
         public PartieViewModel()
         {
-            
+
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
@@ -50,12 +50,12 @@ namespace La_crypte_de_la_creature.VueModele
             _CompteService = ServiceFactory.Instance.GetService<ICompteService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
-        //    Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
+            //    Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
             Pointages = new ObservableCollection<Pointage>(_PointageService.RetrieveAll());
             Historiques = new ObservableCollection<Historique>(_HistoriqueService.RetrieveAll());
             //   Joueur = _JoueurService.Retrieve(RetrieveJoueurArgs);
 
-            
+
             RetrieveJoueurArgs = new RetrieveJoueurArgs();
             RetrievePartieArgs = new RetrievePartieArgs();
             RetrievePlateauArgs = new RetrievePlateauArgs();
@@ -70,7 +70,7 @@ namespace La_crypte_de_la_creature.VueModele
             //Joueur = new Joueur();
             Historique = new Historique();
             //Partie = new Partie();
-            
+
             Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
 
 
@@ -95,7 +95,7 @@ namespace La_crypte_de_la_creature.VueModele
                 RaisePropertyChanging();
                 _ListJoueurInvite = value;
                 RaisePropertyChanged();
-            } 
+            }
         }
 
         private ObservableCollection<Case> _Cases;
@@ -201,7 +201,7 @@ namespace La_crypte_de_la_creature.VueModele
             }
         }
 
-        
+
         private Plateau _Plateau;
 
         public Plateau Plateau
@@ -321,8 +321,8 @@ namespace La_crypte_de_la_creature.VueModele
             //Créer l'historique
             _HistoriqueService.Create(Historique);
 
-           
-            
+
+
             //met les liens
             Partie.Historique = Historique;
             Partie.Plateau = Plateau;
@@ -335,7 +335,7 @@ namespace La_crypte_de_la_creature.VueModele
             Partie.Joueur[0].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
             _JoueurService.Create(Joueur);
 
-            for(int i =1; i < ListJoueurInvite.Count ; i++ )
+            for (int i = 1; i < ListJoueurInvite.Count; i++)
             {
                 Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
 
@@ -343,12 +343,12 @@ namespace La_crypte_de_la_creature.VueModele
 
                 _JoueurService.Create(Joueur);
             }
-            
-            
 
-          
 
-            
+
+
+
+
 
             Pointage.Partie = Partie;
 
@@ -372,7 +372,7 @@ namespace La_crypte_de_la_creature.VueModele
                 Partie.CartesMonstre[i].Partie = Partie;
                 _CarteMonstreService.Create(Partie.CartesMonstre[i]);
             }
-            Joueur.Pion[0].Joueur= Joueur;
+            Joueur.Pion[0].Joueur = Joueur;
             Joueur.Pion[0].Partie = Partie;
             Joueur.Pion[0].Position.idPosition = 175;
 

@@ -82,6 +82,28 @@ namespace La_crypte_de_la_creature.UI.ViewModel
             }
         }
 
+        private ObservableCollection<Compte> _comptesInvite = new ObservableCollection<Compte>();
+
+        public ObservableCollection<Compte> ComptesInvite
+        {
+            get
+            {
+                return _comptesInvite;
+            }
+
+            set
+            {
+                if (_comptesInvite == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _comptesInvite = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
         #endregion
 
         #region Command

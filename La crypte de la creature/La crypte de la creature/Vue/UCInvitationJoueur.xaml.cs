@@ -30,7 +30,7 @@ namespace La_crypte_de_la_creature.Vue
     {
 
         public CompteViewModel CompteViewModel { get { return (CompteViewModel)DataContext; } }
-        public PartieViewModel PartieViewModel { get  { return (PartieViewModel)DataContext; } }
+     
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();  
           
 
@@ -38,6 +38,7 @@ namespace La_crypte_de_la_creature.Vue
         {
             InitializeComponent();
             DataContext = new CompteViewModel();
+            DataContext = new PartieViewModel();
             Loaded += WindowsLoaded;
         }
 
@@ -61,17 +62,16 @@ namespace La_crypte_de_la_creature.Vue
 
             foreach(Compte C in CompteViewModel.Comptes)
             {
-                foreach( ItemCollection IT in lbxInviter.Items )
+                foreach( Object O in lbxInviter.Items )
                 { 
-                        if( IT.CurrentItem == C.NomUsager )
+                        if( O.ToString() == C.NomUsager )
                         {
                            listCompteInvite.Add(C);
                         }
                 } 
             }
 
-            PartieViewModel.ListJoueurInvite = listCompteInvite;
-            PartieViewModel.CreerPartieCommand();
+            CompteViewModel.ComptesInvite = listCompteInvite;
             mainVM.ChangeView<UCPlateau>(new UCPlateau());
         }
 
