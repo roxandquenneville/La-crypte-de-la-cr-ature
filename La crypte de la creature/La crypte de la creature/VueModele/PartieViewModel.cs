@@ -27,6 +27,10 @@ namespace La_crypte_de_la_creature.VueModele
         private ICarteMonstreService _CarteMonstreService;
         private IPionService _PionService;
         private ICompteService _CompteService;
+        private IPositionService _PositionService;
+        private IPierreService _PierreService;
+        private IMonstreService _MonstreService;
+        private ICaseSangService _CaseSangService;
         #endregion
 
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
@@ -35,6 +39,7 @@ namespace La_crypte_de_la_creature.VueModele
         public RetrieveHistoriqueArgs RetrieveHistoriqueArgs { get; set; }
         public RetrievePointageArgs RetrievePointageArgs { get; set; }
         public RetrieveCompteArgs RetrieveCompteArgs { get; set; }
+        public RetrievePositionArgs RetrievePositionArgs { get; set; }
 
         public PartieViewModel()
         {
@@ -48,6 +53,10 @@ namespace La_crypte_de_la_creature.VueModele
             _CarteMonstreService = ServiceFactory.Instance.GetService<ICarteMonstreService>();
             _PionService = ServiceFactory.Instance.GetService<IPionService>();
             _CompteService = ServiceFactory.Instance.GetService<ICompteService>();
+            _PositionService = ServiceFactory.Instance.GetService<IPositionService>();
+            _PierreService = ServiceFactory.Instance.GetService<IPierreService>();
+            _MonstreService = ServiceFactory.Instance.GetService<IMonstreService>();
+            _CaseSangService = ServiceFactory.Instance.GetService<ICaseSangService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
             //    Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
@@ -61,6 +70,7 @@ namespace La_crypte_de_la_creature.VueModele
             RetrievePlateauArgs = new RetrievePlateauArgs();
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
             RetrieveCompteArgs = new RetrieveCompteArgs();
+            RetrievePositionArgs = new RetrievePositionArgs();
             RetrievePlateauArgs.idPlateau = 1;
             RetrievePlateauArgs.type = "Normal";
 
@@ -322,7 +332,6 @@ namespace La_crypte_de_la_creature.VueModele
             _HistoriqueService.Create(Historique);
 
 
-
             //met les liens
             Partie.Historique = Historique;
             Partie.Plateau = Plateau;
@@ -335,19 +344,17 @@ namespace La_crypte_de_la_creature.VueModele
             Partie.Joueur[0].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
             _JoueurService.Create(Joueur);
 
-            for (int i = 1; i < ListJoueurInvite.Count; i++)
+
+            
+            for(int i =1; i < ListJoueurInvite.Count; i++ )
+
             {
                 Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
 
                 Partie.Joueur[i].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
 
                 _JoueurService.Create(Joueur);
-            }
-
-
-
-
-
+            }   
 
 
             Pointage.Partie = Partie;
@@ -372,13 +379,40 @@ namespace La_crypte_de_la_creature.VueModele
                 Partie.CartesMonstre[i].Partie = Partie;
                 _CarteMonstreService.Create(Partie.CartesMonstre[i]);
             }
-            Joueur.Pion[0].Joueur = Joueur;
-            Joueur.Pion[0].Partie = Partie;
-            Joueur.Pion[0].Position.idPosition = 175;
 
-            _PionService.Create(Joueur.Pion[0]);
-            _PionService.Create(Joueur.Pion[1]);
+           for(int i=0;i<Partie.Joueur.Count;i++)
+           {
+                for(int x=0;x<Partie.Joueur[0].Pion.Count;x++)
+                {
+                    Partie.Joueur[i].Pion[x].Partie = Partie;
+                    Partie.Joueur[i].Pion[x].Joueur = Partie.Joueur[i];
+                    RetrievePositionArgs.X = Partie.Joueur[i].Pion[x].Position.X;
+                    RetrievePositionArgs.Y = Partie.Joueur[i].Pion[x].Position.Y;
+                    Partie.Joueur[i].Pion[x].Position=_PositionService.Retrieve(RetrievePositionArgs);
+                    _PionService.Create(Partie.Joueur[i].Pion[x]);
+                }
+           }
 
+           for(int i=0;i<Partie.Piece.Count;i++)
+           {
+                Partie.Piece[i].Partie = Partie;
+                RetrievePositionArgs.X = Partie.Piece[i].Position.X;
+                RetrievePositionArgs.Y = Partie.Piece[i].Position.Y;
+                Partie.Piece[i].Position = _PositionService.Retrieve(RetrievePositionArgs);
+
+                switch (Partie.Piece[i].Get_Type())
+                {
+                    case ConstanteGlobale.PIERRE :
+                            _PierreService.Create((Pierre)Partie.Piece[i]);
+                            break;
+                    case ConstanteGlobale.MONSTRE :
+                            _MonstreService.Create((Monstre)Partie.Piece[i]);
+                            break;
+                     case ConstanteGlobale.CASEDESANG :
+                            _CaseSangService.Create((CaseDeSang)Partie.Piece[i]);
+                            break;
+                }
+           }
         }
 
         public void SauvegarderCommand()
