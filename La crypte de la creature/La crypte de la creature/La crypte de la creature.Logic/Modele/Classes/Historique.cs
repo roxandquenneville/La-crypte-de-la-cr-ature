@@ -28,12 +28,15 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
 
             int index = Deplacement.Count();
-            string builder;
+            string mouvement;
             if (index != 0)
-                builder = "Depart : " + Deplacement[index - 1].Depart.X.ToString() + " , " + Deplacement[index - 1].Depart.Y.ToString() + " / fin:" + Deplacement[index - 1].Fin.X.ToString() + Deplacement[index - 1].Fin.Y.ToString();
+                mouvement =new StringBuilder().Append("Depart : ").Append(Deplacement[index - 1].Depart.X.ToString()).Append(" , ")
+                                              .Append(Deplacement[index - 1].Depart.Y.ToString()).Append(" / fin:")
+                                              .Append(Deplacement[index - 1].Fin.X.ToString()).Append(Deplacement[index - 1].Fin.Y.ToString())
+                                              .ToString();
             else
                 return "";
-            return builder;
+            return mouvement;
         }
 
         public virtual List<string> liste_Dernier_Mouvement()
@@ -42,8 +45,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             List<string> lDeplacement = new List<string>();
             foreach (Deplacement item in Deplacement)
             {
-                string builder = "Depart : " + item.Depart.X.ToString() + " , " + item.Depart.Y.ToString() + " / fin:" + item.Fin.X.ToString() + item.Fin.Y.ToString();
-                lDeplacement.Add(builder);
+                string mouvement = new StringBuilder().Append("Depart : ").Append(item.Depart.X.ToString()).Append(" , ")
+                                                     .Append(item.Depart.Y.ToString()).Append(" / fin:").Append(item.Fin.X.ToString())
+                                                     .Append(item.Fin.Y.ToString()).ToString();
+                lDeplacement.Add(mouvement);
             }
             Deplacement.Reverse();
             return lDeplacement;

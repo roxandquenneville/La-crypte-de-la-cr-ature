@@ -118,24 +118,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else
                 {
                     type = pTmp[0].Get_Type();
-                    //string sens = "";
-                    //if ((Depart.X - Fin.X) > 0)
-                    //{
-                    //    sens = ConstanteGlobale.GAUCHE;
-                    //} 
-                    //else if ((Depart.X - Fin.X) < 0)
-                    //{
-                    //    sens = ConstanteGlobale.DROITE;
-                    //}
-                    //else if ((Depart.Y - Fin.Y) > 0)
-                    //{
-                    //    sens = ConstanteGlobale.MONTE;
-                    //}
-                    //else if ((Depart.Y - Fin.Y) < 0)
-                    //{
-                    //    sens = ConstanteGlobale.DESCEND;
-                    //}
-
+                   
                     switch (type)
                     {
                         case ConstanteGlobale.PIERRE:
@@ -466,14 +449,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     switch (type)
                     {
                         case ConstanteGlobale.CASEDESANG:
-                        break;
+                            Position pACote = new Position(Fin.X, Fin.Y);
+                            posTmp = new Position(pACote.X, pACote.Y);
+                            RetrieveElementPierre args = new RetrieveElementPierre();
+
+                            args.CasePresent= casePresent;
+                            args.pTmp=pTmp;
+                            args.pACote=pACote;
+                            args.posTmp=posTmp;
+
+                            SurCaseDeSang(partie,sens,args);
+                            break;
                         case ConstanteGlobale.PIERRE:
-                        ConfirmationPierre(partie,sens,pTmp[0]);
-                        break;
+                            ConfirmationPierre(partie,sens,pTmp[0]);
+                            break;
                         case ConstanteGlobale.PION:
-                        ((Pion)pTmp[0]).EstVivant =false;
-                        ((Pion)pTmp[0]).EstSortie = true;
-                        break; 
+                            ((Pion)pTmp[0]).EstVivant =false;
+                            ((Pion)pTmp[0]).EstSortie = true;
+                            break; 
                     }
                 }
                 
@@ -582,8 +575,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //arrete sur la case de sang
             if (args.CasePresent == false)
             {
-                args.deplacement.Fin = args.posTmp;
-                pierre.Position = args.posTmp;
+                args.deplacement.Fin.X = args.posTmp.X;
+                args.deplacement.Fin.Y = args.posTmp.Y;
+                pierre.Position.X = args.posTmp.X;
+                pierre.Position.Y = args.posTmp.Y;
             }
 
             args.pTmp = partie.RetournePiece(args.pACote);
@@ -592,7 +587,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             // la pierre qui a été pousser s'arrête sur la case de sang a cote de la piece
             if ((args.pTmp).Count() > 1)
             {
-                args.deplacement.Fin = args.posTmp;
+                args.deplacement.Fin.X = args.posTmp.X;
+                args.deplacement.Fin.Y = args.posTmp.Y;
                 pierre.Position.X = args.posTmp.X;
                 pierre.Position.Y = args.posTmp.Y;
             }
@@ -602,26 +598,111 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 //arrete sur la case à cote de la case de sang
                 if (args.pTmp.Count() == 0)
                 {
-                    args.deplacement.Fin = args.pACote;
+                    args.deplacement.Fin.X = args.pACote.X;
+                    args.deplacement.Fin.Y = args.pACote.Y;
                     pierre.Position.X = args.pACote.X;
                     pierre.Position.Y = args.pACote.Y;
                 }
                 else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CASEDESANG)
                 {
                     //rappele la fonction
-                   // PierreSurCaseDeSang(plateau, sens, pierre, ListeTmp, args);
+                   PierreSurCaseDeSang(partie, sens, pierre,args);
                 }
                 // arrete sur la case de sang
-                // pion pousse roche elle arrête sur la case de sang
+                // monstre pousse roche elle arrête sur la case de sang
                 // ,car il y a une piece de l'autre côté
                 else
                 {
-                    args.deplacement.Fin = args.posTmp;
+                    args.deplacement.Fin.X = args.posTmp.X;
+                    args.deplacement.Fin.Y = args.posTmp.Y;
                     pierre.Position.X = args.posTmp.X;
                     pierre.Position.Y = args.posTmp.Y;
                 }
             }
         }
+
+        public virtual void SurCaseDeSang(Partie partie, string sens, RetrieveElementPierre args)
+        {
+            args.posTmp.X = args.pACote.X;
+            args.posTmp.Y = args.pACote.Y;
+
+            //change la position de la case à côté
+            args.pACote.ChangePosition(sens);
+
+            //Vérifie la case
+            args.CasePresent = partie.Plateau.ConfirmationCase(args.pACote);
+
+            //La case n'existe pas ou est externe
+            //arrete sur la case de sang
+            if ((args.posTmp.X==args.pACote.X && args.posTmp.Y==args.pACote.Y) || args.CasePresent == false)
+            {
+                 if(args.posTmp.X==args.pACote.X && args.posTmp.Y==args.pACote.Y)
+                {
+                    switch (sens)
+                    {
+                        case ConstanteGlobale.DESCEND:
+                            Fin.Y = 0;
+                            break;
+                        case ConstanteGlobale.MONTE:
+                            Fin.Y = 10;
+                            break;
+                        case ConstanteGlobale.GAUCHE:
+                            Fin.X = 15;
+                            break;
+                        case ConstanteGlobale.DROITE:
+                            Fin.X = 0;
+                            break;
+                    }
+                }
+            }
+
+            args.pTmp = partie.RetournePiece(args.pACote);
+
+            // piece et case de sang
+            // pion suit la pierre lorsqu'il pousse
+            if ((args.pTmp).Count() > 1)
+            {
+
+            }
+            else
+            {
+                // Tombe sur une case vide
+                // Arrête sur la case à cote de la case de sang
+                if (args.pTmp.Count() == 0)
+                {
+                    Fin.X = args.pACote.X;
+                    Fin.Y = args.pACote.Y;
+                }
+                else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CASEDESANG)
+                {
+                    //rappele la fonction
+                    SurCaseDeSang(partie, sens, args);
+                }
+                //L'autre coté de la Mare de sang il y a une pièce
+                else
+                {
+                    if (args.pTmp[0].Get_Type() == ConstanteGlobale.PION)
+                    {
+                        //On mange le pion de l'autre côté
+                        Fin.X = args.pACote.X;
+                        Fin.Y = args.pACote.Y;
+
+                         ((Pion)args.pTmp[0]).EstVivant =false;
+                         ((Pion)args.pTmp[0]).EstSortie = true;
+
+                    }
+                    // un pion glisse sur une case de sang et fini devant la roche
+                    else
+                    {
+                        ConfirmationPierre(partie, sens,args.pTmp[0]);
+                        Fin.X = args.pACote.X;
+                        Fin.Y = args.pACote.Y;
+                    }
+                }
+            }
+        }
+
+
         #endregion
 
         public override bool Equals(object obj)
