@@ -34,7 +34,7 @@ namespace La_crypte_de_la_creature.Vue
         public int Pion = 0;
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-        static System.Timers.Timer _timer; // From System.Timers
+       
         
         
 
@@ -52,6 +52,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void WindowsLoaded(Object o, RoutedEventArgs e)
         {
+            PartieViewModel.CreerPartieCommand();
             lblNomUsager.Content = UtilisateurConnecte.nomUsager;
             afficherPointage();
 

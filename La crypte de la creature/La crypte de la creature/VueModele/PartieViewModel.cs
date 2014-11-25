@@ -11,6 +11,7 @@ using La_crypte_de_la_creature.Logic.Modele.Args;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.Logic.Services.Interfaces;
 using La_crypte_de_la_creature.Logic.Services.NHibernate;
+using La_crypte_de_la_creature.UI.ViewModel;
 
 namespace La_crypte_de_la_creature.VueModele
 {
@@ -33,6 +34,8 @@ namespace La_crypte_de_la_creature.VueModele
         private ICaseSangService _CaseSangService;
         #endregion
 
+
+        public CompteViewModel CompteViewModel = new CompteViewModel();
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
@@ -43,7 +46,7 @@ namespace La_crypte_de_la_creature.VueModele
 
         public PartieViewModel()
         {
-
+           
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
@@ -323,6 +326,8 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {
+            ListJoueurInvite = CompteViewModel.ComptesInvite;
+
             Partie = new Partie((ListJoueurInvite.Count) + 1, 2, "Normal");
 
             /* la faut faire marcher les list*/
