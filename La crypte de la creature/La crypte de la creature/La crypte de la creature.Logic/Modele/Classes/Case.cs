@@ -14,7 +14,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual int? idCase { get; set; }
         public virtual string Url {get; set;}
         public virtual Plateau Plateau { get; set;}
-        public virtual bool Interne {get; set;}
+        public virtual bool Interne { get; set;}
+
+
 
         public virtual Position Coordonnee 
         { 
@@ -22,8 +24,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             set
             {
                 coordonnee=value;
-                estInterne(coordonnee.X,coordonnee.Y);
-                DetermineImage(coordonnee, Interne);
+                
+                DetermineImage();
             }
         }
         #endregion
@@ -46,7 +48,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Case(Position posXY)
         {
             Coordonnee = posXY;
-            DetermineImage(Coordonnee, Interne);
+            DetermineImage();
            
         }
 
@@ -55,20 +57,21 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         /// <param name="pos">Prends la position</param>
         /// <param name="interieur">ici on utilise le bool Interne</param>
-        private void DetermineImage(Position pos,bool interieur)
+        public virtual void DetermineImage()
         {
-            if (pos.X == 0 && pos.Y == 0)
+            estInterne();
+            if (Coordonnee.X == 0 && Coordonnee.Y == 0)
             {
                 Url = "pack://application:,,,/Images/CaseSortie.png";
                 return;
             }
-            else if (pos.X == 15 && pos.Y == 10)
+            else if (Coordonnee.X == 15 && Coordonnee.Y == 10)
             {
                 Url = "pack://application:,,,/Images/CaseEntree.png";
                 return;
             }
 
-            else if (interieur)
+            else if (Interne)
             {
                 Url = "pack://application:,,,/Images/CaseNormale.png";
                 return;
@@ -87,7 +90,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="y">Emplacement en x</param>
         /// <param name="type">type de plateau</param>
         /// <returns></returns>
-        public virtual bool estInterne(int x, int y)
+        private void estInterne()
         {
                 /* x;y
                  *bas a gauche x 0-3 y 7-10
@@ -97,47 +100,49 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                   12;0 | 13;0 | 14;0 | 15;0 | 13;1 | 14;1 | 15;1 | 14;2 | 15;2 | 15;3
                  */
 
-                if ((x > -1 && x < 4) && (y > 6 && y < 11))
+            if ((Coordonnee.X > -1 && Coordonnee.X < 4) && (Coordonnee.Y > 6 && Coordonnee.Y < 11))
                 {
                     // x 0 1 2 3
                     // y 7 8 9 10
 
 
-                    if ((y == 7 && x > 0) || (x == 3 && y < 10) || (x == 2 && y == 8))
+                    if ((Coordonnee.Y == 7 && Coordonnee.X > 0) || (Coordonnee.X == 3 && Coordonnee.Y < 10) 
+                    || (Coordonnee.X == 2 && Coordonnee.Y == 8))
                     {
                         // 1;7 | 2;7 | 3;7 | 2;8 |3;8 | 3;9
                         // case interne
-                        return true;
+                        Interne= true;
                     }
                     else
                     {
                         // 0;7 | 0;8 | 1;8 | 0;9 | 1;9 | 2;9 | 0;10 | 1;10 | 2;10 | 3;10
                         //case externe
-                        return false;
+                        Interne = false;
                     }
                 }
-                else if ((y > -1 && y < 4) && (x > 11 && x < 16))
+            else if ((Coordonnee.Y > -1 && Coordonnee.Y < 4) && (Coordonnee.X > 11 && Coordonnee.X < 16))
                 {
                     // x 12 13 14 15
                     // y 0 1 2 3
 
-                    if ((x == 12 && y > 0) || (x == 13 && y > 1) || (x == 14 && y == 3))
+                    if ((Coordonnee.X == 12 && Coordonnee.Y > 0) || (Coordonnee.X == 13 && Coordonnee.Y > 1) 
+                    || (Coordonnee.X == 14 && Coordonnee.Y == 3))
                     {
                         // 12;1 | 12;2 | 12;3 | 13;2 | 13;3 | 14;3 
                         //case interne
-                        return true;
+                        Interne = true;
                     }
                     else
                     {
                         // 12;0 | 13;0 | 14;0 | 15;0 | 13;1 | 14;1 | 15;1 | 14;2 | 15;2 | 15;3
                         //case externe
-                        return false;
+                        Interne = false;
                     }
 
                 }
                 else
                 {
-                    return true;
+                    Interne = true;
                 }
 
             

@@ -97,6 +97,8 @@ namespace La_crypte_de_la_creature.Vue
             lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             foreach (Case c in PartieViewModel.Partie.Plateau.Case)
             {
+                c.DetermineImage();
+
                 String stringPath = c.Url;
                 Uri imageUri = new Uri(stringPath, UriKind.RelativeOrAbsolute);
                 BitmapImage imageBitmap = new BitmapImage(imageUri);
