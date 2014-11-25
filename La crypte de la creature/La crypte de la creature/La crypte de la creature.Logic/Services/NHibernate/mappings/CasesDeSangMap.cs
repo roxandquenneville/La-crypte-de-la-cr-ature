@@ -21,12 +21,12 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .CustomSqlType("INTEGER")
                 .Not.Nullable()                
                 .GeneratedBy.Identity();
-				References(x => x.MareDeSang)
-                .Class<MareDeSang>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idMare");
+                //References(x => x.MareDeSang)
+                //.Class<MareDeSang>()
+                //.Access.Property()
+                //.LazyLoad(Laziness.False)
+                //.Cascade.None()
+                //.Columns("idMare");
                 References(x => x.Position)
                .Class<Position>()
                .Access.Property()

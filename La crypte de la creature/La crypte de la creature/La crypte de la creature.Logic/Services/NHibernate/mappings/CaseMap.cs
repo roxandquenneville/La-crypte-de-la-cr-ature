@@ -30,7 +30,6 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                   .LazyLoad(Laziness.False)
                   .Cascade.None()
                   .Columns("idPosition");
-				
                 
         }
     }

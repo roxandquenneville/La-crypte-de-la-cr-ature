@@ -20,6 +20,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Piece()
         {
             Position = new Position();
+            Partie = new Partie();
         }
 
 
@@ -30,6 +31,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         protected  Piece(Position posXY)
         {
             Position = posXY;
+            Partie = new Partie();
         }
 
         /// <summary>

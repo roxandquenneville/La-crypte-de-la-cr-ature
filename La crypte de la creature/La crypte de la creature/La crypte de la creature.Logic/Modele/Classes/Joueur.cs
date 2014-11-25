@@ -22,6 +22,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             Pion = new List<Pion>();
             Compte = new Compte();
+            Partie = new Partie();
         }
 
         /// <summary>
@@ -32,6 +33,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             Compte = new Compte();
             Pion = new List<Pion>();
+            Partie = new Partie();
             if(nbrPion>0)
             {
                 Random RdmDeplacement = new Random();

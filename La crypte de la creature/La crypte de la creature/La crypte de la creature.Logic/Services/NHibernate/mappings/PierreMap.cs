@@ -11,7 +11,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
     {
         public PierreMap()
         {
-              Table("pieres");
+              Table("pierres");
               LazyLoad();
               Id(x => x.idPierre)
                 .Column("idPierre")

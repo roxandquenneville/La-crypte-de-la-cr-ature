@@ -28,7 +28,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         public Compte Retrieve(RetrieveCompteArgs args)
         {
             var result = from c in session.Query<Compte>()
-                         where c.idCompte == args.idCompte
+                         where c.NomUsager == args.nomUsager
                          select c;
 
             return result.FirstOrDefault();

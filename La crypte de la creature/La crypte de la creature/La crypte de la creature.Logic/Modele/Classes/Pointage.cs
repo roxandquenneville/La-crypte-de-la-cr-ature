@@ -37,11 +37,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public Pointage(int score = 0)
         {
            Point= score;
+           Partie = new Partie();
         }
 
         public Pointage()
         {
             Point=0;
+            Partie = new Partie();
         }
 
         public override bool Equals(object obj)

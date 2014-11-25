@@ -48,6 +48,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public Pion():base()
         {
+             Joueur = new Joueur();
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             EstSortie=false;
             valeurDeplacement=deplacement;
             TmpDeplacement=valeurDeplacement;
+            Joueur = new Joueur();
             DetermineImage();
         }
 

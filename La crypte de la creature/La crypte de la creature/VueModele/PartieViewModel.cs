@@ -344,31 +344,31 @@ namespace La_crypte_de_la_creature.VueModele
             // Créer la partie
             _PartieService.Create(Partie);
 
-            RetrieveCompteArgs.idCompte = UtilisateurConnecte.idCompte;
+            RetrieveCompteArgs.nomUsager = UtilisateurConnecte.nomUsager;
 
             Partie.Joueur[0].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
-            _JoueurService.Create(Joueur);
+            Partie.Joueur[0].Partie.idPartie = Partie.idPartie;
+            _JoueurService.Create(Partie.Joueur[0]);
 
+            Partie.Pointage[0].Partie.idPartie = Partie.idPartie;
 
+            _PointageService.Create(Partie.Pointage[0]);
             
             for(int i =1; i < ListJoueurInvite.Count; i++ )
 
             {
                 Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
 
+                RetrieveCompteArgs.nomUsager = _ListJoueurInvite[i-1].NomUsager;
                 Partie.Joueur[i].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
 
-                _JoueurService.Create(Joueur);
+                _JoueurService.Create(Partie.Joueur[i]);
+
+                Partie.Pointage[i].Partie.idPartie = Partie.idPartie;
+
+                _PointageService.Create(Partie.Pointage[i]);
             }   
 
-
-            Pointage.Partie = Partie;
-
-            _PointageService.Create(Pointage);
-
-            Partie.Joueur.Add(Joueur);
-
-            Partie.Pointage.Add(Pointage);
 
             Partie.CartesMonstre.Add(new CartesMonstre(5));
             Partie.CartesMonstre.Add(new CartesMonstre(5));
@@ -389,12 +389,12 @@ namespace La_crypte_de_la_creature.VueModele
            {
                 for(int x=0;x<Partie.Joueur[0].Pion.Count;x++)
                 {
-                    Partie.Joueur[i].Pion[x].Partie = Partie;
+                    Partie.Joueur[i].Pion[x].Partie.idPartie = Partie.idPartie;
                     Partie.Joueur[i].Pion[x].Joueur = Partie.Joueur[i];
                     RetrievePositionArgs.X = Partie.Joueur[i].Pion[x].Position.X;
                     RetrievePositionArgs.Y = Partie.Joueur[i].Pion[x].Position.Y;
                     Partie.Joueur[i].Pion[x].Position=_PositionService.Retrieve(RetrievePositionArgs);
-                    _PionService.Create(Partie.Joueur[i].Pion[x]);
+                    _PionService.Create((Pion)Partie.Joueur[i].Pion[x]);
                 }
            }
 
