@@ -35,6 +35,7 @@ namespace La_crypte_de_la_creature.VueModele
         public RetrieveHistoriqueArgs RetrieveHistoriqueArgs { get; set; }
         public RetrievePointageArgs RetrievePointageArgs { get; set; }
         public RetrieveCompteArgs RetrieveCompteArgs { get; set; }
+
         public PartieViewModel()
         {
             
@@ -76,6 +77,26 @@ namespace La_crypte_de_la_creature.VueModele
         }
 
         #region Bindable
+
+
+        private ObservableCollection<Compte> _ListJoueurInvite;
+        public ObservableCollection<Compte> ListJoueurInvite
+        {
+            get
+            {
+                return _ListJoueurInvite;
+            }
+            set
+            {
+                if (_ListJoueurInvite == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _ListJoueurInvite = value;
+                RaisePropertyChanged();
+            } 
+        }
 
         private ObservableCollection<Case> _Cases;
         public ObservableCollection<Case> Cases
@@ -298,6 +319,8 @@ namespace La_crypte_de_la_creature.VueModele
             //Créer l'historique
             _HistoriqueService.Create(Historique);
 
+           
+            
             //met les liens
             Partie.Historique = Historique;
             Partie.Plateau = Plateau;
@@ -305,18 +328,9 @@ namespace La_crypte_de_la_creature.VueModele
             // Créer la partie
             _PartieService.Create(Partie);
 
-            for(int i=0;i<Partie.Joueur.Count-1;i++)
+            for(int i =1; i < ListJoueurInvite.Count ; i++ )
             {
                 Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
-
-                if(i==0)
-                {
-                    RetrieveCompteArgs.idCompte = UtilisateurConnecte.idCompte;
-                }
-                else
-                {
-
-                }
 
                 Partie.Joueur[i].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
             }

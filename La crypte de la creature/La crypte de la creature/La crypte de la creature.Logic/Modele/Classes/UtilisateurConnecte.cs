@@ -11,5 +11,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         //Singleton pour l'utilisateur connecter
         public static String nomUsager;         
         public static int? idCompte;
+        
     }
 }

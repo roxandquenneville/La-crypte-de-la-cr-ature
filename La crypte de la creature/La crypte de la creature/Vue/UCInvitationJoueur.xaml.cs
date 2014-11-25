@@ -17,6 +17,7 @@ using Cstj.MvvmToolkit.Services;
 using Cstj.MvvmToolkit.Services.Definitions;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.UI.ViewModel;
+using La_crypte_de_la_creature.VueModele;
 
 
 namespace La_crypte_de_la_creature.Vue
@@ -29,6 +30,7 @@ namespace La_crypte_de_la_creature.Vue
     {
 
         public CompteViewModel CompteViewModel { get { return (CompteViewModel)DataContext; } }
+        public PartieViewModel PartieViewModel { get  { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();  
           
 
@@ -53,6 +55,20 @@ namespace La_crypte_de_la_creature.Vue
         {
             Application.Current.MainWindow.MinHeight = 600;
             Application.Current.MainWindow.MinWidth = 750;
+            ObservableCollection<Compte> listCompteInvite = new ObservableCollection<Compte>();
+
+            foreach(Compte C in CompteViewModel.Comptes)
+            {
+                foreach( ItemCollection IT in lbxInviter.Items )
+                { 
+                        if( IT.CurrentItem.ToString() == C.NomUsager )
+                        {
+                           listCompteInvite.Add(C);
+                        }
+                } 
+            }
+
+            PartieViewModel.ListJoueurInvite = listCompteInvite;
             mainVM.ChangeView<UCPlateau>(new UCPlateau());
         }
 
