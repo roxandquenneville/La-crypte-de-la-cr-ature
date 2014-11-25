@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
 using La_crypte_de_la_creature.Logic.Modele.Classes;
 using La_crypte_de_la_creature.VueModele;
 
@@ -24,6 +26,7 @@ namespace La_crypte_de_la_creature.Vue
     {
 
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
+        IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();  
         public UCChoixPartie()
         {
             InitializeComponent();
@@ -46,9 +49,9 @@ namespace La_crypte_de_la_creature.Vue
         private void Btn_NouvellePartie(object sender, RoutedEventArgs e)
         {
                
-            Application.Current.MainWindow.Background = Brushes.White; 
-            this.Content = new UCInvitationJoueur();
-            PartieViewModel.CreerPartieCommand();
+            Application.Current.MainWindow.Background = Brushes.White;
+            mainVM.ChangeView<UCInvitationJoueur>( new UCInvitationJoueur());
+            
 
         }
 

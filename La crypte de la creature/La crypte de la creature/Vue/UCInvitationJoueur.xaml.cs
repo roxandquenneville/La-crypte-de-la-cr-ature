@@ -55,13 +55,15 @@ namespace La_crypte_de_la_creature.Vue
         {
             Application.Current.MainWindow.MinHeight = 600;
             Application.Current.MainWindow.MinWidth = 750;
+
             ObservableCollection<Compte> listCompteInvite = new ObservableCollection<Compte>();
+
 
             foreach(Compte C in CompteViewModel.Comptes)
             {
                 foreach( ItemCollection IT in lbxInviter.Items )
                 { 
-                        if( IT.CurrentItem.ToString() == C.NomUsager )
+                        if( IT.CurrentItem == C.NomUsager )
                         {
                            listCompteInvite.Add(C);
                         }
@@ -69,6 +71,7 @@ namespace La_crypte_de_la_creature.Vue
             }
 
             PartieViewModel.ListJoueurInvite = listCompteInvite;
+            PartieViewModel.CreerPartieCommand();
             mainVM.ChangeView<UCPlateau>(new UCPlateau());
         }
 

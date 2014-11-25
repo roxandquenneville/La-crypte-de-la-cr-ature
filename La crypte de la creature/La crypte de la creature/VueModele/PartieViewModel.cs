@@ -70,7 +70,7 @@ namespace La_crypte_de_la_creature.VueModele
             //Joueur = new Joueur();
             Historique = new Historique();
             //Partie = new Partie();
-            Partie = new Partie(1, 2, "Normal");
+            
             Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
 
 
@@ -313,6 +313,8 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void CreerPartieCommand()
         {
+            Partie = new Partie((ListJoueurInvite.Count) + 1, 2, "Normal");
+
             /* la faut faire marcher les list*/
             Plateau = _PlateauService.Retrieve(RetrievePlateauArgs);
             Plateau.Case = Cases;
@@ -328,18 +330,25 @@ namespace La_crypte_de_la_creature.VueModele
             // Créer la partie
             _PartieService.Create(Partie);
 
+            RetrieveCompteArgs.idCompte = UtilisateurConnecte.idCompte;
+
+            Partie.Joueur[0].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
+            _JoueurService.Create(Joueur);
+
             for(int i =1; i < ListJoueurInvite.Count ; i++ )
             {
                 Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
 
                 Partie.Joueur[i].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
+
+                _JoueurService.Create(Joueur);
             }
             
             
 
           
 
-            _JoueurService.Create(Joueur);
+            
 
             Pointage.Partie = Partie;
 
