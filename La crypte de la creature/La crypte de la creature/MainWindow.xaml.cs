@@ -52,6 +52,9 @@ namespace La_crypte_de_la_creature
             ServiceFactory.Instance.Register<IApplicationService, MainViewModel>((MainViewModel)this.DataContext);
             ServiceFactory.Instance.Register<ICarteMonstreService, NHibernateCarteMonstreService>(new NHibernateCarteMonstreService());
             ServiceFactory.Instance.Register<IPionService, NHibernatePionService>(new NHibernatePionService());
+            ServiceFactory.Instance.Register<IPierreService, NHibernatePierreService>(new NHibernatePierreService());
+            ServiceFactory.Instance.Register<ICaseSangService, NHibernateCaseDeSangService>(new NHibernateCaseDeSangService());
+            ServiceFactory.Instance.Register<IMonstreService, NHibernateMonstreService>(new NHibernateMonstreService());
         }
     }
 }
