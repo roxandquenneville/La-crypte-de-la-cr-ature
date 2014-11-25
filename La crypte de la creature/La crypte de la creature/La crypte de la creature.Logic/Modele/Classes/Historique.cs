@@ -31,8 +31,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             string mouvement;
             if (index != 0)
                 mouvement =new StringBuilder().Append("Depart : ").Append(Deplacement[index - 1].Depart.X.ToString()).Append(" , ")
-                                              .Append(Deplacement[index - 1].Depart.Y.ToString()).Append(" / fin:")
-                                              .Append(Deplacement[index - 1].Fin.X.ToString()).Append(Deplacement[index - 1].Fin.Y.ToString())
+                                              .Append(Deplacement[index - 1].Depart.Y.ToString()).Append(" / fin : ")
+                                              .Append(Deplacement[index - 1].Fin.X.ToString()).Append(" , ")
+                                              .Append(Deplacement[index - 1].Fin.Y.ToString())
                                               .ToString();
             else
                 return "";
@@ -46,13 +47,28 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             foreach (Deplacement item in Deplacement)
             {
                 string mouvement = new StringBuilder().Append("Depart : ").Append(item.Depart.X.ToString()).Append(" , ")
-                                                     .Append(item.Depart.Y.ToString()).Append(" / fin:").Append(item.Fin.X.ToString())
-                                                     .Append(item.Fin.Y.ToString()).ToString();
+                                                     .Append(item.Depart.Y.ToString()).Append(" / fin : ").Append(item.Fin.X.ToString())
+                                                     .Append(" , ").Append(item.Fin.Y.ToString()).ToString();
                 lDeplacement.Add(mouvement);
             }
             Deplacement.Reverse();
             return lDeplacement;
 
+        }
+
+        public virtual string dernier_Mouvement_Monstre()
+        {
+
+            int index = Deplacement.Count();
+            string mouvement;
+            if (index != 0)
+                mouvement = new StringBuilder().Append("Depart : ").Append(Deplacement[index - 1].Depart.X.ToString()).Append(" , ")
+                                              .Append(Deplacement[index - 1].Depart.Y.ToString()).Append(" / fin:")
+                                              .Append(Deplacement[index - 1].Fin.X.ToString()).Append(Deplacement[index - 1].Fin.Y.ToString())
+                                              .ToString();
+            else
+                return "";
+            return mouvement;
         }
 
         public override bool Equals(object obj)

@@ -39,7 +39,7 @@ namespace La_crypte_de_la_creature.Vue
         
 
 
-        public List<Deplacement> tmpList = new List<Deplacement>();
+        public Historique tmpList = new Historique();
         public Position PositionAvantTour = new Position();
         public UCPlateau()
         {
@@ -156,7 +156,7 @@ namespace La_crypte_de_la_creature.Vue
             {
                 case Key.Left:                    
                    
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.GAUCHE);
+                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.GAUCHE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -165,8 +165,8 @@ namespace La_crypte_de_la_creature.Vue
                 break;
 
                 case Key.Right:
-                   
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.DROITE);
+
+                PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DROITE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -175,8 +175,8 @@ namespace La_crypte_de_la_creature.Vue
                 break; 
 
                 case Key.Up:
-                   
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.MONTE);
+
+                PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.MONTE);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
@@ -184,16 +184,16 @@ namespace La_crypte_de_la_creature.Vue
                     
                 break;
                 case Key.Down:
-                 
-                    PartieViewModel.Partie.DeplacementDePion(tmpList, 0, Pion, ConstanteGlobale.DESCEND);
+
+                PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DESCEND);
 
                     Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
                     Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
                     AffichePlateau();
                     
                 break;
-            }       
-          
+            }
+            lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
            NombreCoupAJouer();
    
         }
@@ -224,8 +224,9 @@ namespace La_crypte_de_la_creature.Vue
                 //do something here 
                 counter++;
 
-            
+                
                 DoMything();
+                lblHistoriqueCourteMonstre.Content = PartieViewModel.Partie.Historique.dernier_Mouvement();
             }
         }
 
@@ -244,11 +245,6 @@ namespace La_crypte_de_la_creature.Vue
           
         }
 
-
-
-
-
-
         private void NombreCoupAJouer()
         {
             Coups.Content = PartieViewModel.Partie.Joueur[0].Pion[Pion].TmpDeplacement;
@@ -264,21 +260,21 @@ namespace La_crypte_de_la_creature.Vue
                     Pion = 0;
 
               SetPositionPion();
-              PartieViewModel.Partie.ConfirmerDeplacementPion(tmpList,1,Pion);
-              lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+              PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, 1, Pion);
+              lblHistoriqueCourte.Content = PartieViewModel.Partie.Historique.dernier_Mouvement();
+              
 
 
               if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
               {
 
                 InitializeTimer();
-               
 
                 PartieViewModel.Partie.TourJoueur=0;
 
               }
 
-              tmpList.Clear();
+              tmpList.Deplacement.Clear();
               NombreCoupAJouer();
         }
 

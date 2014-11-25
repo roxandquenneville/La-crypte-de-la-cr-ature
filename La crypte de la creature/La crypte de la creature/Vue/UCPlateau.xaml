@@ -66,7 +66,10 @@
         <Label Content="coups a jouer" Margin="110,45,302,5" Grid.Column="1" RenderTransformOrigin="0.193,0.4"/>
 
 
-        <Label Focusable="False" Name="lblHistoriqueCourte" Grid.Column="1" BorderThickness="1" BorderBrush="Black" Content=" Historique Courte: Dernier Movement Historique     Dernier mouvement du monstre" Margin="5,-1,-5,1"/>
+        <Label Focusable="False" Name="lblHistoriqueCourte" Grid.Column="1" BorderThickness="1" BorderBrush="Black" Content="" Margin="5,-1,-5,1"/>
+        <Label Focusable="False" Name="lblHistoriqueCourteMonstre" Grid.Column="1" Content="" Margin="275,0,-5,1"/>
+        <!--<Label Focusable="False" Name="lblDernierMouvement" Height="24" Width="139"  Margin="10,25,351,31" Grid.Column="1"/>
+        <Label Focusable="False" Name="lblDernierMouvementMonstre" Height="24" Width="139"  Margin="450,5,0,20"/>-->
         <Button Grid.Row="1" Height="30" Content="Confirmer tour" Focusable="False" Click="btnConfirme" >
         </Button>
         <Button Grid.Row="1" Height="30" Content="Annuler tour" Margin="0,70,0,0" Focusable="False" Click="Button_Click_1">
