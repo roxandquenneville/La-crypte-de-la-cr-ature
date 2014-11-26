@@ -46,7 +46,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Merge(p);
+                session.Update(p);
                 transaction.Commit();
             }
         }
