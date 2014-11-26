@@ -264,7 +264,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Monstre monstre=null;
             String sens=null;
             Deplacement tmp = new Deplacement();
-            bool mort;
+    
 
             Historique.Deplacement.Add(tmp);
 
