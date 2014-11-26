@@ -32,6 +32,7 @@ namespace La_crypte_de_la_creature.VueModele
         private IPierreService _PierreService;
         private IMonstreService _MonstreService;
         private ICaseSangService _CaseSangService;
+        private IDeplacementService _DeplacementService;
         #endregion
 
 
@@ -43,6 +44,7 @@ namespace La_crypte_de_la_creature.VueModele
         public RetrievePointageArgs RetrievePointageArgs { get; set; }
         public RetrieveCompteArgs RetrieveCompteArgs { get; set; }
         public RetrievePositionArgs RetrievePositionArgs { get; set; }
+        public static int compteHistorique=0;
 
         public PartieViewModel()
         {
@@ -60,6 +62,7 @@ namespace La_crypte_de_la_creature.VueModele
             _PierreService = ServiceFactory.Instance.GetService<IPierreService>();
             _MonstreService = ServiceFactory.Instance.GetService<IMonstreService>();
             _CaseSangService = ServiceFactory.Instance.GetService<ICaseSangService>();
+            _DeplacementService = ServiceFactory.Instance.GetService<IDeplacementService>();
 
             Parties = new ObservableCollection<Partie>(_PartieService.RetrieveAll());
             //    Joueurs = new ObservableCollection<Joueur>(_JoueurService.RetrieveAll());
@@ -431,7 +434,44 @@ namespace La_crypte_de_la_creature.VueModele
 
         public void SauvegarderCommand()
         {
-            _PartieService.Update(Partie);
+            Position pTmp = new Position();
+
+            for(int i=0;i<Partie.Piece.Count;i++)
+            {
+                RetrievePositionArgs.X = Partie.Piece[i].Position.X;
+                RetrievePositionArgs.Y = Partie.Piece[i].Position.Y;
+                pTmp = _PositionService.Retrieve(RetrievePositionArgs);
+                Partie.Piece[i].Position.idPosition = pTmp.idPosition;
+                Partie.Piece[i].Position.X = pTmp.X;
+                Partie.Piece[i].Position.Y = pTmp.Y;
+
+                switch (Partie.Piece[i].Get_Type())
+                {
+                    case ConstanteGlobale.PIERRE:
+                        _PierreService.Update((Pierre)Partie.Piece[i]);
+                        break;
+                    case ConstanteGlobale.MONSTRE:
+                        _MonstreService.Update((Monstre)Partie.Piece[i]);
+                        break;
+                    case ConstanteGlobale.PION :
+                        _PionService.Update((Pion)Partie.Piece[i]);
+                        break;
+                }
+            }
+
+            for(int i=0;i<Partie.Pointage.Count;i++)
+            {
+                _PointageService.Update(Partie.Pointage[i]);
+            }
+            for(int i=0;i<Partie.CartesMonstre.Count;i++)
+            {
+                _CarteMonstreService.Update(Partie.CartesMonstre[i]);
+            }
+            
+            for(int i=compteHistorique-1;i<Partie.Historique.Deplacement.Count;i++)
+            {
+                _DeplacementService.Create(Partie.Historique.Deplacement[i]);
+            }
 
         }
 
