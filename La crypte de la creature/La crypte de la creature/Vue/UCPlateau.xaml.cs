@@ -32,6 +32,8 @@ namespace La_crypte_de_la_creature.Vue
     public partial class UCPlateau : System.Windows.Controls.UserControl
     {
         public int Pion = 0;
+        private int counter;
+        private int nbTour=0;
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
        
@@ -203,18 +205,18 @@ namespace La_crypte_de_la_creature.Vue
    
         }
 
-        private int counter;
+        
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
 
         private void InitializeTimer()
         {
             counter = 0;
-            t.Interval = 750;
+            t.Interval = 1000;
 
             DoMything();
-
+            if(nbTour==0)
             t.Tick += new EventHandler(timer1_Tick);
-
+            nbTour++;
             t.Enabled = true;
         }
 
@@ -280,10 +282,10 @@ namespace La_crypte_de_la_creature.Vue
 
               if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
               {
-
-                InitializeTimer();
+                        InitializeTimer();
 
                 PartieViewModel.Partie.TourJoueur=0;
+                
 
               }
 
