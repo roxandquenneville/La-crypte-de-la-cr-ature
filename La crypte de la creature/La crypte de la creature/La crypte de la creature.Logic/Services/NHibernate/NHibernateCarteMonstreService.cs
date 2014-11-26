@@ -32,6 +32,15 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
             return result.FirstOrDefault();
 
         }
+        public IList<CartesMonstre> RetrieveCartePartie(Partie partie, RetrieveCarteMonstreArgs args)
+        {
+            var result = from p in session.Query<CartesMonstre>()
+                         where partie.idPartie == args.idPartie
+                         select p;
+
+            return result.ToList();
+
+        }
 
         public void Create(CartesMonstre p)
         {
