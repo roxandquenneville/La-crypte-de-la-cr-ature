@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
@@ -137,10 +138,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne un mouvement</returns>
         public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
-            //if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
-            //{
-            //    return;
-            //}
+           
+            if (Joueur[joueur].Pion[pion].EstVivant == false)
+              {
+                  MessageBox.Show("Le pion est mort");
+                  ConfirmerDeplacementPion(ListeTmp, joueur, pion);
+                  return;
+              }
+              if (Joueur[joueur].Pion[pion].EstSortie == true)
+              {
+                  MessageBox.Show("Le pion est hors du plateau");
+                  ConfirmerDeplacementPion(ListeTmp, joueur, pion);
+                  return;
+              }
+            if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
+            {
+                return;
+            }
+
 
             //Pour supprimer le mouvement
             int index;
@@ -197,7 +212,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Position tmp = new Position();
             List<Piece> pTmp = null;
 
-            tmp = Joueur[joueur-1].Pion[pion].Position ;
+            tmp = Joueur[joueur].Pion[pion].Position ;
 
 
             pTmp=RetournePiece(tmp);
@@ -225,7 +240,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else
                 {
                     ((List<Deplacement>)Historique.Deplacement).AddRange(ListeTmp);
-                    Joueur[joueur - 1].Pion[pion].CalculerFace();
+                    Joueur[joueur].Pion[pion].CalculerFace();
                     TourJoueur++;
                     ListeTmp.Clear();
                     return true;
@@ -235,7 +250,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             else
             {
                 ((List<Deplacement>)Historique.Deplacement).AddRange(ListeTmp);
-                Joueur[joueur-1].Pion[pion].CalculerFace();
+                Joueur[joueur].Pion[pion].CalculerFace();
                 TourJoueur++;
                 ListeTmp.Clear();
                 return true;

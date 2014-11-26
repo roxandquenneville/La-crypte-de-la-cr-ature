@@ -273,7 +273,7 @@ namespace La_crypte_de_la_creature.Vue
                 }
 
               SetPositionPion();
-              PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, 1, Pion);
+              PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, 0, Pion);
               lblHistoriqueCourte.Content = PartieViewModel.Partie.Historique.dernier_Mouvement();
               
 
