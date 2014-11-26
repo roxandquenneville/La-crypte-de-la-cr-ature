@@ -142,13 +142,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             if (Joueur[joueur].Pion[pion].EstVivant == false)
               {
                   MessageBox.Show("Le pion est mort");
-                  ConfirmerDeplacementPion(ListeTmp, joueur, pion);
                   return;
               }
               if (Joueur[joueur].Pion[pion].EstSortie == true)
               {
                   MessageBox.Show("Le pion est hors du plateau");
-                  ConfirmerDeplacementPion(ListeTmp, joueur, pion);
                   return;
               }
             if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
@@ -288,17 +286,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                    
               
             }
-            mort =VerificationFinPartie();
+            VerificationFinPartie();
 
-          /*  if (mort == false)
-            {
-                //les joueurs sont soient tous mort, tous sorti ou une combinaison des deux  
-
-            }*/
-            //return mort;
+       
         }
 
-        public virtual bool VerificationFinPartie()
+        public virtual void VerificationFinPartie()
         {
             List<Pion> pion = null;
 
@@ -314,8 +307,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     break;
                 }
             }
-
-            return verification;
+            if(verification == false)
+            {
+                MessageBox.Show("La partie est terminé") ;
+            }
+           
+            
            
         }
 

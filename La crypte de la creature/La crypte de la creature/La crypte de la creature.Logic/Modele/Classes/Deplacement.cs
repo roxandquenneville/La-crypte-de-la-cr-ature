@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using La_crypte_de_la_creature.Logic.Modele.Args;
+using System.Windows.Forms;
 
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
@@ -466,6 +467,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         case ConstanteGlobale.PION:
                             ((Pion)pTmp[0]).EstVivant =false;
                             ((Pion)pTmp[0]).EstSortie = true;
+                            MessageBox.Show("Le monstre se régale de ton pion");
                             break; 
                     }
                 }
