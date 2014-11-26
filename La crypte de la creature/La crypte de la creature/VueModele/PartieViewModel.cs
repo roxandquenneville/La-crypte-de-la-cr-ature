@@ -44,7 +44,7 @@ namespace La_crypte_de_la_creature.VueModele
         public RetrievePointageArgs RetrievePointageArgs { get; set; }
         public RetrieveCompteArgs RetrieveCompteArgs { get; set; }
         public RetrievePositionArgs RetrievePositionArgs { get; set; }
-        public static int compteHistorique=0;
+        public static int compteHistorique=1;
 
         public PartieViewModel()
         {
@@ -470,9 +470,39 @@ namespace La_crypte_de_la_creature.VueModele
             
             for(int i=compteHistorique-1;i<Partie.Historique.Deplacement.Count;i++)
             {
+                
+                RetrievePositionArgs.X = Partie.Historique.Deplacement[i].Depart.X;
+                RetrievePositionArgs.Y = Partie.Historique.Deplacement[i].Depart.Y;
+                pTmp = _PositionService.Retrieve(RetrievePositionArgs);
+                Partie.Historique.Deplacement[i].Depart.idPosition = pTmp.idPosition;
+                Partie.Historique.Deplacement[i].Depart.X = pTmp.X;
+                Partie.Historique.Deplacement[i].Depart.Y = pTmp.Y;
+
+                RetrievePositionArgs.X = Partie.Historique.Deplacement[i].Fin.X;
+                RetrievePositionArgs.Y = Partie.Historique.Deplacement[i].Fin.Y;
+                pTmp = _PositionService.Retrieve(RetrievePositionArgs);
+                Partie.Historique.Deplacement[i].Fin.idPosition = pTmp.idPosition;
+                Partie.Historique.Deplacement[i].Fin.X = pTmp.X;
+                Partie.Historique.Deplacement[i].Fin.Y = pTmp.Y;
+
+                Partie.Historique.Deplacement[i].Historique.idHistorique=Partie.Historique.idHistorique;
+
+                switch(Partie.Historique.Deplacement[i].Piece.Get_Type())
+                { 
+                    case ConstanteGlobale.PIERRE :
+                            Partie.Historique.Deplacement[i].Pierre = (Pierre)Partie.Historique.Deplacement[i].Piece;
+                            break;
+                    case ConstanteGlobale.PION:
+                            Partie.Historique.Deplacement[i].Pion = (Pion)Partie.Historique.Deplacement[i].Piece;
+                            break;
+                    case ConstanteGlobale.MONSTRE:
+                            Partie.Historique.Deplacement[i].Monstre = (Monstre)Partie.Historique.Deplacement[i].Piece;
+                            break;
+
+                }
+
                 _DeplacementService.Create(Partie.Historique.Deplacement[i]);
             }
-
         }
 
         #endregion

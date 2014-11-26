@@ -34,6 +34,7 @@ namespace La_crypte_de_la_creature.Vue
         public int Pion = 0;
         private int counter;
         private int nbTour=0;
+        private static readonly object synchronizationObject = new object();
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
        
@@ -73,7 +74,7 @@ namespace La_crypte_de_la_creature.Vue
         private void GridJeu_Loaded(object sender, RoutedEventArgs e)
         {
             GridJeu.Focus();
-            AffichePlateau();
+            AffichePlateau("");
             SetPositionPion();
             lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             NombreCoupAJouer();
@@ -88,27 +89,31 @@ namespace La_crypte_de_la_creature.Vue
             //PositionAvantTour.Y = PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y; 
         }
 
-        private void AffichePlateau()
+        private void AffichePlateau(string tmp)
         {
-            
-            afficherPointage();
-            GridJeu.Children.Clear();
-            lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
-            foreach (Case c in PartieViewModel.Partie.Plateau.Case)
+            lock (UCPlateau.synchronizationObject)
             {
-                c.DetermineImage();
+                Console.WriteLine("plateau rafraichit " + tmp);
+                afficherPointage();
+                GridJeu.Children.Clear();
+                lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+                foreach (Case c in PartieViewModel.Partie.Plateau.Case)
+                {
+                    c.DetermineImage();
 
-                String stringPath = c.Url;
-                Uri imageUri = new Uri(stringPath, UriKind.RelativeOrAbsolute);
-                BitmapImage imageBitmap = new BitmapImage(imageUri);
-                Image myImage = new Image();
-                myImage.Source = imageBitmap;
+                    String stringPath = c.Url;
+                    Uri imageUri = new Uri(stringPath, UriKind.RelativeOrAbsolute);
+                    BitmapImage imageBitmap = new BitmapImage(imageUri);
+                    Image myImage = new Image();
+                    myImage.Source = imageBitmap;
 
-                GridJeu.Children.Add(myImage);
-                Grid.SetColumn(myImage, c.Coordonnee.X);
-                Grid.SetRow(myImage, c.Coordonnee.Y);
+                    GridJeu.Children.Add(myImage);
+                    Grid.SetColumn(myImage, c.Coordonnee.X);
+                    Grid.SetRow(myImage, c.Coordonnee.Y);
+                }
+                AfficherPiece();
             }
-            AfficherPiece();
+            
         }
 
         private void AfficherPiece()
@@ -159,49 +164,52 @@ namespace La_crypte_de_la_creature.Vue
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            switch(e.Key)
-            {
-                case Key.Left:                    
+            Console.WriteLine("Pion bouge");
+                switch(e.Key)
+                {
+                    case Key.Left:                    
                    
-                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.GAUCHE);
+                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.GAUCHE);
 
-                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                    AffichePlateau();
+                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
+                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
+                        AffichePlateau("Pion");
                     
-                break;
+                    break;
 
-                case Key.Right:
+                    case Key.Right:
 
-                PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DROITE);
+                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DROITE);
 
-                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                    AffichePlateau();
+                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
+                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
+                        AffichePlateau("Pion");
                     
-                break; 
+                    break; 
 
-                case Key.Up:
+                    case Key.Up:
 
-                PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.MONTE);
+                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.MONTE);
 
-                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                    AffichePlateau();
+                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
+                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
+                        AffichePlateau("Pion");
                     
-                break;
-                case Key.Down:
+                    break;
+                    case Key.Down:
 
-                PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DESCEND);
+                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DESCEND);
 
-                    Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                    Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                    AffichePlateau();
+                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
+                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
+                        AffichePlateau("Pion");
                     
-                break;
-            }
-            lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
-           NombreCoupAJouer();
+                    break;
+                }
+               lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
+               NombreCoupAJouer();
+            
+            
    
         }
 
@@ -212,12 +220,14 @@ namespace La_crypte_de_la_creature.Vue
         {
             counter = 0;
             t.Interval = 1000;
-
+           
             DoMything();
             if(nbTour==0)
             t.Tick += new EventHandler(timer1_Tick);
             nbTour++;
             t.Enabled = true;
+            
+           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -240,9 +250,9 @@ namespace La_crypte_de_la_creature.Vue
 
         private void DoMything()
         {
-            
+                Console.WriteLine("Monstre bouge");
                 PartieViewModel.Partie.MouvementMonstre();
-                AffichePlateau();
+                AffichePlateau("Monstre");
 
                 //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
                 //    Pion = 1;
@@ -282,12 +292,13 @@ namespace La_crypte_de_la_creature.Vue
 
               if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
               {
-                        InitializeTimer();
+                InitializeTimer();
 
                 PartieViewModel.Partie.TourJoueur=0;
                 
 
               }
+              PartieViewModel.SauvegarderCommand();
 
               tmpList.Deplacement.Clear();
               NombreCoupAJouer();
@@ -304,7 +315,7 @@ namespace La_crypte_de_la_creature.Vue
         {
             PartieViewModel.Joueur.Pion[Pion].Position.X = PositionAvantTour.X;
             PartieViewModel.Joueur.Pion[Pion].Position.Y = PositionAvantTour.Y;
-            AffichePlateau();
+            AffichePlateau("");
             
         }
 

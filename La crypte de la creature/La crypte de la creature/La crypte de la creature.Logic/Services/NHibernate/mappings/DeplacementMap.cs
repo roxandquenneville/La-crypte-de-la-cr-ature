@@ -27,12 +27,24 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate.Mappings
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
                 .Columns("idHistorique");
-				References(x => x.Piece)
-                .Class<Piece>()
+				References(x => x.Pion)
+                .Class<Pion>()
                 .Access.Property()
                 .LazyLoad(Laziness.False)
                 .Cascade.None()
-                .Columns("idPiece");
+                .Columns("idPion");
+                References(x => x.Pierre)
+                .Class<Pierre>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idPierre");
+                References(x => x.Monstre)
+                .Class<Monstre>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idMonstre");
                 References(x => x.Depart)
                 .Class<Position>()
                 .Access.Property()

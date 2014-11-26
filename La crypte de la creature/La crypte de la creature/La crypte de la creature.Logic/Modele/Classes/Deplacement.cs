@@ -12,8 +12,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     {
         #region attribut
         public virtual int? idDeplacement { get; set; }
-        public virtual Partie Partie { get; set; }
         public virtual Piece Piece { get; set; }
+        public virtual Pion Pion { get; set;}
+        public virtual Pierre Pierre { get; set; }
+        public virtual Monstre Monstre { get; set; }
         public virtual Historique Historique { get; set; }
         public virtual Position Depart { get; set; }
         public virtual Position Fin { get; set; }
@@ -25,6 +27,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public Deplacement()
         {
+            Historique= new Historique();
             Depart = new Position();
             Fin = new Position();
         }
@@ -40,6 +43,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
             Depart = posDepart;
             Fin = posFin;
+            Historique = new Historique();
         }
 
         #region Pion
