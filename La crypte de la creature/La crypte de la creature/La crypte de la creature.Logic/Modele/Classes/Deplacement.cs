@@ -12,7 +12,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
     {
         #region attribut
         public virtual int? idDeplacement { get; set; }
-        public virtual Piece Piece { get; set; }
         public virtual Pion Pion { get; set;}
         public virtual Pierre Pierre { get; set; }
         public virtual Monstre Monstre { get; set; }
@@ -174,7 +173,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             RetrieveElementPierre args = new RetrieveElementPierre();
 
             deplacement.Depart = Fin;
-            deplacement.Piece = pierre;
+            deplacement.Pierre = (Pierre)pierre;
             ListeTmp.Add(deplacement);
             index = ListeTmp.Count();
 
@@ -490,7 +489,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Deplacement deplacement = new Deplacement();
             RetrieveElementPierre args = new RetrieveElementPierre();
 
-            deplacement.Piece = pierre;
+            deplacement.Pierre = (Pierre)pierre;
             deplacement.Depart.X = Fin.X;
             deplacement.Depart.Y = Fin.Y;
             partie.Historique.Deplacement.Add(deplacement);

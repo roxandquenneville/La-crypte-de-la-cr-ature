@@ -487,20 +487,6 @@ namespace La_crypte_de_la_creature.VueModele
 
                 Partie.Historique.Deplacement[i].Historique.idHistorique=Partie.Historique.idHistorique;
 
-                switch(Partie.Historique.Deplacement[i].Piece.Get_Type())
-                { 
-                    case ConstanteGlobale.PIERRE :
-                            Partie.Historique.Deplacement[i].Pierre = (Pierre)Partie.Historique.Deplacement[i].Piece;
-                            break;
-                    case ConstanteGlobale.PION:
-                            Partie.Historique.Deplacement[i].Pion = (Pion)Partie.Historique.Deplacement[i].Piece;
-                            break;
-                    case ConstanteGlobale.MONSTRE:
-                            Partie.Historique.Deplacement[i].Monstre = (Monstre)Partie.Historique.Deplacement[i].Piece;
-                            break;
-
-                }
-
                 _DeplacementService.Create(Partie.Historique.Deplacement[i]);
             }
         }

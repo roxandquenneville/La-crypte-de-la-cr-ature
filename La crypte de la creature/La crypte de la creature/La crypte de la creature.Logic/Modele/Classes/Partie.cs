@@ -174,7 +174,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             // vérifie le mouvement
             if (mouvement.Confirmation(this, ListeTmp, pionDeplacer.TmpDeplacement, sens) == true)
             {
-                mouvement.Piece = pionDeplacer;
+                mouvement.Pion = (Pion)pionDeplacer;
                 // change la position du pion
                 pionDeplacer.Position.X = mouvement.Fin.X;
                 pionDeplacer.Position.Y = mouvement.Fin.Y;
@@ -274,6 +274,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             tmp.Depart.Y = monstre.Position.Y;
             tmp.Fin.X = tmp.Depart.X;
             tmp.Fin.Y = tmp.Depart.Y;
+            tmp.Monstre = monstre;
 
             if(!(monstre == null))
             {
