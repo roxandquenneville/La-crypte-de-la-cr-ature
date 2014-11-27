@@ -102,6 +102,10 @@ namespace La_crypte_de_la_creature.Vue
         {
             lbxDisponible.SelectedIndex = -1;
         }
+        private void Button_Click_Annuler(object sender, RoutedEventArgs e)
+        {
+            this.Content = new UCChoixPartie();
+        }
 
       
     }

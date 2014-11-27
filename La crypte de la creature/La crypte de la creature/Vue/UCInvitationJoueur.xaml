@@ -20,6 +20,6 @@
         </ListBox>
 
         <Button Content="Inviter" Width="150" Height="25" Margin="93,465,0,-140" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" IsDefault="True" />
-        <Button Content="Annuler" Width="150" Height="25" Margin="248,465,0,-140" HorizontalAlignment="Left" VerticalAlignment="Top" IsCancel="True" />
+        <Button Content="Annuler" Width="150" Height="25" Margin="248,465,0,-140" HorizontalAlignment="Left" VerticalAlignment="Top" IsCancel="True" Click="Button_Click_Annuler" />
     </Grid>
 </UserControl>
