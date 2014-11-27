@@ -45,6 +45,9 @@ namespace La_crypte_de_la_creature.VueModele
         public RetrieveCompteArgs RetrieveCompteArgs { get; set; }
         public RetrievePositionArgs RetrievePositionArgs { get; set; }
         public RetrieveCarteMonstreArgs RetrieveCarteMonstreArgs {get; set;}
+        public RetrieveMonstreArgs RetrieveMonstreArgs { get; set; }
+        public RetrievePionArgs RetrievePionArgs {get; set; }
+        public RetrievePierreArgs RetrievePierreArgs { get; set; }
         public static int compteHistorique=1;
 
         public PartieViewModel()
@@ -79,6 +82,9 @@ namespace La_crypte_de_la_creature.VueModele
             RetrieveCompteArgs = new RetrieveCompteArgs();
             RetrievePositionArgs = new RetrievePositionArgs();
             RetrieveCarteMonstreArgs = new RetrieveCarteMonstreArgs();
+            RetrieveMonstreArgs = new RetrieveMonstreArgs();
+            RetrievePionArgs = new RetrievePionArgs();
+            RetrievePierreArgs = new RetrievePierreArgs();
             RetrievePlateauArgs.idPlateau = 1;
             RetrievePlateauArgs.type = "Normal";
 
@@ -446,28 +452,37 @@ namespace La_crypte_de_la_creature.VueModele
         public void SauvegarderCommand()
         {
             Position pTmp = new Position();
-
-            for(int i=0;i<Partie.Piece.Count;i++)
+            for (int i = 0; i < Partie.Piece.Count; i++)
             {
                 RetrievePositionArgs.X = Partie.Piece[i].Position.X;
                 RetrievePositionArgs.Y = Partie.Piece[i].Position.Y;
                 pTmp = _PositionService.Retrieve(RetrievePositionArgs);
-                Partie.Piece[i].Position.idPosition = pTmp.idPosition;
-                Partie.Piece[i].Position.X = pTmp.X;
-                Partie.Piece[i].Position.Y = pTmp.Y;
 
-                switch (Partie.Piece[i].Get_Type())
-                {
-                    case ConstanteGlobale.PIERRE:
-                        _PierreService.Update((Pierre)Partie.Piece[i]);
-                        break;
-                    case ConstanteGlobale.MONSTRE:
-                        _MonstreService.Update((Monstre)Partie.Piece[i]);
-                        break;
-                    case ConstanteGlobale.PION :
-                        _PionService.Update((Pion)Partie.Piece[i]);
-                        break;
-                }
+                 if(pTmp.idPosition != Partie.Piece[i].Position.idPosition)
+                 {
+                    Partie.Piece[i].Position.idPosition = pTmp.idPosition;
+
+                  switch (Partie.Piece[i].Get_Type())
+                    {
+                        case ConstanteGlobale.MONSTRE:
+                                  
+                                 _MonstreService.Update((Monstre)Partie.Piece[i]);
+                             
+                            break;
+                        case ConstanteGlobale.PION:
+                        
+                                _PionService.Update((Pion)Partie.Piece[i]);
+                            
+                            break;
+                        case ConstanteGlobale.PIERRE:
+                          
+                                
+                                _PierreService.Update((Pierre)Partie.Piece[i]);
+                             
+                            break;
+                    }
+                  }
+
             }
 
             for(int i=0;i<Partie.Pointage.Count;i++)
@@ -503,6 +518,7 @@ namespace La_crypte_de_la_creature.VueModele
             }
         }
 
+       
         #endregion
 
 

@@ -269,6 +269,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btnConfirme(object sender, RoutedEventArgs e)
         {
+            PartieViewModel.SauvegarderCommand();
         //    PartieViewModel.SauvegarderCommand(); 
 
                 //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
@@ -285,23 +286,27 @@ namespace La_crypte_de_la_creature.Vue
                 }
 
               SetPositionPion();
+              
               PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, 0, Pion);
               lblHistoriqueCourte.Content = PartieViewModel.Partie.Historique.dernier_Mouvement();
+
               
+              
+                  if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+                  {
+                    InitializeTimer();
 
+                    PartieViewModel.Partie.TourJoueur=0;
+                    NombreCoupAJouer();
+                    PartieViewModel.SauvegarderCommand();
+                    tmpList.Deplacement.Clear();
 
-              if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
-              {
-                InitializeTimer();
+                  }
+             
+                    
 
-                PartieViewModel.Partie.TourJoueur=0;
-                
-
-              }
-              PartieViewModel.SauvegarderCommand();
-
-              tmpList.Deplacement.Clear();
-              NombreCoupAJouer();
+              
+              
         }
 
 

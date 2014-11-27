@@ -44,11 +44,14 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 
         public void Update(Pion p)
         {
+
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(p);
+                session.Merge(p);
                 transaction.Commit();
+                session.Flush();
             }
+          
         }
 
         public void Delete(Pion p)

@@ -8,7 +8,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Args
 {
     public class RetrievePierreArgs
     {
-        public int idPierre { get; set; }
+        public int? idPierre { get; set; }
         public int idPiece { get; set; }
         public bool estSurPlateau { get; set; }
     }

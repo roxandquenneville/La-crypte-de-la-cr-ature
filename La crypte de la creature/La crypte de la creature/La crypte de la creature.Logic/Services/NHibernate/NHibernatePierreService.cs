@@ -49,6 +49,7 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
                 session.Update(p);
                 transaction.Commit();
             }
+            session.Flush();
         }
 
         public void Delete(Pierre p)
