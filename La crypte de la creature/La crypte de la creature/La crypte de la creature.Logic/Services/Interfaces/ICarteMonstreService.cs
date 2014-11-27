@@ -12,6 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Services.Interfaces
     {
         IList<CartesMonstre> RetrieveAll();
         CartesMonstre Retrieve(RetrieveCarteMonstreArgs args);
+        IList<CartesMonstre> RetrieveCartePartie(Partie partie, RetrieveCarteMonstreArgs args);
         void Create(CartesMonstre c);
         void Update(CartesMonstre c);
         void Delete(CartesMonstre c);

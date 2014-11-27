@@ -44,6 +44,7 @@ namespace La_crypte_de_la_creature.VueModele
         public RetrievePointageArgs RetrievePointageArgs { get; set; }
         public RetrieveCompteArgs RetrieveCompteArgs { get; set; }
         public RetrievePositionArgs RetrievePositionArgs { get; set; }
+        public RetrieveCarteMonstreArgs RetrieveCarteMonstreArgs {get; set;}
         public static int compteHistorique=1;
 
         public PartieViewModel()
@@ -77,6 +78,7 @@ namespace La_crypte_de_la_creature.VueModele
             RetrieveHistoriqueArgs = new RetrieveHistoriqueArgs();
             RetrieveCompteArgs = new RetrieveCompteArgs();
             RetrievePositionArgs = new RetrievePositionArgs();
+            RetrieveCarteMonstreArgs = new RetrieveCarteMonstreArgs();
             RetrievePlateauArgs.idPlateau = 1;
             RetrievePlateauArgs.type = "Normal";
 
@@ -374,7 +376,13 @@ namespace La_crypte_de_la_creature.VueModele
                 _PointageService.Create(Partie.Pointage[i]);
             }   
 
-
+            _CarteMonstreService.RetrieveCartePartie(Partie,RetrieveCarteMonstreArgs);
+            ObservableCollection<CartesMonstre> listCarte = new ObservableCollection<CartesMonstre>();
+           // listCarte.Shuffle();
+           /* for (int i = 0; i < listCarte.Count(); i++)
+            {
+                Partie.CartesMonstre.Add(listCarte[i]);
+            }*/
             Partie.CartesMonstre.Add(new CartesMonstre(5));
             Partie.CartesMonstre.Add(new CartesMonstre(5));
             Partie.CartesMonstre.Add(new CartesMonstre(7));
@@ -432,6 +440,9 @@ namespace La_crypte_de_la_creature.VueModele
            }
         }
 
+
+
+        
         public void SauvegarderCommand()
         {
             Position pTmp = new Position();
@@ -486,6 +497,7 @@ namespace La_crypte_de_la_creature.VueModele
                 Partie.Historique.Deplacement[i].Fin.Y = pTmp.Y;
 
                 Partie.Historique.Deplacement[i].Historique.idHistorique=Partie.Historique.idHistorique;
+
 
                 _DeplacementService.Create(Partie.Historique.Deplacement[i]);
             }
