@@ -293,7 +293,8 @@ namespace La_crypte_de_la_creature.Vue
         {
                if(!(PartieViewModel.Partie.MouvementMonstre()))
                {
-                    
+                    System.Windows.Forms.MessageBox.Show("Partie terminé","Fin de partie",MessageBoxButtons.OK);
+                    mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
                }
                else 
                {

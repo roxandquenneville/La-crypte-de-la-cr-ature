@@ -8,8 +8,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Args
 {
     public class RetrievePartieArgs
     {
-        public int idPartie { get; set; }
-        public int idPlateau { get; set; }
-        public int idHistorique { get; set; }
+        public int? idPartie { get; set; }
+        public int? idPlateau { get; set; }
+        public int? idHistorique { get; set; }
     }
 }

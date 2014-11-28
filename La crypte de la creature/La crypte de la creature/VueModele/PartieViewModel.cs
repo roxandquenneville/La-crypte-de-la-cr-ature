@@ -20,7 +20,6 @@ namespace La_crypte_de_la_creature.VueModele
 
         #region Service
         private IPartieService _PartieService;
-        private IPartieService _PartieService2;
         private IPlateauService _PlateauService;
         private IJoueurService _JoueurService;
         private IHistoriqueService _HistoriqueService;
@@ -55,7 +54,6 @@ namespace La_crypte_de_la_creature.VueModele
         {
            
             _PartieService = ServiceFactory.Instance.GetService<IPartieService>();
-            _PartieService2 = ServiceFactory.Instance.GetService<IPartieService>();
             _PlateauService = ServiceFactory.Instance.GetService<IPlateauService>();
             _JoueurService = ServiceFactory.Instance.GetService<IJoueurService>();
             _HistoriqueService = ServiceFactory.Instance.GetService<IHistoriqueService>();
@@ -79,6 +77,8 @@ namespace La_crypte_de_la_creature.VueModele
             Pierres = new ObservableCollection<Pierre>(_PierreService.RetrieveAll());
             CasesDeSang = new ObservableCollection<CaseDeSang>(_CaseSangService.RetrieveAll());
             Monstres = new ObservableCollection<Monstre>(_MonstreService.RetrieveAll());
+            Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
+            CartesMonstre = new ObservableCollection<CartesMonstre>(_CarteMonstreService.RetrieveAll());
             //   Joueur = _JoueurService.Retrieve(RetrieveJoueurArgs);
 
 
@@ -104,7 +104,7 @@ namespace La_crypte_de_la_creature.VueModele
             Historique = new Historique();
             //Partie = new Partie();
 
-            Cases = new ObservableCollection<Case>(_CaseService.RetrievePlateau(1));
+            
 
 
         }
@@ -151,6 +151,25 @@ namespace La_crypte_de_la_creature.VueModele
 
         }
 
+        private ObservableCollection<CartesMonstre> _CartesMonstre;
+        public ObservableCollection<CartesMonstre> CartesMonstre
+        {
+            get
+            {
+                return _CartesMonstre;
+            }
+            set
+            {
+                if (_CartesMonstre == value)
+                {
+                    return;
+                }
+                RaisePropertyChanging();
+                _CartesMonstre = value;
+                RaisePropertyChanged();
+            }
+
+        }
         private Joueur _Joueur;
 
         public Joueur Joueur
@@ -556,6 +575,7 @@ namespace La_crypte_de_la_creature.VueModele
         public void SauvegarderCommand()
         {
             Position pTmp = new Position();
+            _PartieService.Update(Partie);
             for (int i = 0; i < Partie.Piece.Count; i++)
             {
                 RetrievePositionArgs.X = Partie.Piece[i].Position.X;
@@ -627,103 +647,100 @@ namespace La_crypte_de_la_creature.VueModele
         public void reprendrePartieCommand()
         {
             Position pTmp = new Position();
-           
+            List<Partie> listPartie = new List<Partie>();
+
+            foreach (Joueur J in Joueurs)
+            {
+                if(J.Compte.NomUsager == UtilisateurConnecte.nomUsager)
+                {
+                    RetrievePartieArgs p = new RetrievePartieArgs();
+                    p.idPartie=J.Partie.idPartie;
+                    listPartie.Add(_PartieService.Retrieve(p));
+                }
+            }
             
+            Partie = listPartie.Last<Partie>();
 
-            //Partie Partie2 = _PartieService2.RetrieveLast(RetrievePartieArgs);
+            Partie.Plateau.Case = Cases;
 
-            ///* la faut faire marcher les list*/
-            //Plateau = _PlateauService.Retrieve(RetrievePlateauArgs);
-            //Plateau.Case = Cases;
-            ////Créer l'historique
-            //Historique Historique2 = _HistoriqueService.RetrieveLast(RetrieveHistoriqueArgs);
+            foreach(Deplacement d in Deplacements)
+            {
+                if(d.Historique.idHistorique == Partie.Historique.idHistorique)
+                {
+                    d.Historique.idHistorique = Partie.Historique.idHistorique;
+                     Partie.Historique.Deplacement.Add(d);
+                }
+            }
 
+            foreach(CartesMonstre c in CartesMonstre)
+            {
+                if (c.Partie.idPartie == Partie.idPartie)
+                {
+                    c.Partie.idPartie = Partie.idPartie;
+                    Partie.CartesMonstre.Add(c);
+                }
+            }
 
-            ////met les liens
-            //Partie2.Historique = Historique2;
-            //Partie2.Plateau = Plateau;
+            foreach (Pointage p in Pointages)
+            {
+                if (p.Partie.idPartie == Partie.idPartie)
+                {
+                    p.Partie.idPartie = Partie.idPartie;
+                    Partie.Pointage.Add(p);
+                }
+            }
+            foreach (Joueur j in Joueurs)
+            {
+                if (j.Partie.idPartie == Partie.idPartie)
+                {
+                    j.Partie.idPartie = Partie.idPartie;
+                    foreach(Pion p in Pions)
+                    {
+                        if(p.Joueur.idJoueur == j.idJoueur)
+                        {
+                            p.Joueur.idJoueur= j.idJoueur;
+                            p.Partie.idPartie = Partie.idPartie;
+                            j.Pion.Add(p);
+                            Partie.Piece.Add(p);
+                        }
+                    }
+                    Partie.Joueur.Add(j);
+                }
+            }
+            foreach (Pierre p in Pierres)
+            {
+                if (p.Partie.idPartie == Partie.idPartie)
+                {
+                    p.Partie.idPartie = Partie.idPartie;
+                    Partie.Piece.Add(p);
+                }
+            }
+            foreach (CaseDeSang c in CasesDeSang)
+            {
+                if (c.Partie.idPartie == Partie.idPartie)
+                {
+                    c.Partie.idPartie = Partie.idPartie;
+                    Partie.Piece.Add(c);
+                }
+            }
+            foreach (Monstre m in Monstres)
+            {
+                if (m.Partie.idPartie == Partie.idPartie)
+                {
+                    m.Partie.idPartie = Partie.idPartie;
+                    Partie.Piece.Add(m);
+                }
+            }
 
+            foreach(Piece p in Partie.Piece)
+            {
+                p.DetermineImage();
+            }
+            foreach(Case c in Partie.Plateau.Case)
+            {
+                c.DetermineImage();
+            }
             
-
-            //RetrieveCompteArgs.nomUsager = UtilisateurConnecte.nomUsager;
-
-            //Partie.Joueur[0].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
-            //Partie.Joueur[0].Partie.idPartie = Partie.idPartie;
-            //_JoueurService.Create(Partie.Joueur[0]);
-
-            //Partie.Pointage[0].Partie.idPartie = Partie.idPartie;
-
-            //_PointageService.Create(Partie.Pointage[0]);
-
-            //for (int i = 1; i < ListJoueurInvite.Count; i++)
-            //{
-            //    Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
-
-            //    RetrieveCompteArgs.nomUsager = _ListJoueurInvite[i - 1].NomUsager;
-            //    Partie.Joueur[i].Compte = _CompteService.Retrieve(RetrieveCompteArgs);
-
-            //    _JoueurService.Create(Partie.Joueur[i]);
-
-            //    Partie.Pointage[i].Partie.idPartie = Partie.idPartie;
-
-            //    _PointageService.Create(Partie.Pointage[i]);
-            //}
-
-            //_CarteMonstreService.RetrieveCartePartie(Partie,RetrieveCarteMonstreArgs);
-            //ObservableCollection<CartesMonstre> listCarte = new ObservableCollection<CartesMonstre>();
-            // for (int i = 0; i < listCarte.Count(); i++)
-            // {
-            //     Partie.CartesMonstre.Add(listCarte[i]);
-            // }
-            
-           
-
-            //for (int i = 0; i < Partie.CartesMonstre.Count(); i++)
-            //{
-            //    Partie.CartesMonstre[i].Partie = Partie;
-            //    _CarteMonstreService.Create(Partie.CartesMonstre[i]);
-            //}
-
-            //for (int i = 0; i < Partie.Joueur.Count; i++)
-            //{
-            //    for (int x = 0; x < Partie.Joueur[0].Pion.Count; x++)
-            //    {
-            //        Partie.Joueur[i].Pion[x].Partie.idPartie = Partie.idPartie;
-            //        Partie.Joueur[i].Pion[x].Joueur = Partie.Joueur[i];
-            //        RetrievePositionArgs.X = Partie.Joueur[i].Pion[x].Position.X;
-            //        RetrievePositionArgs.Y = Partie.Joueur[i].Pion[x].Position.Y;
-            //        pTmp = _PositionService.Retrieve(RetrievePositionArgs);
-            //        Partie.Joueur[i].Pion[x].Position.idPosition = pTmp.idPosition;
-            //        Partie.Joueur[i].Pion[x].Position.X = pTmp.X;
-            //        Partie.Joueur[i].Pion[x].Position.Y = pTmp.Y;
-            //        _PionService.Retrieve(RetrievePionArgs);
-            //    }
-            //}
-
-            //for (int i = 0; i < Partie.Piece.Count; i++)
-            //{
-            //    Partie.Piece[i].Partie = Partie;
-            //    RetrievePositionArgs.X = Partie.Piece[i].Position.X;
-            //    RetrievePositionArgs.Y = Partie.Piece[i].Position.Y;
-            //    pTmp = _PositionService.Retrieve(RetrievePositionArgs);
-            //    Partie.Piece[i].Position.idPosition = pTmp.idPosition;
-            //    Partie.Piece[i].Position.X = pTmp.X;
-            //    Partie.Piece[i].Position.Y = pTmp.Y;
-
-
-            //    switch (Partie.Piece[i].Get_Type())
-            //    {
-            //        case ConstanteGlobale.PIERRE:
-            //            _PierreService.Retrieve(RetrievePierreArgs);
-            //            break;
-            //        case ConstanteGlobale.MONSTRE:
-            //            _MonstreService.Retrieve(RetrieveMonstreArgs);
-            //            break;
-            //        case ConstanteGlobale.CASEDESANG:
-            //            _CaseSangService.Retrieve(RetrieveCaseSangArgs);
-            //            break;
-            //    }
-            //}
         }
 
     }

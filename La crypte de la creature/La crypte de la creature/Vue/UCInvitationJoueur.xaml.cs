@@ -109,7 +109,7 @@ namespace La_crypte_de_la_creature.Vue
         }
         private void Button_Click_Annuler(object sender, RoutedEventArgs e)
         {
-            this.Content = new UCChoixPartie();
+            mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
         }
 
       
