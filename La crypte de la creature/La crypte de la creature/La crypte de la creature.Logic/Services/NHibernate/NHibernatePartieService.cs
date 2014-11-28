@@ -22,6 +22,15 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
             return session.Query<Partie>().ToList();
         }
 
+        public Partie RetrieveLast(RetrievePartieArgs args)
+        {
+            var result = from p in session.Query<Partie>()
+                         where p.idPartie == args.idPartie
+                         select p;
+
+            return result.LastOrDefault();
+        }
+
         public Partie Retrieve(RetrievePartieArgs args)
         {
             var result = from p in session.Query<Partie>()
