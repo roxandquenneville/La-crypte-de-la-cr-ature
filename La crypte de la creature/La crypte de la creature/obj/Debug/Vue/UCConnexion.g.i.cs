@@ -48,7 +48,7 @@ namespace La_crypte_de_la_creature.Vue {
         #line hidden
         
         
-        #line 22 "..\..\..\Vue\UCConnexion.xaml"
+        #line 19 "..\..\..\Vue\UCConnexion.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbxNomUsager;
         
@@ -56,7 +56,7 @@ namespace La_crypte_de_la_creature.Vue {
         #line hidden
         
         
-        #line 28 "..\..\..\Vue\UCConnexion.xaml"
+        #line 25 "..\..\..\Vue\UCConnexion.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.PasswordBox PasswordBox1;
         
@@ -99,7 +99,7 @@ namespace La_crypte_de_la_creature.Vue {
             case 2:
             this.tbxNomUsager = ((System.Windows.Controls.TextBox)(target));
             
-            #line 22 "..\..\..\Vue\UCConnexion.xaml"
+            #line 19 "..\..\..\Vue\UCConnexion.xaml"
             this.tbxNomUsager.GotFocus += new System.Windows.RoutedEventHandler(this.GotFocus);
             
             #line default
@@ -108,7 +108,7 @@ namespace La_crypte_de_la_creature.Vue {
             case 3:
             this.PasswordBox1 = ((System.Windows.Controls.PasswordBox)(target));
             
-            #line 28 "..\..\..\Vue\UCConnexion.xaml"
+            #line 25 "..\..\..\Vue\UCConnexion.xaml"
             this.PasswordBox1.GotFocus += new System.Windows.RoutedEventHandler(this.GotFocus);
             
             #line default
@@ -116,7 +116,7 @@ namespace La_crypte_de_la_creature.Vue {
             return;
             case 4:
             
-            #line 29 "..\..\..\Vue\UCConnexion.xaml"
+            #line 26 "..\..\..\Vue\UCConnexion.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Btn_Connexion);
             
             #line default
@@ -124,7 +124,7 @@ namespace La_crypte_de_la_creature.Vue {
             return;
             case 5:
             
-            #line 30 "..\..\..\Vue\UCConnexion.xaml"
+            #line 27 "..\..\..\Vue\UCConnexion.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Btn_Quitter);
             
             #line default
@@ -132,7 +132,7 @@ namespace La_crypte_de_la_creature.Vue {
             return;
             case 6:
             
-            #line 31 "..\..\..\Vue\UCConnexion.xaml"
+            #line 28 "..\..\..\Vue\UCConnexion.xaml"
             ((System.Windows.Controls.Label)(target)).MouseDown += new System.Windows.Input.MouseButtonEventHandler(this.Lbl_Click);
             
             #line default
