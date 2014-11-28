@@ -408,13 +408,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             casePresent=partie.Plateau.ConfirmationCase(Fin);
 
-            if ((posTmp.X == Fin.X && posTmp.Y == posTmp.Y) || casePresent == false) 
+            if ((posTmp.X == Fin.X && posTmp.Y == Fin.Y) || casePresent == false) 
             {
             #region Magie
              //condition mur
 
-                if(posTmp.X == Fin.X && posTmp.Y == Fin.Y)
-                {
+                //if(posTmp.X == Fin.X && posTmp.Y == Fin.Y)
+                //{
                     switch (sens)
                     {
                         case ConstanteGlobale.DESCEND:
@@ -430,7 +430,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             Fin.X = 0;
                             break;
                     }
-                }
+                //}
+               
                 #endregion
             }
            

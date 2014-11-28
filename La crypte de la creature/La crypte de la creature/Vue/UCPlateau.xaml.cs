@@ -273,8 +273,15 @@ namespace La_crypte_de_la_creature.Vue
 
         private void DoMything()
         {
-                PartieViewModel.Partie.MouvementMonstre();
-                AffichePlateau();
+               if(!(PartieViewModel.Partie.MouvementMonstre()))
+               {
+                    
+               }
+               else 
+               {
+                   AffichePlateau();
+               }
+                
 
                 //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
                 //    Pion = 1;
@@ -349,24 +356,27 @@ namespace La_crypte_de_la_creature.Vue
             tmp = tmp - Joueur;
 
             Pion = (int)Math.Round(tmp, 0, MidpointRounding.AwayFromZero);
+            if (Joueur != PartieViewModel.Partie.Joueur.Count)
+            { 
 
-            if(PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstVivant == false || PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstSortie == true)
-            {
-                PartieViewModel.Partie.TourJoueur++;
-                //tour du monstre
-                if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
-                {   
-                    InitializeTimer();
-                    Pion = 0;
-                    Joueur = 0;
-                }
-                else
+                if(PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstVivant == false || PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstSortie == true)
                 {
-                    GestionTour();
+                    PartieViewModel.Partie.TourJoueur++;
+                    //tour du monstre
+                    if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+                    {   
+                        InitializeTimer();
+                        Pion = 0;
+                        Joueur = 0;
+                    }
+                    else
+                    {
+                        GestionTour();
+                    }
+                    NombreCoupAJouer();
+                    PartieViewModel.SauvegarderCommand();
+                    tmpList.Deplacement.Clear();
                 }
-                NombreCoupAJouer();
-                PartieViewModel.SauvegarderCommand();
-                tmpList.Deplacement.Clear();
             }
         }
 

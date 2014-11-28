@@ -250,7 +250,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <summary>
         /// Fait les mouvements du monstres
         /// </summary>
-        public virtual void MouvementMonstre()
+        public virtual bool MouvementMonstre()
         {
             Monstre monstre=null;
             String sens=null;
@@ -278,12 +278,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                    
               
             }
-            VerificationFinPartie();
+           return VerificationFinPartie();
 
        
         }
 
-        public virtual void VerificationFinPartie()
+        public virtual bool VerificationFinPartie()
         {
             List<Pion> pion = null;
 
@@ -299,11 +299,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     break;
                 }
             }
-            if(verification == false)
-            {
-                MessageBox.Show("La partie est terminé") ;
-            }
-           
+          
+           return verification;
             
            
         }
