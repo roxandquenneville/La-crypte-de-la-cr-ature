@@ -26,12 +26,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         public virtual string dernier_Mouvement()
         {
-
+            string piece="";
             int index = Deplacement.Count();
+            if(Deplacement[index-1].Pion != null)
+            {
+                piece = ConstanteGlobale.PION;
+            }
+            else if(Deplacement[index-1].Monstre != null)
+            {
+                piece = ConstanteGlobale.MONSTRE;
+            }
+            else if(Deplacement[index-1].Pierre != null)
+            {
+                piece = ConstanteGlobale.PIERRE;
+            }
             string mouvement;
             if (index != 0)
-                mouvement =new StringBuilder().Append("Depart : ").Append(Deplacement[index - 1].Depart.X.ToString()).Append(" , ")
-                                              .Append(Deplacement[index - 1].Depart.Y.ToString()).Append(" / fin : ")
+                mouvement =new StringBuilder().Append(piece).Append(" Part de : ").Append(Deplacement[index - 1].Depart.X.ToString()).Append(" , ")
+                                              .Append(Deplacement[index - 1].Depart.Y.ToString()).Append(" / Vers  : ")
                                               .Append(Deplacement[index - 1].Fin.X.ToString()).Append(" , ")
                                               .Append(Deplacement[index - 1].Fin.Y.ToString())
                                               .ToString();

@@ -77,7 +77,10 @@ namespace La_crypte_de_la_creature.Vue
             GridJeu.Focus();
             AffichePlateau();
             SetPositionPion();
-            lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+            if (PartieViewModel.Historique.Deplacement.Count > 0)
+            {
+                lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+            }
             NombreCoupAJouer();
 
 
@@ -94,7 +97,10 @@ namespace La_crypte_de_la_creature.Vue
         {
                 afficherPointage();
                 GridJeu.Children.Clear();
-                lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+                //if (PartieViewModel.Historique.Deplacement.Count > 0)
+                //{
+                //    lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+                //}
                 foreach (Case c in PartieViewModel.Partie.Plateau.Case)
                 {
                     c.DetermineImage();
@@ -124,7 +130,7 @@ namespace La_crypte_de_la_creature.Vue
                 {
                     if(c.Get_Type() == ConstanteGlobale.PION)
                     {                        
-                        if(!((Pion)c).EstSortie || ((Pion)c).EstVivant)
+                        if(((Pion)c).EstSortie==false && ((Pion)c).EstVivant ==true)
                         {
                             AfficherPieceImage(stringPath, c);
                         } 
@@ -218,7 +224,10 @@ namespace La_crypte_de_la_creature.Vue
                     
                         break;
                     }
-                    lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
+                    if (tmpList.Deplacement.Count > 0)
+                    {
+                        lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
+                    }
                     NombreCoupAJouer();
                 }
             }
@@ -293,7 +302,11 @@ namespace La_crypte_de_la_creature.Vue
               SetPositionPion();
               
               PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion);
-              lblHistoriqueCourte.Content = PartieViewModel.Partie.Historique.dernier_Mouvement();
+
+              if (PartieViewModel.Historique.Deplacement.Count > 0 && tmpList.Deplacement.Count>0)
+              {
+                  lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
+              }
               
               
                   if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
