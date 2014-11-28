@@ -57,9 +57,11 @@ namespace La_crypte_de_la_creature.Vue
 
         private void Button_reprendrePartie(object sender, RoutedEventArgs e)
         {
-            /*string r = "a";
-            mainVM.ChangeView<UCPlateau>(new UCPlateau(r));*/
+            string r = "a";
+            mainVM.ChangeView<UCPlateau>(new UCPlateau(r));
         }
+
+        
 
     }
 }

@@ -55,6 +55,14 @@ namespace La_crypte_de_la_creature.Vue {
         #line default
         #line hidden
         
+        
+        #line 22 "..\..\..\Vue\UCInvitationJoueur.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label lblerreur;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -120,16 +128,19 @@ namespace La_crypte_de_la_creature.Vue {
             #line hidden
             return;
             case 5:
+            this.lblerreur = ((System.Windows.Controls.Label)(target));
+            return;
+            case 6:
             
-            #line 22 "..\..\..\Vue\UCInvitationJoueur.xaml"
+            #line 29 "..\..\..\Vue\UCInvitationJoueur.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default
             #line hidden
             return;
-            case 6:
+            case 7:
             
-            #line 23 "..\..\..\Vue\UCInvitationJoueur.xaml"
+            #line 30 "..\..\..\Vue\UCInvitationJoueur.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click_Annuler);
             
             #line default
