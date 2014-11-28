@@ -139,16 +139,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
            
-            if (Joueur[joueur].Pion[pion].EstVivant == false)
-              {
-                  MessageBox.Show("Le pion est mort");
-                  return;
-              }
-              if (Joueur[joueur].Pion[pion].EstSortie == true)
-              {
-                  MessageBox.Show("Le pion est hors du plateau");
-                  return;
-              }
+            //if (Joueur[joueur].Pion[pion].EstVivant == false)
+            //  {
+            //      MessageBox.Show("Le pion est mort");
+            //      return;
+            //  }
+            //  if (Joueur[joueur].Pion[pion].EstSortie == true)
+            //  {
+            //      MessageBox.Show("Le pion est hors du plateau");
+            //      return;
+            //  }
             if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
             {
                 return;
