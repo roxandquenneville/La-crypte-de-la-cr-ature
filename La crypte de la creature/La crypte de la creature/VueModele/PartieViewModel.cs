@@ -36,7 +36,6 @@ namespace La_crypte_de_la_creature.VueModele
         #endregion
 
 
-        public CompteViewModel CompteViewModel = new CompteViewModel();
         public RetrievePartieArgs RetrievePartieArgs { get; set; }
         public RetrieveJoueurArgs RetrieveJoueurArgs { get; set; }
         public RetrievePlateauArgs RetrievePlateauArgs { get; set; }
@@ -339,7 +338,7 @@ namespace La_crypte_de_la_creature.VueModele
         public void CreerPartieCommand()
         {
             Position pTmp = new Position();
-            ListJoueurInvite = CompteViewModel.ComptesInvite;
+            ListJoueurInvite = CompteInvite.ComptesInvite;
 
             Partie = new Partie(((ListJoueurInvite.Count) + 1), 2, "Normal");
 
@@ -367,7 +366,7 @@ namespace La_crypte_de_la_creature.VueModele
 
             _PointageService.Create(Partie.Pointage[0]);
             
-            for(int i =1; i < ListJoueurInvite.Count; i++ )
+            for(int i =1; i <= ListJoueurInvite.Count; i++ )
 
             {
                 Partie.Joueur[i].Partie.idPartie = Partie.idPartie;
