@@ -67,7 +67,7 @@ namespace La_crypte_de_la_creature.Vue {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/La crypte de la créature;component/vue/ucinvitationjoueur.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/La crypte de la creature;component/vue/ucinvitationjoueur.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Vue\UCInvitationJoueur.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

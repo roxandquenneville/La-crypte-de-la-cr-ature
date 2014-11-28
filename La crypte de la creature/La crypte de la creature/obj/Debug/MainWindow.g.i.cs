@@ -59,7 +59,7 @@ namespace La_crypte_de_la_creature {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/La crypte de la créature;component/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/La crypte de la creature;component/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -107,7 +107,7 @@ namespace La_crypte_de_la_creature.Vue {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/La crypte de la créature;component/vue/ucplateau.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/La crypte de la creature;component/vue/ucplateau.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Vue\UCPlateau.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
