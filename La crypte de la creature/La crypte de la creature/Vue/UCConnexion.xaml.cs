@@ -56,7 +56,7 @@ namespace La_crypte_de_la_creature.Vue
            if(CompteViewModel.ConnexionCommand())
            {    
                 lblErreur.Visibility = Visibility.Visible;
-                lblErreur.Content = "Utilisateur inexistant";
+                lblErreur.Content = "Erreur de connexion";
            }
             
         }
