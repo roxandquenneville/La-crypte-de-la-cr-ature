@@ -185,9 +185,9 @@ namespace La_crypte_de_la_creature.Vue
                 {
                     switch(e.Key)
                     {
-                        case Key.Left:                    
-                   
-                            PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.GAUCHE);
+                        case Key.Left:
+
+                            PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.GAUCHE);
 
                             Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
                             Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
@@ -197,7 +197,7 @@ namespace La_crypte_de_la_creature.Vue
 
                         case Key.Right:
 
-                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DROITE);
+                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DROITE);
 
                         Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
                             Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
@@ -207,7 +207,7 @@ namespace La_crypte_de_la_creature.Vue
 
                         case Key.Up:
 
-                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.MONTE);
+                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.MONTE);
 
                         Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
                         Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
@@ -216,7 +216,7 @@ namespace La_crypte_de_la_creature.Vue
                         break;
                         case Key.Down:
 
-                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DESCEND);
+                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DESCEND);
 
                             Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
                             Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
