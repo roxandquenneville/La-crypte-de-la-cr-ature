@@ -45,7 +45,7 @@ namespace La_crypte_de_la_creature.Vue
             lblErreur.Content = String.Empty;
             bool utilisateurPresent = false;
 
-            if (PasswordBox1.Password == PasswordBox2.Password && tbxEmail.Text == tbxEmailConfirme.Text /* && tbxMotDePasse.Text == null */ )
+            if (PasswordBox1.Password == PasswordBox2.Password && tbxEmail.Text == tbxEmailConfirme.Text && PasswordBox1.Password != "")
             {
                 
                 foreach(Compte C in ViewModel.Comptes )
@@ -95,17 +95,18 @@ namespace La_crypte_de_la_creature.Vue
                     lblErreur.Content = "Les mot de passe ne sont pas identique";
                     lblErreur.Visibility = Visibility.Visible;
                 }
-                else if (PasswordBox1.Password == null)
+                else if (PasswordBox1.Password == "")
                 {
                     lblErreur.Content = "Le mot de passe ne peut pas être vide";
                     lblErreur.Visibility = Visibility.Visible;
                 }
 
-                else
+                else if (tbxEmail.Text != tbxEmailConfirme.Text)
                 {
                     lblErreur.Content = "Les E-mails ne sont pas identique";
                     lblErreur.Visibility = Visibility.Visible;
                 }
+              
               }
         }
 
@@ -115,7 +116,7 @@ namespace La_crypte_de_la_creature.Vue
         }
 
         private void GotFocus(object sender, RoutedEventArgs e)
-        {
+       {
             lblErreur.Visibility = Visibility.Hidden;
         }
 

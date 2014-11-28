@@ -13,7 +13,7 @@
             </Label.Effect>
         </Label>
         <Button Grid.Row="0" Height="30" Width="180" Content="Nouvelle Partie" Click="Btn_NouvellePartie" Margin="0,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Button Height="30" Width="180" Content="Reprendre Partie" Margin="0,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_reprendrePartie" />
+        <Button Height="30" Width="180" Content="Reprendre Partie" Margin="0,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Button Height="30" Width="180" Content="Charger Partie" Margin="0,148,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Button Height="30" Width="180" Content="Déconnexion" Click="Btn_Deconnexion" Margin="0,200,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsCancel="True" />
     </Grid>

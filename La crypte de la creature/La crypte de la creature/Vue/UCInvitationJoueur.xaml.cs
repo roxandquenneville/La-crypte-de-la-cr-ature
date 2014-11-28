@@ -70,18 +70,22 @@ namespace La_crypte_de_la_creature.Vue
                 } 
             }
 
-            CompteViewModel.ComptesInvite = listCompteInvite;
+            CompteInvite.ComptesInvite = listCompteInvite;
             mainVM.ChangeView<UCPlateau>(new UCPlateau());
         }
 
         private void btnAjouterJoueur(object sender, RoutedEventArgs e)
         {
-            if (lbxDisponible.SelectedIndex != -1)
+            if (lbxDisponible.SelectedIndex != -1 && lbxInviter.Items.Count < 3)
             {
                 lbxInviter.Items.Add(lbxDisponible.Items[lbxDisponible.SelectedIndex]);
                 lbxDisponible.Items.RemoveAt(lbxDisponible.SelectedIndex);
             }
-            
+            else
+            {
+                 lblerreur.Content = "Vous pouvez inviter un maximum de 3 joueurs";
+                 lblerreur.Visibility = Visibility.Visible;
+            }
         }
         private void btnEnleverJoueur(object sender, RoutedEventArgs e)
         {
@@ -101,11 +105,14 @@ namespace La_crypte_de_la_creature.Vue
         private void lbxInviter_GotFocus(object sender, RoutedEventArgs e)
         {
             lbxDisponible.SelectedIndex = -1;
+            lblerreur.Visibility = Visibility.Hidden;
         }
         private void Button_Click_Annuler(object sender, RoutedEventArgs e)
         {
             this.Content = new UCChoixPartie();
         }
+
+      
 
       
     }

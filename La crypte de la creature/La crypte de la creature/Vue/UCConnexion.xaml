@@ -7,8 +7,11 @@
              d:DesignHeight="500" d:DesignWidth="500">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <Label Height="30" Margin="30,197,0,70" Visibility="Hidden" Name="lblErreur" Foreground="Red" />
-      
+        <Label Height="30" Margin="30,197,0,70" Visibility="Hidden" Name="lblErreur" Foreground="White" >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
+            </Label.Effect>
+        </Label>
 
         <Label  Content="Utilisateur :" Margin="30,117,0,0" Height="30" Foreground="White" HorizontalAlignment="Left" Width="192" VerticalAlignment="Top" >
             <Label.Effect>
