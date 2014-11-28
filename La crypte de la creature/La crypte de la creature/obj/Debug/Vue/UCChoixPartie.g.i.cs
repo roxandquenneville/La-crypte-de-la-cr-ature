@@ -90,6 +90,14 @@ namespace La_crypte_de_la_creature.Vue {
             return;
             case 3:
             
+            #line 16 "..\..\..\Vue\UCChoixPartie.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_reprendrePartie);
+            
+            #line default
+            #line hidden
+            return;
+            case 4:
+            
             #line 18 "..\..\..\Vue\UCChoixPartie.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Btn_Deconnexion);
             
