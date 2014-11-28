@@ -50,6 +50,22 @@ namespace La_crypte_de_la_creature.Vue
                   
 
         }
+        public UCPlateau(string r)
+        {
+            InitializeComponent();
+            DataContext = new PartieViewModel();
+            Loaded += WindowsLoadedReprendre;
+
+
+        }
+
+        private void WindowsLoadedReprendre(Object o, RoutedEventArgs e)
+        {
+            PartieViewModel.reprendrePartieCommand();
+            lblNomUsager.Content = UtilisateurConnecte.nomUsager;
+            afficherPointage();
+
+        }
 
         private void WindowsLoaded(Object o, RoutedEventArgs e)
         {
@@ -63,12 +79,13 @@ namespace La_crypte_de_la_creature.Vue
         private void afficherPointage()
         {
             lboxPointage.Items.Clear();
-            int c = 1;
+            int c = 0;
             foreach (Pointage p in PartieViewModel.Partie.Pointage)
             {
-                StringBuilder Joueur = new StringBuilder().Append("Joueur ").Append(c).Append(" : ").Append(p.Point);
-                lboxPointage.Items.Add(Joueur);
-                c++;
+                String Joueur = new StringBuilder().Append(PartieViewModel.Partie.Joueur[c].Compte.NomUsager)
+                                                         .Append(" : ").Append(p.Point).ToString();
+              lboxPointage.Items.Add(Joueur);
+              c++;
             }
         }
 
@@ -82,7 +99,7 @@ namespace La_crypte_de_la_creature.Vue
                 lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             }
             NombreCoupAJouer();
-
+            JoueurCourantAffichage();
 
         }
 
@@ -257,6 +274,7 @@ namespace La_crypte_de_la_creature.Vue
             {
                 PartieViewModel.Partie.TourJoueur = 0;
                 GestionTour();
+                JoueurCourantAffichage();
                 t.Enabled = false;     
             }
             else
@@ -298,38 +316,50 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btnConfirme(object sender, RoutedEventArgs e)
         {
-            PartieViewModel.SauvegarderCommand();
-        //    PartieViewModel.SauvegarderCommand(); 
+            
+            if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+            {
+                System.Windows.Forms.MessageBox.Show("C'est au tour du monstre de jouer");
+            }
+            else
+            {
+                GestionTour();
+                if(PartieViewModel.Partie.Joueur[Joueur].Compte.NomUsager != UtilisateurConnecte.nomUsager)
+                {
+                    System.Windows.Forms.MessageBox.Show("Ce n'est pas à votre tour de joueur");
+                }
+                else
+                {
+                
+                PartieViewModel.SauvegarderCommand();
 
-                //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
-                //    Pion = 1;
-                //else if (PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
-                //    Pion = 0;
+                  SetPositionPion();
+              
+                  PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion);
 
-              SetPositionPion();
-              
-              PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion);
-
-              if (PartieViewModel.Historique.Deplacement.Count > 0 && tmpList.Deplacement.Count>0)
-              {
-                  lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
-              }
-              
-              
-                  if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+                  if (PartieViewModel.Historique.Deplacement.Count > 0 && tmpList.Deplacement.Count>0)
                   {
-                    InitializeTimer();
+                      lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
                   }
-                  else
-                  {
-                      GestionTour();
-                  }
+              
+              
+                      if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+                      {
+                        JoueurCourantAffichage(" le Monstre");
+                        InitializeTimer();
+                      }
+                      else
+                      {
+                          GestionTour();
+                          JoueurCourantAffichage();
+                      }
 
                   
-                  NombreCoupAJouer();
-                  PartieViewModel.SauvegarderCommand();
-                  tmpList.Deplacement.Clear();
-              
+                      NombreCoupAJouer();
+                      PartieViewModel.SauvegarderCommand();
+                      tmpList.Deplacement.Clear();
+                    }     
+            }
         }
 
 
@@ -378,6 +408,14 @@ namespace La_crypte_de_la_creature.Vue
                     tmpList.Deplacement.Clear();
                 }
             }
+        }
+        private void JoueurCourantAffichage(String tmp = "")
+        {
+            if (tmp == "")
+            {
+                tmp = PartieViewModel.Partie.Joueur[Joueur].Compte.NomUsager;
+            }
+            JoueurCourant.Content = new StringBuilder().Append("C'est à ").Append(tmp).Append(" de Jouer").ToString();
         }
 
     }
