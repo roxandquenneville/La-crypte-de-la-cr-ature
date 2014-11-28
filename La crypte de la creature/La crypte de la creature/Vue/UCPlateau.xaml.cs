@@ -32,6 +32,7 @@ namespace La_crypte_de_la_creature.Vue
     public partial class UCPlateau : System.Windows.Controls.UserControl
     {
         public int Pion = 0;
+        public int Joueur =0;
         private int counter;
         private int nbTour=0;
         private static readonly object synchronizationObject = new object();
@@ -74,7 +75,7 @@ namespace La_crypte_de_la_creature.Vue
         private void GridJeu_Loaded(object sender, RoutedEventArgs e)
         {
             GridJeu.Focus();
-            AffichePlateau("");
+            AffichePlateau();
             SetPositionPion();
             lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             NombreCoupAJouer();
@@ -89,11 +90,8 @@ namespace La_crypte_de_la_creature.Vue
             //PositionAvantTour.Y = PartieViewModel.Partie.Joueur[0].Pion[0].Position.Y; 
         }
 
-        private void AffichePlateau(string tmp)
+        private void AffichePlateau()
         {
-            lock (UCPlateau.synchronizationObject)
-            {
-                Console.WriteLine("plateau rafraichit " + tmp);
                 afficherPointage();
                 GridJeu.Children.Clear();
                 lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
@@ -112,7 +110,7 @@ namespace La_crypte_de_la_creature.Vue
                     Grid.SetRow(myImage, c.Coordonnee.Y);
                 }
                 AfficherPiece();
-            }
+            
             
         }
 
@@ -164,53 +162,67 @@ namespace La_crypte_de_la_creature.Vue
 
         public void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            Console.WriteLine("Pion bouge");
-                switch(e.Key)
+    
+
+            if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+            {
+                System.Windows.Forms.MessageBox.Show("C'est au tour du monstre de jouer");
+            }
+            else
+            {
+                GestionTour();
+                if(PartieViewModel.Partie.Joueur[Joueur].Compte.NomUsager != UtilisateurConnecte.nomUsager)
                 {
-                    case Key.Left:                    
-                   
-                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.GAUCHE);
-
-                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                        AffichePlateau("Pion");
-                    
-                    break;
-
-                    case Key.Right:
-
-                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DROITE);
-
-                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                        AffichePlateau("Pion");
-                    
-                    break; 
-
-                    case Key.Up:
-
-                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.MONTE);
-
-                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                        AffichePlateau("Pion");
-                    
-                    break;
-                    case Key.Down:
-
-                    PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DESCEND);
-
-                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.X));
-                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[0].Pion[Pion].Position.Y));
-                        AffichePlateau("Pion");
-                    
-                    break;
+                    System.Windows.Forms.MessageBox.Show("Ce n'est pas à votre tour de joueur");
                 }
-               lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
-               NombreCoupAJouer();
-            
-            
-   
+                else
+                {
+                    switch(e.Key)
+                    {
+                        case Key.Left:                    
+                   
+                            PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.GAUCHE);
+
+                            Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
+                            Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
+                            AffichePlateau();
+                    
+                        break;
+
+                        case Key.Right:
+
+                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DROITE);
+
+                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
+                            Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
+                            AffichePlateau();
+                    
+                        break; 
+
+                        case Key.Up:
+
+                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.MONTE);
+
+                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
+                        Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
+                            AffichePlateau();
+                    
+                        break;
+                        case Key.Down:
+
+                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, 0, Pion, ConstanteGlobale.DESCEND);
+
+                            Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
+                            Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
+                            AffichePlateau();
+                    
+                        break;
+                    }
+                    lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
+                    NombreCoupAJouer();
+                }
+            }
+
         }
 
         
@@ -234,7 +246,9 @@ namespace La_crypte_de_la_creature.Vue
         {
             if (counter >= 4 )
             {
-                t.Enabled = false;
+                PartieViewModel.Partie.TourJoueur = 0;
+                GestionTour();
+                t.Enabled = false;     
             }
             else
             {
@@ -250,9 +264,8 @@ namespace La_crypte_de_la_creature.Vue
 
         private void DoMything()
         {
-                Console.WriteLine("Monstre bouge");
                 PartieViewModel.Partie.MouvementMonstre();
-                AffichePlateau("Monstre");
+                AffichePlateau();
 
                 //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
                 //    Pion = 1;
@@ -264,7 +277,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void NombreCoupAJouer()
         {
-            Coups.Content = PartieViewModel.Partie.Joueur[0].Pion[Pion].TmpDeplacement;
+            Coups.Content = PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].TmpDeplacement;
         }
 
         private void btnConfirme(object sender, RoutedEventArgs e)
@@ -276,36 +289,26 @@ namespace La_crypte_de_la_creature.Vue
                 //    Pion = 1;
                 //else if (PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
                 //    Pion = 0;
-                if(Pion ==0)
-                {
-                    Pion = 1;
-                }
-                else
-                {
-                    Pion = 0;
-                }
 
               SetPositionPion();
               
-              PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, 0, Pion);
+              PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion);
               lblHistoriqueCourte.Content = PartieViewModel.Partie.Historique.dernier_Mouvement();
-
               
               
                   if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
                   {
                     InitializeTimer();
-
-                    PartieViewModel.Partie.TourJoueur=0;
-                    NombreCoupAJouer();
-                    PartieViewModel.SauvegarderCommand();
-                    tmpList.Deplacement.Clear();
-
                   }
-             
-                    
+                  else
+                  {
+                      GestionTour();
+                  }
 
-              
+                  
+                  NombreCoupAJouer();
+                  PartieViewModel.SauvegarderCommand();
+                  tmpList.Deplacement.Clear();
               
         }
 
@@ -320,8 +323,38 @@ namespace La_crypte_de_la_creature.Vue
         {
             PartieViewModel.Joueur.Pion[Pion].Position.X = PositionAvantTour.X;
             PartieViewModel.Joueur.Pion[Pion].Position.Y = PositionAvantTour.Y;
-            AffichePlateau("");
+            AffichePlateau();
             
+        }
+
+        private void GestionTour()
+        {
+            double tmp =((double)(PartieViewModel.Partie.TourJoueur)/2);
+
+            Joueur = (int)tmp;
+
+            tmp = tmp - Joueur;
+
+            Pion = (int)Math.Round(tmp, 0, MidpointRounding.AwayFromZero);
+
+            if(PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstVivant == false || PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstSortie == true)
+            {
+                PartieViewModel.Partie.TourJoueur++;
+                //tour du monstre
+                if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
+                {   
+                    InitializeTimer();
+                    Pion = 0;
+                    Joueur = 0;
+                }
+                else
+                {
+                    GestionTour();
+                }
+                NombreCoupAJouer();
+                PartieViewModel.SauvegarderCommand();
+                tmpList.Deplacement.Clear();
+            }
         }
 
     }

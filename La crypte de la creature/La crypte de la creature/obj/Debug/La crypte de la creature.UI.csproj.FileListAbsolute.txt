@@ -33,3 +33,38 @@ D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\ob
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csproj.GenerateResource.Cache
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.exe
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.exe.config
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.exe
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csprojResolveAssemblyReference.cache
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\MainWindow.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCChoixPartie.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCConnexion.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCCreationCompte.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCInvitationJoueur.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCMainWindow.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCPlateau.baml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\MainWindow.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCChoixPartie.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCConnexion.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCCreationCompte.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCInvitationJoueur.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCMainWindow.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCPlateau.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\App.g.cs
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature_MarkupCompile.cache
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.g.resources
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La_crypte_de_la_creature.Properties.Resources.resources
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csproj.GenerateResource.Cache
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.exe
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Cstj.MvvmToolkit.dll
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.Logic.dll
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\FluentNHibernate.dll
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\NHibernate.dll
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Iesi.Collections.dll
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Cstj.MvvmToolkit.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.Logic.pdb
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\FluentNHibernate.xml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\NHibernate.xml
+C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Iesi.Collections.xml

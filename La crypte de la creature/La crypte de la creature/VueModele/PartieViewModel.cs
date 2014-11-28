@@ -382,8 +382,8 @@ namespace La_crypte_de_la_creature.VueModele
                 _PointageService.Create(Partie.Pointage[i]);
             }   
 
-            _CarteMonstreService.RetrieveCartePartie(Partie,RetrieveCarteMonstreArgs);
-            ObservableCollection<CartesMonstre> listCarte = new ObservableCollection<CartesMonstre>();
+            //_CarteMonstreService.RetrieveCartePartie(Partie,RetrieveCarteMonstreArgs);
+            //ObservableCollection<CartesMonstre> listCarte = new ObservableCollection<CartesMonstre>();
            // listCarte.Shuffle();
            /* for (int i = 0; i < listCarte.Count(); i++)
             {
