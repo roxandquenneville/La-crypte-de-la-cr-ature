@@ -43,6 +43,15 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
             return result.FirstOrDefault();
         }
 
+        public Historique RetrieveLast(RetrieveHistoriqueArgs args)
+        {
+            var result = from h in session.Query<Historique>()
+                         where h.idHistorique == args.idHistorique
+                         select h;
+
+            return result.LastOrDefault();
+        }
+
         public void Update(Historique h)
         {
             using (var transaction = session.BeginTransaction())

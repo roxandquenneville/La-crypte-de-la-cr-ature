@@ -50,6 +50,22 @@ namespace La_crypte_de_la_creature.Vue
                   
 
         }
+        public UCPlateau(string r)
+        {
+            InitializeComponent();
+            DataContext = new PartieViewModel();
+            Loaded += WindowsLoadedr;
+
+
+        }
+
+        private void WindowsLoadedr(Object o, RoutedEventArgs e)
+        {
+            PartieViewModel.reprendrePartieCommand();
+            lblNomUsager.Content = UtilisateurConnecte.nomUsager;
+            afficherPointage();
+
+        }
 
         private void WindowsLoaded(Object o, RoutedEventArgs e)
         {

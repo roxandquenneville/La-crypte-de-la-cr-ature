@@ -11,6 +11,7 @@ namespace La_crypte_de_la_creature.Logic.Services.Interfaces
     public interface IPartieService
     {
         IList<Partie> RetrieveAll();
+        Partie RetrieveLast(RetrievePartieArgs args);
         Partie Retrieve(RetrievePartieArgs args);
         void Create(Partie p);
         void Update(Partie p);

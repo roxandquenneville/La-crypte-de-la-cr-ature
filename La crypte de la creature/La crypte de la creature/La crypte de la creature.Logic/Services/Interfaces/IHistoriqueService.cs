@@ -12,6 +12,7 @@ namespace La_crypte_de_la_creature.Logic.Services.Interfaces
     {
         IList<Historique> RetrieveAll();
         Historique Retrieve(RetrieveHistoriqueArgs args);
+        Historique RetrieveLast(RetrieveHistoriqueArgs args);
         void Create(Historique h);
         void Update(Historique h);
         void Delete(Historique h);
