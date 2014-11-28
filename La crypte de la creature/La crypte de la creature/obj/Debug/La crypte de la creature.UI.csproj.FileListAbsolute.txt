@@ -1,6 +1,3 @@
-D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.exe.config
-D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.exe
-D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la créature.pdb
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\Cstj.MvvmToolkit.dll
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.Logic.dll
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\FluentNHibernate.dll
@@ -27,12 +24,8 @@ D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\ob
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCMainWindow.g.cs
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCPlateau.g.cs
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\App.g.cs
-D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature_MarkupCompile.cache
-D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.g.resources
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La_crypte_de_la_creature.Properties.Resources.resources
 D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csproj.GenerateResource.Cache
-D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.exe
-D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la créature.pdb
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.UI.csprojResolveAssemblyReference.cache
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\MainWindow.baml
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\Vue\UCChoixPartie.baml
@@ -68,3 +61,10 @@ C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La cr
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.g.resources
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.exe
 C:\Users\Mathieu\Desktop\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.exe.config
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.exe
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.exe
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\bin\Debug\La crypte de la creature.pdb
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature_MarkupCompile.cache
+D:\La-crypte-de-la-cr-ature\La crypte de la creature\La crypte de la creature\obj\Debug\La crypte de la creature.g.resources
