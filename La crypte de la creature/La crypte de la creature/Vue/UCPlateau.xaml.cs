@@ -63,12 +63,13 @@ namespace La_crypte_de_la_creature.Vue
         private void afficherPointage()
         {
             lboxPointage.Items.Clear();
-            int c = 1;
+            int c = 0;
             foreach (Pointage p in PartieViewModel.Partie.Pointage)
             {
-                StringBuilder Joueur = new StringBuilder().Append("Joueur ").Append(c).Append(" : ").Append(p.Point);
-                lboxPointage.Items.Add(Joueur);
-                c++;
+                String Joueur = new StringBuilder().Append(PartieViewModel.Partie.Joueur[c].Compte.NomUsager)
+                                                         .Append(" : ").Append(p.Point).ToString();
+              lboxPointage.Items.Add(Joueur);
+              c++;
             }
         }
 
@@ -82,7 +83,7 @@ namespace La_crypte_de_la_creature.Vue
                 lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();
             }
             NombreCoupAJouer();
-
+            JoueurCourantAffichage();
 
         }
 
@@ -257,6 +258,7 @@ namespace La_crypte_de_la_creature.Vue
             {
                 PartieViewModel.Partie.TourJoueur = 0;
                 GestionTour();
+                JoueurCourantAffichage();
                 t.Enabled = false;     
             }
             else
@@ -318,11 +320,13 @@ namespace La_crypte_de_la_creature.Vue
               
                   if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
                   {
+                    JoueurCourantAffichage(" le Monstre");
                     InitializeTimer();
                   }
                   else
                   {
                       GestionTour();
+                      JoueurCourantAffichage();
                   }
 
                   
@@ -378,6 +382,14 @@ namespace La_crypte_de_la_creature.Vue
                     tmpList.Deplacement.Clear();
                 }
             }
+        }
+        private void JoueurCourantAffichage(String tmp = "")
+        {
+            if (tmp == "")
+            {
+                tmp = PartieViewModel.Partie.Joueur[Joueur].Compte.NomUsager;
+            }
+            JoueurCourant.Content = new StringBuilder().Append("C'est à ").Append(tmp).Append(" de Jouer").ToString();
         }
 
     }
