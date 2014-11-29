@@ -35,6 +35,7 @@ namespace La_crypte_de_la_creature.Vue
         public int Joueur =0;
         private int counter;
         private int nbTour=0;
+        private int monstreJoue=0;
         private static readonly object synchronizationObject = new object();
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
@@ -190,6 +191,10 @@ namespace La_crypte_de_la_creature.Vue
             if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
             {
                 System.Windows.Forms.MessageBox.Show("C'est au tour du monstre de jouer");
+                if(monstreJoue ==0)
+                {
+                    InitializeTimer();
+                }
             }
             else
             {
@@ -256,6 +261,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void InitializeTimer()
         {
+            monstreJoue=1;
             counter = 0;
             t.Interval = 1000;
            
@@ -367,7 +373,11 @@ namespace La_crypte_de_la_creature.Vue
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
+            if (PartieViewModel.Partie.TourJoueur != PartieViewModel.Partie.Joueur.Count * PartieViewModel.Partie.Joueur[0].Pion.Count)
+            { 
+                PartieViewModel.Partie = null;
+                mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -387,7 +397,7 @@ namespace La_crypte_de_la_creature.Vue
             tmp = tmp - Joueur;
 
             Pion = (int)Math.Round(tmp, 0, MidpointRounding.AwayFromZero);
-            if (Joueur != PartieViewModel.Partie.Joueur.Count)
+            if (Joueur < PartieViewModel.Partie.Joueur.Count)
             { 
 
                 if(PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstVivant == false || PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].EstSortie == true)

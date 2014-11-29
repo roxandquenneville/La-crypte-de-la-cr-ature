@@ -44,6 +44,8 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 
         public void Update(Pierre p)
         {
+            session.Close();
+            session =NHibernateConnexion.OpenSession();
             using (var transaction = session.BeginTransaction())
             {
                 session.Update(p);

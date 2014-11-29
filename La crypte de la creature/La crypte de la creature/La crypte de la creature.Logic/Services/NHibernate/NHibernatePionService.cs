@@ -15,19 +15,19 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
 {
     public class NHibernatePionService : IPionService
     {
-        private ISession session;
+        private ISession session= NHibernateConnexion.OpenSession();
         #region IPionService Members
 
         public IList<Pion> RetrieveAll()
         {
-            session = NHibernateConnexion.OpenSession();
+            
             return session.Query<Pion>().ToList();
             
         }
 
         public Pion Retrieve(RetrievePionArgs args)
         {
-            session = NHibernateConnexion.OpenSession();
+           
             var result = from p in session.Query<Pion>()
                          where p.idPion == args.idPion
                          select p;
@@ -37,26 +37,25 @@ namespace La_crypte_de_la_creature.Logic.Services.NHibernate
         }
 
         public void Create(Pion p)
-        {
-            session= NHibernateConnexion.OpenSession();
+        {      
             using (var transaction = session.BeginTransaction())
             {
                 session.Save(p);
                 transaction.Commit();
             }
-            session.Close();
+         
         }
 
         public void Update(Pion p)
         {
-             session= NHibernateConnexion.OpenSession();
+            session.Close();
+            session = NHibernateConnexion.OpenSession();
             using (var transaction = session.BeginTransaction())
             {
-                session.Merge(p);
+                session.Update(p);
                 transaction.Commit();
-                session.Flush();
             }
-           session.Close();
+          
           
         }
 

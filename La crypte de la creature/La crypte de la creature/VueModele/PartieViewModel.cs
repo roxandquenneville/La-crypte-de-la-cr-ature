@@ -594,7 +594,6 @@ namespace La_crypte_de_la_creature.VueModele
                              
                             break;
                         case ConstanteGlobale.PION:
-                        
                                 _PionService.Update((Pion)Partie.Piece[i]);
                             
                             break;
