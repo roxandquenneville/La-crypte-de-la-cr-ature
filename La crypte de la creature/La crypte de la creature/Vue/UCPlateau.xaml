@@ -70,9 +70,9 @@
         <Label Focusable="False" Name="lblHistoriqueCourteMonstre" Grid.Column="1" Content="" Margin="258,0,-5,1"/>
         <!--<Label Focusable="False" Name="lblDernierMouvement" Height="24" Width="139"  Margin="10,25,351,31" Grid.Column="1"/>
         <Label Focusable="False" Name="lblDernierMouvementMonstre" Height="24" Width="139"  Margin="450,5,0,20"/>-->
-        <Button Grid.Row="1" Height="30" Content="Confirmer tour" Focusable="False" Click="btnConfirme" Margin="-5,241,5,396" >
+        <Button Name ="Confirmer" Grid.Row="1" Height="30" Content="Confirmer tour" Focusable="False" Click="btnConfirme" Margin="-5,241,5,396" >
         </Button>
-        <Button Grid.Row="1" Height="30" Content="Annuler tour" Margin="-5,275,5,362" Focusable="False" Click="Button_Click_1">
+        <Button Name="Annuler" Grid.Row="1" Height="30" Content="Annuler tour" Margin="-5,275,5,362" Focusable="False" Click="Button_Click_1">
         </Button>
         <Button Grid.Row="1" Height="30" Content="Revenir" Margin="-5,311,5,326" Focusable="False" Click="Button_Click"  />
 

@@ -48,7 +48,9 @@ namespace La_crypte_de_la_creature.Vue
             InitializeComponent();
             DataContext = new PartieViewModel();
             Loaded += WindowsLoaded; 
-                  
+            Annuler.IsEnabled = false;
+            Confirmer.IsEnabled = false;
+       
 
         }
         public UCPlateau(string r)
@@ -245,7 +247,12 @@ namespace La_crypte_de_la_creature.Vue
                             AffichePlateau();
                     
                         break;
+
                     }
+                    if (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y == 10 && PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X == 15)
+                    Confirmer.IsEnabled = false;
+                    else
+                        Confirmer.IsEnabled = true;
                     if (tmpList.Deplacement.Count > 0)
                     {
                         lblHistoriqueCourte.Content = tmpList.dernier_Mouvement();
@@ -323,7 +330,6 @@ namespace La_crypte_de_la_creature.Vue
 
         private void btnConfirme(object sender, RoutedEventArgs e)
         {
-            
             if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
             {
                 System.Windows.Forms.MessageBox.Show("C'est au tour du monstre de jouer");
@@ -343,7 +349,7 @@ namespace La_crypte_de_la_creature.Vue
                   SetPositionPion();
               
                   PartieViewModel.Partie.ConfirmerDeplacementPion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion);
-
+                  
                   if (PartieViewModel.Historique.Deplacement.Count > 0 && tmpList.Deplacement.Count>0)
                   {
                       lblHistoriqueCourte.Content = PartieViewModel.Historique.dernier_Mouvement();

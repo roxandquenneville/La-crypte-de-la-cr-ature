@@ -504,14 +504,15 @@ namespace La_crypte_de_la_creature.VueModele
 
                 _PointageService.Create(Partie.Pointage[i]);
             }   
+           /* _CarteMonstreService.RetrieveCartePartie(Partie,RetrieveCarteMonstreArgs);
+            ObservableCollection<CartesMonstre> listCarte = new ObservableCollection<CartesMonstre>();
+            Shuffle(listCarte);*/
 
-            //_CarteMonstreService.RetrieveCartePartie(Partie,RetrieveCarteMonstreArgs);
-            //ObservableCollection<CartesMonstre> listCarte = new ObservableCollection<CartesMonstre>();
-           // listCarte.Shuffle();
            /* for (int i = 0; i < listCarte.Count(); i++)
             {
                 Partie.CartesMonstre.Add(listCarte[i]);
             }*/
+
             Partie.CartesMonstre.Add(new CartesMonstre(5));
             Partie.CartesMonstre.Add(new CartesMonstre(5));
             Partie.CartesMonstre.Add(new CartesMonstre(7));
@@ -570,7 +571,19 @@ namespace La_crypte_de_la_creature.VueModele
         }
 
 
-
+        public void Shuffle<T>(IList<T> list)
+        {
+            Random rng = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
         
         public void SauvegarderCommand()
         {

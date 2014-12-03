@@ -32,6 +32,7 @@ namespace La_crypte_de_la_creature.Vue
             InitializeComponent();
             DataContext = new PartieViewModel();
             Loaded += WindowLoaded;
+            Charger.IsEnabled = false;
 
         }
 

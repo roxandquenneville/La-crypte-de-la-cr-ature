@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace La_crypte_de_la_creature.Logic.Modele.Classes
 {
     public class Partie
@@ -20,6 +21,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual IList<Joueur> Joueur { get;  set; }
         public virtual IList<Piece> Piece { get; set; }
         public virtual int TourJoueur { get; set;}
+        
         
         #endregion
 
@@ -151,6 +153,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Deplacement mouvement = new Deplacement();
             Position Depart = new Position();
             Pion pionDeplacer = Joueur[joueur].Pion[pion];
+            
 
             ListeTmp.Add(mouvement);
             index = ListeTmp.Count();
