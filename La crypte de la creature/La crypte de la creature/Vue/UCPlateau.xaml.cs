@@ -36,6 +36,8 @@ namespace La_crypte_de_la_creature.Vue
         private int counter;
         private int nbTour=0;
         private int monstreJoue=0;
+        Deplacement d = new Deplacement();
+        Position ptmp = new Position();
         private static readonly object synchronizationObject = new object();
         public PartieViewModel PartieViewModel { get { return (PartieViewModel)DataContext; } }
         IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
@@ -192,9 +194,11 @@ namespace La_crypte_de_la_creature.Vue
 
             if (PartieViewModel.Partie.TourJoueur == (PartieViewModel.Partie.Joueur.Count() * PartieViewModel.Partie.Joueur[0].Pion.Count()))
             {
+                
                 System.Windows.Forms.MessageBox.Show("C'est au tour du monstre de jouer");
                 if(monstreJoue ==0)
                 {
+                    Confirmer.IsEnabled = false;
                     InitializeTimer();
                 }
             }
@@ -203,13 +207,16 @@ namespace La_crypte_de_la_creature.Vue
                 GestionTour();
                 if(PartieViewModel.Partie.Joueur[Joueur].Compte.NomUsager != UtilisateurConnecte.nomUsager)
                 {
+                    Confirmer.IsEnabled = false;
                     System.Windows.Forms.MessageBox.Show("Ce n'est pas à votre tour de joueur");
                 }
                 else
                 {
+                        Confirmer.IsEnabled = true;
                     switch(e.Key)
                     {
                         case Key.Left:
+
 
                             PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.GAUCHE);
 
@@ -220,10 +227,18 @@ namespace La_crypte_de_la_creature.Vue
                         break;
 
                         case Key.Right:
+                           
+                            ptmp.X=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X;
+                            ptmp.Y=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y;
+                            d.Depart = ptmp;
+                            ptmp.ChangePosition(ConstanteGlobale.DROITE);
+                            d.Fin = ptmp;
+                            if(d.ValiderCaseDepart(d) == false)
+                                break;
 
-                        PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DROITE);
+                            PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DROITE);
 
-                        Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
+                            Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
                             Grid.SetRow(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y));
                             AffichePlateau();
                     
@@ -240,6 +255,13 @@ namespace La_crypte_de_la_creature.Vue
                         break;
                         case Key.Down:
 
+                            ptmp.X=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X;
+                            ptmp.Y=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y;
+                            d.Depart = ptmp;
+                            ptmp.ChangePosition(ConstanteGlobale.DESCEND);
+                            d.Fin = ptmp;
+                            if(d.ValiderCaseDepart(d) == false)
+                                break;
                         PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DESCEND);
 
                             Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
@@ -268,6 +290,7 @@ namespace La_crypte_de_la_creature.Vue
 
         private void InitializeTimer()
         {
+            Confirmer.IsEnabled = false;
             monstreJoue=1;
             counter = 0;
             t.Interval = 1000;
@@ -403,6 +426,7 @@ namespace La_crypte_de_la_creature.Vue
             tmp = tmp - Joueur;
 
             Pion = (int)Math.Round(tmp, 0, MidpointRounding.AwayFromZero);
+            Confirmer.IsEnabled = true;
             if (Joueur < PartieViewModel.Partie.Joueur.Count)
             { 
 

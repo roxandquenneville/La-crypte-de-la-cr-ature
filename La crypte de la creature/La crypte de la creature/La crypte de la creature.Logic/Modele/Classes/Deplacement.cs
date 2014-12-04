@@ -18,6 +18,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual Historique Historique { get; set; }
         public virtual Position Depart { get; set; }
         public virtual Position Fin { get; set; }
+        Position caseDepart = new Position();
         #endregion
 
 
@@ -57,6 +58,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             string type;
             List<Piece> pTmp = null;
            
+            caseDepart.X=15;
+            caseDepart.Y=10;
+
            if(Depart== Fin)
            {
                return false;
@@ -72,7 +76,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
 
             pTmp = partie.RetournePiece(Fin);
-
+            if (tmpDeplacement == 1)
+            {
+                 if(Fin == caseDepart)
+                    return false;
+            }
             // piece et case de sang gérer plus tard
             if (pTmp.Count > 1)
             {
@@ -160,7 +168,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
 
-
+        public virtual bool ValiderCaseDepart(Deplacement d)
+        {
+            if(d.Fin.X == caseDepart.X && d.Fin.Y == caseDepart.Y)
+                return false;
+            else
+                return true;
+        }
         public virtual bool ConfirmationPierre(Partie partie, string sens, List<Deplacement> ListeTmp, Piece pierre)
         {
 
