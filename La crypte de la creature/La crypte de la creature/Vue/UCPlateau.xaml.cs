@@ -230,10 +230,14 @@ namespace La_crypte_de_la_creature.Vue
                            
                             ptmp.X=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X;
                             ptmp.Y=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y;
-                            d.Depart = ptmp;
+
+                            /* valide pour la fin d'un mouvement s'il est arrêter sur la case départ*/
+                            d.Depart.X = ptmp.X;
+                            d.Depart.Y = ptmp.Y;
                             ptmp.ChangePosition(ConstanteGlobale.DROITE);
-                            d.Fin = ptmp;
-                            if(d.ValiderCaseDepart(d) == false)
+                            d.Fin.X = ptmp.X;
+                            d.Fin.Y = ptmp.Y;
+                            if(d.ValiderCaseDepart() == false)
                                 break;
 
                             PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DROITE);
@@ -257,11 +261,16 @@ namespace La_crypte_de_la_creature.Vue
 
                             ptmp.X=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X;
                             ptmp.Y=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y;
-                            d.Depart = ptmp;
+
+                            /* valide pour la fin d'un mouvement s'il est arrêter sur la case départ*/
+                            d.Depart.X = ptmp.X;
+                            d.Depart.Y = ptmp.Y;
                             ptmp.ChangePosition(ConstanteGlobale.DESCEND);
-                            d.Fin = ptmp;
-                            if(d.ValiderCaseDepart(d) == false)
+                            d.Fin.X = ptmp.X;
+                            d.Fin.Y = ptmp.Y;
+                            if(d.ValiderCaseDepart() == false)
                                 break;
+
                         PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DESCEND);
 
                             Grid.SetColumn(imgPion, (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X));
@@ -331,6 +340,7 @@ namespace La_crypte_de_la_creature.Vue
                {
                     System.Windows.Forms.MessageBox.Show("Partie terminé","Fin de partie",MessageBoxButtons.OK);
                     mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
+                    counter = 4;
                }
                else 
                {
@@ -367,7 +377,7 @@ namespace La_crypte_de_la_creature.Vue
                 else
                 {
                 
-                PartieViewModel.SauvegarderCommand();
+                  PartieViewModel.SauvegarderCommand();
 
                   SetPositionPion();
               
@@ -455,8 +465,15 @@ namespace La_crypte_de_la_creature.Vue
             if (tmp == "")
             {
                 tmp = PartieViewModel.Partie.Joueur[Joueur].Compte.NomUsager;
+                JoueurCourant.Content = new StringBuilder().Append("C'est au ").Append(" Pion ")
+                    .Append(Pion+1).Append(" de ").Append(tmp).Append(" à Jouer").ToString();
             }
-            JoueurCourant.Content = new StringBuilder().Append("C'est à ").Append(tmp).Append(" de Jouer").ToString();
+            else
+            {
+                JoueurCourant.Content = new StringBuilder().Append("C'est au ").Append("Monstre")
+                    .Append(" de Jouer").ToString();
+
+            }      
         }
 
     }

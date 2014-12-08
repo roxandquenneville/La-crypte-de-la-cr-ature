@@ -46,6 +46,20 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Historique = new Historique();
         }
 
+
+        /// <summary>
+        /// Valide la case départ
+        /// </summary>
+        /// Auteur : Jean-Sébastien
+        /// <returns>retourne true si c'est la case de départ</returns>
+        public virtual bool ValiderCaseDepart()
+        {
+            if (this.Fin.X == caseDepart.X && this.Fin.Y == caseDepart.Y)
+                return false;
+            else
+                return true;
+        }
+
         #region Pion
         /// <summary>
         /// Confirme le mouvement. 
@@ -168,13 +182,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         }
 
 
-        public virtual bool ValiderCaseDepart(Deplacement d)
-        {
-            if(d.Fin.X == caseDepart.X && d.Fin.Y == caseDepart.Y)
-                return false;
-            else
-                return true;
-        }
+        /// <summary>
+        /// Vérifie que la pierre peut être déplacer
+        /// </summary>
+        /// <param name="partie">La partie</param>
+        /// <param name="sens">Direction</param>
+        /// <param name="ListeTmp">Liste de déplacement temporaire</param>
+        /// <param name="pierre">La piece qui est à vérifier</param>
+        /// <returns>Retourne true si le mouvement peut être effectuer</returns>
         public virtual bool ConfirmationPierre(Partie partie, string sens, List<Deplacement> ListeTmp, Piece pierre)
         {
 
@@ -186,7 +201,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Deplacement deplacement = new Deplacement();
             RetrieveElementPierre args = new RetrieveElementPierre();
 
-            deplacement.Depart = Fin;
+            deplacement.Depart.X = Fin.X;
+            deplacement.Depart.Y = Fin.Y;
             deplacement.Pierre = (Pierre)pierre;
             ListeTmp.Add(deplacement);
             index = ListeTmp.Count();
@@ -224,8 +240,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 if (pTmp.Count() == 0)
                 {
                     //Déplace la pierre
-                    deplacement.Fin = pACote;
-                    pierre.Position = pACote;
+                    deplacement.Fin.X = pACote.X;
+                    deplacement.Fin.Y = pACote.Y;
+                    pierre.Position.X = pACote.X;
+                    pierre.Position.Y = pACote.Y;
                     return true;
                 }
                 // on est sur une case de sang
@@ -251,6 +269,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         }
 
+        /// <summary>
+        /// Vérifie que la pierre peut être pousser sur une case de sang
+        /// </summary>
+        /// <param name="partie">La partie</param>
+        /// <param name="sens">Direction</param>
+        /// <param name="ListeTmp">Liste de déplacement temporaire</param>
+        /// <param name="pierre">La piece qui est à vérifier</param>
+        /// <param name="args">Liste des argument nécessaire à la fonction</param>
         public virtual void PierreSurCaseDeSang(Partie partie, string sens, Piece pierre, List<Deplacement> ListeTmp, RetrieveElementPierre args)
         {
             args.posTmp.X = args.pACote.X;
@@ -319,6 +345,16 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
+
+        /// <summary>
+        /// Vérifie que le pion peut se déplacer sur la case de sang
+        /// </summary>
+        /// <param name="partie">La partie</param>
+        /// <param name="sens">Direction</param>
+        /// <param name="ListeTmp">Liste de déplacement temporaire</param>
+        /// <param name="args">Liste des argument nécessaire à la fonction</param>
+        /// <param name="tmpDeplacement">Nombre de déplacement que le pion a de disponible</param>
+        /// <returns>Retourne true si le mouvement peut être effectuer</returns>
         public virtual bool SurCaseDeSang(Partie partie, string sens, List<Deplacement> ListeTmp, RetrieveElementPierre args, int tmpDeplacement)
         {
             bool Valide=true;
@@ -411,6 +447,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         #endregion
 
         #region Monstre
+        /// <summary>
+        /// Vérifie les déplacement du monstre
+        /// </summary>
+        /// <param name="partie">La partie</param>
+        /// <param name="sens">Direction</param>
         public virtual void MonstreDeplacement(Partie partie, string sens)
         {
             bool casePresent=true;
@@ -422,79 +463,81 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             casePresent=partie.Plateau.ConfirmationCase(Fin);
 
+            //Vérifie si le monstre essais de traverser un mur
             if ((posTmp.X == Fin.X && posTmp.Y == Fin.Y) || casePresent == false) 
             {
             #region Magie
              //condition mur
-
-                //if(posTmp.X == Fin.X && posTmp.Y == Fin.Y)
-                //{
-                    switch (sens)
-                    {
-                        case ConstanteGlobale.DESCEND:
-                            Fin.Y = 0;
-                            break;
-                        case ConstanteGlobale.MONTE:
-                            Fin.Y = 10;
-                            break;
-                        case ConstanteGlobale.GAUCHE:
-                            Fin.X = 15;
-                            break;
-                        case ConstanteGlobale.DROITE:
-                            Fin.X = 0;
-                            break;
-                    }
-                //}
+                switch (sens)
+                {
+                    case ConstanteGlobale.DESCEND:
+                        Fin.Y = 0;
+                        break;
+                    case ConstanteGlobale.MONTE:
+                        Fin.Y = 10;
+                        break;
+                    case ConstanteGlobale.GAUCHE:
+                        Fin.X = 15;
+                        break;
+                    case ConstanteGlobale.DROITE:
+                        Fin.X = 0;
+                        break;
+                }
                
                 #endregion
             }
            
-                pTmp = partie.RetournePiece(Fin);
+            pTmp = partie.RetournePiece(Fin);
 
-                if(pTmp.Count > 1)
+            //Si il y a plus d'une pièce
+            // case de sang + pion ou case de sang + pierre
+            if(pTmp.Count > 1)
+            {
+
+            }
+            else
+            {
+                //il n'y a pas de piece
+                if (pTmp.Count() == 0)
                 {
-
+                    return;
                 }
-                else
-                {
-                    //il n'y a pas de piece
-                    if (pTmp.Count() == 0)
-                    {
-                        return;
-                    }
 
-                   type = pTmp[0].Get_Type();
+                type = pTmp[0].Get_Type();
                     
-                    switch (type)
-                    {
-                        case ConstanteGlobale.CASEDESANG:
-                            Position pACote = new Position(Fin.X, Fin.Y);
-                            posTmp = new Position(pACote.X, pACote.Y);
-                            RetrieveElementPierre args = new RetrieveElementPierre();
+                switch (type)
+                {
+                    case ConstanteGlobale.CASEDESANG:
+                        Position pACote = new Position(Fin.X, Fin.Y);
+                        posTmp = new Position(pACote.X, pACote.Y);
+                        RetrieveElementPierre args = new RetrieveElementPierre();
 
-                            args.CasePresent= casePresent;
-                            args.pTmp=pTmp;
-                            args.pACote=pACote;
-                            args.posTmp=posTmp;
+                        args.CasePresent= casePresent;
+                        args.pTmp=pTmp;
+                        args.pACote=pACote;
+                        args.posTmp=posTmp;
 
-                            SurCaseDeSang(partie,sens,args);
-                            break;
-                        case ConstanteGlobale.PIERRE:
-                            ConfirmationPierre(partie,sens,pTmp[0]);
-                            break;
-                        case ConstanteGlobale.PION:
-                            ((Pion)pTmp[0]).EstVivant =false;
-                            ((Pion)pTmp[0]).EstSortie = true;
-                            MessageBox.Show("Le monstre se régale de ton pion");
-                            break; 
-                    }
+                        MonstreSurCaseDeSang(partie, sens, args);
+                        break;
+                    case ConstanteGlobale.PIERRE:
+                        MonstreConfirmationPierre(partie, sens, pTmp[0]);
+                        break;
+                    case ConstanteGlobale.PION:
+                        ((Pion)pTmp[0]).EstVivant =false;
+                        ((Pion)pTmp[0]).EstSortie = true;
+                        MessageBox.Show("Le monstre se régale de ton pion");
+                        break; 
                 }
-                
-            
-            
+            }           
         }
 
-        public virtual void ConfirmationPierre(Partie partie, string sens,Piece pierre)
+        /// <summary>
+        ///  Effectue le déplacement de la pierre pousser par le monstre
+        /// </summary>
+        /// <param name="partie">La partie</param>
+        /// <param name="sens">Direction</param>
+        /// <param name="pierre">La piece qui est à vérifier</param>
+        public virtual void MonstreConfirmationPierre(Partie partie, string sens,Piece pierre)
         {
 
             bool CasePresent = false;
@@ -559,7 +602,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     args.pTmp = pTmp;
                     args.deplacement = deplacement;
 
-                    PierreSurCaseDeSang(partie, sens, pierre,args);
+                    MonstrePoussePierreSurCaseDeSang(partie, sens, pierre, args);
                 }
                 //pousser une pierre sur une pierre/pion
                 else
@@ -572,15 +615,21 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
                     if(pTmp[0].Get_Type() == ConstanteGlobale.PIERRE)
                     {
-                        deplacement.ConfirmationPierre(partie, sens, pTmp[0]);
+                        deplacement.MonstreConfirmationPierre(partie, sens, pTmp[0]);
                     }
                     
                 }
             }
 
         }
-
-        public virtual void PierreSurCaseDeSang(Partie partie, string sens, Piece pierre,RetrieveElementPierre args)
+        /// <summary>
+        ///  Le monstre pousse une pierre sur une case de sang
+        /// </summary>
+        /// <param name="partie">La partie</param>
+        /// <param name="sens">Direction</param>
+        /// <param name="pierre">La piece qui est à vérifier</param>
+        /// <param name="args">Liste des argument nécessaire à la fonction</param>
+        public virtual void MonstrePoussePierreSurCaseDeSang(Partie partie, string sens, Piece pierre,RetrieveElementPierre args)
         {
             args.posTmp.X = args.pACote.X;
             args.posTmp.Y = args.pACote.Y;
@@ -626,7 +675,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CASEDESANG)
                 {
                     //rappele la fonction
-                   PierreSurCaseDeSang(partie, sens, pierre,args);
+                    MonstrePoussePierreSurCaseDeSang(partie, sens, pierre, args);
                 }
                 // arrete sur la case de sang
                 // monstre pousse roche elle arrête sur la case de sang
@@ -641,7 +690,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
-        public virtual void SurCaseDeSang(Partie partie, string sens, RetrieveElementPierre args)
+        /// <summary>
+        /// Le monstre se déplace sur une case de sang
+        /// </summary>
+        /// <param name="partie">La partie</param>
+        /// <param name="sens">Direction</param>
+        /// <param name="args">Liste des argument nécessaire à la fonction</param>
+        public virtual void MonstreSurCaseDeSang(Partie partie, string sens, RetrieveElementPierre args)
         {
             args.posTmp.X = args.pACote.X;
             args.posTmp.Y = args.pACote.Y;
@@ -656,8 +711,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //arrete sur la case de sang
             if ((args.posTmp.X==args.pACote.X && args.posTmp.Y==args.pACote.Y) || args.CasePresent == false)
             {
-                 if(args.posTmp.X==args.pACote.X && args.posTmp.Y==args.pACote.Y)
-                {
                     switch (sens)
                     {
                         case ConstanteGlobale.DESCEND:
@@ -673,7 +726,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             Fin.X = 0;
                             break;
                     }
-                }
             }
 
             args.pTmp = partie.RetournePiece(args.pACote);
@@ -696,7 +748,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 else if ((args.pTmp[0]).Get_Type() == ConstanteGlobale.CASEDESANG)
                 {
                     //rappele la fonction
-                    SurCaseDeSang(partie, sens, args);
+                    MonstreSurCaseDeSang(partie, sens, args);
                 }
                 //L'autre coté de la Mare de sang il y a une pièce
                 else
@@ -714,7 +766,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                     // un pion glisse sur une case de sang et fini devant la roche
                     else
                     {
-                        ConfirmationPierre(partie, sens,args.pTmp[0]);
+                        MonstreConfirmationPierre(partie, sens,args.pTmp[0]);
                         Fin.X = args.pACote.X;
                         Fin.Y = args.pACote.Y;
                     }
