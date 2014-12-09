@@ -84,10 +84,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <summary>
         /// Determine l'image du Pion
         /// </summary>
-        public override void DetermineImage()
+        public virtual void DetermineImage(int Joueur,int Pion)
         {
-            Url = "pack://application:,,,/Images/Robert2.png";
+            Url = new StringBuilder().Append("pack://application:,,,/Images/Pion").Append(Pion+1)
+                                     .Append("Joueur").Append(Joueur+1).Append(".jpg").ToString();
         }
+
 
 
         public override bool Equals(object obj)

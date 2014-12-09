@@ -44,6 +44,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual void DetermineImage() { }
 
 
+
+
         public override bool Equals(object obj)
         {
             if (obj == null)

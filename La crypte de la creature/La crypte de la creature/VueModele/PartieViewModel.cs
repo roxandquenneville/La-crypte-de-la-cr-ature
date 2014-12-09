@@ -540,6 +540,7 @@ namespace La_crypte_de_la_creature.VueModele
                     Partie.Joueur[i].Pion[x].Position.idPosition = pTmp.idPosition;
                     Partie.Joueur[i].Pion[x].Position.X = pTmp.X;
                     Partie.Joueur[i].Pion[x].Position.Y = pTmp.Y;
+                    Partie.Joueur[i].Pion[x].DetermineImage(i,x);
                     _PionService.Create((Pion)Partie.Joueur[i].Pion[x]);
                 }
            }

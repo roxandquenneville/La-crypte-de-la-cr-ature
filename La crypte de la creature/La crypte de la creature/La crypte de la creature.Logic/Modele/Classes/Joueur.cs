@@ -41,7 +41,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
                 for(int i=0;i<nbrPion;i++)
                 {
-                    tabDeplacement[i]=RdmDeplacement.Next(1,6);
+                    tabDeplacement[i]=RdmDeplacement.Next(2,6);
                     Pion.Add(new Pion(tabDeplacement[i]));
                 }
             }
