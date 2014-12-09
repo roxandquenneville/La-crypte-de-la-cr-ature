@@ -338,9 +338,9 @@ namespace La_crypte_de_la_creature.Vue
         {
                if(!(PartieViewModel.Partie.MouvementMonstre()))
                {
+                    t.Enabled = false;
                     System.Windows.Forms.MessageBox.Show("Partie terminé","Fin de partie",MessageBoxButtons.OK);
                     mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
-                    counter = 4;
                }
                else 
                {
@@ -474,6 +474,27 @@ namespace La_crypte_de_la_creature.Vue
                     .Append(" de Jouer").ToString();
 
             }      
+        }
+
+        private void ChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+        
+            Compte cTmp = new Compte();
+            // met les donnée de L'utilisateur connecter dans un compte
+            cTmp.NomUsager = UtilisateurConnecte.nomUsager;
+            cTmp.idCompte = UtilisateurConnecte.idCompte;
+
+            //Ajoute l'utilisateur connecter à la fin de la liste pour pouvoir le garder
+            PartieViewModel.ListJoueurInvite.Add(cTmp);
+            // Change L'utilisateur
+            UtilisateurConnecte.nomUsager=PartieViewModel.ListJoueurInvite[0].NomUsager;
+            UtilisateurConnecte.idCompte = PartieViewModel.ListJoueurInvite[0].idCompte;
+            //Delete le premier joueur
+            PartieViewModel.ListJoueurInvite.RemoveAt(0);
+
+            lblNomUsager.Content = null;
+            lblNomUsager.Content = UtilisateurConnecte.nomUsager;
+
         }
 
     }
