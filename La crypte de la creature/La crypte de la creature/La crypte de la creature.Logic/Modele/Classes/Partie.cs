@@ -142,10 +142,10 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         {
            
           
-            if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
-            {
-                return;
-            }
+            //if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
+            //{
+            //    return;
+            //}
 
 
             //Pour supprimer le mouvement

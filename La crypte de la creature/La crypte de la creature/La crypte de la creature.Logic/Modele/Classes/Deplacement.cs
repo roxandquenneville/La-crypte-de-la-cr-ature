@@ -483,7 +483,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         Fin.X = 0;
                         break;
                 }
-               
+                MonstreCaseExterne(sens, Fin, partie.Plateau);
                 #endregion
             }
            
@@ -774,6 +774,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
+        public virtual void MonstreCaseExterne(String sens,Position posTest,Plateau plateau)
+        {
+            while(!(plateau.ConfirmationCase(posTest)))
+            {
+                posTest.ChangePosition(sens);
+            }
+
+        }
 
         #endregion
 

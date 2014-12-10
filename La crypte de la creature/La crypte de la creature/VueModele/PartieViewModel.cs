@@ -540,7 +540,7 @@ namespace La_crypte_de_la_creature.VueModele
                     Partie.Joueur[i].Pion[x].Position.idPosition = pTmp.idPosition;
                     Partie.Joueur[i].Pion[x].Position.X = pTmp.X;
                     Partie.Joueur[i].Pion[x].Position.Y = pTmp.Y;
-                    Partie.Joueur[i].Pion[x].DetermineImage(i,x);
+                    Partie.Joueur[i].Pion[x].DetermineImage((i)+1,(x)+1);
                     _PionService.Create((Pion)Partie.Joueur[i].Pion[x]);
                 }
            }
@@ -661,6 +661,10 @@ namespace La_crypte_de_la_creature.VueModele
         {
             Position pTmp = new Position();
             List<Partie> listPartie = new List<Partie>();
+            Compte cTmp = new Compte();
+            ListJoueurInvite = new ObservableCollection<Compte>();
+            int iJoueur=1;
+            int iPion=1;
 
             foreach (Joueur J in Joueurs)
             {
@@ -702,6 +706,7 @@ namespace La_crypte_de_la_creature.VueModele
                     Partie.Pointage.Add(p);
                 }
             }
+
             foreach (Joueur j in Joueurs)
             {
                 if (j.Partie.idPartie == Partie.idPartie)
@@ -709,16 +714,29 @@ namespace La_crypte_de_la_creature.VueModele
                     j.Partie.idPartie = Partie.idPartie;
                     foreach(Pion p in Pions)
                     {
-                        if(p.Joueur.idJoueur == j.idJoueur)
+                        if(p.Joueur.idJoueur == j.idJoueur && p.Joueur.Partie.idPartie == j.Partie.idPartie)
                         {
                             p.Joueur.idJoueur= j.idJoueur;
                             p.Partie.idPartie = Partie.idPartie;
                             j.Pion.Add(p);
                             Partie.Piece.Add(p);
+                            p.DetermineImage(iJoueur,iPion);
+                            iPion++;
                         }
+                        
+
                     }
+                    iJoueur++;
+                    iPion=1;
                     Partie.Joueur.Add(j);
+                    if(j.Compte.NomUsager != UtilisateurConnecte.nomUsager)
+                    {
+                        cTmp.NomUsager = j.Compte.NomUsager;
+                        cTmp.idCompte = j.Compte.idCompte;
+                        ListJoueurInvite.Add(cTmp);
+                    }
                 }
+                
             }
             foreach (Pierre p in Pierres)
             {

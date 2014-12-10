@@ -86,8 +86,8 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// </summary>
         public virtual void DetermineImage(int Joueur,int Pion)
         {
-            Url = new StringBuilder().Append("pack://application:,,,/Images/Pion").Append(Pion+1)
-                                     .Append("Joueur").Append(Joueur+1).Append(".jpg").ToString();
+            Url = new StringBuilder().Append("pack://application:,,,/Images/Pion").Append(Pion)
+                                     .Append("Joueur").Append(Joueur).Append(".jpg").ToString();
         }
 
 
