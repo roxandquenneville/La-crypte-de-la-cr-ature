@@ -89,6 +89,19 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
+        /// <summary>
+        /// Valide la case départ
+        /// </summary>
+        /// Auteur : Jean-Sébastien
+        /// <returns>retourne true si c'est la case de départ</returns>
+        public virtual bool ValiderCaseDepart()
+        {
+            if (this.X == ConstanteGlobale.CaseDepart.X && this.Y == ConstanteGlobale.CaseDepart.Y)
+                return true;
+            else
+                return false;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)

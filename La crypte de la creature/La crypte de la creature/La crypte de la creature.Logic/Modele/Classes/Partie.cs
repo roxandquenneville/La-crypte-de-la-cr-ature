@@ -62,28 +62,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Piece = new List<Piece>();
             TourJoueur = 0;
 
-            /*//prend la taille du tableau
-            int tmp=ConstanteGlobale.VALEURDEPLACEMENTMONSTRE.Length;
-
-            // Prend un nombre random
-            Random RdmDeplacement = new Random();
-            int[] tabDeplacement = new int[nbrPion];
-
-            for (int i = 0; i < nbrPion; i++)
-            {
-                // prend une valeur aléatoire entre 0 et la taille du tableau
-                tabDeplacement[i] = RdmDeplacement.Next(0,tmp);
-
-                //vérifie s'il y a des double
-                while()
-                {
-                
-                }
-
-                CartesMonstre.Add(new CartesMonstre(ConstanteGlobale.VALEURDEPLACEMENTMONSTRE[tabDeplacement[i]]));
-            }*/
-
-
             for (int i = 0; i < nbrJoueur; i++)
             {
                 Joueur.Add(new Joueur(nbrPion));
@@ -140,12 +118,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <returns>Retourne un mouvement</returns>
         public virtual void DeplacementDePion(List<Deplacement> ListeTmp, int joueur, int pion,string sens)
         {
-           
-          
-            //if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
-            //{
-            //    return;
-            //}
+
+
+            if (Joueur[joueur].Pion[pion].TmpDeplacement <= 0)
+            {
+                return;
+            }
 
 
             //Pour supprimer le mouvement

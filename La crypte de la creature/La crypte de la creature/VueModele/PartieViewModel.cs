@@ -658,7 +658,7 @@ namespace La_crypte_de_la_creature.VueModele
        
         #endregion
         public void reprendrePartieCommand()
-        {
+        { 
             Position pTmp = new Position();
             List<Partie> listPartie = new List<Partie>();
             Compte cTmp = new Compte();

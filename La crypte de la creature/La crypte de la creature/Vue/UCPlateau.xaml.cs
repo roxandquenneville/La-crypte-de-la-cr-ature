@@ -232,12 +232,10 @@ namespace La_crypte_de_la_creature.Vue
                             ptmp.Y=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y;
 
                             /* valide pour la fin d'un mouvement s'il est arrêter sur la case départ*/
-                            d.Depart.X = ptmp.X;
-                            d.Depart.Y = ptmp.Y;
+ 
                             ptmp.ChangePosition(ConstanteGlobale.DROITE);
-                            d.Fin.X = ptmp.X;
-                            d.Fin.Y = ptmp.Y;
-                            if(d.ValiderCaseDepart() == false)
+
+                            if (ptmp.ValiderCaseDepart() == true && PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].TmpDeplacement == 1)
                                 break;
 
                             PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DROITE);
@@ -262,13 +260,9 @@ namespace La_crypte_de_la_creature.Vue
                             ptmp.X=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X;
                             ptmp.Y=PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y;
 
-                            /* valide pour la fin d'un mouvement s'il est arrêter sur la case départ*/
-                            d.Depart.X = ptmp.X;
-                            d.Depart.Y = ptmp.Y;
                             ptmp.ChangePosition(ConstanteGlobale.DESCEND);
-                            d.Fin.X = ptmp.X;
-                            d.Fin.Y = ptmp.Y;
-                            if(d.ValiderCaseDepart() == false)
+
+                            if (ptmp.ValiderCaseDepart() == true && PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].TmpDeplacement == 1)
                                 break;
 
                         PartieViewModel.Partie.DeplacementDePion((List<Deplacement>)tmpList.Deplacement, Joueur, Pion, ConstanteGlobale.DESCEND);
@@ -280,7 +274,7 @@ namespace La_crypte_de_la_creature.Vue
                         break;
 
                     }
-                    if (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.Y == 10 && PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.X == 15)
+                    if (PartieViewModel.Partie.Joueur[Joueur].Pion[Pion].Position.ValiderCaseDepart() == true)
                     Confirmer.IsEnabled = false;
                     else
                         Confirmer.IsEnabled = true;
@@ -347,12 +341,6 @@ namespace La_crypte_de_la_creature.Vue
                    AffichePlateau();
                }
                 
-
-                //if (Pion == 0 && PartieViewModel.Partie.Joueur[0].Pion[1].EstVivant)
-                //    Pion = 1;
-                //else if ( Pion == 1 && PartieViewModel.Partie.Joueur[0].Pion[0].EstVivant)
-                //    Pion = 0;
-           
           
         }
 

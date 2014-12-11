@@ -18,7 +18,6 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         public virtual Historique Historique { get; set; }
         public virtual Position Depart { get; set; }
         public virtual Position Fin { get; set; }
-        Position caseDepart = new Position();
         #endregion
 
 
@@ -46,24 +45,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             Historique = new Historique();
         }
 
-
-        /// <summary>
-        /// Valide la case départ
-        /// </summary>
-        /// Auteur : Jean-Sébastien
-        /// <returns>retourne true si c'est la case de départ</returns>
-        public virtual bool ValiderCaseDepart()
-        {
-            if (this.Fin.X == caseDepart.X && this.Fin.Y == caseDepart.Y)
-                return false;
-            else
-                return true;
-        }
-
         #region Pion
-        /// <summary>
-        /// Confirme le mouvement. 
-        /// </summary>
+       /// <summary>
+       /// Confirme le mouvement du pion. 
+       /// <param name="partie">La partie en cours</param>
+       /// <param name="ListeTmp">Liste de déplacement effectuer par le pion</param>
+       /// <param name="tmpDeplacement">Nombre de point de déplacement disponible du pion</param>
+       /// <param name="sens">Direction</param>
         /// <returns>Retourne vrai si le déplacement est valide sinon retourne faux</returns>
         public virtual bool Confirmation(Partie partie, List<Deplacement> ListeTmp, int tmpDeplacement,string sens)
         {
@@ -71,52 +59,45 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             bool CasePresent;
             string type;
             List<Piece> pTmp = null;
-           
-            caseDepart.X=15;
-            caseDepart.Y=10;
 
-           if(Depart== Fin)
+            //Le pion essais d'acceder à une case hors plateau
+           if(Depart == Fin)
            {
                return false;
            }
 
-            //Vérifie la case
+            //Vérifie si case est externe
             CasePresent = partie.Plateau.ConfirmationCase(Fin);
 
-            //La case n'existe pas ou est externe
+            //La case est externe
             if (CasePresent == false)
             {
                 return false;
             }
-
+            //Retourne une piece s'il y en a une a cette position
             pTmp = partie.RetournePiece(Fin);
-            if (tmpDeplacement == 1)
-            {
-                 if(Fin == caseDepart)
-                    return false;
-            }
-            // piece et case de sang gérer plus tard
+           
+            // Deux pièces sont sur cette case soit une case de sang et une pierre ou un pion ou un monstre 
             if (pTmp.Count > 1)
             {
                 string type2;
-                string tmp;
                 int index;
 
                 type = pTmp[0].Get_Type();
                 type2 = pTmp[1].Get_Type();
 
+                // Trouve la pièce qui n'est pas une case de sang
                 if(type != ConstanteGlobale.CASEDESANG)
                 {
-                    tmp=type;
                     index=0;
                 }
                 else
                 {
                     index=1;
-                    tmp=type2;
                 }
 
-                switch (type)
+                //  Effectue les confirmations pour la pièce correspondante
+                switch (pTmp[index].Get_Type())
                 {
                     case ConstanteGlobale.PIERRE:
                         Valide = ConfirmationPierre(partie, sens, ListeTmp, pTmp[index]);
@@ -143,12 +124,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 }
                 else
                 {
-                    type = pTmp[0].Get_Type();
-                   
+                    type = pTmp.First().Get_Type();
+
+                    //  Effectue les confirmations pour la pièce correspondante
                     switch (type)
                     {
                         case ConstanteGlobale.PIERRE:
-                            Valide = ConfirmationPierre(partie, sens, ListeTmp, pTmp[0]);
+                            Valide = ConfirmationPierre(partie, sens, ListeTmp, pTmp.First());
                             break;
                         case ConstanteGlobale.CASEDESANG:
 
@@ -185,11 +167,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <summary>
         /// Vérifie que la pierre peut être déplacer
         /// </summary>
-        /// <param name="partie">La partie</param>
+        /// <param name="partie">La partie actuelle</param>
         /// <param name="sens">Direction</param>
-        /// <param name="ListeTmp">Liste de déplacement temporaire</param>
-        /// <param name="pierre">La piece qui est à vérifier</param>
-        /// <returns>Retourne true si le mouvement peut être effectuer</returns>
+        /// <param name="ListeTmp">Liste de déplacement effectuer par le pion</param>
+        /// <param name="pierre">La piece qui est à vérifier (Piece)</param>
+        /// <returns>Retourne vrai si le mouvement peut être effectuer sinon return faux</returns>
         public virtual bool ConfirmationPierre(Partie partie, string sens, List<Deplacement> ListeTmp, Piece pierre)
         {
 
@@ -203,7 +185,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             deplacement.Depart.X = Fin.X;
             deplacement.Depart.Y = Fin.Y;
+            //Pour la base de donnée
             deplacement.Pierre = (Pierre)pierre;
+
             ListeTmp.Add(deplacement);
             index = ListeTmp.Count();
 
@@ -216,22 +200,24 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 return false;
             }
 
-            //Vérifie la case
+            //Vérifie la case si la est externe
             CasePresent = partie.Plateau.ConfirmationCase(pACote);
 
-            //La case n'existe pas ou est externe
+            //La case est externe
             if (CasePresent == false)
             {
                 ListeTmp.RemoveAt(index - 1);
                 return false;
             }
 
+            //Vérifie à cette position si il y a une pièce
             pTmp = partie.RetournePiece(pACote);
 
             // sur une case de sang
             // le pion ne peut pas pousser une pierre sur un autre pierre/pion/monstre
             if (pTmp.Count > 1)
             {
+                ListeTmp.RemoveAt(index - 1);
                 return false;
             }
             else
@@ -279,12 +265,14 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
         /// <param name="args">Liste des argument nécessaire à la fonction</param>
         public virtual void PierreSurCaseDeSang(Partie partie, string sens, Piece pierre, List<Deplacement> ListeTmp, RetrieveElementPierre args)
         {
+            //Position précédente
             args.posTmp.X = args.pACote.X;
             args.posTmp.Y = args.pACote.Y;
 
             //change la position de la case à côté
             args.pACote.ChangePosition(sens);
 
+            //La case sur laquelle on essais de pousser une pierre est une case extérieur
             if(args.pACote == args.posTmp)
             {
                 pierre.Position.X= args.pACote.X;
@@ -292,11 +280,11 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                 return;
             }
 
-            //Vérifie la case
+            //Vérifie si la case est externe
             args.CasePresent = partie.Plateau.ConfirmationCase(args.pACote);
 
-            //La case n'existe pas ou est externe
-            //arrete sur la case de sang
+            //La case  est externe
+            //arrête sur la case de sang
             if (args.CasePresent == false)
             {
                 args.deplacement.Fin.X = args.posTmp.X;
@@ -381,6 +369,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             // piece et case de sang
             // pion suit la pierre lorsqu'il pousse
+            // En cours...
             if ((args.pTmp).Count() > 1)
             {
 
@@ -418,7 +407,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                             Valide= false;
                         }
                     }
-                    //On veut piller sur un monstre
+                    //On veut piler sur un monstre
                     else if (args.pTmp[0].Get_Type() == ConstanteGlobale.MONSTRE)
                     {
                         Valide=false;
@@ -448,7 +437,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
         #region Monstre
         /// <summary>
-        /// Vérifie les déplacement du monstre
+        /// Vérifie les déplacements du monstre
         /// </summary>
         /// <param name="partie">La partie</param>
         /// <param name="sens">Direction</param>
@@ -468,6 +457,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             {
             #region Magie
              //condition mur
+             //Le monstre prend un passage secret
                 switch (sens)
                 {
                     case ConstanteGlobale.DESCEND:
@@ -483,6 +473,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
                         Fin.X = 0;
                         break;
                 }
+                //Pour valider que le monstre ne s'arrête pas sur le gazon
                 MonstreCaseExterne(sens, Fin, partie.Plateau);
                 #endregion
             }
@@ -576,8 +567,9 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
 
             pTmp = partie.RetournePiece(pACote);
 
-            // sur une case de sang
-            // le pion ne peu pas pousser une pierre sur un autre pierre/pion/monstre
+            // Sur une case de sang
+            // Le monstre pousse la piece
+            // En cours
             if (pTmp.Count > 1)
             {
                 
@@ -640,7 +632,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //Vérifie la case
             args.CasePresent = partie.Plateau.ConfirmationCase(args.pACote);
 
-            //La case n'existe pas ou est externe
+            //La case  est externe
             //arrete sur la case de sang
             if (args.CasePresent == false)
             {
@@ -704,6 +696,13 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             //change la position de la case à côté
             args.pACote.ChangePosition(sens);
 
+            //Le monstre glisse sur la case de sang et prend un passage secret
+            // En cours
+            if (args.pACote == args.posTmp)
+            {
+                
+            }
+
             //Vérifie la case
             args.CasePresent = partie.Plateau.ConfirmationCase(args.pACote);
 
@@ -731,7 +730,7 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             args.pTmp = partie.RetournePiece(args.pACote);
 
             // piece et case de sang
-            // pion suit la pierre lorsqu'il pousse
+            // Monstre suit la pierre lorsqu'il pousse
             if ((args.pTmp).Count() > 1)
             {
 
@@ -774,6 +773,12 @@ namespace La_crypte_de_la_creature.Logic.Modele.Classes
             }
         }
 
+        /// <summary>
+        /// Vérifie que le monstre ne fini pas sur le gazon
+        /// </summary>
+        /// <param name="sens">Direction</param>
+        /// <param name="posTest">Position à vérifier</param>
+        /// <param name="plateau">Plateau</param>
         public virtual void MonstreCaseExterne(String sens,Position posTest,Plateau plateau)
         {
             while(!(plateau.ConfirmationCase(posTest)))
