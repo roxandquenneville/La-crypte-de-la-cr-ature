@@ -47,6 +47,7 @@
             </Label.Effect>
         </Label>
         <TextBox GotFocus="GotFocus" Height="30" HorizontalAlignment="Left"  Margin="221,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Name="tbxEmailConfirme" />
+        <Button Height="30" Width="42" Content="Guide" Click="Btn_Guide" Margin="10,325,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsCancel="True" />
 
     </Grid>
 </UserControl>

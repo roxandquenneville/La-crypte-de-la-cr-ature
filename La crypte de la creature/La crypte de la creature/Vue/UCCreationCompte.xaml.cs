@@ -178,5 +178,10 @@ namespace La_crypte_de_la_creature.Vue
             return match.Groups[1].Value + domainName;
         }
 
+        private void Btn_Guide(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Bouton: \nConfirmer: permet de confirmer les informations entrer et si tout est bon connecte l'utilisateur\nAnnuler: permet de retourner vers la fenêtre de connexion \n\nInformations: \nL'identifiant ne peut déjà exister et se doit d'être d'au maximum 30 caractères. \nLe mot de passe ne peut être vide et se doit d'être au maximum 20 caractères. \nLa confirmation de mot de passe se doit d'être identique au mot de passe.\nLe courriel (Email) se doit de suivre la norme xxx@xxx.xxx\nLa confirmation de courriel se doit d'être identique au courriel ");
+        }
+
     }
 }
