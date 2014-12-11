@@ -62,6 +62,12 @@ namespace La_crypte_de_la_creature.Vue
             mainVM.ChangeView<UCPlateau>(new UCPlateau(r));
         }
 
+        private void Btn_Quitter(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+
         
 
     }

@@ -22,6 +22,8 @@ using La_crypte_de_la_creature.UI.VueModele;
 using La_crypte_de_la_creature.VueModele;
 
 
+
+
 namespace La_crypte_de_la_creature.Vue
 {
 
@@ -483,6 +485,22 @@ namespace La_crypte_de_la_creature.Vue
             lblNomUsager.Content = null;
             lblNomUsager.Content = UtilisateurConnecte.nomUsager;
 
+        }
+
+        private void Btn_Deconnexion(object sender, RoutedEventArgs e)
+        {
+            this.Content = new UCMainWindow();
+        }
+
+        private void Btn_Quitter(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+
+        private void Btn_Guide(object sender, RoutedEventArgs e)
+        {
+           
         }
 
     }
