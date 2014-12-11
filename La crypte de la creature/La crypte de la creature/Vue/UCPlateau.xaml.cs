@@ -500,8 +500,8 @@ namespace La_crypte_de_la_creature.Vue
 
         private void Btn_Guide(object sender, RoutedEventArgs e)
         {
-           
+            System.Windows.Forms.MessageBox.Show("Bouton :\n Changer d'utilisateur : permet de changer d'utilisateur sans confirmation de mot de passe.\n Confirmer tour: permet de confirmer la fin du mouvement d'un pion.\n Annuler tour: permet d'annuler le tour du pion\n Revenir: Permet de revenir à l'écran de choix de partie \n\nDéplacements: \nPour déplacer le pion il faut utiliser les touches de direction du clavier.\nLe pion seras déplacé d'une case à la fois.\nLe pion glisseras d'un bout à l'autre d'une marre de sang pour 1 point de déplacement \nLe pion peut pousser des pierres, temps que la case derrière est vide \n\nDéplacement du monstre: \nLe monstre regarde à sa gauche, à sa droite et devant lui. Il se dirigeras vers le pion le plus près qu'il voit. \nSi deux pions sont à la même distance dans son champs de vision le monstre continueras tout droit. \nLe monstre pourras aussi glisser sur les marres de sang \nLe monstre pousseras les pierres, peut importe se qu'il y a derrière. \nCe qui seras poussé au delà du mur par le monstre seras considéré comme détruit \n\nBut: \nLe but est de sortir de la crypte par la case sortie en haut à gauche du plateau sans se faire manger par le monstre. \nChaque pion qui sort vaut 1 point.");
         }
 
-    }
+    } 
 }

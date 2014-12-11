@@ -111,7 +111,10 @@ namespace La_crypte_de_la_creature.Vue
         {
             mainVM.ChangeView<UCChoixPartie>(new UCChoixPartie());
         }
-
+        private void Btn_Guide(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Bouton:\nInviter: permet de débuter la partie avec les joueurs dans la colonnes des invités\nAnnuler: permet de retourner vers la fenêtre de choix de partie\nLes deux boutons représentant des flèches: permet de déplacer les noms des joueurs potentiel d'une colonne à l'autre selon le sens de la flèche");
+        }
       
 
       

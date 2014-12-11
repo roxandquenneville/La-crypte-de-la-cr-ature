@@ -7,7 +7,7 @@
              d:DesignHeight="500" d:DesignWidth="500">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
 
-        <Label Foreground="White" Name="tbxUsagerConnecte" Height="30" Margin="10,10,10,200">
+        <Label Foreground="White" Name="tbxUsagerConnecte" Height="30" Margin="10,21,10,262">
             <Label.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="2"/>
             </Label.Effect>
@@ -17,5 +17,7 @@
         <Button Name ="Charger" Height="30" Width="180" Content="Charger Partie" Margin="0,148,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  />
         <Button Height="30" Width="180" Content="Déconnexion" Click="Btn_Deconnexion" Margin="0,200,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsCancel="True" />
         <Button Height="30" Width="180" Margin="0,248,0,-38" Content="Quitter" Click="Btn_Quitter" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button Height="30" Width="180" Content="Guide" Click="Btn_Guide" Margin="0,293,0,-10" HorizontalAlignment="Left" VerticalAlignment="Top" IsCancel="True" />
+
     </Grid>
 </UserControl>

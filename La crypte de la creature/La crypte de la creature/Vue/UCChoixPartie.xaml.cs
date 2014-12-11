@@ -67,6 +67,11 @@ namespace La_crypte_de_la_creature.Vue
             App.Current.Shutdown();
         }
 
+        private void Btn_Guide(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Bouton: \nNouvelle partie: permet de créer une nouvelle partie avec ou sans joueur invité. \nReprendre partie: permet de reprendre la dernière partie jouée.\nCharger partie: permet de charger une partie jouée");
+        }
+
 
         
 
