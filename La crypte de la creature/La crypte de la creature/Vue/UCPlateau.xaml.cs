@@ -504,6 +504,12 @@ namespace La_crypte_de_la_creature.Vue
             this.Content = new UCMainWindow();
         }
 
+        private void Btn_Quitter(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+
         private void Btn_Guide(object sender, RoutedEventArgs e)
         {
            
